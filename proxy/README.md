@@ -5,6 +5,7 @@
   * [Velocity](/game_eggs/minecraft/proxy/java/velocity)
   * [VIAaaS](/game_eggs/minecraft/proxy/java/viaaas)
   * [Waterfall](/game_eggs/minecraft/proxy/java/waterfall)
+  * [Bungeecord](/game_eggs/minecraft/proxy/java/Bungeecord)
 * [Bedrock](/game_eggs/minecraft/proxy/bedrock)
   * [Waterdog PE](/game_eggs/minecraft/proxy/bedrock/waterdogpe)
 * [Cross Platform](/game_eggs/minecraft/proxy/cross_platform)

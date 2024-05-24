@@ -14,10 +14,12 @@
         "pid_limit"
     ],
     "docker_images": {
-        "ghcr.io\/parkervcp\/yolks:java_17": "ghcr.io\/parkervcp\/yolks:java_17",
-        "ghcr.io\/parkervcp\/yolks:java_16": "ghcr.io\/parkervcp\/yolks:java_16",
-        "ghcr.io\/parkervcp\/yolks:java_11": "ghcr.io\/parkervcp\/yolks:java_11",
-        "ghcr.io\/parkervcp\/yolks:java_8": "ghcr.io\/parkervcp\/yolks:java_8"
+        "Java 8": "ghcr.io\/parkervcp\/yolks:java_8",
+        "Java 11": "ghcr.io\/parkervcp\/yolks:java_11",
+        "Java 16": "ghcr.io\/parkervcp\/yolks:java_16",
+        "Java 17": "ghcr.io\/parkervcp\/yolks:java_17",
+        "Java 19": "ghcr.io\/parkervcp\/yolks:java_19",
+        "Java 21": "ghcr.io\/parkervcp\/yolks:java_21"
     },
     "file_denylist": [],
     "startup": "java -Dterminal.ansi=true -Xms128M -Xmx{{SERVER_MEMORY}}M -jar {{SERVER_JARFILE}}",

@@ -1,10 +1,10 @@
 {
-    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-02-13T17:26:13+0000",
+    "exported_at": "2024-06-01T19:28:21+00:00",
     "name": "Folia",
     "author": "Hosting@NeverStopGaming.net",
     "description": "Fork of Paper which adds regionised multithreading to the dedicated server.",
@@ -42,6 +42,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "nullable|string|max:20",
+            "sort": null,
             "field_type": "text"
         },
         {
@@ -52,6 +53,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|regex:\/^([\\w\\d._-]+)(\\.jar)$\/",
+            "sort": null,
             "field_type": "text"
         },
         {
@@ -62,6 +64,7 @@
             "user_viewable": false,
             "user_editable": false,
             "rules": "nullable|string",
+            "sort": null,
             "field_type": "text"
         },
         {
@@ -72,6 +75,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|string|max:20",
+            "sort": null,
             "field_type": "text"
         }
     ]

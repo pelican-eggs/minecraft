@@ -1,10 +1,10 @@
 {
-    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-04-01T11:41:53+02:00",
+    "exported_at": "2024-06-01T19:28:21+00:00",
     "name": "Feed the Beast",
     "author": "aevum@decess.us",
     "description": "Egg to handle all official FTB Modpacks",
@@ -40,6 +40,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "nullable|regex:([a-z-0-9]+$)",
+            "sort": null,
             "field_type": "text"
         },
         {
@@ -50,6 +51,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|string|max:20",
+            "sort": null,
             "field_type": "text"
         },
         {
@@ -60,6 +62,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "nullable|string|max:40",
+            "sort": null,
             "field_type": "text"
         },
         {
@@ -70,6 +73,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|integer|max:100",
+            "sort": null,
             "field_type": "text"
         },
         {
@@ -80,6 +84,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|alpha_dash|max:20",
+            "sort": null,
             "field_type": "text"
         },
         {
@@ -90,6 +95,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|string|max:20",
+            "sort": null,
             "field_type": "text"
         }
     ]

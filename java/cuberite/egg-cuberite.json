@@ -1,10 +1,10 @@
 {
-    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-04-02T11:11:13+02:00",
+    "exported_at": "2024-06-01T19:28:27+00:00",
     "name": "Cuberite",
     "author": "parker@parkervcp.com",
     "description": "A lightweight, fast and extensible game server for Minecraft",
@@ -40,6 +40,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "nullable|string",
+            "sort": null,
             "field_type": "text"
         },
         {
@@ -50,6 +51,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "nullable|string",
+            "sort": null,
             "field_type": "text"
         },
         {
@@ -60,6 +62,7 @@
             "user_viewable": true,
             "user_editable": false,
             "rules": "required|integer|between:1,65535",
+            "sort": null,
             "field_type": "text"
         }
     ]

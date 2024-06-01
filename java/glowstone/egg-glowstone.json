@@ -1,10 +1,10 @@
 {
-    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2023-05-17T23:20:29+01:00",
+    "exported_at": "2024-06-01T19:28:24+00:00",
     "name": "Glowstone",
     "author": "support@pterodactyl.io",
     "description": "Glowstone is an open-source server implementation for Minecraft: Java Edition 1.12.2 and up.",
@@ -39,7 +39,9 @@
             "default_value": "glowstone.jar",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "required|regex:\/^([\\w\\d._-]+)(\\.jar)$\/"
+            "rules": "required|regex:\/^([\\w\\d._-]+)(\\.jar)$\/",
+            "sort": null,
+            "field_type": "text"
         },
         {
             "name": "Glowstone Version",
@@ -48,7 +50,9 @@
             "default_value": "latest",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "required|string|max:20"
+            "rules": "required|string|max:20",
+            "sort": null,
+            "field_type": "text"
         },
         {
             "name": "GitHub User",
@@ -57,7 +61,9 @@
             "default_value": "",
             "user_viewable": false,
             "user_editable": false,
-            "rules": "string|nullable"
+            "rules": "string|nullable",
+            "sort": null,
+            "field_type": "text"
         },
         {
             "name": "GitHub OAuth Token",
@@ -66,7 +72,9 @@
             "default_value": "",
             "user_viewable": false,
             "user_editable": false,
-            "rules": "string|nullable"
+            "rules": "string|nullable",
+            "sort": null,
+            "field_type": "text"
         },
         {
             "name": "GitHub Package",
@@ -75,7 +83,9 @@
             "default_value": "GlowstoneMC\/Glowstone",
             "user_viewable": true,
             "user_editable": false,
-            "rules": "required|string"
+            "rules": "required|string",
+            "sort": null,
+            "field_type": "text"
         },
         {
             "name": "Match",
@@ -84,7 +94,9 @@
             "default_value": "glowstone.jar",
             "user_viewable": false,
             "user_editable": false,
-            "rules": "required|string"
+            "rules": "required|string",
+            "sort": null,
+            "field_type": "text"
         }
     ]
 }

@@ -1,10 +1,10 @@
 {
-    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2023-12-30T11:04:14-05:00",
+    "exported_at": "2024-06-01T19:28:22+00:00",
     "name": "Forge Enhanced",
     "author": "parker@parkervcp.com",
     "description": "Minecraft Forge Server. Minecraft Forge is a modding API (Application Programming Interface), which makes it easier to create mods, and also make sure mods are compatible with each other.",
@@ -44,6 +44,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|regex:\/^([\\w\\d._-]+)(\\.jar)$\/",
+            "sort": null,
             "field_type": "text"
         },
         {
@@ -54,6 +55,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|string|max:9",
+            "sort": null,
             "field_type": "text"
         },
         {
@@ -64,6 +66,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|string|in:recommended,latest",
+            "sort": null,
             "field_type": "text"
         },
         {
@@ -74,6 +77,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "nullable|string|max:32",
+            "sort": null,
             "field_type": "text"
         }
     ]

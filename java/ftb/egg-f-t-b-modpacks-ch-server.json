@@ -1,10 +1,10 @@
 {
-    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2023-10-27T00:29:03+02:00",
+    "exported_at": "2024-06-01T19:28:23+00:00",
     "name": "FTB-modpacks.ch Server",
     "author": "runemaster580@gmail.com",
     "description": "Since the release of the FTB APP, FTB modpacks are now distributed through modpacks.ch. This egg was developed for support for modpacks that are distributed through this.",
@@ -44,6 +44,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "nullable|string",
+            "sort": null,
             "field_type": "text"
         },
         {
@@ -54,6 +55,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "nullable|integer",
+            "sort": null,
             "field_type": "text"
         },
         {
@@ -64,6 +66,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "nullable|string",
+            "sort": null,
             "field_type": "text"
         },
         {
@@ -74,6 +77,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "nullable|integer",
+            "sort": null,
             "field_type": "text"
         }
     ]

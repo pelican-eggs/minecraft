@@ -4,9 +4,10 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-06-01T19:28:37+00:00",
+    "exported_at": "2024-06-01T19:39:54+00:00",
     "name": "CurseForge Generic",
     "author": "contact@chromozone.dev",
+    "uuid": "019bbf16-a3f3-470a-9c0b-f3995b5e032a",
     "description": "A generic egg for a CurseForge modpack.",
     "features": [
         "eula",

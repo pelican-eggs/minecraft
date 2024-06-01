@@ -4,9 +4,10 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-06-01T19:29:02+00:00",
+    "exported_at": "2024-06-01T19:40:19+00:00",
     "name": "The 1.12.2 Pack",
     "author": "contact@irequire.dev",
+    "uuid": "2b61c1f4-7b41-486d-8dfa-5365aa38d0a6",
     "description": "The 1.12.2 Pack",
     "features": [
         "eula",

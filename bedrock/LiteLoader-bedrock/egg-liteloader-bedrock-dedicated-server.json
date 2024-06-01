@@ -4,9 +4,10 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-06-01T19:28:44+00:00",
+    "exported_at": "2024-06-01T19:40:00+00:00",
     "name": "Liteloader Bedrock Dedicated Server",
     "author": "frizth_tatierra@informatics.edu.ph",
+    "uuid": "d93b1b76-8435-4404-9a7b-309b6b069b9e",
     "description": "LiteLoaderBDS - Epoch-making & Cross-language Bedrock Dedicated Servers Plugin Loader\r\n\r\nLiteLoaderBDS is an unofficial plugin loader that provides basic API support for Bedrock Dedicated Server, with a massive API, lots of packed utility interfaces, a rich event system and powerful basic interface support.",
     "features": null,
     "docker_images": {

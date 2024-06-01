@@ -4,9 +4,10 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-06-01T19:28:52+00:00",
+    "exported_at": "2024-06-01T19:40:07+00:00",
     "name": "Velocity",
     "author": "parker@parkervcp.com",
+    "uuid": "44d20b6d-0a20-4144-a96c-71d214b3c850",
     "description": "Velocity is a Minecraft server proxy with unparalleled server support, scalability, and flexibility.",
     "features": [
         "eula",

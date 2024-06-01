@@ -4,9 +4,10 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-06-01T19:28:25+00:00",
+    "exported_at": "2024-06-01T19:39:46+00:00",
     "name": "GoMint",
     "author": "parker@parkervcp.com",
+    "uuid": "6ef2bba9-b43b-47a5-9ee6-0a811ce6e3ba",
     "description": "A performant and stable Minecraft server software for the Bedrock Edition that comes with a modern API and support for Java 11 LTS.",
     "features": [
         "eula",

@@ -4,9 +4,10 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-06-01T19:28:38+00:00",
+    "exported_at": "2024-06-01T19:39:55+00:00",
     "name": "PowerNukkitX",
     "author": "powernukkitx@github.com",
+    "uuid": "27250406-1acf-4dce-b39f-3413cc290b64",
     "description": "PowerNukkitX support for Pterodactyl",
     "features": null,
     "docker_images": {

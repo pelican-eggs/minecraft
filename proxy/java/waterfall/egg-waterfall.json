@@ -4,9 +4,10 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-06-01T19:28:56+00:00",
+    "exported_at": "2024-06-01T19:40:11+00:00",
     "name": "Waterfall",
     "author": "hostmaster@waterfallgaming.net",
+    "uuid": "7e22f851-3cf5-4ea8-8542-049e4f6939ba",
     "description": "Waterfall is a fork of the well-known BungeeCord server teleportation suite.",
     "features": [
         "eula",

@@ -4,9 +4,10 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-06-01T19:28:27+00:00",
+    "exported_at": "2024-06-01T19:39:48+00:00",
     "name": "Cuberite",
     "author": "parker@parkervcp.com",
+    "uuid": "fdcfdcb0-10ae-44e3-b027-a3b5562f89a8",
     "description": "A lightweight, fast and extensible game server for Minecraft",
     "features": [
         "eula",

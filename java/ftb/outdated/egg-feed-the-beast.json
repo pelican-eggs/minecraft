@@ -4,9 +4,10 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-06-01T19:28:21+00:00",
+    "exported_at": "2024-06-01T19:39:42+00:00",
     "name": "Feed the Beast",
     "author": "aevum@decess.us",
+    "uuid": "389b8f68-2fc4-4e5b-92ea-b8a0eadee0c4",
     "description": "Egg to handle all official FTB Modpacks",
     "features": [
         "eula",

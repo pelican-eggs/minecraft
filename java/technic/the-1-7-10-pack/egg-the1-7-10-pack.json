@@ -4,9 +4,10 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-06-01T19:29:00+00:00",
+    "exported_at": "2024-06-01T19:40:17+00:00",
     "name": "The 1.7.10 Pack",
     "author": "contact@sweplox.se",
+    "uuid": "7e410751-0e25-457d-b09f-a19e640f2d69",
     "description": "The 1.7.10 Pack",
     "features": [
         "eula",

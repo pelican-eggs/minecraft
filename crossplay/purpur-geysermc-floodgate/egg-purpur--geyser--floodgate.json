@@ -4,9 +4,10 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-06-01T19:33:28+00:00",
+    "exported_at": "2024-06-01T19:39:57+00:00",
     "name": "Purpur-Geyser-Floodgate",
     "author": "purpur@birdflop.com",
+    "uuid": "97556a66-59f7-4676-a44a-e5bdca111d14",
     "description": "A drop-in replacement for Paper servers designed for configurability, and new fun and exciting gameplay features, with the addition of GeyserMC and Floodgate",
     "features": [
         "eula",

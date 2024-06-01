@@ -4,9 +4,10 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-06-01T19:28:44+00:00",
+    "exported_at": "2024-06-01T19:40:00+00:00",
     "name": "Limbo",
     "author": "xEfinax@protonmail.com",
+    "uuid": "44f91767-0288-4352-a62f-945db51ab922",
     "description": "Standalone server program Limbo.",
     "features": null,
     "docker_images": {

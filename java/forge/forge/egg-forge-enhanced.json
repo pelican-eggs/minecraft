@@ -4,9 +4,10 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-06-01T19:28:22+00:00",
+    "exported_at": "2024-06-01T19:39:43+00:00",
     "name": "Forge Enhanced",
     "author": "parker@parkervcp.com",
+    "uuid": "d6018085-eecc-42bf-bf8c-51ea45a69ace",
     "description": "Minecraft Forge Server. Minecraft Forge is a modding API (Application Programming Interface), which makes it easier to create mods, and also make sure mods are compatible with each other.",
     "features": [
         "eula",

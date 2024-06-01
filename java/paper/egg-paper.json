@@ -4,9 +4,10 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-06-01T19:28:37+00:00",
+    "exported_at": "2024-06-01T19:39:54+00:00",
     "name": "Paper",
     "author": "parker@pterodactyl.io",
+    "uuid": "150956be-4164-4086-9057-631ae95505e9",
     "description": "High performance Spigot fork that aims to fix gameplay and mechanics inconsistencies.",
     "features": [
         "eula",

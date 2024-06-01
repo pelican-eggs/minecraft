@@ -4,9 +4,10 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-06-01T19:28:21+00:00",
+    "exported_at": "2024-06-01T19:39:42+00:00",
     "name": "Folia",
     "author": "Hosting@NeverStopGaming.net",
+    "uuid": "09414ef6-cd47-496e-ba13-920a8215144c",
     "description": "Fork of Paper which adds regionised multithreading to the dedicated server.",
     "features": [
         "eula",

@@ -4,9 +4,10 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-06-01T19:28:57+00:00",
+    "exported_at": "2024-06-01T19:40:12+00:00",
     "name": "SpongeVanilla",
     "author": "parker@parkervcp.com",
+    "uuid": "3828476c-ff9e-4436-8e32-a922cbd69126",
     "description": "SpongeVanilla is the implementation of the Sponge API on top of Vanilla Minecraft.",
     "features": [
         "eula",

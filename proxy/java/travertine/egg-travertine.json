@@ -4,9 +4,10 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-06-01T19:29:02+00:00",
+    "exported_at": "2024-06-01T19:40:19+00:00",
     "name": "Travertine",
     "author": "parker@parkervcp.com",
+    "uuid": "fce95d08-d726-438c-a1d3-28798071bd91",
     "description": "Travertine is a fork of Waterfall with 1.7 protocol support. Waterfall is a fork of the well-known BungeeCord server teleportation suite.",
     "features": [
         "eula",

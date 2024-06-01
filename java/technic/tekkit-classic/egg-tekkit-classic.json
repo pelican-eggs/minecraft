@@ -4,9 +4,10 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-06-01T19:28:58+00:00",
+    "exported_at": "2024-06-01T19:40:16+00:00",
     "name": "Tekkit Classic",
     "author": "geoffrey@remedygaming.net",
+    "uuid": "80be7c9e-a4a0-4d9c-889c-8702caae6557",
     "description": "Created by the Technic team, Tekkit Classic is a modpack for the record breaking sandbox construction game Minecraft. \r\nIt brings together some of the best mods from the Minecraft community for automating, industrializing and powering your worlds and bundles them into one easy download!",
     "features": [
         "eula",

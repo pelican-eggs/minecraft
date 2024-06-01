@@ -4,9 +4,10 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-06-01T19:28:54+00:00",
+    "exported_at": "2024-06-01T19:40:09+00:00",
     "name": "VIAaaS",
     "author": "regulad@outlook.com",
+    "uuid": "0113f159-afd3-449d-a0cf-36d1ae827a3b",
     "description": "VIAaaS - ViaVersion as a Service - Standalone ViaVersion proxy",
     "features": [
         "eula",

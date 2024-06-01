@@ -4,9 +4,10 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-06-01T19:28:58+00:00",
+    "exported_at": "2024-06-01T19:40:13+00:00",
     "name": "Tekkit",
     "author": "contact@zennodes.dk",
+    "uuid": "cbcfe400-b57a-4790-b56f-d3233113208c",
     "description": "Tekkit is set to reignite the same sort of wonder and awe that we all received from booting up Minecraft for the first time. With the skies open, the moon ready to be colonized (by force if need be) and dimensional mysteries to be plied, with tesseracts to be networked, \u201cmeat\u201d to be processed, items to be digitized, and power suits to be manufactured, there is virtually limitless engineering projects to be assembled.",
     "features": [
         "eula",

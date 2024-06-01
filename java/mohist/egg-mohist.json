@@ -4,9 +4,10 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-06-01T19:28:47+00:00",
+    "exported_at": "2024-06-01T19:40:03+00:00",
     "name": "Mohist",
     "author": "alex.chang-lam@protonmail.com",
+    "uuid": "4f2bddcc-90ce-4cac-8ad7-fafa0d91381b",
     "description": "Spigot fork with performance optimizations.",
     "features": [
         "eula",

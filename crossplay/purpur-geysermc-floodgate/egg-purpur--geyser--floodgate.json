@@ -1,12 +1,13 @@
 {
-    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-02-23T20:45:16+01:00",
+    "exported_at": "2024-06-01T19:39:57+00:00",
     "name": "Purpur-Geyser-Floodgate",
     "author": "purpur@birdflop.com",
+    "uuid": "97556a66-59f7-4676-a44a-e5bdca111d14",
     "description": "A drop-in replacement for Paper servers designed for configurability, and new fun and exciting gameplay features, with the addition of GeyserMC and Floodgate",
     "features": [
         "eula",
@@ -43,6 +44,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|string|max:20",
+            "sort": null,
             "field_type": "text"
         },
         {
@@ -53,6 +55,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|regex:\/^([\\w\\d._-]+)(\\.jar)$\/|max:80",
+            "sort": null,
             "field_type": "text"
         },
         {
@@ -63,6 +66,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|string|max:20",
+            "sort": null,
             "field_type": "text"
         }
     ]

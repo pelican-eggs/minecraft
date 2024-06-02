@@ -1,12 +1,13 @@
 {
-    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-05-11T10:56:45+02:00",
+    "exported_at": "2024-06-01T19:39:56+00:00",
     "name": "PocketmineMP",
     "author": "info@swisscrafting.ch",
+    "uuid": "4c3baab1-67ad-48c7-8acd-eb3deaa0a462",
     "description": "Pocketmine Egg\r\nby onekintaro from swisscrafting.ch\r\nwith the nice help from #eggs Channel on Pterodactyl-Discord :)",
     "features": null,
     "docker_images": {
@@ -36,6 +37,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|string|in:PM5,PM4",
+            "sort": null,
             "field_type": "text"
         }
     ]

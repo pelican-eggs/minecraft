@@ -1,12 +1,13 @@
 {
-    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2023-05-17T23:20:29+01:00",
+    "exported_at": "2024-06-01T19:39:50+00:00",
     "name": "Fabric",
     "author": "accounts@bofanodes.io",
+    "uuid": "78b02ebb-fec8-49c5-943c-ca4aa117b693",
     "description": "Fabric is a modular modding toolchain targeting Minecraft 1.14 and above, including snapshots.",
     "features": [
         "eula",
@@ -44,6 +45,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|regex:\/^([\\w\\d._-]+)(\\.jar)$\/",
+            "sort": null,
             "field_type": "text"
         },
         {
@@ -54,6 +56,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|string|between:3,15",
+            "sort": null,
             "field_type": "text"
         },
         {
@@ -64,6 +67,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|string|between:3,15",
+            "sort": null,
             "field_type": "text"
         },
         {
@@ -74,6 +78,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|string|between:3,15",
+            "sort": null,
             "field_type": "text"
         }
     ]

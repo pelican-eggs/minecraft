@@ -1,0 +1,49 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
+    "meta": {
+        "update_url": null,
+        "version": "PTDL_v2"
+    },
+    "exported_at": "2024-06-01T19:40:13+00:00",
+    "name": "Tekkit",
+    "author": "contact@zennodes.dk",
+    "description": "Tekkit is set to reignite the same sort of wonder and awe that we all received from booting up Minecraft for the first time. With the skies open, the moon ready to be colonized (by force if need be) and dimensional mysteries to be plied, with tesseracts to be networked, “meat” to be processed, items to be digitized, and power suits to be manufactured, there is virtually limitless engineering projects to be assembled.",
+    "features": [
+        "eula",
+        "java_version",
+        "pid_limit"
+    ],
+    "docker_images": {
+        "ghcr.io/parkervcp/yolks:java_11": "ghcr.io/parkervcp/yolks:java_11",
+        "ghcr.io/parkervcp/yolks:java_16": "ghcr.io/parkervcp/yolks:java_16",
+        "ghcr.io/parkervcp/yolks:java_17": "ghcr.io/parkervcp/yolks:java_17",
+        "ghcr.io/parkervcp/yolks:java_8": "ghcr.io/parkervcp/yolks:java_8"
+    },
+    "file_denylist": [],
+    "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar Tekkit.jar",
+    "config": {
+        "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-ip\": \"0.0.0.0\",\r\n            \"server-port\": \"{{server.build.default.port}}\"\r\n        }\r\n    }\r\n}",
+        "logs": "{}",
+        "startup": "{\r\n    \"done\": \")! For help, type \"\r\n}",
+        "stop": "stop"
+    },
+    "scripts": {
+        "installation": {
+            "container": "ghcr.io/parkervcp/installers:alpine",
+            "entrypoint": "ash",
+            "script": "#!/bin/ash\r\n# Forge Installation Script\r\n#\r\n# Server Files: /mnt/server\r\n\r\ncd /mnt/server\r\n\r\ncurl -sSL https://servers.technicpack.net/Technic/servers/tekkitmain/Tekkit_Server_$MODPACK_VERSION.zip -o Tekkit_Server_$MODPACK_VERSION.zip\r\n\r\nunzip Tekkit_Server_$MODPACK_VERSION.zip\r\n\r\nrm -rf Tekkit_Server_$MODPACK_VERSION.zip\r\n\r\nrm launch.bat\r\n\r\nrm launch.sh\r\n\r\nif [ ! -f server.properties ]; then\r\n    echo -e \"Downloading MC server.properties\"\r\n    curl -o server.properties https://raw.githubusercontent.com/parkervcp/eggs/master/game_eggs/minecraft/java/server.properties\r\nfi\r\n\r\n## install end\r\necho \"-----------------------------------------\"\r\necho \"Installation completed...\"\r\necho \"-----------------------------------------\""
+        }
+    },
+    "variables": [
+        {
+            "name": "Modpack Version",
+            "description": "",
+            "env_variable": "MODPACK_VERSION",
+            "default_value": "v1.2.9g-2",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:20",
+            "field_type": "text"
+        }
+    ]
+}

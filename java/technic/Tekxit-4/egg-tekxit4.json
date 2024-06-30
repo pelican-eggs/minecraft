@@ -1,0 +1,42 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2024-06-30T17:57:26+02:00",
+    "name": "Tekxit 4",
+    "author": "klebold.dylan@protonmail.com",
+    "description": "Tekxit 4 combines the technical brilliance of Tekkit with the adventurous spirit of Hexxit. Experience advanced machinery, intricate automation, and epic quests with magical artifacts and challenging dungeons. Perfect for players who love both engineering and exploration. Dive into a rich, modded Minecraft adventure today!",
+    "features": null,
+    "docker_images": {
+        "ghcr.io\/pterodactyl\/yolks:java_17": "ghcr.io\/pterodactyl\/yolks:java_17"
+    },
+    "file_denylist": [],
+    "startup": "java -Xmx{{SERVER_MEMORY}M -jar Fab_Serv_LaunchWithBatOrSh.jar nogui",
+    "config": {
+        "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-ip\": \"0.0.0.0\",\r\n            \"server-port\": \"{{server.build.default.port}}\"\r\n        }\r\n    }\r\n}",
+        "startup": "{\r\n    \"done\": \")! For help, type \"\r\n}",
+        "logs": "{\r\n    \"custom\": false,\r\n    \"location\": \"logs\/latest.log\"\r\n}",
+        "stop": "stop"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n# Fabric MC Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\napt update\r\napt install -y unzip wget\r\nmkdir -p \/mnt\/server\r\ncd \/mnt\/server\r\n\r\nwget https:\/\/www.tekxit.lol\/downloads\/tekxit4\/$MODPACK_VERSION'Tekxit4Server'.zip\r\nunzip .\/$MODPACK_VERSION'Tekxit4Server'.zip\r\nrm $MODPACK_VERSION'Tekxit4Server'.zip\r\nmv -f .\/$MODPACK_VERSION'Tekxit4Server'\/* \/mnt\/server\r\nrm -r $MODPACK_VERSION'Tekxit4Server'\r\n\r\necho -e \"Install Complete\"",
+            "container": "ghcr.io\/parkervcp\/installers:debian",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Modpack Version",
+            "description": "",
+            "env_variable": "MODPACK_VERSION",
+            "default_value": "8.0.0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:10",
+            "field_type": "text"
+        }
+    ]
+}

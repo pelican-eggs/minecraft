@@ -22,7 +22,7 @@
     },
     "scripts": {
         "installation": {
-            "script": "#!\/bin\/bash\r\n# Fabric MC Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\napt update\r\napt install -y unzip wget\r\nmkdir -p \/mnt\/server\r\ncd \/mnt\/server\r\n\r\nwget https:\/\/www.tekxit.lol\/downloads\/tekxit4\/$MODPACK_VERSION'Tekxit4Server'.zip\r\nunzip .\/$MODPACK_VERSION'Tekxit4Server'.zip\r\nrm $MODPACK_VERSION'Tekxit4Server'.zip\r\nmv -f .\/$MODPACK_VERSION'Tekxit4Server'\/* \/mnt\/server\r\nrm -r $MODPACK_VERSION'Tekxit4Server'\r\n\r\necho -e \"Install Complete\"",
+            "script": "#!\/bin\/bash\r\n# Tekxit 4 Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\napt update\r\napt install -y unzip wget\r\nmkdir -p \/mnt\/server\r\ncd \/mnt\/server\r\n\r\nwget https:\/\/www.tekxit.lol\/downloads\/tekxit4\/$MODPACK_VERSION'Tekxit4Server'.zip\r\nunzip .\/$MODPACK_VERSION'Tekxit4Server'.zip\r\nrm $MODPACK_VERSION'Tekxit4Server'.zip\r\nmv -f .\/$MODPACK_VERSION'Tekxit4Server'\/* \/mnt\/server\r\nrm -r $MODPACK_VERSION'Tekxit4Server'\r\n\r\necho -e \"Install Complete\"",
             "container": "ghcr.io\/parkervcp\/installers:debian",
             "entrypoint": "bash"
         }

@@ -9,5 +9,6 @@
 * [Tekkit 2](/game_eggs/minecraft/java/technic/Tekkit-2/)
 * [Tekkit Classic](/game_eggs/minecraft/java/technic/tekkit-classic/)
 * [Tekkit Legends](/game_eggs/minecraft/java/technic/tekkit-legends/)
+* [Tekxit 4](/game_eggs/minecraft/java/technic/Tekxit-4/)
 * [The 1.7.10 Pack](/game_eggs/minecraft/java/technic/the-1-7-10-pack/)
 * [The 1.12.2 Pack](/game_eggs/minecraft/java/technic/the-1-12-2-pack/)

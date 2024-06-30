@@ -171,6 +171,11 @@ The ancient power of Tekkits past return in this legendary pack!
 [Tekkit Classic Modpack Page](https://www.technicpack.net/modpack/tekkit.552560)
 The official Tekkit Classic modpack. Build factories, automate crafting!
 
+### [Tekxit 4](technic/Tekxit-4)
+
+[Tekxit 4 Modpack Page](https://www.technicpack.net/modpack/tekxit-4-official.1921233)
+Tekxit 4 combines the technical brilliance of Tekkit with the adventurous spirit of Hexxit.
+
 ## [VanillaCord](vanillacord)
 
 ## VanillaCord

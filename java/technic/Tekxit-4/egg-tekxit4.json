@@ -4,9 +4,9 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-07-11T18:27:48+02:00",
+    "exported_at": "2024-07-11T18:48:26+02:00",
     "name": "Tekxit 4",
-    "author": "jan.kriz1867@gmail.com",
+    "author": "klebold.dylan@protonmail.com",
     "description": "Tekxit 4 combines the technical brilliance of Tekkit with the adventurous spirit of Hexxit. Experience advanced machinery, intricate automation, and epic quests with magical artifacts and challenging dungeons. Perfect for players who love both engineering and exploration. Dive into a rich, modded Minecraft adventure today!",
     "features": null,
     "docker_images": {
@@ -22,7 +22,7 @@
     },
     "scripts": {
         "installation": {
-            "script": "#!\/bin\/bash\r\n# Fabric MC Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\napt update\r\napt install -y unzip wget\r\nmkdir -p \/mnt\/server\r\ncd \/mnt\/server\r\n\r\nwget https:\/\/www.tekxit.lol\/downloads\/tekxit4\/$MODPACK_VERSION'Tekxit4Server'.zip\r\nunzip .\/$MODPACK_VERSION'Tekxit4Server'.zip\r\nrm $MODPACK_VERSION'Tekxit4Server'.zip\r\ncp -r -f .\/$MODPACK_VERSION'Tekxit4Server'\/* \/mnt\/server\r\nrm -r $MODPACK_VERSION'Tekxit4Server'\r\n\r\necho -e \"Install Complete\"",
+            "script": "#!\/bin\/bash\r\n# Tekxit 4 Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\napt update\r\napt install -y unzip wget\r\nmkdir -p \/mnt\/server\r\ncd \/mnt\/server\r\n\r\nwget https:\/\/www.tekxit.lol\/downloads\/tekxit4\/$MODPACK_VERSION'Tekxit4Server'.zip\r\nunzip .\/$MODPACK_VERSION'Tekxit4Server'.zip\r\nrm $MODPACK_VERSION'Tekxit4Server'.zip\r\ncp -r -f .\/$MODPACK_VERSION'Tekxit4Server'\/* \/mnt\/server\r\nrm -r $MODPACK_VERSION'Tekxit4Server'\r\n\r\necho -e \"Install Complete\"",
             "container": "ghcr.io\/parkervcp\/installers:debian",
             "entrypoint": "bash"
         }

@@ -4,7 +4,7 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-06-26T09:24:56+02:00",
+    "exported_at": "2024-08-02T12:03:34+00:00",
     "name": "Purpur-Geyser-Floodgate",
     "author": "purpur@birdflop.com",
     "description": "A drop-in replacement for Paper servers designed for configurability, and new fun and exciting gameplay features, with the addition of GeyserMC and Floodgate",
@@ -14,12 +14,11 @@
         "pid_limit"
     ],
     "docker_images": {
-        "Java 8": "ghcr.io\/pterodactyl\/yolks:java_8",
-        "Java 11": "ghcr.io\/pterodactyl\/yolks:java_11",
-        "Java 16": "ghcr.io\/pterodactyl\/yolks:java_16",
-        "Java 17": "ghcr.io\/pterodactyl\/yolks:java_17",
-        "Java 18": "ghcr.io\/pterodactyl\/yolks:java_18",
-        "Java 21": "ghcr.io\/pterodactyl\/yolks:java_21"
+        "Java 8": "ghcr.io\/parkervcp\/yolks:java_8",
+        "Java 11": "ghcr.io\/parkervcp\/yolks:java_11",
+        "Java 16": "ghcr.io\/parkervcp\/yolks:java_16",
+        "Java 17": "ghcr.io\/parkervcp\/yolks:java_17",
+        "Java 21": "ghcr.io\/parkervcp\/yolks:java_21"
     },
     "file_denylist": [],
     "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true --add-modules=jdk.incubator.vector -jar {{SERVER_JARFILE}}",

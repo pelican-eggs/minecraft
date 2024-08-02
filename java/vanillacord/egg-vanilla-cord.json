@@ -4,7 +4,7 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-06-01T19:40:08+00:00",
+    "exported_at": "2024-08-02T12:12:10+00:00",
     "name": "VanillaCord",
     "author": "support@pterodactyl.io",
     "uuid": "afa9c224-ffa4-4a12-ac65-028599a78113",
@@ -15,18 +15,17 @@
         "pid_limit"
     ],
     "docker_images": {
-        "Java 21": "ghcr.io\/pterodactyl\/yolks:java_21",
-        "Java 18": "ghcr.io\/pterodactyl\/yolks:java_18",
-        "Java 17": "ghcr.io\/pterodactyl\/yolks:java_17",
-        "Java 16": "ghcr.io\/pterodactyl\/yolks:java_16",
-        "Java 11": "ghcr.io\/pterodactyl\/yolks:java_11",
-        "Java 8": "ghcr.io\/pterodactyl\/yolks:java_8"
+        "Java 8": "ghcr.io\/parkervcp\/yolks:java_8",
+        "Java 11": "ghcr.io\/parkervcp\/yolks:java_11",
+        "Java 16": "ghcr.io\/parkervcp\/yolks:java_16",
+        "Java 17": "ghcr.io\/parkervcp\/yolks:java_17",
+        "Java 21": "ghcr.io\/parkervcp\/yolks:java_21"
     },
     "file_denylist": [],
     "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar {{SERVER_JARFILE}}",
     "config": {
-        "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-ip\": \"0.0.0.0\",\r\n            \"enable-query\": \"true\",\r\n            \"server-port\": \"{{server.build.default.port}}\",\r\n            \"query.port\": \"{{server.build.default.port}}\"\r\n        }\r\n    }\r\n}",
-        "startup": "{\r\n    \"done\": \")! For help, type \",\r\n    \"userInteraction\": [\r\n        \"Go to eula.txt for more info.\"\r\n    ]\r\n}",
+        "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-ip\": \"0.0.0.0\",\r\n            \"enable-query\": \"true\",\r\n            \"server-port\": \"{{server.allocations.default.port}}\",\r\n            \"query.port\": \"{{server.allocations.default.port}}\"\r\n        }\r\n    }\r\n}",
+        "startup": "{\n    \"done\": \")! For help, type \"\n}",
         "logs": "{}",
         "stop": "stop"
     },
@@ -39,6 +38,7 @@
     },
     "variables": [
         {
+            "sort": 1,
             "name": "Server Jar File",
             "description": "The name of the server jarfile to run the server with.",
             "env_variable": "SERVER_JARFILE",
@@ -46,10 +46,10 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|regex:\/^([\\w\\d._-]+)(\\.jar)$\/",
-            "sort": null,
             "field_type": "text"
         },
         {
+            "sort": 2,
             "name": "Server Version",
             "description": "The version of Minecraft Vanilla to install. Use \"latest\" to install the latest version.",
             "env_variable": "VANILLA_VERSION",
@@ -57,7 +57,6 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|string|between:3,15",
-            "sort": null,
             "field_type": "text"
         }
     ]

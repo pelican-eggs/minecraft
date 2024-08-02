@@ -1,12 +1,13 @@
 {
-    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-04-01T13:06:39+02:00",
+    "exported_at": "2024-06-01T19:40:19+00:00",
     "name": "The 1.12.2 Pack",
     "author": "contact@irequire.dev",
+    "uuid": "2b61c1f4-7b41-486d-8dfa-5365aa38d0a6",
     "description": "The 1.12.2 Pack",
     "features": [
         "eula",
@@ -40,6 +41,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|string|max:20",
+            "sort": null,
             "field_type": "text"
         }
     ]

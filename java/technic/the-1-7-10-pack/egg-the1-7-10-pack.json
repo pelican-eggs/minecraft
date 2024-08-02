@@ -1,12 +1,13 @@
 {
-    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-04-01T13:08:56+02:00",
+    "exported_at": "2024-06-01T19:40:17+00:00",
     "name": "The 1.7.10 Pack",
     "author": "contact@sweplox.se",
+    "uuid": "7e410751-0e25-457d-b09f-a19e640f2d69",
     "description": "The 1.7.10 Pack",
     "features": [
         "eula",
@@ -40,6 +41,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|string|max:20",
+            "sort": null,
             "field_type": "text"
         }
     ]

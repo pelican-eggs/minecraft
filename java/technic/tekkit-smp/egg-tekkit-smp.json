@@ -4,7 +4,7 @@
         "version": "PTDL_v2",
         "update_url": "https:\/\/raw.githubusercontent.com\/pelican-eggs\/minecraft\/main\/java\/technic\/tekkit-smp\/egg-tekkit-smp.json"
     },
-    "exported_at": "2024-08-24T20:29:50+00:00",
+    "exported_at": "2024-08-25T12:44:50+00:00",
     "name": "Tekkit SMP",
     "author": "lovinoes@lovinoes.de",
     "uuid": "c22ea4db-1541-490c-8ee6-296e61d97a1e",
@@ -21,7 +21,7 @@
     "startup": "java -server -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true -Dfml.queryResult=confirm -jar forge.jar nogui",
     "config": {
         "files": "{\n    \"server.properties\": {\n        \"parser\": \"properties\",\n        \"find\": {\n            \"server-ip\": \"0.0.0.0\",\n            \"server-port\": \"{{server.allocations.default.port}}\",\n            \"query.port\": \"{{server.allocations.default.port}}\"\n        }\n    }\n}",
-        "startup": "{\n    \"done\": \")! For help, type \"\n}",
+        "startup": "{\n    \"done\": \"Server tick complete! \"\n}",
         "logs": "{}",
         "stop": "stop"
     },

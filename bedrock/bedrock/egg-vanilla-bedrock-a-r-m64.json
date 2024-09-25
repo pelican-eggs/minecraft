@@ -4,7 +4,7 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-06-01T19:40:06+00:00",
+    "exported_at": "2024-09-25T00:56:59+00:00",
     "name": "Vanilla Bedrock ARM64",
     "author": "josdekurk@gmail.com",
     "uuid": "121d13de-82d1-41c5-bd32-a6ef3663d616",
@@ -18,7 +18,7 @@
     "file_denylist": [],
     "startup": "box64 .\/bedrock_server",
     "config": {
-        "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-port\": \"{{server.build.default.port}}\",\r\n            \"server-name\": \"{{server.build.env.SERVERNAME}}\",\r\n            \"gamemode\": \"{{server.build.env.GAMEMODE}}\",\r\n            \"difficulty\": \"{{server.build.env.DIFFICULTY}}\",\r\n            \"allow-cheats\": \"{{server.build.env.CHEATS}}\",\r\n            \"max-threads\": \"2\"\r\n        }\r\n    }\r\n}",
+        "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-port\": \"{{server.allocations.default.port}}\",\r\n            \"server-name\": \"{{server.environment.SERVERNAME}}\",\r\n            \"gamemode\": \"{{server.environment.GAMEMODE}}\",\r\n            \"difficulty\": \"{{server.environment.DIFFICULTY}}\",\r\n            \"allow-cheats\": \"{{server.environment.CHEATS}}\",\r\n            \"max-threads\": \"2\"\r\n        }\r\n    }\r\n}",
         "startup": "{\r\n    \"done\": \"Server started\"\r\n}",
         "logs": "{}",
         "stop": "stop"
@@ -32,6 +32,7 @@
     },
     "variables": [
         {
+            "sort": 1,
             "name": "Bedrock Version",
             "description": "The version of bedrock. (Ex. 1.7.0.13)\r\n\r\nDefault version is latest.",
             "env_variable": "BEDROCK_VERSION",
@@ -39,10 +40,10 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|string|max:20",
-            "sort": null,
             "field_type": "text"
         },
         {
+            "sort": 2,
             "name": "ld lib path",
             "description": "Dumb reasons to need this",
             "env_variable": "LD_LIBRARY_PATH",
@@ -50,10 +51,10 @@
             "user_viewable": false,
             "user_editable": false,
             "rules": "required|string|max:20",
-            "sort": null,
             "field_type": "text"
         },
         {
+            "sort": 3,
             "name": "Server Name",
             "description": "The name for the server",
             "env_variable": "SERVERNAME",
@@ -61,10 +62,10 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|string|max:50",
-            "sort": null,
             "field_type": "text"
         },
         {
+            "sort": 4,
             "name": "Gamemode",
             "description": "Allowed values: \"survival\", \"creative\", or \"adventure\"",
             "env_variable": "GAMEMODE",
@@ -72,10 +73,10 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|string|in:survival,creative,adventure",
-            "sort": null,
             "field_type": "text"
         },
         {
+            "sort": 5,
             "name": "Difficulty",
             "description": "Allowed values: \"peaceful\", \"easy\", \"normal\", or \"hard\"",
             "env_variable": "DIFFICULTY",
@@ -83,10 +84,10 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|string|in:peaceful,easy,normal,hard",
-            "sort": null,
             "field_type": "text"
         },
         {
+            "sort": 6,
             "name": "Allow cheats",
             "description": "If true then cheats like commands can be used.\r\n\r\nAllowed values: \"true\" or \"false\"",
             "env_variable": "CHEATS",
@@ -94,7 +95,6 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|string|in:true,false",
-            "sort": null,
             "field_type": "text"
         }
     ]

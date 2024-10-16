@@ -14,6 +14,7 @@
         "pid_limit"
     ],
     "docker_images": {
+        "Java 21": "ghcr.io/pterodactyl/yolks:java_21",
         "Java 11": "ghcr.io/pterodactyl/yolks:java_11",
         "Java 16": "ghcr.io/pterodactyl/yolks:java_16",
         "Java 17": "ghcr.io/pterodactyl/yolks:java_17",
@@ -48,9 +49,9 @@
         },
         {
             "name": "Minecraft Version",
-            "description": "The version of Minecraft to download.",
+            "description": "The version of Minecraft to download. Example 1.20.1",
             "env_variable": "MC_VERSION",
-            "default_value": "1.19.4",
+            "default_value": "1.20.1",
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|string|max:20",
@@ -58,9 +59,9 @@
         },
         {
             "name": "Build Number",
-            "description": "Optional: \r\nThe build number for the Mohist release. Overrides Build Type.",
+            "description": "Optional: \r\nThe build number for the Mohist release. Example 888. Overrides Build Type.",
             "env_variable": "BUILD_VERSION",
-            "default_value": "",
+            "default_value": "888",
             "user_viewable": true,
             "user_editable": true,
             "rules": "nullable|string|max:20",

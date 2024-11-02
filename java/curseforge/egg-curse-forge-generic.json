@@ -1,10 +1,10 @@
 {
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
-        "version": "PTDL_v2",
+        "version": "PLCN_v1",
         "update_url": null
     },
-    "exported_at": "2024-06-01T19:39:54+00:00",
+    "exported_at": "2024-11-02T08:41:36+00:00",
     "name": "CurseForge Generic",
     "author": "contact@chromozone.dev",
     "uuid": "019bbf16-a3f3-470a-9c0b-f3995b5e032a",
@@ -15,16 +15,16 @@
         "pid_limit"
     ],
     "docker_images": {
-        "Java 8": "ghcr.io\/pterodactyl\/yolks:java_8",
-        "Java 11": "ghcr.io\/pterodactyl\/yolks:java_11",
-        "Java 16": "ghcr.io\/pterodactyl\/yolks:java_16",
-        "Java 17": "ghcr.io\/pterodactyl\/yolks:java_17",
-        "Java 18": "ghcr.io\/pterodactyl\/yolks:java_18"
+        "Java 21": "ghcr.io\/parkervcp\/yolks:java_21",
+        "Java 17": "ghcr.io\/parkervcp\/yolks:java_17",
+        "Java 16": "ghcr.io\/parkervcp\/yolks:java_16",
+        "Java 11": "ghcr.io\/parkervcp\/yolks:java_11",
+        "Java 8": "ghcr.io\/parkervcp\/yolks:java_8"
     },
     "file_denylist": [],
     "startup": "java $([[ -f user_jvm_args.txt ]] && printf %s \"@user_jvm_args.txt\") -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true $([[ ! -f unix_args.txt ]] && printf %s \"-jar `cat .serverjar`\" || printf %s \"@unix_args.txt\")",
     "config": {
-        "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-ip\": \"0.0.0.0\",\r\n            \"server-port\": \"{{server.build.default.port}}\",\r\n            \"query.port\": \"{{server.build.default.port}}\"\r\n        }\r\n    }\r\n}",
+        "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-ip\": \"0.0.0.0\",\r\n            \"server-port\": \"{{server.allocations.default.port}}\",\r\n            \"query.port\": \"{{server.allocations.default.port}}\"\r\n        }\r\n    }\r\n}",
         "startup": "{\r\n    \"done\": \")! For help, type \"\r\n}",
         "logs": "{}",
         "stop": "stop"
@@ -38,37 +38,43 @@
     },
     "variables": [
         {
+            "sort": null,
             "name": "Modpack Project ID",
             "description": "The modpack project ID from the CurseForge site on the pack page, or 'zip' if installing from an uploaded server.zip file.\r\n\r\nFor example, the project Id of https:\/\/www.curseforge.com\/minecraft\/modpacks\/bofa-mods ID is 375152",
             "env_variable": "PROJECT_ID",
             "default_value": "",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "required|string",
-            "sort": null,
-            "field_type": "text"
+            "rules": [
+                "required",
+                "string"
+            ]
         },
         {
+            "sort": null,
             "name": "Modpack File ID",
             "description": "The file ID belonging to a specific version of a modpack. Can either be the main file or the file ID associated with the server pack.\r\n\r\nIf not provided the script will attempt to retrieve the latest server pack or client pack available.",
             "env_variable": "VERSION_ID",
             "default_value": "latest",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "string",
-            "sort": null,
-            "field_type": "text"
+            "rules": [
+                "string"
+            ]
         },
         {
+            "sort": null,
             "name": "CurseForge API Key",
             "description": "A CurseForge API key is required to use this egg. You can learn how to get an API key here: https:\/\/support.curseforge.com\/en\/support\/solutions\/articles\/9000208346-about-the-curseforge-api-and-how-to-apply-for-a-key",
             "env_variable": "API_KEY",
             "default_value": "",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "required|string|max:60",
-            "sort": null,
-            "field_type": "text"
+            "rules": [
+                "required",
+                "string",
+                "max:60"
+            ]
         }
     ]
 }

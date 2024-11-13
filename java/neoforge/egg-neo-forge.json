@@ -1,10 +1,10 @@
 {
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
-        "version": "PTDL_v2",
+        "version": "PLCN_v1",
         "update_url": null
     },
-    "exported_at": "2024-06-01T19:40:05+00:00",
+    "exported_at": "2024-11-13T14:32:29+00:00",
     "name": "NeoForge",
     "author": "glorantv@icloud.com",
     "uuid": "e23e092f-b803-4f34-82cf-2d6518c6351a",
@@ -15,15 +15,16 @@
         "pid_limit"
     ],
     "docker_images": {
-        "Java 17": "ghcr.io\/pterodactyl\/yolks:java_17",
-        "Java 16": "ghcr.io\/pterodactyl\/yolks:java_16",
-        "Java 11": "ghcr.io\/pterodactyl\/yolks:java_11",
-        "Java 8": "ghcr.io\/pterodactyl\/yolks:java_8"
+        "Java 17": "ghcr.io\/parkervcp\/yolks:java_17",
+        "Java 16": "ghcr.io\/parkervcp\/yolks:java_16",
+        "Java 11": "ghcr.io\/parkervcp\/yolks:java_11",
+        "Java 8": "ghcr.io\/parkervcp\/yolks:java_8",
+        "Java 21": "ghcr.io\/parkervcp\/yolks:java_21"
     },
     "file_denylist": [],
     "startup": "java -Xms128M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true @unix_args.txt",
     "config": {
-        "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-ip\": \"0.0.0.0\",\r\n            \"server-port\": \"{{server.build.default.port}}\",\r\n            \"query.port\": \"{{server.build.default.port}}\"\r\n        }\r\n    }\r\n}",
+        "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-ip\": \"0.0.0.0\",\r\n            \"server-port\": \"{{server.allocations.default.port}}\",\r\n            \"query.port\": \"{{server.allocations.default.port}}\"\r\n        }\r\n    }\r\n}",
         "startup": "{\r\n    \"done\": \")! For help, type \"\r\n}",
         "logs": "{}",
         "stop": "stop"
@@ -37,26 +38,31 @@
     },
     "variables": [
         {
+            "sort": 1,
             "name": "Minecraft Version",
             "description": "The version of Minecraft you want to install for.\r\n\r\nLeaving latest will install the latest version.",
             "env_variable": "MC_VERSION",
             "default_value": "latest",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "required|string|max:9",
-            "sort": null,
-            "field_type": "text"
+            "rules": [
+                "required",
+                "string",
+                "max:9"
+            ]
         },
         {
+            "sort": 2,
             "name": "NeoForge Version",
             "description": "The full exact version.\r\n\r\nEx. 20.4.194 or 1.20.1-47.1.95\r\n\r\nOverrides MC_VERSION. If it fails to download the server files it will fail to install.",
             "env_variable": "NEOFORGE_VERSION",
             "default_value": "",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "nullable|regex:\/^[0-9\\.\\-]+$\/",
-            "sort": null,
-            "field_type": "text"
+            "rules": [
+                "nullable",
+                "regex:\/^[0-9\\.\\-]+$\/"
+            ]
         }
     ]
 }

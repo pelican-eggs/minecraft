@@ -10,7 +10,6 @@
     "uuid": "3460601a-bb6e-41b8-8394-77e69c174dd1",
     "description": "Magma successor for 1.20- with plugins and mods.",
     "features": [
-        "eula",
         "java_version",
         "pid_limit"
     ],

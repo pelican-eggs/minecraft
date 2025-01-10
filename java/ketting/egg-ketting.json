@@ -10,6 +10,7 @@
     "uuid": "3460601a-bb6e-41b8-8394-77e69c174dd1",
     "description": "Magma successor for 1.20- with plugins and mods.",
     "features": [
+        "eula",
         "java_version",
         "pid_limit"
     ],
@@ -18,7 +19,7 @@
         "Java 21": "ghcr.io\/parkervcp\/yolks:java_21"
     },
     "file_denylist": [],
-    "startup": "java -Xms128M -XX:MaxRAMPercentage=95.0 -jar {{SERVER_JAR_FILE}} -accepteula -minecraftVersion {{GAME_VERSION}}\n",
+    "startup": "java -Xms128M -XX:MaxRAMPercentage=95.0 -jar {{SERVER_JAR_FILE}} -minecraftVersion {{GAME_VERSION}}",
     "config": {
         "files": "{\n    \"server.properties\": {\n        \"parser\": \"properties\",\n        \"find\": {\n            \"server-ip\": \"0.0.0.0\",\n            \"enable-query\": \"true\",\n            \"server-port\": \"{{server.allocations.default.port}}\"\n        }\n    }\n}",
         "startup": "{\n    \"done\": \")! For help, type \"\n}",

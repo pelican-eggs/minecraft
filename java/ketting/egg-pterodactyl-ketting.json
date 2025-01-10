@@ -10,11 +10,11 @@
     "description": "Magma successor for 1.20- with plugins and mods.",
     "features": null,
     "docker_images": {
-        "Java 21": "ghcr.io\/parkervcp\/yolks:java_21",
-        "Java 17": "ghcr.io\/parkervcp\/yolks:java_17"
+        "Java 17": "ghcr.io\/parkervcp\/yolks:java_17",
+        "Java 21": "ghcr.io\/parkervcp\/yolks:java_21"
     },
     "file_denylist": [],
-    "startup": "start",
+    "startup": "java -Xms128M -XX:MaxRAMPercentage=95.0 -jar {{SERVER_JAR_FILE}} -minecraftVersion {{GAME_VERSION}}",
     "config": {
         "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-ip\": \"0.0.0.0\",\r\n            \"enable-query\": \"true\",\r\n            \"server-port\": \"{{server.build.default.port}}\"\r\n        }\r\n    }\r\n}",
         "startup": "{\r\n    \"done\": \")! For help, type \"\r\n}",

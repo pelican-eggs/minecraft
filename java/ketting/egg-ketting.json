@@ -48,7 +48,7 @@
         },
         {
             "name": "Game Version",
-            "description": "The server version\n",
+            "description": "The server version",
             "env_variable": "GAME_VERSION",
             "default_value": "1.20.1",
             "user_viewable": true,

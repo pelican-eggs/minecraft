@@ -4,7 +4,7 @@
         "version": "PLCN_v1",
         "update_url": null
     },
-    "exported_at": "2025-01-10T15:19:04+00:00",
+    "exported_at": "2025-01-10T15:28:19+00:00",
     "name": "Ketting",
     "author": "joanfo360@gmail.com",
     "uuid": "3460601a-bb6e-41b8-8394-77e69c174dd1",
@@ -63,9 +63,9 @@
         {
             "sort": 3,
             "name": "Tag Version",
-            "description": "",
+            "description": "Optional",
             "env_variable": "TAG_VERSION",
-            "default_value": "",
+            "default_value": "latest",
             "user_viewable": true,
             "user_editable": true,
             "rules": []

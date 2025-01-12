@@ -1,10 +1,10 @@
 {
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
-        "version": "PTDL_v2",
+        "version": "PLCN_v1",
         "update_url": null
     },
-    "exported_at": "2024-06-01T19:40:02+00:00",
+    "exported_at": "2025-01-12T23:08:20+00:00",
     "name": "Modrinth Generic",
     "author": "contact@chromozone.dev",
     "uuid": "04befa18-37cf-41e9-b04d-89b3578bba6d",
@@ -19,12 +19,12 @@
         "Java 11": "ghcr.io\/pterodactyl\/yolks:java_11",
         "Java 16": "ghcr.io\/pterodactyl\/yolks:java_16",
         "Java 17": "ghcr.io\/pterodactyl\/yolks:java_17",
-        "Java 21": "ghcr.io\/parkervcp\/yolks:java_21"
+        "Java 21": "ghcr.io\\\/parkervcp\\\/yolks:java_21"
     },
     "file_denylist": [],
     "startup": "java $([[ -f user_jvm_args.txt ]] && printf %s \"@user_jvm_args.txt\") -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true $([[ ! -f unix_args.txt ]] && printf %s \"-jar `cat .serverjar`\" || printf %s \"@unix_args.txt\")",
     "config": {
-        "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-ip\": \"0.0.0.0\",\r\n            \"server-port\": \"{{server.build.default.port}}\",\r\n            \"query.port\": \"{{server.build.default.port}}\"\r\n        }\r\n    }\r\n}",
+        "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-ip\": \"0.0.0.0\",\r\n            \"server-port\": \"{{server.allocations.default.port}}\",\r\n            \"query.port\": \"{{server.allocations.default.port}}\"\r\n        }\r\n    }\r\n}",
         "startup": "{\r\n    \"done\": \")! For help, type \"\r\n}",
         "logs": "{}",
         "stop": "stop"
@@ -38,26 +38,31 @@
     },
     "variables": [
         {
+            "sort": 1,
             "name": "Modpack Project ID",
             "description": "This is the modpack project ID from the Modrinth site.\r\n\r\nFor example, the project ID of 'https:\/\/modrinth.com\/modpack\/fabulously-optimized\/' is 1KVo5zza",
             "env_variable": "PROJECT_ID",
             "default_value": "",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "required|string|max:8",
-            "sort": null,
-            "field_type": "text"
+            "rules": [
+                "required",
+                "string",
+                "max:8"
+            ]
         },
         {
+            "sort": 2,
             "name": "Modpack Version ID",
             "description": "This is the modpack version ID from the Modrinth site.\r\n\r\nFor example, the version ID of 'https:\/\/modrinth.com\/modpack\/fabulously-optimized\/version\/4.7.4' is P9wA6exe",
             "env_variable": "VERSION_ID",
             "default_value": "latest",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "string|max:8",
-            "sort": null,
-            "field_type": "text"
+            "rules": [
+                "string",
+                "max:8"
+            ]
         }
     ]
 }

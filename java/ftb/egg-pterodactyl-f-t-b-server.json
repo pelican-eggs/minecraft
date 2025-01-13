@@ -4,18 +4,22 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2025-01-11T01:16:57+01:00",
+    "exported_at": "2025-01-13T21:20:40+01:00",
     "name": "FTB Server",
     "author": "runemaster580@gmail.com",
     "description": "This egg was developed to easily set up a server from FTB.",
-    "features": null,
+    "features": [
+	"eula",
+        "java_version",
+        "pid_limit"
+    ],
     "docker_images": {
-        "Java 21": "ghcr.io\/pterodactyl\/yolks:java_21",
-        "Java 18": "ghcr.io\/pterodactyl\/yolks:java_18",
-        "Java 17": "ghcr.io\/pterodactyl\/yolks:java_17",
-        "Java 16": "ghcr.io\/pterodactyl\/yolks:java_16",
-        "Java 11": "ghcr.io\/pterodactyl\/yolks:java_11",
-	"Java 8": "ghcr.io\/pterodactyl\/yolks:java_8"
+        "Java 21": "ghcr.io\/parkervcp\/yolks:java_21",
+        "Java 19": "ghcr.io\/parkervcp\/yolks:java_19",
+        "Java 17": "ghcr.io\/parkervcp\/yolks:java_17",
+        "Java 16": "ghcr.io\/parkervcp\/yolks:java_16",
+        "Java 11": "ghcr.io\/parkervcp\/yolks:java_11",
+        "Java 8": "ghcr.io\/parkervcp\/yolks:java_8"
     },
     "file_denylist": [],
     "startup": "java -Xms128M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true $( [[  ! -f unix_args.txt ]] && printf %s \"-jar start-server.jar\" || printf %s \"@unix_args.txt\" )",

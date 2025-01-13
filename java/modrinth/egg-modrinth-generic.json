@@ -4,7 +4,7 @@
         "version": "PLCN_v1",
         "update_url": null
     },
-    "exported_at": "2025-01-12T23:08:20+00:00",
+    "exported_at": "2025-01-13T09:44:32+00:00",
     "name": "Modrinth Generic",
     "author": "contact@chromozone.dev",
     "uuid": "04befa18-37cf-41e9-b04d-89b3578bba6d",
@@ -15,11 +15,11 @@
         "pid_limit"
     ],
     "docker_images": {
-        "Java 8": "ghcr.io\/pterodactyl\/yolks:java_8",
-        "Java 11": "ghcr.io\/pterodactyl\/yolks:java_11",
-        "Java 16": "ghcr.io\/pterodactyl\/yolks:java_16",
-        "Java 17": "ghcr.io\/pterodactyl\/yolks:java_17",
-        "Java 21": "ghcr.io\\\/parkervcp\\\/yolks:java_21"
+        "Java 8": "ghcr.io\/parkervcp\/yolks:java_8",
+        "Java 11": "ghcr.io\/parkervcp\/yolks:java_11",
+        "Java 16": "ghcr.io\/parkervcp\/yolks:java_16",
+        "Java 17": "ghcr.io\/parkervcp\/yolks:java_17",
+        "Java 21": "ghcr.io\/parkervcp\/yolks:java_21"
     },
     "file_denylist": [],
     "startup": "java $([[ -f user_jvm_args.txt ]] && printf %s \"@user_jvm_args.txt\") -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true $([[ ! -f unix_args.txt ]] && printf %s \"-jar `cat .serverjar`\" || printf %s \"@unix_args.txt\")",

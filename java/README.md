@@ -175,3 +175,9 @@ The ancient power of Tekkits past return in this legendary pack!
 
 [Tekkit Classic Modpack Page](https://www.technicpack.net/modpack/tekkit.552560)
 The official Tekkit Classic modpack. Build factories, automate crafting!
+
+## [VanillaCord](vanillacord)
+
+## VanillaCord
+[VanillaCord](https://github.com/ME1312/VanillaCord)
+VanillaCord adds support for BungeeCord's ip-forwarding option on vanilla Minecraft servers.

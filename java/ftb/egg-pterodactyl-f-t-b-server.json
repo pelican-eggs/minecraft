@@ -4,12 +4,12 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2025-01-13T21:20:40+01:00",
+    "exported_at": "2025-02-18T18:11:44+00:00",
     "name": "FTB Server",
     "author": "runemaster580@gmail.com",
     "description": "This egg was developed to easily set up a server from FTB.",
     "features": [
-	"eula",
+        "eula",
         "java_version",
         "pid_limit"
     ],

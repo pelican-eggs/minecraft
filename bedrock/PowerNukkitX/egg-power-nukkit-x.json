@@ -8,7 +8,7 @@
     "name": "PowerNukkitX",
     "author": "powernukkitx@github.com",
     "uuid": "27250406-1acf-4dce-b39f-3413cc290b64",
-    "description": "PowerNukkitX support for Pterodactyl",
+    "description": "PowerNukkitX support for Pelican",
     "features": null,
     "docker_images": {
         "ghcr.io\/parkervcp\/yolks:debian": "ghcr.io\/parkervcp\/yolks:debian"

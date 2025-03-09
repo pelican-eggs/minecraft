@@ -4,7 +4,7 @@
         "version": "PLCN_v1",
         "update_url": null
     },
-    "exported_at": "2025-03-09T04:24:55+00:00",
+    "exported_at": "2025-03-09T04:50:53+00:00",
     "name": "Forge",
     "author": "sudsy327@gmail.com",
     "uuid": "1c66d945-8129-4f09-b9dc-fcd9ab521c7d",
@@ -36,7 +36,7 @@
         {
             "name": "Server Jar File",
             "description": "The name of the Jarfile to use when running Forge version below 1.17.",
-            "env_variable": "SERVER_JAR_FILE",
+            "env_variable": "SERVER_JARFILE",
             "default_value": "server.jar",
             "user_viewable": true,
             "user_editable": true,

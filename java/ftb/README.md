@@ -10,14 +10,14 @@ The second method requires you to know the id for both the modpack and version i
 - FTB_SEARCH_TERM: the modpack name to query for, must be at least 4 characters long.
   EX: for FTB: Interactions you would do "interactions".
 - FTB_VERSION_STRING: the string version that you want to install.
-  EX: for FTB: Interactions 2.0.2, you would put "2.0.2".
+  EX: for FTB: Interactions 2.12.1, you would put "2.12.1".
 
 ## Method 2
 
 - FTB_MODPACK_ID: the id that directs to the modpack in the api.
   EX: for FTB: Interactions the id would be "5". `https://api.feed-the-beast.com/v1/modpacks/public/modpack/5`
 - FTB_MODPACK_VERSION_ID: the version id in the api.
-  EX: for FTB: Interactions 2.0.2 the id is "86". `https://api.feed-the-beast.com/v1/modpacks/public/modpack/5/86`
+  EX: for FTB: Interactions 2.12.1 the id is "2130". `https://api.feed-the-beast.com/v1/modpacks/public/modpack/5/2130`
 
 **NOTE**
 **Not all FTB packs come with a server.properties file, due to this the server.properties file

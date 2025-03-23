@@ -1,0 +1,33 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
+    "meta": {
+        "version": "PLCN_v1",
+        "update_url": null
+    },
+    "exported_at": "2025-03-23T17:21:59+00:00",
+    "name": "Zenith",
+    "author": "vesly@vesly.dev",
+    "uuid": "b6a6f201-fc46-4e15-bf6b-1b06af80a1d2",
+    "description": "Minecraft proxy and bot designed for 2b2t but also works on any server.\r\nZenithProxy is a MC bot with an integrated MC server that players can log into and control.\r\nHave your accounts always online in-game and securely shared with your friends.",
+    "tags": [],
+    "features": null,
+    "docker_images": {
+        "ghcr.io\/parkervcp\/yolks:java_21": "ghcr.io\/parkervcp\/yolks:java_21"
+    },
+    "file_denylist": [],
+    "startup": ".\/launch",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": \"[Server] [INFO] Server started.\"\r\n}",
+        "logs": "{}",
+        "stop": "^^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "# installing\r\ncd \/mnt\/server\r\nwget https:\/\/github.com\/rfresh2\/ZenithProxy\/releases\/download\/launcher-v3\/ZenithProxy-launcher-linux-amd64.zip\r\n\r\n# unzipping\r\nunzip ZenithProxy-launcher-linux-amd64.zip\r\n\r\nrm ZenithProxy-launcher-linux-amd64.zip\r\n## install end\r\necho -e \"-----------------------------------------\"\r\necho -e \"Installation completed...\"\r\necho -e \"-----------------------------------------\"\r\nexit 0",
+            "container": "ghcr.io\/parkervcp\/installers:alpine",
+            "entrypoint": "ash"
+        }
+    },
+    "variables": []
+}

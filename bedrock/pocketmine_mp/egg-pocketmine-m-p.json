@@ -8,7 +8,7 @@
     "name": "PocketmineMP",
     "author": "info@swisscrafting.ch",
     "uuid": "4c3baab1-67ad-48c7-8acd-eb3deaa0a462",
-    "description": "Pocketmine Egg\r\nby onekintaro from swisscrafting.ch\r\nwith the nice help from #eggs Channel on Pterodactyl-Discord :)",
+    "description": "Pocketmine Egg\r\nby onekintaro from swisscrafting.ch\r\nwith the nice help from #eggs Channel on Pelican Discord :)",
     "features": null,
     "docker_images": {
         "ghcr.io\/parkervcp\/yolks:debian": "ghcr.io\/parkervcp\/yolks:debian"

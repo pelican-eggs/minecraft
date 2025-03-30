@@ -37,7 +37,7 @@
             "name": "Server Description",
             "description": "Server Description",
             "env_variable": "SERV_DESC",
-            "default_value": "Cuberite on Pterodactyl!",
+            "default_value": "Cuberite on Pelican!",
             "user_viewable": true,
             "user_editable": true,
             "rules": "nullable|string",

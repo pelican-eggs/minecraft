@@ -5,6 +5,7 @@
   * [Velocity](/java/velocity)
   * [VIAaaS](/java/viaaas)
   * [Waterfall](/java/waterfall)
+  * [Zenith](/java/zenith)
 * [Bedrock](/bedrock)
   * [Waterdog PE](/bedrock/waterdogpe)
 * [Cross Platform](/cross_platform)

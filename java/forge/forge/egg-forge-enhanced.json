@@ -72,7 +72,7 @@
         },
         {
             "name": "Forge Version",
-            "description": "Gets an exact version.\r\n\r\nEx. 1.15.2-31.2.4\r\n\r\nOverrides MC_VERSION and BUILD_TYPE. If it fails to download the server files it will fail to install.",
+            "description": "Gets an exact version.\r\n\r\nEx. 1.15.2-31.2.4\r\n\r\n, the version number should include the version of Minecraft, otherwise the download will fail. Overrides MC_VERSION and BUILD_TYPE. If it fails to download the server files it will fail to install.",
             "env_variable": "FORGE_VERSION",
             "default_value": "",
             "user_viewable": true,

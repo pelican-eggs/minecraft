@@ -55,7 +55,7 @@
         {
             "name": "Delete During Install \/ Reinstall",
             "description": "These files will be deleted during install \/ reinstall",
-            "env_variable": "DELUPDATE",
+            "env_variable": "DELETE_ON_INSTALL",
             "default_value": "config libraries mods resources scripts lwjgl3ify-forgePatches.jar java9args.txt startserver-java9.bat startserver-java9.sh",
             "user_viewable": true,
             "user_editable": true,

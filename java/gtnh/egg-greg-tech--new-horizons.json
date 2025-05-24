@@ -63,9 +63,9 @@
             "field_type": "text"
         },
         {
-            "name": "Do not delete these during Install \/ Reinstall",
-            "description": "Use this to prevent the script from deleting them during install \/ reinstall. Useful to prevent items inside folders which are deleted from being deleted\r\nExample: config\/JourneyMapServer",
-            "env_variable": "DELUPDATEEXLUDE",
+            "name": "Keep During Install \/ Reinstall",
+            "description": "Use this to prevent the script from deleting them during install \/ reinstall. Useful to retain items inside folders which are deleted\r\nExample: config\/JourneyMapServer",
+            "env_variable": "KEEP_ON_INSTALL",
             "default_value": "config\/JourneyMapServer",
             "user_viewable": true,
             "user_editable": true,

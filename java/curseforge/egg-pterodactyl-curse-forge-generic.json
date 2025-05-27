@@ -4,7 +4,7 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2025-05-13T18:43:58+00:00",
+    "exported_at": "2025-05-27T11:05:16-07:00",
     "name": "CurseForge Generic",
     "author": "contact@chromozone.dev",
     "description": "A generic egg for a CurseForge modpack.",
@@ -38,7 +38,7 @@
     "variables": [
         {
             "name": "Modpack Project ID",
-            "description": "The modpack project ID from the CurseForge site on the pack page, or 'zip' if installing from an uploaded server.zip file.\r\n\r\nFor example, the project Id of https:\/\/www.curseforge.com\/minecraft\/modpacks\/bofa-mods ID is 375152",
+            "description": "The modpack project ID from the CurseForge site on the pack page, or 'zip' if installing from an uploaded server.zip file.\r\n\r\nFor example, the project ID of https:\/\/www.curseforge.com\/minecraft\/modpacks\/bofa-mods is 375152",
             "env_variable": "PROJECT_ID",
             "default_value": "",
             "user_viewable": true,
@@ -58,11 +58,11 @@
         },
         {
             "name": "CurseForge API Key",
-            "description": "A CurseForge API key is required to use this egg. You can learn how to get an API key here: https:\/\/support.curseforge.com\/en\/support\/solutions\/articles\/9000208346-about-the-curseforge-api-and-how-to-apply-for-a-key",
+            "description": "A CurseForge API key is required to use this egg. This key is not visible to the server owner. You can get an API key here: https:\/\/console.curseforge.com",
             "env_variable": "API_KEY",
             "default_value": "",
-            "user_viewable": true,
-            "user_editable": true,
+            "user_viewable": false,
+            "user_editable": false,
             "rules": "required|string|max:60",
             "field_type": "text"
         }

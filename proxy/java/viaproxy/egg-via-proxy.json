@@ -1,0 +1,59 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
+    "meta": {
+        "version": "PLCN_v1",
+        "update_url": null
+    },
+    "exported_at": "2025-05-30T06:51:54+00:00",
+    "name": "ViaProxy",
+    "author": "contact@ste4d.net",
+    "uuid": "39774149-12b1-4ef9-8945-bdb51bdfe442",
+    "description": "ViaProxy is a standalone proxy which allows players to join EVERY Minecraft server version (Classic, Alpha, Beta, Release, Bedrock)",
+    "tags": [],
+    "features": [],
+    "docker_images": {
+        "Java 21": "ghcr.io\/parkervcp\/yolks:java_21"
+    },
+    "file_denylist": [],
+    "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar {{SERVER_JARFILE}} cli",
+    "config": {
+        "files": "{\n    \"viaproxy.yml\": {\n        \"parser\": \"yaml\",\n        \"find\": {\n            \"bind-address\": \"0.0.0.0:{{server.allocations.default.port}}\"\n        }\n    }\n}",
+        "startup": "{\n    \"done\": \"Binding proxy server to\",\n    \"userInteraction\": []\n}",
+        "logs": "{}",
+        "stop": "exit"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/ash\r\n# ViaProxy Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\ncd \/mnt\/server\r\n\r\n# Check if VIA_PROXY_VERSION is set\r\nif [ -z \"$VIA_PROXY_VERSION\" ]; then\r\n    echo \"VIA_PROXY_VERSION environment variable is not set.\"\r\n    exit 1\r\nfi\r\n\r\n# Fetch the latest version if VIA_PROXY_VERSION is \"latest\"\r\nif [ \"$VIA_PROXY_VERSION\" = \"latest\" ]; then\r\n    echo \"Fetching the latest version...\"\r\n    LATEST_RELEASE_URL=\"https:\/\/github.com\/ViaVersion\/ViaProxy\/releases\/latest\"\r\n    RELEASE_INFO=$(curl -L -s -H \"Accept: application\/json\" \"$LATEST_RELEASE_URL\")\r\n\r\n    # Extract the tag_name which contains the version\r\n    VIA_PROXY_VERSION=$(echo \"$RELEASE_INFO\" | grep -o '\"tag_name\": *\"[^\"]*\"' | cut -d '\"' -f 4 | sed 's\/^v\/\/')\r\n\r\n    if [ -z \"$VIA_PROXY_VERSION\" ]; then\r\n        echo \"Failed to fetch the latest version.\"\r\n        exit 1\r\n    fi\r\nfi\r\n\r\n# Construct the download URL\r\nDOWNLOAD_URL=\"https:\/\/github.com\/ViaVersion\/ViaProxy\/releases\/download\/v${VIA_PROXY_VERSION}\/ViaProxy-${VIA_PROXY_VERSION}.jar\"\r\n\r\n# Download the .jar file\r\necho \"Downloading ViaProxy version $VIA_PROXY_VERSION...\"\r\ncurl -L -o \"$SERVER_JAR\" \"$DOWNLOAD_URL\"\r\n\r\nif [ $? -eq 0 ]; then\r\n    echo \"Download complete. The file is saved as $SERVER_JAR.\"\r\nelse\r\n    echo \"Failed to download the .jar file.\"\r\n    exit 1\r\nfi",
+            "container": "ghcr.io\/pterodactyl\/installers:alpine",
+            "entrypoint": "ash"
+        }
+    },
+    "variables": [
+        {
+            "sort": 1,
+            "name": "ViaProxy JAR",
+            "description": "Server Jarfile, by default this is set to 'via-proxy.jar'.\nSet it to otherwise if you wish to have a different jarfile name.",
+            "env_variable": "SERVER_JARFILE",
+            "default_value": "viaproxy.jar",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "required",
+                "regex:\/^([\\w\\d._-]+)(\\.jar)$\/"
+            ]
+        },
+        {
+            "sort": 2,
+            "name": "ViaProxy Version",
+            "description": "ViaProxy version to install, can be latest or 3.4.1 for example ",
+            "env_variable": "VIA_PROXY_VERSION",
+            "default_value": "latest",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "required"
+            ]
+        }
+    ]
+}

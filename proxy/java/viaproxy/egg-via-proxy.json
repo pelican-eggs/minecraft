@@ -4,7 +4,7 @@
         "version": "PLCN_v1",
         "update_url": null
     },
-    "exported_at": "2025-05-30T08:30:53+00:00",
+    "exported_at": "2025-06-01T07:30:48+00:00",
     "name": "ViaProxy",
     "author": "contact@ste4d.net",
     "uuid": "39774149-12b1-4ef9-8945-bdb51bdfe442",
@@ -24,7 +24,7 @@
     },
     "scripts": {
         "installation": {
-            "script": "#!\/bin\/ash\r\n# ViaProxy Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\ncd \/mnt\/server\r\n\r\n# Check if VIA_PROXY_VERSION is set\r\nif [ -z \"$VIA_PROXY_VERSION\" ]; then\r\n    echo \"VIA_PROXY_VERSION environment variable is not set.\"\r\n    exit 1\r\nfi\r\n\r\n# Fetch the latest version if VIA_PROXY_VERSION is \"latest\"\r\nif [ \"$VIA_PROXY_VERSION\" = \"latest\" ]; then\r\n    echo \"Fetching the latest version...\"\r\n    LATEST_RELEASE_URL=\"https:\/\/github.com\/ViaVersion\/ViaProxy\/releases\/latest\"\r\n    RELEASE_INFO=$(curl -L -s -H \"Accept: application\/json\" \"$LATEST_RELEASE_URL\")\r\n\r\n    # Extract the tag_name which contains the version\r\n    VIA_PROXY_VERSION=$(echo \"$RELEASE_INFO\" | grep -o '\"tag_name\": *\"[^\"]*\"' | cut -d '\"' -f 4 | sed 's\/^v\/\/')\r\n\r\n    if [ -z \"$VIA_PROXY_VERSION\" ]; then\r\n        echo \"Failed to fetch the latest version.\"\r\n        exit 1\r\n    fi\r\nfi\r\n\r\n# Construct the download URL\r\nDOWNLOAD_URL=\"https:\/\/github.com\/ViaVersion\/ViaProxy\/releases\/download\/v${VIA_PROXY_VERSION}\/ViaProxy-${VIA_PROXY_VERSION}.jar\"\r\n\r\n# Download the .jar file\r\necho \"Downloading ViaProxy version $VIA_PROXY_VERSION...\"\r\ncurl -L -o \"$SERVER_JARFILE\" \"$DOWNLOAD_URL\"\r\n\r\nif [ $? -eq 0 ]; then\r\n    echo \"Download complete. The file is saved as $SERVER_JARFILE.\"\r\nelse\r\n    echo \"Failed to download the .jar file.\"\r\n    exit 1\r\nfi",
+            "script": "#!\/bin\/ash\r\n# ViaProxy Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\n\r\n## get release info and download links\r\nLATEST_JSON=$(curl --silent \"https:\/\/api.github.com\/repos\/ViaVersion\/ViaProxy\/releases\/latest\")\r\nRELEASES=$(curl --silent \"https:\/\/api.github.com\/repos\/ViaVersion\/ViaProxy\/releases\")\r\nMATCH=\"ViaProxy-[0-9]\\+\\.[0-9]\\+\\.[0-9]\\+\\.jar\"\r\n\r\nif [ -z \"${VERSION}\" ] || [ \"${VERSION}\" == \"latest\" ]; then\r\n    DOWNLOAD_URL=$(echo ${LATEST_JSON} | jq .assets | jq -r .[].browser_download_url | grep -i ${MATCH})\r\nelse\r\n    VERSION_CHECK=$(echo ${RELEASES} | jq -r --arg VERSION \"${VERSION}\" '.[] | select(.tag_name==$VERSION) | .tag_name')\r\n    if [ \"${VERSION}\" == \"${VERSION_CHECK}\" ]; then\r\n        DOWNLOAD_URL=$(echo ${RELEASES} | jq -r --arg VERSION \"${VERSION}\" '.[] | select(.tag_name==$VERSION) | .assets[].browser_download_url' | grep -i ${MATCH})\r\n    else\r\n        echo -e \"defaulting to latest release\"\r\n        DOWNLOAD_URL=$(echo ${LATEST_JSON} | jq .assets | jq -r .[].browser_download_url)\r\n    fi\r\nfi\r\n\r\nmkdir -p \/mnt\/server\r\ncd \/mnt\/server\r\n\r\n# Download the .jar file\r\necho \"Downloading ViaProxy version $VERSION...\"\r\ncurl -sSL -o ${SERVER_JARFILE} ${DOWNLOAD_URL}\r\n\r\n## install end\r\necho \"-----------------------------------------\"\r\necho \"Installation completed...\"\r\necho \"-----------------------------------------\"",
             "container": "ghcr.io\/parkervcp\/installers:alpine",
             "entrypoint": "ash"
         }
@@ -47,7 +47,7 @@
             "sort": 2,
             "name": "ViaProxy Version",
             "description": "ViaProxy version to install, can be latest or 3.4.1 for example ",
-            "env_variable": "VIA_PROXY_VERSION",
+            "env_variable": "VERSION",
             "default_value": "latest",
             "user_viewable": true,
             "user_editable": true,

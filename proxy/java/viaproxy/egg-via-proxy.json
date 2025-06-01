@@ -10,7 +10,11 @@
     "uuid": "39774149-12b1-4ef9-8945-bdb51bdfe442",
     "description": "ViaProxy is a standalone proxy which allows players to join EVERY Minecraft server version (Classic, Alpha, Beta, Release, Bedrock)",
     "tags": [],
-    "features": [],
+    "features": [
+        "eula",
+        "java_version",
+        "pid_limit"
+    ],
     "docker_images": {
         "Java 21": "ghcr.io\/parkervcp\/yolks:java_21",
         "Java 22": "ghcr.io\/parkervcp\/yolks:java_22"
@@ -19,7 +23,7 @@
     "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar {{SERVER_JARFILE}} cli",
     "config": {
         "files": "{\n    \"viaproxy.yml\": {\n        \"parser\": \"yaml\",\n        \"find\": {\n            \"bind-address\": \"0.0.0.0:{{server.allocations.default.port}}\"\n        }\n    }\n}",
-        "startup": "{\n    \"done\": \"Binding proxy server to\",\n    \"userInteraction\": []\n}",
+        "startup": "{\n    \"done\": \"Binding proxy server to\"\n}",
         "logs": "{}",
         "stop": "exit"
     },

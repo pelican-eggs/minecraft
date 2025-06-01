@@ -1,0 +1,57 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2025-06-01T07:53:01+00:00",
+    "name": "ViaProxy",
+    "author": "contact@ste4d.net",
+    "description": "ViaProxy is a standalone proxy which allows players to join EVERY Minecraft server version (Classic, Alpha, Beta, Release, Bedrock)",
+    "features": [
+        "eula",
+        "java_version",
+        "pid_limit"
+    ],
+    "docker_images": {
+        "Java 21": "ghcr.io\/parkervcp\/yolks:java_21",
+        "Java 22": "ghcr.io\/parkervcp\/yolks:java_22"
+    },
+    "file_denylist": [],
+    "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar {{SERVER_JARFILE}} cli",
+    "config": {
+        "files": "{\n    \"viaproxy.yml\": {\n        \"parser\": \"yaml\",\n        \"find\": {\n            \"bind-address\": \"0.0.0.0:{{server.build.default.port}}\"\n        }\n    }\n}",
+        "startup": "{\n    \"done\": \"Binding proxy server to\"\n}",
+        "logs": "{}",
+        "stop": "exit"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/ash\r\n# ViaProxy Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\n\r\n## get release info and download links\r\nLATEST_JSON=$(curl --silent \"https:\/\/api.github.com\/repos\/ViaVersion\/ViaProxy\/releases\/latest\")\r\nRELEASES=$(curl --silent \"https:\/\/api.github.com\/repos\/ViaVersion\/ViaProxy\/releases\")\r\nMATCH=\"ViaProxy-[0-9]\\+\\.[0-9]\\+\\.[0-9]\\+\\.jar\"\r\n\r\nif [ -z \"${VERSION}\" ] || [ \"${VERSION}\" == \"latest\" ]; then\r\n    DOWNLOAD_URL=$(echo ${LATEST_JSON} | jq .assets | jq -r .[].browser_download_url | grep -i ${MATCH})\r\nelse\r\n    VERSION_CHECK=$(echo ${RELEASES} | jq -r --arg VERSION \"${VERSION}\" '.[] | select(.tag_name==$VERSION) | .tag_name')\r\n    if [ \"${VERSION}\" == \"${VERSION_CHECK}\" ]; then\r\n        DOWNLOAD_URL=$(echo ${RELEASES} | jq -r --arg VERSION \"${VERSION}\" '.[] | select(.tag_name==$VERSION) | .assets[].browser_download_url' | grep -i ${MATCH})\r\n    else\r\n        echo -e \"defaulting to latest release\"\r\n        DOWNLOAD_URL=$(echo ${LATEST_JSON} | jq .assets | jq -r .[].browser_download_url)\r\n    fi\r\nfi\r\n\r\nmkdir -p \/mnt\/server\r\ncd \/mnt\/server\r\n\r\n# Download the .jar file\r\necho \"Downloading ViaProxy version $VERSION...\"\r\ncurl -sSL -o ${SERVER_JARFILE} ${DOWNLOAD_URL}\r\n\r\n## install end\r\necho \"-----------------------------------------\"\r\necho \"Installation completed...\"\r\necho \"-----------------------------------------\"",
+            "container": "ghcr.io\/parkervcp\/installers:alpine",
+            "entrypoint": "ash"
+        }
+    },
+    "variables": [
+        {
+            "name": "ViaProxy JAR",
+            "description": "Server Jarfile, by default this is set to 'via-proxy.jar'.\nSet it to otherwise if you wish to have a different jarfile name.",
+            "env_variable": "SERVER_JARFILE",
+            "default_value": "viaproxy.jar",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|regex:\/^([\\w\\d._-]+)(\\.jar)$\/",
+            "field_type": "text"            
+        },
+        {
+            "name": "ViaProxy Version",
+            "description": "ViaProxy version to install, can be latest or 3.4.1 for example ",
+            "env_variable": "VERSION",
+            "default_value": "latest",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required",
+            "field_type": "text"            
+        }
+    ]
+}

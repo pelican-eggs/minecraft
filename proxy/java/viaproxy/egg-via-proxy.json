@@ -4,7 +4,7 @@
         "version": "PLCN_v1",
         "update_url": null
     },
-    "exported_at": "2025-06-01T07:30:48+00:00",
+    "exported_at": "2025-06-01T07:53:01+00:00",
     "name": "ViaProxy",
     "author": "contact@ste4d.net",
     "uuid": "39774149-12b1-4ef9-8945-bdb51bdfe442",
@@ -12,7 +12,8 @@
     "tags": [],
     "features": [],
     "docker_images": {
-        "Java 21": "ghcr.io\/parkervcp\/yolks:java_21"
+        "Java 21": "ghcr.io\/parkervcp\/yolks:java_21",
+        "Java 22": "ghcr.io\/parkervcp\/yolks:java_22"
     },
     "file_denylist": [],
     "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar {{SERVER_JARFILE}} cli",

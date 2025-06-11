@@ -16,7 +16,7 @@ It’s set in infinitely-generated worlds of wide open terrain - icy mountains, 
 
 * [Cuberite](java/cuberite)
 * [CurseForge](java/curseforge)
-* [Cleanroom] (java/cleanroom)
+* [Cleanroom](java/cleanroom)
 * [Fabric](java/fabric)
 * [Feather](java/feather)
 * [Forge](java/forge)

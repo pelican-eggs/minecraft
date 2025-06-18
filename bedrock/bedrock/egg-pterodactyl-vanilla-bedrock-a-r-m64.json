@@ -4,18 +4,18 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2024-09-24T13:43:50-07:00",
+    "exported_at": "2025-06-15T07:15:38+00:00",
     "name": "Vanilla Bedrock ARM64",
     "author": "josdekurk@gmail.com",
-    "description": "Bedrock Edition (also known as the Bedrock Version, Bedrock Codebase, Bedrock Engine or just Bedrock) refers to the multi-platform family of editions of Minecraft developed by Mojang AB, Microsoft Studios, 4J Studios, and SkyBox Labs. Prior to this term, as the engine originated with Pocket Edition, this entire product family was referred to as \"Pocket Edition\", \"MCPE\", or \"Pocket\/Windows 10 Edition\".",
+    "description": "Bedrock Edition (also known as the Bedrock Version, Bedrock Codebase, Bedrock Engine or just Bedrock) refers to the multi-platform family of editions of Minecraft developed by Mojang AB, Microsoft Studios, 4J Studios, and SkyBox Labs. Prior to this term, as the engine originated with Pocket Edition, this entire product family was referred to as \"Pocket Edition\", \"MCPE\", or \"Pocket/Windows 10 Edition\".",
     "features": [
         "pid_limit"
     ],
     "docker_images": {
-        "ghcr.io\/parkervcp\/yolks:box64": "ghcr.io\/parkervcp\/yolks:box64"
+        "ghcr.io/parkervcp/yolks:box64": "ghcr.io/parkervcp/yolks:box64"
     },
     "file_denylist": [],
-    "startup": "box64 .\/bedrock_server",
+    "startup": "box64 ./bedrock_server",
     "config": {
         "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-port\": \"{{server.build.default.port}}\",\r\n            \"server-name\": \"{{server.build.env.SERVERNAME}}\",\r\n            \"gamemode\": \"{{server.build.env.GAMEMODE}}\",\r\n            \"difficulty\": \"{{server.build.env.DIFFICULTY}}\",\r\n            \"allow-cheats\": \"{{server.build.env.CHEATS}}\",\r\n            \"max-threads\": \"2\"\r\n        }\r\n    }\r\n}",
         "startup": "{\r\n    \"done\": \"Server started\"\r\n}",
@@ -24,8 +24,8 @@
     },
     "scripts": {
         "installation": {
-            "script": "#!\/bin\/bash\r\n\r\napt update\r\napt install -y zip unzip wget curl\r\n\r\nif [ ! -d \/mnt\/server\/ ]; then\r\n    mkdir \/mnt\/server\/\r\nfi\r\n\r\ncd \/mnt\/server\r\n\r\n# Minecraft CDN Akamai blocks script user-agents\r\nRANDVERSION=$(echo $((1 + $RANDOM % 4000)))\r\n\r\nif [ -z \"${BEDROCK_VERSION}\" ] || [ \"${BEDROCK_VERSION}\" == \"latest\" ]; then\r\n    echo -e \"\\n Downloading latest Bedrock server\"\r\n    curl -L -A \"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/90.0.$RANDVERSION.212 Safari\/537.36\" -H \"Accept-Language: en\" -H \"Accept-Encoding: gzip, deflate\" -o versions.html.gz https:\/\/www.minecraft.net\/en-us\/download\/server\/bedrock\r\n    DOWNLOAD_URL=$(zgrep -o 'https:\/\/www.minecraft.net\/bedrockdedicatedserver\/bin-linux\/[^\"]*' versions.html.gz)\r\nelse \r\n    echo -e \"\\n Downloading ${BEDROCK_VERSION} Bedrock server\"\r\n    DOWNLOAD_URL=https:\/\/www.minecraft.net\/bedrockdedicatedserver\/bin-linux\/bedrock-server-$BEDROCK_VERSION.zip\r\nfi\r\n\r\nDOWNLOAD_FILE=$(echo ${DOWNLOAD_URL} | cut -d\"\/\" -f5) # Retrieve archive name\r\n\r\necho -e \"backing up config files\"\r\nrm *.bak versions.html.gz\r\ncp server.properties server.properties.bak\r\ncp permissions.json permissions.json.bak\r\ncp allowlist.json allowlist.json.bak\r\n\r\necho -e \"Downloading files from: $DOWNLOAD_URL\"\r\n\r\ncurl -L -A \"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/90.0.$RANDVERSION.212 Safari\/537.36\" -H \"Accept-Language: en\" -o $DOWNLOAD_FILE $DOWNLOAD_URL\r\n\r\necho -e \"Unpacking server files\"\r\nunzip -o $DOWNLOAD_FILE\r\n\r\necho -e \"Cleaning up after installing\"\r\nrm $DOWNLOAD_FILE\r\n\r\necho 'emit-server-telemetry=true' >> server.properties\r\n\r\necho -e \"restoring backup config files - on first install there will be file not found errors which you can ignore.\"\r\ncp -rf server.properties.bak server.properties\r\ncp -rf permissions.json.bak permissions.json\r\ncp -rf allowlist.json.bak allowlist.json\r\n\r\nchmod +x bedrock_server\r\n\r\necho -e \"Install Completed\"",
-            "container": "ghcr.io\/parkervcp\/installers:debian",
+            "script": "#!/bin/bash\n\napt update\napt install -y zip unzip wget curl jq\n\ncd /mnt/server || { echo \"Failed to change directory to /mnt/server\"; exit 1; }\n\n# Default version to latest if not set\nBEDROCK_VERSION=${BEDROCK_VERSION:-latest}\n\n# Filename to use for the downloaded file\nDOWNLOAD_FILE=\"bedrock-server-installer.zip\"\n\n# Minecraft CDN Akamai blocks script user-agents\nRANDVERSION=$(echo $((1 + $RANDOM % 4000)))\n\nif [ \"${BEDROCK_VERSION}\" == \"latest\" ]; then\n    echo \"Finding latest Bedrock server version\"\n    DOWNLOAD_URL=$(curl --silent https://net-secondary.web.minecraft-services.net/api/v1.0/download/links | jq -r '.result.links[] | select(.downloadType == \"serverBedrockLinux\") | .downloadUrl')\n    if [ -z \"${DOWNLOAD_URL}\" ]; then\n        echo \"Failed to retrieve the latest Bedrock server version. Please check your network connection or the Minecraft API.\"\n        exit 1\n    fi\nelse\n    echo \"Downloading ${BEDROCK_VERSION} Bedrock server\"\n    DOWNLOAD_URL=https://www.minecraft.net/bedrockdedicatedserver/bin-linux/bedrock-server-$BEDROCK_VERSION.zip\nfi\n\necho \"Download URL: $DOWNLOAD_URL\"\n\necho -e \"Backing up config files\"\nmkdir /tmp/config_backup\ncp -v server.properties /tmp/config_backup/ 2>/dev/null\ncp -v permissions.json /tmp/config_backup/ 2>/dev/null\ncp -v allowlist.json /tmp/config_backup/ 2>/dev/null\n\necho -e \"Downloading files from: $DOWNLOAD_URL\"\ncurl -L -A \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.$RANDVERSION.212 Safari/537.36\" -H \"Accept-Language: en\" -o $DOWNLOAD_FILE $DOWNLOAD_URL\n\necho -e \"Unpacking server files\"\nunzip -o $DOWNLOAD_FILE\n\necho -e \"Cleaning up after installing\"\nrm $DOWNLOAD_FILE\n\necho -e \"Restoring backup config files\"\ncp -rfv /tmp/config_backup/* /mnt/server/ 2>/dev/null || { echo \"No files to restore\"; }\n\nchmod +x bedrock_server\n\necho -e \"Install Completed\"\n",
+            "container": "ghcr.io/parkervcp/installers:debian",
             "entrypoint": "bash"
         }
     },

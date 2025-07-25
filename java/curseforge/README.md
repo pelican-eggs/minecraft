@@ -12,12 +12,12 @@ This can be found on the modpack page by clicking the wanted file and copying th
 The script will automatically setup of Forge, Fabric, or Quilt depending on the modpack.
 
 You *must* specify a CurseForge API key. 
-You can find out how to get an API key [here](https://support.curseforge.com/en/support/solutions/articles/9000208346-about-the-curseforge-api-and-how-to-apply-for-a-key)
+You can obtain an API key by creating a developer account [here](https://console.curseforge.com/) and then clicking on the "API keys" tab.
 
 ## Server Ports
 
 The minecraft server requires a single port for access (default 25565) but plugins may require extra ports to enabled for the server.
 
-| Port  | default |
+| Port  | Default |
 |-------|---------|
 | Game  | 25565   |

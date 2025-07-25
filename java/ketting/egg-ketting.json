@@ -1,0 +1,74 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
+    "meta": {
+        "version": "PLCN_v1",
+        "update_url": null
+    },
+    "exported_at": "2025-01-10T15:28:19+00:00",
+    "name": "Ketting",
+    "author": "joanfo360@gmail.com",
+    "uuid": "3460601a-bb6e-41b8-8394-77e69c174dd1",
+    "description": "Magma successor for 1.20- with plugins and mods.",
+    "features": [
+        "eula",
+        "java_version",
+        "pid_limit"
+    ],
+    "docker_images": {
+        "Java 17": "ghcr.io\/parkervcp\/yolks:java_17",
+        "Java 21": "ghcr.io\/parkervcp\/yolks:java_21"
+    },
+    "file_denylist": [],
+    "startup": "java -Xms128M -XX:MaxRAMPercentage=95.0 -jar {{SERVER_JAR_FILE}} -minecraftVersion {{GAME_VERSION}}",
+    "config": {
+        "files": "{\n    \"server.properties\": {\n        \"parser\": \"properties\",\n        \"find\": {\n            \"server-ip\": \"0.0.0.0\",\n            \"enable-query\": \"true\",\n            \"server-port\": \"{{server.allocations.default.port}}\"\n        }\n    }\n}",
+        "startup": "{\n    \"done\": \")! For help, type \"\n}",
+        "logs": "{}",
+        "stop": "stop"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n\r\n# Function to show the download progress bar\r\nprogress_bar() {\r\n    # Set the length of the progress bar\r\n    local bar_length=50\r\n    local progress=$1\r\n    local done=$((progress * bar_length \/ 100))\r\n    local remaining=$((bar_length - done))\r\n    local progress_bar=\"[\"\r\n\r\n    for ((i=0; i<done; i++)); do\r\n        progress_bar=\"#\"\r\n    done\r\n    for ((i=done; i<bar_length; i++)); do\r\n        progress_bar=\" ${progress_bar}.\"\r\n    done\r\n    progress_bar=\"$progress_bar]\"\r\n\r\n    printf \"\\r$progress_bar $progress%%\"\r\n}\r\n\r\nmkdir -p \/mnt\/server\r\ncd \/mnt\/server\r\n\r\n# Get release info and download links\r\nLATEST_JSON=$(curl --silent \"https:\/\/api.github.com\/repos\/kettingpowered\/kettinglauncher\/releases\/latest\")\r\nRELEASES=$(curl --silent \"https:\/\/api.github.com\/repos\/kettingpowered\/kettinglauncher\/releases\")\r\n\r\n# Check if TAG_VERSION is set or if \"latest\" is specified\r\nif [ -z \"${TAG_VERSION}\" ] || [ \"${TAG_VERSION}\" == \"latest\" ]; then\r\n    # Select the normal .jar file (exclude sources)\r\n    DOWNLOAD_LINK=$(echo ${LATEST_JSON} | jq -r '.assets[] | select(.name | test(\".*\\\\.jar$\") and (test(\"-sources\") | not)) | .browser_download_url')\r\nelse\r\n    VERSION_CHECK=$(echo ${RELEASES} | jq -r --arg VERSION \"${TAG_VERSION}\" '.[] | select(.tag_name==$VERSION) | .tag_name')\r\n    if [ \"${TAG_VERSION}\" == \"${VERSION_CHECK}\" ]; then\r\n        # Select the normal .jar file (exclude sources)\r\n        DOWNLOAD_LINK=$(echo ${RELEASES} | jq -r --arg VERSION \"${TAG_VERSION}\" '.[] | select(.tag_name==$VERSION) | .assets[] | select(.name | test(\".*\\\\.jar$\") and (test(\"-sources\") | not)) | .browser_download_url')\r\n    else\r\n        # Default to latest release if version check fails\r\n        DOWNLOAD_LINK=$(echo ${LATEST_JSON} | jq -r '.assets[] | select(.name | test(\".*\\\\.jar$\") and (test(\"-sources\") | not)) | .browser_download_url')\r\n    fi\r\nfi\r\n\r\n# Check if the download link is valid\r\nif [ -n \"${DOWNLOAD_LINK}\" ]; then \r\n    if curl --output \/dev\/null --silent --head --fail ${DOWNLOAD_LINK}; then\r\n\r\n\r\n        # Download the .jar file with progress bar\r\n        echo \"Downloading server.jar...\"\r\n        curl -sSL --progress-bar --output ${SERVER_JAR_FILE} ${DOWNLOAD_LINK} |\r\n        while IFS= read -r line; do\r\n            # Extract the download progress percentage\r\n            PROGRESS=$(echo \"$line\" | grep -oP '\\d+(?=%)')\r\n            if [ -n \"$PROGRESS\" ]; then\r\n                progress_bar \"$PROGRESS\"\r\n            fi\r\n        done\r\n        echo -e \"\\nInstall Complete\"\r\n    else        \r\n        exit 2\r\n    fi\r\nelse\r\n    exit 1\r\nfi\r\n",
+            "container": "ghcr.io\/pelican-eggs\/installers:debian",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "sort": 1,
+            "name": "Server Jar File",
+            "description": "The jar executable of the server",
+            "env_variable": "SERVER_JAR_FILE",
+            "default_value": "server.jar",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "required",
+                "string",
+                "regex:\/^([\\w\\d._-]+)(\\.jar)$\/"
+            ]
+        },
+        {
+            "sort": 2,
+            "name": "Game Version",
+            "description": "The server version",
+            "env_variable": "GAME_VERSION",
+            "default_value": "1.20.1",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "required"
+            ]
+        },
+        {
+            "sort": 3,
+            "name": "Tag Version",
+            "description": "Optional",
+            "env_variable": "TAG_VERSION",
+            "default_value": "latest",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": []
+        }
+    ]
+}

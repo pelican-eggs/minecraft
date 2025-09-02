@@ -16,11 +16,11 @@
         "pid_limit"
     ],
     "docker_images": {
-        "Java 21": "ghcr.io/parkervcp/yolks:java_21",
-        "Java 17": "ghcr.io/parkervcp/yolks:java_17",
-        "Java 16": "ghcr.io/parkervcp/yolks:java_16",
-        "Java 11": "ghcr.io/parkervcp/yolks:java_11",
-        "Java 8": "ghcr.io/parkervcp/yolks:java_8"
+        "Java 21": "ghcr.io/pelican-eggs/yolks:java_21",
+        "Java 17": "ghcr.io/pelican-eggs/yolks:java_17",
+        "Java 16": "ghcr.io/pelican-eggs/yolks:java_16",
+        "Java 11": "ghcr.io/pelican-eggs/yolks:java_11",
+        "Java 8": "ghcr.io/pelican-eggs/yolks:java_8"
     },
     "file_denylist": [],
     "startup": "java $([[ -f user_jvm_args.txt ]] && printf %s \"@user_jvm_args.txt\") -Xms128M -Xmx{{MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true $([[ ! -f unix_args.txt ]] && printf %s \"-jar `cat .serverjar`\" || printf %s \"@unix_args.txt\")",

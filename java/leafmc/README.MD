@@ -1,8 +1,8 @@
-# Paper
+# Leaf
 
-Paper is the next generation of Minecraft server, compatible with Spigot plugins and offering uncompromising performance.
+Leaf is a Paper fork aim to find balance between performance, vanilla and stability.
 
-Check out the [Paper Website](https://papermc.io/) for more information.
+Check out the [Leaf Website](https://www.leafmc.one/) for more information.
 
 ## Server Ports
 

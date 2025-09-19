@@ -77,7 +77,3 @@ If you have trouble using a Neoforge modpack, make sure to select the latest Jav
 
 The required Java version is also listed on the modpack page under the "Requirements" section. Configure the yolk accordingly.
 
-
-## Credits
-
-This egg was originally created by [Runemaster580](mailto:runemaster580@gmail.com) and has been modified to improve functionality and implement the new official FTB API.

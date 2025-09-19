@@ -6,7 +6,7 @@
     },
     "exported_at": "2025-09-19T13:34:51+00:00",
     "name": "FTB",
-    "author": "m.patecky@cesp-server.de",
+    "author": "runemaster580@gmail.com",
     "uuid": "283ef0f7-dae7-4621-8056-9496864727bc",
     "description": "Deploy FTB modpack servers using the official FTB API. Supports installation by modpack name/version or direct API IDs. See README.md for detailed examples and configuration options.",
     "tags": [],

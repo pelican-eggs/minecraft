@@ -1,0 +1,79 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
+    "meta": {
+        "version": "PLCN_v2",
+        "update_url": null
+    },
+    "exported_at": "2025-09-19T13:34:51+00:00",
+    "name": "FTB",
+    "author": "runemaster580@gmail.com",
+    "uuid": "283ef0f7-dae7-4621-8056-9496864727bc",
+    "description": "Deploy FTB modpack servers using the official FTB API. Supports installation by modpack name/version or direct API IDs. See README.md for detailed examples and configuration options.",
+    "tags": [],
+    "features": ["eula", "java_version", "pid_limit"],
+    "docker_images": {
+        "Java 8": "ghcr.io/parkervcp/yolks:java_8",
+        "Java 11": "ghcr.io/parkervcp/yolks:java_11",
+        "Java 16": "ghcr.io/parkervcp/yolks:java_16",
+        "Java 17": "ghcr.io/parkervcp/yolks:java_17",
+        "Java 18": "ghcr.io/parkervcp/yolks:java_18",
+        "Java 21": "ghcr.io/parkervcp/yolks:java_21"
+    },
+    "file_denylist": [],
+    "startup": "java -Xms128M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true $( [[ ! -f unix_args.txt ]] && printf %s \"-jar start-server.jar\" || printf %s \"@unix_args.txt\" ) nogui",
+    "config": {
+        "files": "{\n    \"server.properties\": {\n        \"parser\": \"properties\",\n        \"find\": {\n            \"server-ip\": \"0.0.0.0\",\n            \"server-port\": \"{{server.allocations.default.port}}\",\n            \"query.port\": \"{{server.allocations.default.port}}\"\n        }\n    }\n}",
+        "startup": "{\n    \"done\": \")! For help, type \"\n}",
+        "logs": "{}",
+        "stop": "stop"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!/bin/bash\r\n# FTB Modpack Installation Script\r\n\r\nset -e\r\n\r\n#\r\nreadonly SERVERFILE_DIR=\"/mnt/server\"\r\nreadonly FTB_API_URL=\"https://api.feed-the-beast.com/v1/modpacks/public/modpack\"\r\n\r\n# Ensure server directory exists\r\nmkdir -p \"${SERVERFILE_DIR}\"\r\ncd \"${SERVERFILE_DIR}\"\r\n\r\necho \"Starting FTB modpack installation...\"\r\n\r\n# Install required dependencies\r\ninstall_dependencies() {\r\n    echo \"Installing dependencies...\"\r\n    apt-get update -qq\r\n    apt-get install -y curl jq\r\n}\r\n\r\n# URL encode function for search terms\r\nurl_encode() {\r\n    local string=\"${1// /%20}\"\r\n    echo \"$string\"\r\n}\r\n\r\n# Resolve modpack ID from search term\r\nresolve_modpack_id() {\r\n    if [[ -z \"${FTB_MODPACK_ID}\" && -n \"${FTB_SEARCH_TERM}\" ]]; then\r\n        echo \"Resolving modpack ID from search term: ${FTB_SEARCH_TERM}\"\r\n        local encoded_term=$(url_encode \"$FTB_SEARCH_TERM\")\r\n        local search_url=\"https://api.modpacks.ch/public/modpack/search/8?term=${encoded_term}\"\r\n        \r\n        FTB_MODPACK_ID=$(curl -sSL \"$search_url\" | jq -r \".packs[0]\")\r\n        \r\n        if [[ \"${FTB_MODPACK_ID}\" == \"null\" || -z \"${FTB_MODPACK_ID}\" ]]; then\r\n            echo \"Error: Could not find modpack with search term '${FTB_SEARCH_TERM}'\"\r\n            exit 1\r\n        fi\r\n        \r\n        echo \"Found modpack ID: ${FTB_MODPACK_ID}\"\r\n    fi\r\n}\r\n\r\n# Resolve version ID from version string\r\nresolve_version_id() {\r\n    if [[ -z \"${FTB_MODPACK_VERSION_ID}\" && -n \"${FTB_VERSION_STRING}\" ]]; then\r\n        echo \"Resolving version ID from version string: ${FTB_VERSION_STRING}\"\r\n        \r\n        local api_url=\"${FTB_API_URL}/${FTB_MODPACK_ID}\"\r\n        local api_data=$(curl -sSL \"$api_url\" 2>/dev/null || echo \"null\")\r\n        \r\n        if [[ \"$api_data\" != \"null\" ]] && echo \"$api_data\" | jq -e '.status == \"success\"' >/dev/null 2>&1; then\r\n            FTB_MODPACK_VERSION_ID=$(echo \"$api_data\" | jq -r --arg version \"${FTB_VERSION_STRING}\" '.versions[] | select(.name == $version) | .id')\r\n        fi\r\n        \r\n        if [[ \"${FTB_MODPACK_VERSION_ID}\" == \"null\" || -z \"${FTB_MODPACK_VERSION_ID}\" ]]; then\r\n            echo \"Error: Could not find version '${FTB_VERSION_STRING}' for modpack ID ${FTB_MODPACK_ID}\"\r\n            exit 1\r\n        fi\r\n        \r\n        echo \"Found version ID: ${FTB_MODPACK_VERSION_ID}\"\r\n    fi\r\n}\r\n\r\n# Download and execute modpack installer\r\ninstall_modpack() {\r\n    local installer_arch=$([ \"$(uname -m)\" == \"x86_64\" ] && echo \"linux\" || echo \"arm/linux\")\r\n    \r\n    echo \"Installing modpack...\"\r\n    echo \"Modpack ID: ${FTB_MODPACK_ID}\"\r\n    echo \"Version ID: ${FTB_MODPACK_VERSION_ID}\"\r\n    echo \"Architecture: ${installer_arch}\"\r\n    \r\n    # Clean up old forge/neoforge files\r\n    rm -rf libraries/net/minecraftforge/forge\r\n    rm -rf libraries/net/neoforged/forge\r\n    rm -f unix_args.txt\r\n    \r\n    # Download and run installer using FTB API\r\n    local api_url=\"${FTB_API_URL}/${FTB_MODPACK_ID}/${FTB_MODPACK_VERSION_ID}/server/${installer_arch}\"\r\n    local http_code=$(curl -o /dev/null -s -w \"%{http_code}\" \"$api_url\")\r\n    \r\n    if [[ \"$http_code\" == \"200\" ]]; then\r\n        echo \"Downloading installer from FTB API\"\r\n        curl -L \"$api_url\" --output serversetup\r\n        chmod +x ./serversetup\r\n        ./serversetup -pack \"${FTB_MODPACK_ID}\" -version \"${FTB_MODPACK_VERSION_ID}\" -auto -force\r\n    else\r\n        echo \"Error: FTB API returned HTTP $http_code for installer download\"\r\n        echo \"URL: $api_url\"\r\n        exit 1\r\n    fi\r\n}\r\n\r\n# Setup startup files and symlinks for Pelican Panel startup command\r\nsetup_startup_files() {\r\n    echo \"Setting up startup files...\"\r\n    \r\n    # Create symlinks for unix_args.txt (priority order)\r\n    for path in \"libraries/net/minecraftforge/forge/*/unix_args.txt\" \\\r\n                \"libraries/net/neoforged/neoforge/*/unix_args.txt\" \\\r\n                \"libraries/net/fabricmc/fabric-loader/*/unix_args.txt\"; do\r\n        if compgen -G \"$path\" >/dev/null; then\r\n            ln -sf $path unix_args.txt\r\n            break\r\n        fi\r\n    done\r\n    \r\n    # Move modloader jar to standard name (priority order)\r\n    for pattern in \"forge-*.jar\" \"neoforge-*.jar\" \"fabric-*.jar\"; do\r\n        if compgen -G \"$pattern\" >/dev/null; then\r\n            mv $pattern start-server.jar\r\n            break\r\n        fi\r\n    done\r\n}\r\n\r\n# Clean up installation files\r\ncleanup_installation() {\r\n    echo \"Cleaning up installation files...\"\r\n    rm -f serversetup run.bat\r\n}\r\n\r\n# Main installation flow\r\nmain() {\r\n    echo \"=== FTB Modpack Installation ===\"\r\n    echo \"Modpack ID: ${FTB_MODPACK_ID:-'(to be resolved)'}\"\r\n    echo \"Version ID: ${FTB_MODPACK_VERSION_ID:-'(to be resolved)'}\"\r\n    echo \"Search Term: ${FTB_SEARCH_TERM:-'(not set)'}\"\r\n    echo \"Version String: ${FTB_VERSION_STRING:-'(not set)'}\"\r\n    echo \"================================\"\r\n    \r\n    install_dependencies\r\n    resolve_modpack_id\r\n    resolve_version_id\r\n    install_modpack\r\n    setup_startup_files\r\n    cleanup_installation\r\n    \r\n    echo \"=== Installation Complete ===\"\r\n}\r\n\r\n# Execute main function\r\nmain",
+            "container": "openjdk:8-jdk-slim",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "FTB ModPack Version ID",
+            "description": "The numeric version ID from the FTB API. Required if not using version string method.",
+            "env_variable": "FTB_MODPACK_VERSION_ID",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": ["nullable", "integer"],
+            "sort": 2
+        },
+        {
+            "name": "FTB Modpack ID",
+            "description": "The numeric modpack ID from the FTB API. Required if not using search term method.",
+            "env_variable": "FTB_MODPACK_ID",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": ["nullable", "integer"],
+            "sort": 1
+        },
+        {
+            "name": "FTB Pack Search Term",
+            "description": "The modpack name to search for (minimum 4 characters). Recommended method.",
+            "env_variable": "FTB_SEARCH_TERM",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": ["nullable", "string"],
+            "sort": 4
+        },
+        {
+            "name": "FTB Pack Version String",
+            "description": "The exact version string of the modpack (e.g., \"2.12.2\").",
+            "env_variable": "FTB_VERSION_STRING",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": ["nullable", "string"],
+            "sort": 3
+        }
+    ]
+}

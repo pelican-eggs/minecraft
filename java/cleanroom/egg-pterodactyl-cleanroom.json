@@ -1,0 +1,59 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2025-06-11T05:56:00+00:00",
+    "name": "Cleanroom",
+    "author": "salad@bysalad.studio",
+    "description": "Minecraft Cleanroom Server for 1.12.2. Minecraft Cleanroom is a modified Forge 1.12.2 Version to keep Legacy Mods alive\"",
+    "features": [
+        "eula",
+        "java_version",
+        "pid_limit"
+    ],
+    "docker_images": {
+        "GraalVM 24": "ghcr.io\/rikodev\/pterodactyl-graalvm:24-JDK",
+        "GraalVM 23": "ghcr.io\/rikodev\/pterodactyl-graalvm:23-JDK",
+        "GraalVM 22": "ghcr.io\/rikodev\/pterodactyl-graalvm:22-JDK",
+        "GraalVM 21": "ghcr.io\/rikodev\/pterodactyl-graalvm:21-JDK"
+    },
+    "file_denylist": [],
+    "startup": "java -Xms128M -Xmx$[{{SERVER_MEMORY}}-1024]M -server -XX:+UnlockExperimentalVMOptions -XX:+AlwaysPreTouch -XX:+DisableExplicitGC -XX:+UseStringDeduplication -XX:+UseZGC -XX:+ZGenerational -Dfml.readTimeout=90 -Dfml.queryResult=confirm -jar {{SERVER_JARFILE}}",
+    "config": {
+        "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-ip\": \"0.0.0.0\",\r\n            \"server-port\": \"{{server.build.default.port}}\",\r\n            \"query.port\": \"{{server.build.default.port}}\"\r\n        }\r\n    }\r\n}",
+        "startup": "{\r\n    \"done\": \")! For help, type \",\r\n    \"userInteraction\": [\r\n        \"Go to eula.txt for more info.\"\r\n    ]\r\n}",
+        "logs": "{\r\n    \"custom\": false,\r\n    \"location\": \"logs\/latest.log\"\r\n}",
+        "stop": "stop"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n# Pterodactyl Installation Script for Cleanroom 1.12.2 ONLY\r\n# Uses GitHub redirect to resolve 'latest' version.\r\n\r\napt update\r\napt install -y curl\r\n\r\nif [[ ! -d \/mnt\/server ]]; then\r\n  mkdir \/mnt\/server\r\nfi\r\n\r\ncd \/mnt\/server\r\n\r\nLOADER_VER=\"${CLEANROOM_VERSION}\"\r\n\r\nif [ \"${LOADER_VER}\" == \"latest\" ]; then\r\n    echo \"Finding latest release from GitHub redirect...\"\r\n    # Get the final URL after redirection and extract the tag name (the last part of the URL)\r\n    LATEST_TAG=$(basename \"$(curl -L -s -o \/dev\/null -w '%{url_effective}' https:\/\/github.com\/CleanroomMC\/Cleanroom\/releases\/latest)\")\r\n    \r\n    if [ -z \"${LATEST_TAG}\" ] || [ \"${LATEST_TAG}\" == \"latest\" ]; then\r\n        echo \"!!! Could not automatically find the latest version from GitHub redirect. Please specify a version manually. !!!\"\r\n        exit 1\r\n    fi\r\n    \r\n    LOADER_VER=\"${LATEST_TAG}\"\r\nfi\r\n\r\necho \"Installing Cleanroom Version: ${LOADER_VER}\"\r\n\r\nSOURCE_URL=\"https:\/\/github.com\/CleanroomMC\/Cleanroom\/releases\/download\/${LOADER_VER}\/cleanroom-${LOADER_VER}-installer.jar\"\r\n\r\necho \"Downloading from: ${SOURCE_URL}\"\r\n\r\nif ! curl -L -o installer.jar \"${SOURCE_URL}\"; then\r\n    echo \"!!! Download failed. Please check the Cleanroom Version number and ensure it is correct. !!!\"\r\n    exit 1\r\nfi\r\n\r\nif [ ! -f installer.jar ]; then\r\n    echo \"!!! Download failed, installer.jar not found. !!!\"\r\n    exit 1\r\nfi\r\n\r\necho \"Running installer...\"\r\njava -jar installer.jar --installServer\r\n\r\nrm -f installer.jar\r\n\r\nINSTALLED_JAR=\"cleanroom-${LOADER_VER}.jar\"\r\n\r\nif [ -f \"${INSTALLED_JAR}\" ]; then\r\n    echo \"Found installed jar: ${INSTALLED_JAR}, moving to ${SERVER_JARFILE}\"\r\n    mv \"${INSTALLED_JAR}\" \"${SERVER_JARFILE}\"\r\nelse\r\n    echo \"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\"\r\n    echo \"ERROR: The expected server jar (${INSTALLED_JAR}) was not found after installation.\"\r\n    echo \"The installation may have failed, or the installer created a file with a different name.\"\r\n    echo \"This can happen if the version in the Egg Variable does not match the installer's output.\"\r\n    echo \"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\"\r\n    exit 1\r\nfi\r\n\r\necho \"Installation complete.\"",
+            "container": "openjdk:8-jdk-slim",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Server Jar File",
+            "description": "The name of the Jarfile to use for running the server.",
+            "env_variable": "SERVER_JARFILE",
+            "default_value": "server.jar",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:40",
+            "field_type": "text"
+        },
+        {
+            "name": "Cleanroom Version",
+            "description": "The exact version of Cleanroom to install. Set to 'latest' to automatically get the newest release.",
+            "env_variable": "CLEANROOM_VERSION",
+            "default_value": "latest",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:32",
+            "field_type": "text"
+        }
+    ]
+}

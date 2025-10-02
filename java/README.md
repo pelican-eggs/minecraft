@@ -42,9 +42,14 @@ A generic service to pull forge mod packs from the curseforge site.
 [NeoForge Website](https://neoforged.net)
 A fork of Minecraft Forge that supports Minecraft versions 1.20.1 and newer.
 
-## Glowstone 
+### Glowstone 
 [Glowstone](https://glowstone.net/)
 Glowstone is an open-source replacement for CraftBukkit, Spigot, and Paper.
+
+### [Greg Tech New Horizons](gregtechnewhorizons)
+
+[GT: New Horizons](https://www.gtnewhorizons.com/)
+A mod pack that has been in development for a long time, renown for the difficulty of the mod.
 
 ### [Magma](magma)
 

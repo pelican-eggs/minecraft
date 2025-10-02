@@ -1,0 +1,43 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2025-01-28T19:26:04+00:00",
+    "name": "GTNH",
+    "author": "aa.rayner@outlook.com",
+    "description": "You are looking at a big progressive kitchensink pack for Minecraft 1.7.10 balanced around the mod GregTech. Over 9 years of developement (and still going) have formed a balance and refinement that only a handful of packs can keep up with. We are talking about thousands of recipe tweaks, a massive questbook with custom reward system, unique world generation, custom mods coded for the pack, custom Thauminomicon pages, and many more.",
+    "features": null,
+    "docker_images": {
+        "ghcr.io\/parkervcp\/yolks:java_21": "ghcr.io\/parkervcp\/yolks:java_21",
+        "ghcr.io\/parkervcp\/yolks:java_17": "ghcr.io\/parkervcp\/yolks:java_17"
+    },
+    "file_denylist": [],
+    "startup": "java -Xms6G -Dfml.readTimeout=180 @java9args.txt -jar lwjgl3ify-forgePatches.jar nogui",
+    "config": {
+        "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-ip\": \"0.0.0.0\",\r\n            \"server-port\": \"{{server.build.default.port}}\",\r\n            \"query.port\": \"{{server.build.default.port}}\"\r\n        }\r\n    }\r\n}",
+        "startup": "{\r\n    \"done\": \")! For help, type \"\r\n}",
+        "logs": "{}",
+        "stop": "stop"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/ash\r\n# Forge Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\n\r\nmkdir -p \/mnt\/server\r\n\r\ncd \/mnt\/server\r\n\r\ncurl -sS http:\/\/downloads.gtnewhorizons.com\/ServerPacks\/GT_New_Horizons_${MODPACK_VERSION}_Server_Java_17-21.zip -o GT_New_Horizons_${MODPACK_VERSION}_Server_Java_17-21.zip\r\n\r\nunzip -o GT_New_Horizons_${MODPACK_VERSION}_Server_Java_17-21.zip\r\n\r\nrm -rf GT_New_Horizons_${MODPACK_VERSION}_Server_Java_17-21.zip\r\n\r\nrm startserver-java9.bat\r\n\r\nrm startserver-java9.sh\r\n\r\n\r\nif [ ! -f server.properties ]; then\r\n    echo -e \"Downloading MC server.properties\"\r\n    curl -o server.properties https:\/\/raw.githubusercontent.com\/parkervcp\/eggs\/master\/game_eggs\/minecraft\/java\/server.properties\r\nfi\r\n\r\necho \"eula=true\" > eula.txt\r\n\r\necho \"done\"",
+            "container": "ghcr.io\/parkervcp\/installers:alpine",
+            "entrypoint": "ash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Modpack Version",
+            "description": "Version of the modpack to use",
+            "env_variable": "MODPACK_VERSION",
+            "default_value": "2.7.2",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:20",
+            "field_type": "text"
+        }
+    ]
+}

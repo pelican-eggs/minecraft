@@ -4,7 +4,7 @@ It’s a game about placing blocks and going on adventures
 
 It’s set in infinitely-generated worlds of wide open terrain - icy mountains, swampy bayous, vast pastures and much more - filled with secrets, wonders and peril!
 
-## [Bedrock](bedrock) Servers for Bedrock Minecraft (Windows 10, mobile, console)
+## [Bedrock](bedrock) Servers for Bedrock Minecraft (Windows 10, Windows 11, mobile, console)
 
 * [Bedrock](bedrock/bedrock)
 * [gomint](bedrock/gomint)
@@ -25,6 +25,7 @@ It’s set in infinitely-generated worlds of wide open terrain - icy mountains, 
 * [Limbo](java/limbo)
 * [Krypton](java/krypton)
 * [Magma](java/magma)
+* [Ketting](java/ketting)
 * [Modrinth](java/modrinth)
 * [Mohist](java/mohist)
 * [NanoLimbo](java/nanolimbo)

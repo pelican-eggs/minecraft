@@ -1,0 +1,77 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
+    "meta": {
+        "version": "PLCN_v1",
+        "update_url": "https:\/\/raw.githubusercontent.com\/pelican-eggs\/minecraft\/refs\/heads\/main\/java\/autoplug\/egg-autoplug.json"
+    },
+    "exported_at": "2024-09-21T10:42:45+02:00",
+    "name": "AutoPlug",
+    "author": "minionguyjpro@gmail.com",
+    "uuid": "bb248d17-93e4-4ccc-b085-a40903d29c58",
+    "description": "AutoPlug-Client is a standalone, executable Java program that has multiple execution modes: Server-Wrapper, CLI-Tool, Background-Service. Its main purpose is to automate updating of any sofware related to servers and simplify server maintenance in general. While all server types are compatible (including Steam game servers), the majority of its features cater specifically to Minecraft, which is renowned as the world's top-selling game and boasts an exceptionally extensive modding community.",
+    "features": null,
+    "docker_images": {
+        "Java 21": "ghcr.io\/pterodactyl\/yolks:java_21",
+        "Java 16": "ghcr.io\/pterodactyl\/yolks:java_16",
+        "Java 11": "ghcr.io\/pterodactyl\/yolks:java_11",
+        "Java 8": "ghcr.io\/pterodactyl\/yolks:java_8"
+    },
+    "file_denylist": [],
+    "startup": "java -Xmx128M -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}}",
+    "config": {
+        "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-ip\": \"0.0.0.0\",\r\n            \"server-port\": \"{{server.allocations.default.port}}\",\r\n            \"query.port\": \"{{server.allocations.default.port}}\"\r\n        }\r\n    }\r\n}",
+        "startup": "{\r\n    \"done\": \")! For help, type \"\r\n}",
+        "logs": "{}",
+        "stop": ".stb"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/ash\r\n# AutoPlug Client Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\n\r\nmkdir -p \/mnt\/server\r\ncd \/mnt\/server\r\n\r\nDOWNLOAD_URL=\"https:\/\/github.com\/Osiris-Team\/AutoPlug-Releases\/raw\/master\/stable-builds\/AutoPlug-Client.jar\"\r\n\r\necho -e \"running: curl -L -o ${SERVER_JARFILE} $DOWNLOAD_URL\"\r\ncurl -L -o \"${SERVER_JARFILE}\" \"$DOWNLOAD_URL\"\r\n\r\necho -e \"Install Complete\"",
+            "container": "ghcr.io\/pterodactyl\/installers:alpine",
+            "entrypoint": "ash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Minecraft Version",
+            "description": "The version of Minecraft to use along with the chosen server software",
+            "env_variable": "MINECRAFT_VERSION",
+            "default_value": "latest",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "required",
+                "alpha_num",
+                "between:1,6"
+            ],
+            "sort": 1
+        },
+        {
+            "name": "Server Software",
+            "description": "The server software to use along with the AutoPlug client (possible values are: paper, waterfall, travertine, velocity, purpur, fabric, spigot, bungeecord, patina, pufferfish, mirai, pearl, windspigot).",
+            "env_variable": "SERVER_SOFTWARE",
+            "default_value": "paper",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "required",
+                "string",
+                "max:10"
+            ],
+            "sort": 2
+        },
+        {
+            "name": "Server Jar File",
+            "description": "The name of the server jarfile to run the server with.",
+            "env_variable": "SERVER_JARFILE",
+            "default_value": "server.jar",
+            "user_viewable": false,
+            "user_editable": false,
+            "rules": [
+                "required",
+                "regex:\/^([\\w\\d._-]+)(\\.jar)$\/"
+            ],
+            "sort": 3
+        }
+    ]
+}

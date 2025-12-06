@@ -36,7 +36,7 @@
         {
             "sort": 1,
             "name": "Version to install",
-            "description": "Latest PocketMine version to install.",
+            "description": "PocketMine version and PHP version to install.",
             "env_variable": "VERSION",
             "default_value": "PM5PHP83",
             "user_viewable": true,

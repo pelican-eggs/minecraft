@@ -1,34 +1,38 @@
 {
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
-        "version": "PTDL_v2",
+        "version": "PLCN_v3",
         "update_url": null
     },
-    "exported_at": "2024-06-01T19:39:59+00:00",
+    "exported_at": "2025-12-19T20:56:18+00:00",
     "name": "Quilt",
     "author": "diedyesterdaywashere@gmail.com",
     "uuid": "dff33655-6e6a-4430-accf-e5aea04c2912",
     "description": "The Quilt project is an open-source, community-driven modding toolchain designed primarily for Minecraft. By focusing on speed, ease of use and modularity, Quilt aims to provide a sleek and modern modding toolchain with an open ecosystem.",
+    "image": null,
+    "tags": [],
     "features": null,
     "docker_images": {
-        "Java 17": "ghcr.io\/pterodactyl\/yolks:java_17",
-        "Java 8": "ghcr.io\/pterodactyl\/yolks:java_8",
-        "Java 11": "ghcr.io\/pterodactyl\/yolks:java_11",
-        "Java 16": "ghcr.io\/pterodactyl\/yolks:java_16",
-        "Java 18": "ghcr.io\/pterodactyl\/yolks:java_18"
+        "Java 17": "ghcr.io/pterodactyl/yolks:java_17",
+        "Java 8": "ghcr.io/pterodactyl/yolks:java_8",
+        "Java 11": "ghcr.io/pterodactyl/yolks:java_11",
+        "Java 16": "ghcr.io/pterodactyl/yolks:java_16",
+        "Java 18": "ghcr.io/pterodactyl/yolks:java_18"
     },
     "file_denylist": [],
-    "startup": "java -Xms128M -XX:MaxRAMPercentage=95.0 -jar {{SERVER_JARFILE}} nogui",
+    "startup_commands": {
+        "Default": "java -Xms128M -XX:MaxRAMPercentage=95.0 -jar {{SERVER_JARFILE}} nogui"
+    },
     "config": {
-        "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-ip\": \"0.0.0.0\",\r\n            \"enable-query\": \"true\",\r\n            \"server-port\": \"{{server.build.default.port}}\"\r\n        }\r\n    }\r\n}",
-        "startup": "{\r\n    \"done\": \")! For help, type \",\r\n    \"userInteraction\": [\r\n        \"Go to eula.txt for more info.\"\r\n    ]\r\n}",
-        "logs": "{\r\n    \"custom\": false,\r\n    \"location\": \"logs\/latest.log\"\r\n}",
+        "files": "{\n    \"server.properties\": {\n        \"parser\": \"properties\",\n        \"find\": {\n            \"server-ip\": \"0.0.0.0\",\n            \"enable-query\": \"true\",\n            \"server-port\": \"{{server.allocations.default.port}}\"\n        }\n    }\n}",
+        "startup": "{\n    \"done\": \")! For help, type \",\n    \"userInteraction\": [\n        \"Go to eula.txt for more info.\"\n    ]\n}",
+        "logs": "{\n    \"custom\": false,\n    \"location\": \"logs\\/latest.log\"\n}",
         "stop": "stop"
     },
     "scripts": {
         "installation": {
-            "script": "#!\/bin\/bash\r\n# Quilt Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\napt update\r\napt install -y wget\r\nmkdir -p \/mnt\/server\r\ncd \/mnt\/server\r\n\r\nwget -O quilt.jar https:\/\/quiltmc.org\/api\/v1\/download-latest-installer\/java-universal\r\njava -jar quilt.jar \\\r\n  install server $MC_VERSION \\\r\n  --download-server\r\ncd \/mnt\/server\/server\r\nmv * \/mnt\/server\r\ncd ..\r\nrm quilt.jar\r\nrmdir \/mnt\/server\/server\r\nmv server.jar minecraft.jar\r\nmv quilt-server-launch.jar server.jar\r\necho \"serverJar=minecraft.jar\" > quilt-server-launcher.properties\r\necho -e \"Server is Ready!\"",
-            "container": "ghcr.io\/pelican-eggs\/installers:java_21",
+            "script": "#!/bin/bash\r\n# Quilt Installation Script\r\n#\r\n# Server Files: /mnt/server\r\napt update\r\napt install -y wget\r\nmkdir -p /mnt/server\r\ncd /mnt/server\r\n\r\nwget -O quilt.jar https://quiltmc.org/api/v1/download-latest-installer/java-universal\r\njava -jar quilt.jar \\\r\n  install server $MC_VERSION \\\r\n  --download-server\r\ncd /mnt/server/server\r\nmv * /mnt/server\r\ncd ..\r\nrm quilt.jar\r\nrmdir /mnt/server/server\r\nmv server.jar minecraft.jar\r\nmv quilt-server-launch.jar server.jar\r\necho \"serverJar=minecraft.jar\" > quilt-server-launcher.properties\r\necho -e \"Server is Ready!\"",
+            "container": "ghcr.io/pelican-eggs/installers:java_21",
             "entrypoint": "bash"
         }
     },
@@ -40,9 +44,12 @@
             "default_value": "1.20.2",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "required|string|between:3,15",
-            "sort": null,
-            "field_type": "text"
+            "rules": [
+                "required",
+                "string",
+                "between:3,15"
+            ],
+            "sort": null
         },
         {
             "name": "Server Jar File",
@@ -51,9 +58,11 @@
             "default_value": "server.jar",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "required|regex:\/^([\\w\\d._-]+)(\\.jar)$\/",
-            "sort": null,
-            "field_type": "text"
+            "rules": [
+                "required",
+                "regex:/^([\\w\\d._-]+)(\\.jar)$/"
+            ],
+            "sort": null
         }
     ]
 }

@@ -1,8 +1,10 @@
 {
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
         "version": "PLCN_v3",
-        "update_url": null
+        "update_url": "https://raw.githubusercontent.com/GamerDuck123/AlwaysAuth/refs/heads/master/egg-always-auth.json"
     },
+    "exported_at": "2025-12-23T05:14:23+00:00",
     "name": "Always Auth",
     "author": "contact@quacks.media",
     "uuid": "3885c37c-f1da-4979-860d-4c200a8ca564",
@@ -19,7 +21,7 @@
         "Default": "java -Xms128M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true -jar {{JARFILE}}"
     },
     "config": {
-        "files": "{\n    \"data/config.properties\": {\n        \"parser\": \"properties\",\n        \"find\": {\n            \"server-ip\": \"127.0.0.1\",\n            \"server-port\": \"{{server.allocations.default.port}}\"\n        }\n    }\n}",
+        "files": "{\n    \"data\\/config.properties\": {\n        \"parser\": \"properties\",\n        \"find\": {\n            \"server-ip\": \"127.0.0.1\",\n            \"server-port\": \"{{server.allocations.default.port}}\"\n        }\n    }\n}",
         "startup": "{\n    \"done\": \")! For help, type \"\n}",
         "logs": "[]",
         "stop": "stop"

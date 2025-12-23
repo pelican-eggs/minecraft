@@ -4,7 +4,7 @@
         "version": "PLCN_v3",
         "update_url": "https://raw.githubusercontent.com/GamerDuck123/AlwaysAuth/refs/heads/master/egg-always-auth.json"
     },
-    "exported_at": "2025-12-23T05:14:23+00:00",
+    "exported_at": "2025-12-23T05:26:33+00:00",
     "name": "Always Auth",
     "author": "contact@quacks.media",
     "uuid": "3885c37c-f1da-4979-860d-4c200a8ca564",
@@ -18,7 +18,7 @@
     },
     "file_denylist": [],
     "startup_commands": {
-        "Default": "java -Xms128M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true -jar {{JARFILE}}"
+        "Default": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true -jar {{JARFILE}}"
     },
     "config": {
         "files": "{\n    \"data\\/config.properties\": {\n        \"parser\": \"properties\",\n        \"find\": {\n            \"server-ip\": \"127.0.0.1\",\n            \"server-port\": \"{{server.allocations.default.port}}\"\n        }\n    }\n}",
@@ -52,7 +52,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": [],
-            "sort": 3
+            "sort": 2
         }
     ]
 }

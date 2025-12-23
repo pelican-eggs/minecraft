@@ -1,10 +1,10 @@
-# Velocity Minecraft Proxy
-Velocity is a Minecraft server proxy with unparalleled server support, scalability, and flexibility.
+# AlwaysAuth Authorization Proxy
+AlwaysAuth is a proxy for the Mojang authorization servers that ensures your server always stays online
 
 ## Server Ports
-The minecraft server requires a single port for access (default 25565) but plugins may require extra ports to enabled for the server.
+The authorization server requires a single port for access (default 8795) for the Minecraft server to connect to.
 
 
 | Port  | default |
 |-------|---------|
-| Game  | 25565   |
+| Game  | 8795    |

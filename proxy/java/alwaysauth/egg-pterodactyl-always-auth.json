@@ -1,0 +1,52 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2025-12-23T05:26:33+00:00",
+    "name": "Always Auth",
+    "author": "contact@quacks.media",
+    "description": "A simple proxy that sits between your server and Mojang's auth services that ensures even when they're offline, you stay online!",
+    "features": null,
+    "docker_images": {
+        "Java 21": "ghcr.io\/parkervcp\/yolks:java_21"
+    },
+    "file_denylist": [],
+    "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true -jar {{JARFILE}}",
+    "config": {
+        "files": "{\n    \"data\\\/config.properties\": {\n        \"parser\": \"properties\",\n        \"find\": {\n            \"server-ip\": \"127.0.0.1\",\n            \"server-port\": \"{{server.build.default.port}}\"\n        }\n    }\n}",
+        "startup": "{\n    \"done\": \")! For help, type \"\n}",
+        "logs": "[]",
+        "stop": "stop"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\n\necho \"======================================\"\necho \" AlwaysAuth Installer\"\necho \"======================================\"\n\nmkdir -p \/mnt\/server\ncd \/mnt\/server\n\nJAR_NAME=\"AlwaysAuth.jar\"\n\ncommand -v curl >\/dev\/null 2>&1 || {\n    echo \"ERROR: curl is required.\"\n    exit 1\n}\n\n# --------------------------------------\n# Resolve version\n# --------------------------------------\n\nif [ \"$VERSION\" = \"latest\" ]; then\n    echo \"Resolving latest standalone version...\"\n\n    STANDALONE_VERSION=\"$(curl -fsSL \"https:\/\/raw.githubusercontent.com\/GamerDuck123\/AlwaysAuth\/refs\/heads\/master\/standalone-latest.txt\" | tr -d '[:space:]')\"\n\n    if [ -z \"$STANDALONE_VERSION\" ]; then\n        echo \"ERROR: standalone-latest.txt is empty.\"\n        exit 1\n    fi\nelse\n    echo \"Using user-specified version: $VERSION\"\n    STANDALONE_VERSION=\"$VERSION\"\nfi\n\necho \"Resolved version: $STANDALONE_VERSION\"\n\n# --------------------------------------\n# Download\n# --------------------------------------\n\nDOWNLOAD_URL=\"https:\/\/github.com\/GamerDuck123\/AlwaysAuth\/releases\/download\/v${STANDALONE_VERSION}\/AlwaysAuth-standalone-${STANDALONE_VERSION}.jar\"\n\necho \"Download URL: $DOWNLOAD_URL\"\necho \"Downloading AlwaysAuth...\"\n\ncurl -fL \"$DOWNLOAD_URL\" -o \"$JAR_NAME\"\n\nif [ ! -f \"$JAR_NAME\" ]; then\n    echo \"ERROR: Download failed.\"\n    exit 1\nfi\n\necho \"Install completed successfully!\"\necho \"======================================\"\nexit 0\n",
+            "container": "ghcr.io\/pelican-eggs\/installers:debian",
+            "entrypoint": "\/bin\/bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "JARFILE",
+            "description": "The name of the jar to use.",
+            "env_variable": "JARFILE",
+            "default_value": "AlwaysAuth.jar",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "",
+            "field_type": "text"
+        },
+        {
+            "name": "VERSION",
+            "description": "The version of AlwaysAuth to install. Use \"latest\" to install the latest version.",
+            "env_variable": "VERSION",
+            "default_value": "latest",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "",
+            "field_type": "text"
+        }
+    ]
+}

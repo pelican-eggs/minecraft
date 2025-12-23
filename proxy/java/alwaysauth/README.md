@@ -7,4 +7,4 @@ The authorization server requires a single port for access (default 8795) for th
 
 | Port  | default |
 |-------|---------|
-| Game  | 8795    |
+| Authorization | 8795    |

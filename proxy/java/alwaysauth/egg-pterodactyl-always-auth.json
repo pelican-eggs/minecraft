@@ -4,7 +4,7 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2025-12-23T05:26:33+00:00",
+    "exported_at": "2025-12-24T22:04:11+00:00",
     "name": "Always Auth",
     "author": "contact@quacks.media",
     "description": "A simple proxy that sits between your server and Mojang's auth services that ensures even when they're offline, you stay online!",
@@ -15,7 +15,7 @@
     "file_denylist": [],
     "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true -jar {{JARFILE}}",
     "config": {
-        "files": "{\n    \"data\\\/config.properties\": {\n        \"parser\": \"properties\",\n        \"find\": {\n            \"server-ip\": \"127.0.0.1\",\n            \"server-port\": \"{{server.build.default.port}}\"\n        }\n    }\n}",
+        "files": "{\n    \"data\\\/config.properties\": {\n        \"parser\": \"properties\",\n        \"find\": {\n            \"server-ip\": \"0.0.0.0\",\n            \"server-port\": \"{{server.build.default.port}}\"\n        }\n    }\n}",
         "startup": "{\n    \"done\": \")! For help, type \"\n}",
         "logs": "[]",
         "stop": "stop"

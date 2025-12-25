@@ -26,7 +26,7 @@
     },
     "scripts": {
         "installation": {
-            "container": "eclipse-temurin:18-jdk-jammy",
+            "container": "ghcr.io\/pelican-eggs\/installers:java_21",
             "entrypoint": "bash",
             "script": "#!/bin/bash\r\n# Quilt Installation Script\r\n#\r\n# Server Files: /mnt/server\r\napt update\r\napt install -y wget\r\nmkdir -p /mnt/server\r\ncd /mnt/server\r\n\r\nwget -O quilt.jar https://quiltmc.org/api/v1/download-latest-installer/java-universal\r\njava -jar quilt.jar \\\r\n  install server $MC_VERSION \\\r\n  --download-server\r\ncd /mnt/server/server\r\nmv * /mnt/server\r\ncd ..\r\nrm quilt.jar\r\nrmdir /mnt/server/server\r\nmv server.jar minecraft.jar\r\nmv quilt-server-launch.jar server.jar\r\necho \"serverJar=minecraft.jar\" \u003e quilt-server-launcher.properties\r\necho -e \"Server is Ready!\""
         }

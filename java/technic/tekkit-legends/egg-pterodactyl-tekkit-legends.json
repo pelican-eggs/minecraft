@@ -26,7 +26,7 @@
     },
     "scripts": {
         "installation": {
-            "container": "ghcr.io/parkervcp/installers:alpine",
+            "container": "ghcr.io\/parkervcp\/installers:alpine",
             "entrypoint": "ash",
             "script": "#!/bin/ash\r\n# Forge Installation Script\r\n#\r\n# Server Files: /mnt/server\r\n\r\ncd /mnt/server\r\n\r\ncurl -sS https://servers.technicpack.net/Technic/servers/tekkit-legends/Tekkit_Legends_Server_v$MODPACK_VERSION.zip -o TekkitLegends_$MODPACK_VERSION.zip\r\n\r\nunzip TekkitLegends_$MODPACK_VERSION.zip\r\n\r\nrm -rf TekkitLegends_$MODPACK_VERSION.zip\r\n\r\n## install end\r\necho \"-----------------------------------------\"\r\necho \"Installation completed...\"\r\necho \"-----------------------------------------\""
         }

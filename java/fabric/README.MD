@@ -6,7 +6,7 @@ Fabric is a modular, lightweight mod loader for Minecraft that supports various 
 
 ## Server Ports
 
-The fabric server requires a single port for access (default 25565) but mods may require extra ports to enabled for the server.
+The Fabric Minecraft server requires a single port for access (default 25565), but mods may require extra ports to be enabled for the server.
 
 | Port  | default |
 |-------|---------|

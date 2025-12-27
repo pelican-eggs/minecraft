@@ -4,7 +4,7 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2025-12-27T18:53:54+00:00",
+    "exported_at": "2025-12-27T19:47:45+00:00",
     "name": "Fabric",
     "author": "lovinoes@lovinoes.de",
     "description": "Fabric is a modular, lightweight mod loader for Minecraft that supports various APIs and languages. ",
@@ -24,7 +24,7 @@
     "file_denylist": [],
     "startup": "java -Xms128M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}}",
     "config": {
-        "files": "{\n    \"server.properties\": {\n        \"parser\": \"properties\",\n        \"find\": {\n            \"server-ip\": \"0.0.0.0\",\n            \"enable-query\": \"true\",\n            \"server-port\": \"{{server.build.default.port}}\",\n            \"query.port\": \"{{server.build.default.port}}\"\n        }\n    }\n}",
+        "files": "{\n    \"server.properties\": {\n        \"parser\": \"properties\",\n        \"find\": {\n            \"server-ip\": \"0.0.0.0\",\n            \"server-port\": \"{{server.build.default.port}}\",\n            \"query.port\": \"{{server.build.default.port}}\"\n        }\n    }\n}",
         "startup": "{\n    \"done\": \")! For help, type \"\n}",
         "logs": "{}",
         "stop": "stop"

@@ -4,7 +4,7 @@
         "version": "PLCN_v3",
         "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/main/java/fabric/egg-fabric.json"
     },
-    "exported_at": "2025-12-27T18:51:48+00:00",
+    "exported_at": "2025-12-27T19:49:14+00:00",
     "name": "Fabric",
     "author": "lovinoes@lovinoes.de",
     "uuid": "9eceac31-56da-483d-94bf-19a8d0665f40",
@@ -32,7 +32,7 @@
         "Default": "java -Xms128M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}}"
     },
     "config": {
-        "files": "{\n    \"server.properties\": {\n        \"parser\": \"properties\",\n        \"find\": {\n            \"server-ip\": \"0.0.0.0\",\n            \"enable-query\": \"true\",\n            \"server-port\": \"{{server.allocations.default.port}}\",\n            \"query.port\": \"{{server.allocations.default.port}}\"\n        }\n    }\n}",
+        "files": "{\n    \"server.properties\": {\n        \"parser\": \"properties\",\n        \"find\": {\n            \"server-ip\": \"0.0.0.0\",\n            \"server-port\": \"{{server.allocations.default.port}}\",\n            \"query.port\": \"{{server.allocations.default.port}}\"\n        }\n    }\n}",
         "startup": "{\n    \"done\": \")! For help, type \"\n}",
         "logs": "{}",
         "stop": "stop"

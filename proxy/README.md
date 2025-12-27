@@ -1,6 +1,7 @@
 # Minecraft Proxies
 
 * [Java](/java/)
+  * [AlwaysAuth](java/alwaysauth)
   * [Travertine](java/travertine)
   * [Velocity](/java/velocity)
   * [VIAaaS](/java/viaaas)

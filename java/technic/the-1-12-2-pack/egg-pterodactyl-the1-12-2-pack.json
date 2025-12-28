@@ -26,7 +26,7 @@
     },
     "scripts": {
         "installation": {
-            "container": "ghcr.io\/parkervcp\/installers:alpine",
+            "container": "ghcr.io\/pelican-eggs\/installers:alpine",
             "entrypoint": "ash",
             "script": "#!/bin/ash\r\n# Forge Installation Script\r\n#\r\n# Server Files: /mnt/server\r\n\r\ncd /mnt/server\r\n\r\ncurl -sS http://solder.endermedia.com/repository/downloads/the-1122-pack/the-1122-pack_$MODPACK_VERSION.zip -o the-1122-pack_$MODPACK_VERSION.zip\r\n\r\nunzip the-1122-pack_$MODPACK_VERSION.zip\r\n\r\nrm -rf the-1122-pack_$MODPACK_VERSION.zip\r\n\r\n## install end\r\necho \"-----------------------------------------\"\r\necho \"Installation completed...\"\r\necho \"-----------------------------------------\""
         }

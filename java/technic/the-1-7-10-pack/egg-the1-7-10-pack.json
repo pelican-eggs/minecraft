@@ -28,7 +28,7 @@
     "scripts": {
         "installation": {
             "script": "#!\/bin\/ash\r\n# Forge Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\n\r\ncd \/mnt\/server\r\n\r\ncurl -sS http:\/\/solder.endermedia.com\/repository\/downloads\/the-1710-pack\/the-1710-pack_$MODPACK_VERSION.zip -o the-1710-pack_$MODPACK_VERSION.zip\r\n\r\nunzip the-1710-pack_$MODPACK_VERSION.zip\r\n\r\nrm -rf the-1710-pack_$MODPACK_VERSION.zip\r\n\r\n## install end\r\necho \"-----------------------------------------\"\r\necho \"Installation completed...\"\r\necho \"-----------------------------------------\"",
-            "container": "ghcr.io\/parkervcp\/installers:alpine",
+            "container": "ghcr.io\/pelican-eggs\/installers:alpine",
             "entrypoint": "ash"
         }
     },

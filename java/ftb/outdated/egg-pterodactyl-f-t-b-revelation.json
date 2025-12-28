@@ -26,7 +26,7 @@
     },
     "scripts": {
         "installation": {
-            "container": "ghcr.io\/parkervcp\/installers:alpine",
+            "container": "ghcr.io\/pelican-eggs\/installers:alpine",
             "entrypoint": "ash",
             "script": "#!/bin/ash\r\n# Forge Installation Script\r\n#\r\n# Server Files: /mnt/server\r\n\r\nBASEURL=https://www.feed-the-beast.com/projects/ftb-revelation/files\r\nPATTERN=\"(projects\\/ftb-revelation\\/files\\/\\d{7,})\"\r\nID=`curl -sl ${BASEURL}| grep -A2 ${MODPACK_VERSION} | grep -oE \"${PATTERN}\"`\r\nSECONDURL=https://www.feed-the-beast.com/${ID}\r\nGOOD_ID=`curl -sl ${SECONDURL} | grep -B2 Server_${MODPACK_VERSION}.zip | grep -oE \"${PATTERN}\"`\r\n\r\nDL_URL=https://www.feed-the-beast.com/${GOOD_ID}/download\r\n\r\ncd /mnt/server\r\n\r\ncurl -L ${DL_URL} -o ftbrevelations-${MODPACK_VERSION}.zip\r\n\r\nunzip ftbrevelations-${MODPACK_VERSION}.zip\r\n\r\nrm -rf ftbrevelations-${MODPACK_VERSION}.zip\r\n\r\nsh ./FTBInstall.sh\r\n\r\n\r\n## install end\r\necho \"-----------------------------------------\"\r\necho \"Installation completed...\"\r\necho \"-----------------------------------------\""
         }

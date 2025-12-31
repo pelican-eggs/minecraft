@@ -25,7 +25,7 @@ An experimental Minecraft server implementation in Rust
 
 ## Forge Based
 
-### [Forge](forge/forge)
+### [Forge](forge/)
 
 [Forge MC Website](https://files.minecraftforge.net)
 This is a direct fork of the default forge service
@@ -170,6 +170,13 @@ The ancient power of Tekkits past return in this legendary pack!
 
 [Tekkit Classic Modpack Page](https://www.technicpack.net/modpack/tekkit.552560)
 The official Tekkit Classic modpack. Build factories, automate crafting!
+
+
+## [Vanilla](vanilla)
+
+## Vanilla
+[Vanilla](https://www.minecraft.net/en-us/download/server)
+Vanilla Minecraft server.
 
 ## [VanillaCord](vanillacord)
 

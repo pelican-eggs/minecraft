@@ -1,30 +1,31 @@
 {
-    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
     "meta": {
-        "update_url": null,
-        "version": "PTDL_v2"
+        "version": "PTDL_v2",
+        "update_url": null
     },
-    "exported_at": "2024-06-01T19:40:12+00:00",
-    "name": "SpongeVanilla",
-    "author": "parker@parkervcp.com",
-    "description": "SpongeVanilla is the implementation of the Sponge API on top of Vanilla Minecraft.",
+    "exported_at": "2025-12-31T12:59:35+00:00",
+    "name": "Sponge",
+    "author": "panel@example.com",
+    "description": "A community-driven open source Minecraft: Java Edition modding platform.",
     "features": [
         "eula",
         "java_version",
         "pid_limit"
     ],
     "docker_images": {
-        "Java 11": "ghcr.io/pterodactyl/yolks:java_11",
-        "Java 16": "ghcr.io/pterodactyl/yolks:java_16",
-        "Java 17": "ghcr.io/pterodactyl/yolks:java_17",
-        "Java 8": "ghcr.io/pterodactyl/yolks:java_8"
+        "Java 21": "ghcr.io\/pelican-eggs\/yolks:java_21",
+        "Java 17": "ghcr.io\/pelican-eggs\/yolks:java_17",
+        "Java 16": "ghcr.io\/pelican-eggs\/yolks:java_16",
+        "Java 11": "ghcr.io\/pelican-eggs\/yolks:java_11",
+        "Java 8": "ghcr.io\/pelican-eggs\/yolks:java_8"
     },
     "file_denylist": [],
-    "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar {{SERVER_JARFILE}}",
+    "startup": "java -Xms128M -XX:MaxRAMPercentage=95.0 -jar {{SERVER_JARFILE}}",
     "config": {
-        "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-ip\": \"0.0.0.0\",\r\n            \"server-port\": \"{{server.build.default.port}}\",\r\n            \"query.port\": \"{{server.build.default.port}}\"\r\n        }\r\n    }\r\n}",
-        "logs": "{}",
-        "startup": "{\r\n    \"done\": \")! For help, type \",\r\n    \"userInteraction\": [\r\n        \"Go to eula.txt for more info.\"\r\n    ]\r\n}",
+        "files": "{\n    \"server.properties\": {\n        \"parser\": \"properties\",\n        \"find\": {\n            \"server-ip\": \"\",\n            \"server-port\": \"{{server.build.default.port}}\",\n            \"query.port\": \"{{server.build.default.port}}\"\n        }\n    }\n}",
+        "startup": "{\n    \"done\": \")! For help, type \"\n}",
+        "logs": "[]",
         "stop": "stop"
     },
     "scripts": {
@@ -36,23 +37,43 @@
     },
     "variables": [
         {
-            "name": "SpongeVanilla Version",
-            "description": "Example 1.12.2-7.1.6\r\n\r\nIf the version fails it defaults to recommended",
-            "env_variable": "SV_VERSION",
-            "default_value": "recommended",
+            "name": "Forge\/Neoforge Version",
+            "description": "The modding api target version if set to `spongeforge` or `spongeneo`. Leave blank if using\n`spongevanilla`",
+            "env_variable": "FORGE_VERSION",
+            "default_value": "",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "required|string",
+            "rules": "string",
+            "field_type": "text"
+        },
+        {
+            "name": "Minecraft Version",
+            "description": "The version of Minecraft to target. Use \"latest\" to install the latest version. Go to Settings >\nReinstall Server to apply.",
+            "env_variable": "MINECRAFT_VERSION",
+            "default_value": "latest",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|between:3,15",
             "field_type": "text"
         },
         {
             "name": "Server Jar File",
-            "description": "The name of the Jarfile to use when running Mod.",
+            "description": "The name of the Jarfile to use when running Sponge.",
             "env_variable": "SERVER_JARFILE",
             "default_value": "server.jar",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "required|regex:/^([\\w\\d._-]+)(\\.jar)$/",
+            "rules": "required|regex:\/^([\\w\\d._-]+)(\\.jar)$\/",
+            "field_type": "text"
+        },
+        {
+            "name": "Sponge Type",
+            "description": "SpongeVanilla if you are only using Sponge plugins.\nSpongeForge when using Forge mods and Sponge plugins.\nSpongeNeo when using NeoForge mods and Sponge plugins.",
+            "env_variable": "SPONGE_TYPE",
+            "default_value": "spongevanilla",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|in:spongevanilla,spongeforge,spongeneo",
             "field_type": "text"
         }
     ]

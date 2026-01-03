@@ -26,7 +26,7 @@
     },
     "scripts": {
         "installation": {
-            "container": "ghcr.io/parkervcp/installers:alpine",
+            "container": "ghcr.io\/pelican-eggs\/installers:alpine",
             "entrypoint": "ash",
             "script": "#!/bin/ash\r\n# Forge Installation Script\r\n#\r\n# Server Files: /mnt/server\r\ncd /mnt/server\r\n\r\ncurl -sS https://servers.technicpack.net/Technic/servers/hexxit/Hexxit_Server_v$MODPACK_VERSION.zip -o Hexxit_$MODPACK_VERSION.zip\r\n\r\nunzip Hexxit_$MODPACK_VERSION.zip\r\n\r\nrm -rf Hexxit_$MODPACK_VERSION.zip\r\n\r\n## install end\r\necho \"-----------------------------------------\"\r\necho \"Installation completed...\"\r\necho \"-----------------------------------------\""
         }

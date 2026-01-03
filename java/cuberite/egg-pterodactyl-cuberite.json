@@ -26,7 +26,7 @@
     },
     "scripts": {
         "installation": {
-            "container": "ghcr.io/parkervcp/installers:debian",
+            "container": "ghcr.io\/pelican-eggs\/installers:debian",
             "entrypoint": "bash",
             "script": "#!/bin/ash\r\n# Cuberite\r\n#\r\n# Server Files: /mnt/server\r\n\r\ncd /mnt/server\r\n\r\nARCH=$([[ \"$(uname -m)\" == \"x86_64\" ]] \u0026\u0026 echo \"x86_64\" || echo \"aarch64\")\r\n\r\nwget https://download.cuberite.org/linux-${ARCH}/Cuberite.tar.gz\r\n\r\ntar -xzf Cuberite.tar.gz\r\n\r\n## install end\r\necho \"-----------------------------------------\"\r\necho \"Installation completed...\"\r\necho \"-----------------------------------------\""
         }

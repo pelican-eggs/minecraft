@@ -1,0 +1,65 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
+    "meta": {
+        "version": "PLCN_v1",
+        "update_url": null
+    },
+    "exported_at": "2025-05-18T19:46:55+00:00",
+    "name": "Cleanroom",
+    "author": "unknown@unknown.com",
+    "uuid": "9a4c5d9c-9654-44d9-afca-21ff8bae7bc8",
+    "description": "Cleanroom Server. Cleanroom is a modding API (Application Programming Interface), which makes it easier to create mods, and also make sure mods are compatible with each other. Cleanroom is a fork of Minecraft Forge for 1.12.2 only.",
+    "tags": [],
+    "features": [
+        "eula",
+        "java_version",
+        "pid_limit"
+    ],
+    "docker_images": {
+        "Java 21": "ghcr.io\/parkervcp\/yolks:java_21"
+    },
+    "file_denylist": [],
+    "startup": "java -Xms128M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}}",
+    "config": {
+        "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-ip\": \"0.0.0.0\",\r\n            \"server-port\": \"{{server.allocations.default.port}}\",\r\n            \"query.port\": \"{{server.allocations.default.port}}\"\r\n        }\r\n    }\r\n}",
+        "startup": "{\r\n    \"done\": \")! For help, type \"\r\n}",
+        "logs": "{}",
+        "stop": "stop"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n# Cleanroom Installation Script (for Minecraft 1.12.2)\r\n#\r\n# Server Files: \/mnt\/server\r\napt update\r\napt install -y curl\r\n\r\nif [[ ! -d \/mnt\/server ]]; then\r\n  mkdir \/mnt\/server\r\nfi\r\n\r\ncd \/mnt\/server\r\n\r\n# Remove spaces from the version number to avoid issues with curl\r\nCLEANROOM_VERSION=\"$(echo \"$CLEANROOM_VERSION\" | tr -d ' ')\"\r\n\r\n# If CLEANROOM_VERSION is not specified, use latest\r\nif [[ -z \"$CLEANROOM_VERSION\" ]]; then\r\n  echo -e \"No version specified. Finding latest Cleanroom version...\"\r\n  CLEANROOM_VERSION=$(curl --silent \"https:\/\/api.github.com\/repos\/CleanroomMC\/Cleanroom\/releases\/latest\" | grep '\"tag_name\":' | sed -E 's\/.*\"([^\"]+)\".*\/\\1\/')\r\n\r\n  if [[ -z \"$CLEANROOM_VERSION\" ]]; then\r\n    echo -e \"Failed to determine latest version. Exiting now.\"\r\n    exit 1\r\n  fi\r\n\r\n  echo -e \"Latest version found: ${CLEANROOM_VERSION}\"\r\nfi\r\n\r\n# Setting the download link\r\nDOWNLOAD_LINK=\"https:\/\/github.com\/CleanroomMC\/Cleanroom\/releases\/download\/${CLEANROOM_VERSION}\/cleanroom-${CLEANROOM_VERSION}-installer.jar\"\r\necho -e \"Using Cleanroom version: ${CLEANROOM_VERSION}\"\r\n\r\n# Adding .jar when not eding by SERVER_JARFILE\r\nif [[ ! $SERVER_JARFILE = *\\.jar ]]; then\r\n  SERVER_JARFILE=\"$SERVER_JARFILE.jar\"\r\nfi\r\n\r\n# Downloading installer jars\r\necho -e \"Downloading Cleanroom version ${CLEANROOM_VERSION}\"\r\necho -e \"Download link is ${DOWNLOAD_LINK}\"\r\n\r\nif curl --output \/dev\/null --silent --head --fail ${DOWNLOAD_LINK}; then\r\n  echo -e \"installer jar download link is valid.\"\r\nelse\r\n  echo -e \"link is invalid. Exiting now\"\r\n  exit 2\r\nfi\r\n\r\ncurl -L -s ${DOWNLOAD_LINK} > installer.jar\r\n\r\n# Checking if downloaded jars exist\r\nif [[ ! -f .\/installer.jar ]]; then\r\n  echo \"!!! Error downloading Cleanroom version ${CLEANROOM_VERSION} !!!\"\r\n  exit 3\r\nfi\r\n\r\n# Delete args to support downgrading\/upgrading\r\nrm -rf libraries\/com\/cleanroommc\/cleanroom\r\n\r\n# Installing server\r\necho -e \"Installing Cleanroom server.\\n\"\r\njava -jar installer.jar --installServer || { \r\n  echo -e \"\\nInstall failed using Cleanroom version ${CLEANROOM_VERSION}.\\nShould you be using unlimited memory value of 0, make sure to increase the default install resource limits in the Wings config or specify exact allocated memory in the server Build Configuration instead of 0! \\nOtherwise, the Forge installer will not have enough memory.\"; \r\n  exit 4;\r\n}\r\n\r\n# Rename the installed JAR file\r\nCLEANROOM_JAR=$(find . -maxdepth 1 -name \"cleanroom-*.jar\" -type f -print -quit)\r\nif [[ -f \"$CLEANROOM_JAR\" ]]; then\r\n  mv $CLEANROOM_JAR $SERVER_JARFILE\r\nelse\r\n  echo -e \"Warning: Cleanroom jar file not found. There may be a problem with the installation.\"\r\nfi\r\n\r\necho -e \"Deleting installer.jar file.\\n\"\r\nrm -rf installer.jar\r\necho -e \"Installation process is completed\"",
+            "container": "openjdk:8-jdk-slim",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Server Jar File",
+            "description": "",
+            "env_variable": "SERVER_JARFILE",
+            "default_value": "server.jar",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "required",
+                "regex:\/^([\\w\\d._-]+)(\\.jar)$\/"
+            ],
+            "sort": null
+        },
+        {
+            "name": "Cleanroom Version",
+            "description": "If not specified, the latest version will be installed.",
+            "env_variable": "CLEANROOM_VERSION",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "nullable",
+                "string",
+                "regex:\/^\\d+\\.\\d+\\.\\d+(-[A-Za-z0-9]+)?$\/"
+            ],
+            "sort": null
+        }
+    ]
+}

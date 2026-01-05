@@ -22,3 +22,7 @@ Velocity is a Minecraft server proxy with unparalleled server support, scalabili
 #### Waterfall
 [Waterfall](https://papermc.io/downloads#Waterfall)
 Paper fork of the BungeeCord software, with improved Forge support and more features.
+
+#### Zenith Proxy
+[ZenithProxy](https://github.com/rfresh2/ZenithProxy)
+A light-weight Minecraft proxy and bot designed for 2b2t.org but also works on any server.

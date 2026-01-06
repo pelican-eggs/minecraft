@@ -1,0 +1,158 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/proxy/java/velocity/egg-velocity.yaml'
+exported_at: '2026-01-06T14:27:32+00:00'
+name: Velocity
+author: parker@parkervcp.com
+uuid: 44d20b6d-0a20-4144-a96c-71d214b3c850
+description: 'Velocity is a Minecraft server proxy with unparalleled server support, scalability, and flexibility.'
+image: 'data:image/png;base64,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'
+tags: {  }
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  'Java 21': 'ghcr.io/pelican-eggs/yolks:java_21'
+  'Java 17': 'ghcr.io/pelican-eggs/yolks:java_17'
+  'Java 16': 'ghcr.io/pelican-eggs/yolks:java_16'
+  'Java 11': 'ghcr.io/pelican-eggs/yolks:java_11'
+  'Java 8': 'ghcr.io/pelican-eggs/yolks:java_8'
+file_denylist: {  }
+startup_commands:
+  Default: 'java -Xms128M -XX:MaxRAMPercentage=95.0 -XX:+UseG1GC -XX:G1HeapRegionSize=4M -XX:+UnlockExperimentalVMOptions -XX:+ParallelRefProcEnabled -XX:+AlwaysPreTouch -XX:MaxInlineLevel=15 -jar {{SERVER_JARFILE}}'
+config:
+  files:
+    velocity.toml:
+      parser: file
+      find:
+        'bind = ': 'bind = "0.0.0.0:{{server.allocations.default.port}}"'
+  startup:
+    done: 'Done ('
+  logs: {  }
+  stop: end
+scripts:
+  installation:
+    script: |-
+      #!/bin/ash
+      # Velocity Proxy Installation Script
+      #
+      # Server Files: /mnt/server
+      PROJECT=velocity
+
+      if [[ -z ${VELOCITY_VERSION} ]] || [[ ${VELOCITY_VERSION} == "latest" ]]; then
+          VELOCITY_VERSION="latest"
+      fi
+
+      if [[ -n "${DOWNLOAD_LINK}" ]]; then
+          echo -e "Using supplied download url: ${DOWNLOAD_LINK}"
+          DOWNLOAD_URL=$(eval echo $(echo ${DL_PATH} | sed -e 's/{{/${/g' -e 's/}}/}/g'))
+      else
+          VER_EXISTS=$(curl -s https://api.papermc.io/v2/projects/${PROJECT} | jq -r --arg VERSION $VELOCITY_VERSION '.versions[] | contains($VERSION)' | grep true)
+          LATEST_VERSION=$(curl -s https://api.papermc.io/v2/projects/${PROJECT} | jq -r '.versions' | jq -r '.[-1]')
+
+      if [[ "${VER_EXISTS}" == "true" ]]; then
+          echo -e "Version is valid. Using version ${VELOCITY_VERSION}"
+      else
+          echo -e "Using the latest ${PROJECT} version"
+          VELOCITY_VERSION=${LATEST_VERSION}
+      fi
+
+      BUILD_EXISTS=$(curl -s https://api.papermc.io/v2/projects/${PROJECT}/versions/${VELOCITY_VERSION} | jq -r --arg BUILD ${BUILD_NUMBER} '.builds[] | tostring | contains($BUILD)' | grep true)
+      LATEST_BUILD=$(curl -s https://api.papermc.io/v2/projects/${PROJECT}/versions/${VELOCITY_VERSION} | jq -r '.builds' | jq -r '.[-1]')
+
+      if [[ "${BUILD_EXISTS}" == "true" ]]; then
+          echo -e "Build is valid for version ${VELOCITY_VERSION}. Using build ${BUILD_NUMBER}"
+      else
+          echo -e "Using the latest ${PROJECT} build for version ${VELOCITY_VERSION}"
+          BUILD_NUMBER=${LATEST_BUILD}
+      fi
+
+      JAR_NAME=${PROJECT}-${VELOCITY_VERSION}-${BUILD_NUMBER}.jar
+      echo "Version being downloaded"
+      echo -e "Velocity Version: ${VELOCITY_VERSION}"
+      echo -e "Build: ${BUILD_NUMBER}"
+      echo -e "JAR Name of Build: ${JAR_NAME}"
+      DOWNLOAD_URL=https://api.papermc.io/v2/projects/${PROJECT}/versions/${VELOCITY_VERSION}/builds/${BUILD_NUMBER}/downloads/${JAR_NAME}
+
+      fi
+
+      cd /mnt/server
+      echo -e "Running curl -o ${SERVER_JARFILE} ${DOWNLOAD_URL}"
+
+      if [[ -f ${SERVER_JARFILE} ]]; then
+      mv ${SERVER_JARFILE} ${SERVER_JARFILE}.old
+      fi
+
+      curl -o ${SERVER_JARFILE} ${DOWNLOAD_URL}
+
+      if [[ -f velocity.toml ]]; then
+          echo -e "velocity config file exists"
+      else
+          echo -e "downloading velocity config file."
+          curl https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/proxy/java/velocity/velocity.toml -o velocity.toml
+      fi
+
+      if [[ -f forwarding.secret ]]; then
+          echo -e "velocity forwarding secret file already exists"
+      else
+          echo -e "creating forwarding secret file"
+          touch forwarding.secret
+          date +%s | sha256sum | base64 | head -c 12 > forwarding.secret
+      fi
+
+      echo -e "install complete"
+    container: 'ghcr.io/pelican-eggs/installers:alpine'
+    entrypoint: ash
+variables:
+  -
+    sort: 4
+    name: 'Build Number'
+    description: "The build number for the velocity release.\r\n\r\nLeave at latest to always get the latest version. Invalid versions will default to latest."
+    env_variable: BUILD_NUMBER
+    default_value: latest
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:20'
+  -
+    sort: 3
+    name: 'Download Path'
+    description: |-
+      A URL to use to download a server.jar rather than the ones in the install script. This is not user
+      viewable.
+    env_variable: DL_PATH
+    default_value: ''
+    user_viewable: false
+    user_editable: false
+    rules:
+      - nullable
+      - string
+  -
+    sort: 2
+    name: 'Server Jar File'
+    description: "Server Jarfile, by default this is set to 'velocity.jar'.\r\nSet it to otherwise if you wish to have a different jarfile name."
+    env_variable: SERVER_JARFILE
+    default_value: velocity.jar
+    user_viewable: true
+    user_editable: false
+    rules:
+      - required
+      - string
+      - 'max:32'
+      - 'regex:/^([\w\d._-]+)(\.jar)$/'
+  -
+    sort: 1
+    name: 'Velocity Version'
+    description: "The Velocity Proxy version to download.\r\n\r\nSet to 'latest ' the download the last stable build."
+    env_variable: VELOCITY_VERSION
+    default_value: latest
+    user_viewable: true
+    user_editable: false
+    rules:
+      - required
+      - string
+      - 'max:20'

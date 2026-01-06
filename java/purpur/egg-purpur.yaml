@@ -1,0 +1,132 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/purpur/egg-purpur.yaml'
+exported_at: '2026-01-06T14:11:34+00:00'
+name: Purpur
+author: purpur@birdflop.com
+uuid: 49adec15-ccfe-45c3-ac3f-2fc20582739d
+description: |-
+  A drop-in replacement for Paper servers designed for configurability, and new fun and exciting
+  gameplay features.
+image: 'data:image/png;base64,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'
+tags: {  }
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  'Java 8': 'ghcr.io/pelican-eggs/yolks:java_8'
+  'Java 11': 'ghcr.io/pelican-eggs/yolks:java_11'
+  'Java 16': 'ghcr.io/pelican-eggs/yolks:java_16'
+  'Java 17': 'ghcr.io/pelican-eggs/yolks:java_17'
+  'Java 21': 'ghcr.io/pelican-eggs/yolks:java_21'
+file_denylist: {  }
+startup_commands:
+  Default: 'java --add-modules=jdk.incubator.vector -Xms128M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}}'
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        server-port: '{{server.allocations.default.port}}'
+  startup:
+    done: ')! For help, type '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/ash
+      # Paper Installation Script
+      #
+      # Server Files: /mnt/server
+      PROJECT=purpur
+
+      if [ -n "${DL_PATH}" ]; then
+      	echo -e "Using supplied download url: ${DL_PATH}"
+      	DOWNLOAD_URL=`eval echo $(echo ${DL_PATH} | sed -e 's/{{/${/g' -e 's/}}/}/g')`
+      else
+      	VER_EXISTS=`curl -s https://api.purpurmc.org/v2/${PROJECT} | jq -r --arg VERSION $MINECRAFT_VERSION '.versions[] | contains($VERSION)' | grep true`
+      	LATEST_VERSION=`curl -s https://api.purpurmc.org/v2/${PROJECT} | jq -r '.versions' | jq -r '.[-1]'`
+
+      	if [ "${VER_EXISTS}" == "true" ]; then
+      		echo -e "Version is valid. Using version ${MINECRAFT_VERSION}"
+      	else
+      		echo -e "Using the latest ${PROJECT} version"
+      		MINECRAFT_VERSION=${LATEST_VERSION}
+      	fi
+      	
+      	BUILD_EXISTS=`curl -s https://api.purpurmc.org/v2/${PROJECT}/${MINECRAFT_VERSION} | jq -r --arg BUILD ${BUILD_NUMBER} '.builds.all | tostring | contains($BUILD)' | grep true`
+      	LATEST_BUILD=`curl -s https://api.purpurmc.org/v2/${PROJECT}/${MINECRAFT_VERSION} | jq -r '.builds.latest'`
+      	
+      	if [ "${BUILD_EXISTS}" == "true" ]; then
+      		echo -e "Build is valid for version ${MINECRAFT_VERSION}. Using build ${BUILD_NUMBER}"
+      	else
+      		echo -e "Using the latest ${PROJECT} build for version ${MINECRAFT_VERSION}"
+      		BUILD_NUMBER=${LATEST_BUILD}
+      	fi
+      	
+      	JAR_NAME=${PROJECT}-${MINECRAFT_VERSION}-${BUILD_NUMBER}.jar
+      	
+      	echo "Version being downloaded"
+      	echo -e "MC Version: ${MINECRAFT_VERSION}"
+      	echo -e "Build: ${BUILD_NUMBER}"
+      	echo -e "JAR Name of Build: ${JAR_NAME}"
+      	DOWNLOAD_URL=https://api.purpurmc.org/v2/${PROJECT}/${MINECRAFT_VERSION}/${BUILD_NUMBER}/download
+      fi
+
+      cd /mnt/server
+
+      echo -e "Running curl -o ${SERVER_JARFILE} ${DOWNLOAD_URL}"
+
+      if [ -f ${SERVER_JARFILE} ]; then
+      	mv ${SERVER_JARFILE} ${SERVER_JARFILE}.old
+      fi
+
+      curl -o ${SERVER_JARFILE} ${DOWNLOAD_URL}
+
+      if [ ! -f server.properties ]; then
+          echo -e "Downloading MC server.properties"
+          curl -o server.properties https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/server.properties
+      fi
+    container: 'ghcr.io/pelican-eggs/installers:alpine'
+    entrypoint: ash
+variables:
+  -
+    sort: 3
+    name: 'Build Number'
+    description: "The build number for the Purpur release.\r\n\r\nLeave at latest to always get the latest version. Invalid versions will default to latest."
+    env_variable: BUILD_NUMBER
+    default_value: latest
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:20'
+  -
+    sort: 1
+    name: 'Minecraft Version'
+    description: "The version of Minecraft to download. \r\n\r\nLeave at latest to always get the latest version. Invalid versions will default to latest."
+    env_variable: MINECRAFT_VERSION
+    default_value: latest
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:20'
+  -
+    sort: 2
+    name: 'Server Jar File'
+    description: 'The name of the .jar file to run the server with.'
+    env_variable: SERVER_JARFILE
+    default_value: server.jar
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - 'regex:/^([\w\d._-]+)(\.jar)$/'
+      - 'max:80'

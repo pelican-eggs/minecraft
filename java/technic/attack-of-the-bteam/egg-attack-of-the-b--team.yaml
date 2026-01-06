@@ -1,0 +1,72 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/technic/attack-of-the-bteam/egg-attack-of-the-b--team.yaml'
+exported_at: '2026-01-06T14:08:39+00:00'
+name: 'Attack of the B-Team'
+author: support@pterodactyl.io
+uuid: 306019ab-6a62-4fa8-953c-c2ac499c6736
+description: |-
+  This modpack was designed with one thing in mind, crazy mad science! With the help of the B-Team we
+  hand picked the wackiest mods we could find and shoved them all in a modpack for you guys. The
+  result is Attack of the B-Team!
+image: 'data:image/png;base64,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'
+tags: {  }
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  Java_8: 'ghcr.io/pelican-eggs/yolks:java_8'
+file_denylist: {  }
+startup_commands:
+  Default: 'java -Xms128M -XX:MaxRAMPercentage=95.0 -jar BTeam.jar'
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        server-port: '{{server.allocations.default.port}}'
+        query.port: '{{server.allocations.default.port}}'
+  startup:
+    done: ')! For help, type '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/ash
+      # Forge Installation Script
+      #
+      # Server Files: /mnt/server
+
+
+      cd /mnt/server
+
+      curl -sS https://servers.technicpack.net/Technic/servers/bteam/BTeam_Server_v$MODPACK_VERSION.zip -o BTeam_Server_v$MODPACK_VERSION.zip
+
+      unzip -o BTeam_Server_v$MODPACK_VERSION.zip
+
+      rm -rf BTeam_Server_v$MODPACK_VERSION.zip
+
+
+      ## install end
+      echo "-----------------------------------------"
+      echo "Installation completed..."
+      echo "-----------------------------------------"
+    container: 'ghcr.io/pelican-eggs/installers:alpine'
+    entrypoint: ash
+variables:
+  -
+    sort: 1
+    name: 'Modpack Version'
+    description: 'Version of the modpack to use'
+    env_variable: MODPACK_VERSION
+    default_value: 1.0.12c
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:20'

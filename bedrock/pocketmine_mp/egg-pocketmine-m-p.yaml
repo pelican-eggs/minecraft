@@ -1,0 +1,172 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/bedrock/pocketmine_mp/egg-pocketmine-m-p.yaml'
+exported_at: '2026-01-06T14:11:22+00:00'
+name: PocketmineMP
+author: info@swisscrafting.ch
+uuid: 4c3baab1-67ad-48c7-8acd-eb3deaa0a462
+description: "Pocketmine Egg\r\nby onekintaro from swisscrafting.ch\r\nwith the nice help from #eggs Channel on Pelican Discord :)"
+image: 'data:image/png;base64,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'
+tags: {  }
+features: {  }
+docker_images:
+  Debian: 'ghcr.io/pelican-eggs/yolks:debian'
+file_denylist: {  }
+startup_commands:
+  Default: './bin/php7/bin/php ./PocketMine-MP.phar --no-wizard'
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        enable-query: true
+        server-port: '{{server.allocations.default.port}}'
+        query.port: '{{server.allocations.default.port}}'
+  startup:
+    done: ')! '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/bash
+
+      apt-get update
+      apt-get install -y git curl wget jq file tar unzip zip
+
+      mkdir -p /mnt/server/ # Not required. Only here for parkervcp's local test setup
+
+      cd /mnt/server || exit 1
+
+      ARCH=$([[ "$(uname -m)" == "x86_64" ]] && printf "x86_64" || printf "arm64")
+
+      # Shouldn't be possible to be empty, but default to PM5 if it is and convert to uppercase
+      VERSION="${VERSION:-PM5}"
+      VERSION="${VERSION^^}"
+
+      # Helper functions
+
+      download_php_binary() {
+        local php_binary_url
+        if [[ "$VERSION" == "PM5" ]]; then
+          php_binary_url="https://github.com/pmmp/PHP-Binaries/releases/download/pm5-latest/PHP-8.2-Linux-${ARCH}-PM5.tar.gz"
+        elif [[ "$VERSION" == "PM5PHP83" ]]; then
+          php_binary_url="https://github.com/pmmp/PHP-Binaries/releases/download/pm5-php-8.3-latest/PHP-8.3-Linux-${ARCH}-PM5.tar.gz"
+        elif [[ "$VERSION" == "PM5PHP84" ]]; then
+          php_binary_url="https://github.com/pmmp/PHP-Binaries/releases/download/pm5-php-8.4-latest/PHP-8.4-Linux-${ARCH}-PM5.tar.gz"
+        elif [[ "$VERSION" == "PM4" ]]; then
+          php_binary_url="https://github.com/pmmp/PHP-Binaries/releases/download/pm4-latest/PHP-8.1-Linux-${ARCH}-PM4.tar.gz"
+        else
+          printf "Unsupported version: %s
+      " "${VERSION}"
+          exit 1
+        fi
+
+        printf "Downloading PHP binary for %s from %s
+      " "$VERSION" "$php_binary_url"
+        curl --location --progress-bar "$php_binary_url" | tar -xzv
+      }
+
+      set_php_extension_dir() {
+        printf "Configuring php.ini
+      "
+        EXTENSION_DIR=$(find "bin" -name '*debug-zts*')
+        grep -q '^extension_dir' bin/php7/bin/php.ini && \
+        sed -i'bak' "s{^extension_dir=.*{extension_dir=\"$EXTENSION_DIR\"{" bin/php7/bin/php.ini || \
+        echo "extension_dir=\"$EXTENSION_DIR\"" >>bin/php7/bin/php.ini
+      }
+
+      download_pmmp() {
+        DOWNLOAD_LINK=$(curl -sSL https://update.pmmp.io/api?channel="$API_CHANNEL" | jq -r '.download_url')
+        printf "Downloading %s from %s
+      " "$VERSION" "${DOWNLOAD_LINK}"
+        curl --location --progress-bar "${DOWNLOAD_LINK}" --output PocketMine-MP.phar
+      }
+
+      # We have to convert VERSION into an API channel
+      if [[ "${VERSION}" == "PM4" ]]; then
+        API_CHANNEL="4"
+      elif [[ "$VERSION" == "PM5" ]] || [[ "$VERSION" == "PM5PHP83" ]] || [[ "$VERSION" == "PM5PHP84" ]]; then
+        API_CHANNEL="stable"
+      else
+        printf "Unsupported version: %s
+      " "${VERSION}"
+        exit 1
+      fi
+
+      REQUIRED_PHP_VERSION=$(curl -sSL https://update.pmmp.io/api?channel="$API_CHANNEL" | jq -r '.php_version')
+
+      if [[ "${ARCH}" == "x86_64" ]]; then
+        download_php_binary
+
+      # There are no ARM64 PHP binaries yet, so we have to compile them
+      else
+        apt-get install -y make autoconf automake m4 bzip2 bison g++ cmake pkg-config re2c libtool-bin
+        
+        mkdir -p /mnt/server/build_cache/archives
+        mkdir -p /mnt/server/build_cache/compilation
+        
+        # Each PHP version has its own compile script, so we have to download the correct one
+        echo "Running curl to download compile.sh for PHP version $REQUIRED_PHP_VERSION"
+        curl --location --progress-bar --remote-name https://raw.githubusercontent.com/pmmp/PHP-Binaries/latest/compile.sh
+        chmod +x compile.sh
+
+        cat <<EOF
+      ----------------------------------------
+      |                                      |
+      |   Compiling PHP Binary for ARM64     |
+      |                                      |
+      |  This is a time consuming process    |
+      ----------------------------------------
+      EOF
+
+        printf "
+
+      Compiling PHP binary, this is a slow process and will take time
+      "
+        THREADS=$(grep -c ^processor /proc/cpuinfo) || THREADS=1
+        ./compile.sh -j "${THREADS}" -c /mnt/server/build_cache/archives -l /mnt/server/build_cache/compilation -z "${REQUIRED_PHP_VERSION}"
+        rm compile.sh
+        rm -rf install_data/
+
+      fi
+
+      # Steps below are the same for both architectures
+      download_pmmp
+      set_php_extension_dir || exit 1
+
+      if [[ ! -f server.properties ]]; then
+        printf "Downloading default server.properties template
+      "
+        curl --location --progress-bar --remote-name https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/bedrock/pocketmine_mp/server.properties
+      fi
+
+      printf "Creating default file and folder structure
+      "
+      touch banned-ips.txt banned-players.txt ops.txt white-list.txt server.log
+      mkdir -p players worlds plugins resource_packs
+
+      cat <<EOF
+      ----------------------------------------
+      |                                      |
+      |   PocketMine-MP Installation Done    |
+      |                                      |
+      ----------------------------------------
+      EOF
+    container: 'ghcr.io/pelican-eggs/installers:debian'
+    entrypoint: bash
+variables:
+  -
+    sort: 1
+    name: 'Version to install'
+    description: 'PocketMine version and PHP version to install.'
+    env_variable: VERSION
+    default_value: PM5PHP83
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'in:PM5,PM5PHP83,PM5PHP84,PM4'

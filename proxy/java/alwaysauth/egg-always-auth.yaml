@@ -1,0 +1,110 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/proxy/java/alwaysauth/egg-always-auth.yaml'
+exported_at: '2026-01-06T14:42:14+00:00'
+name: 'Always Auth'
+author: contact@quacks.media
+uuid: 3885c37c-f1da-4979-860d-4c200a8ca564
+description: |-
+  A simple proxy that sits between your server and Mojang's auth services that ensures even when
+  they're offline, you stay online!
+image: null
+tags:
+  - minecraft
+features: {  }
+docker_images:
+  'Java 21': 'ghcr.io/pelican-eggs/yolks:java_21'
+file_denylist: {  }
+startup_commands:
+  Default: 'java -Xms128M  -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true -jar {{JARFILE}}'
+config:
+  files:
+    data/config.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        server-port: '{{server.allocations.default.port}}'
+  startup:
+    done: ')! For help, type '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |
+      #!/bin/bash
+
+      echo "======================================"
+      echo " AlwaysAuth Installer"
+      echo "======================================"
+
+      mkdir -p /mnt/server
+      cd /mnt/server
+
+      JAR_NAME="AlwaysAuth.jar"
+
+      command -v curl >/dev/null 2>&1 || {
+          echo "ERROR: curl is required."
+          exit 1
+      }
+
+      # --------------------------------------
+      # Resolve version
+      # --------------------------------------
+
+      if [ "$VERSION" = "latest" ]; then
+          echo "Resolving latest standalone version..."
+
+          STANDALONE_VERSION="$(curl -fsSL "https://raw.githubusercontent.com/GamerDuck123/AlwaysAuth/refs/heads/master/standalone-latest.txt" | tr -d '[:space:]')"
+
+          if [ -z "$STANDALONE_VERSION" ]; then
+              echo "ERROR: standalone-latest.txt is empty."
+              exit 1
+          fi
+      else
+          echo "Using user-specified version: $VERSION"
+          STANDALONE_VERSION="$VERSION"
+      fi
+
+      echo "Resolved version: $STANDALONE_VERSION"
+
+      # --------------------------------------
+      # Download
+      # --------------------------------------
+
+      DOWNLOAD_URL="https://github.com/GamerDuck123/AlwaysAuth/releases/download/v${STANDALONE_VERSION}/AlwaysAuth-standalone-${STANDALONE_VERSION}.jar"
+
+      echo "Download URL: $DOWNLOAD_URL"
+      echo "Downloading AlwaysAuth..."
+
+      curl -fL "$DOWNLOAD_URL" -o "$JAR_NAME"
+
+      if [ ! -f "$JAR_NAME" ]; then
+          echo "ERROR: Download failed."
+          exit 1
+      fi
+
+      echo "Install completed successfully!"
+      echo "======================================"
+      exit 0
+    container: 'ghcr.io/pelican-eggs/installers:debian'
+    entrypoint: /bin/bash
+variables:
+  -
+    sort: 1
+    name: JARFILE
+    description: 'The name of the jar to use.'
+    env_variable: JARFILE
+    default_value: AlwaysAuth.jar
+    user_viewable: true
+    user_editable: true
+    rules: {  }
+  -
+    sort: 2
+    name: VERSION
+    description: 'The version of AlwaysAuth to install. Use "latest" to install the latest version.'
+    env_variable: VERSION
+    default_value: latest
+    user_viewable: true
+    user_editable: true
+    rules: {  }

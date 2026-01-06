@@ -1,0 +1,66 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/technic/hexxit/egg-hexxit.yaml'
+exported_at: '2026-01-06T14:10:19+00:00'
+name: Hexxit
+author: aevum@decess.us
+uuid: 1224574b-36f5-497a-ae4e-fa3d3278033e
+description: "Gear up and set forth on a campaign worthy of legend, for Hexxit has been unearthed! Dark dungeons,\ntowering spires, weathered ruins and musty tomes lay before you. Lay claim to riches or create your\nown artifacts, tame beasts and carve out your own story in endless wonder. Alone or with friends,\nadventure awaits in Hexxit.\r\n\r\nHexxit is a new collection of mods for Minecraft that put adventure above all else, in the style of\nold Dungeons and Dragons campaigns. Exploration is interesting, the dangers are greater and the\nsense of satisfaction of clearing out a dungeon is intense. The modlist is full of quality content\nfrom some very talented individuals. Be sure to head over to the donate page and show your\nappreciation!\r\n\r\nhttps://www.technicpack.net/modpack/hexxit.552552"
+image: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABtElEQVRoge1aPU+EQBBdDAkJIYSGkNDT8Qv4A7bW9tZa2Nha2Jn4IzTWdobSgl+wvR0BuXgESQwVdpOB3MqefAiTfdW7ze2xk3n7Znc4rW1bRgEn/72AqUAmEH3M5KIoOrq0bXtwTpZlwE3TlHqO67ra0HfIZEQFsjZoMvbbNM0ojy7LErjjOEfPr6oKuGi/kMkImUBG2e9vEMkJj/chIzts+VhmZDJCJhDt9emm40in53caY4xxzg86VRAEsy1Gxt2wg91fnwEnkxEygejFR9EZeHy4GCh+l8BkZZYkycHxKIo6n0VywvPDMASe7fbAyWREBbI26LvPepYfxrqu63HPwPM558D3X9/AyWSETCD61e3zwfO9qLJ7njfvigaAZfby9q4OjauF8KqLpSWSk0z7Z2qIrr1kMkImEKkuiozMGBsvtTiOgVuWBRwfFDGUtNaMo7soeZ4Dn7o4Yjnhu4pq0G0RZAKRsl8R+gdLvGfmqvqGYag9sgmMkpYscOP5L5JT9rtFzPZ+BAPLAcus313xfR94mqbAccUXgUxGyASyiLRkgd0JQ/3zYYtYpCAuATIZ+QH7OZYZ44L44gAAAABJRU5ErkJggg=='
+tags: {  }
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  Java_8: 'ghcr.io/pelican-eggs/yolks:java_8'
+file_denylist: {  }
+startup_commands:
+  Default: 'java -Xms128M -XX:MaxRAMPercentage=95.0 -jar Hexxit.jar'
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        server-port: '{{server.allocations.default.port}}'
+        query.port: '{{server.allocations.default.port}}'
+  startup:
+    done: ')! For help, type '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/ash
+      # Forge Installation Script
+      #
+      # Server Files: /mnt/server
+      cd /mnt/server
+
+      curl -sS https://servers.technicpack.net/Technic/servers/hexxit/Hexxit_Server_v$MODPACK_VERSION.zip -o Hexxit_$MODPACK_VERSION.zip
+
+      unzip Hexxit_$MODPACK_VERSION.zip
+
+      rm -rf Hexxit_$MODPACK_VERSION.zip
+
+      ## install end
+      echo "-----------------------------------------"
+      echo "Installation completed..."
+      echo "-----------------------------------------"
+    container: 'ghcr.io/pelican-eggs/installers:alpine'
+    entrypoint: ash
+variables:
+  -
+    sort: 1
+    name: 'Modpack Version'
+    description: 'Version of the modpack to use'
+    env_variable: MODPACK_VERSION
+    default_value: 1.0.11
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:20'

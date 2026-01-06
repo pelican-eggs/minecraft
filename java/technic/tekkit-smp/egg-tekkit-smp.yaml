@@ -1,0 +1,103 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/technic/tekkit-smp/egg-tekkit-smp.yaml'
+exported_at: '2026-01-06T14:26:36+00:00'
+name: 'Tekkit SMP'
+author: lovinoes@lovinoes.de
+uuid: c22ea4db-1541-490c-8ee6-296e61d97a1e
+description: |-
+  Tekkit SMP contains the full range of mods from Tekkit 2, plus the extra mods that were originally
+  dropped in the transition from Technic SSP (to Technic SMP) to Tekkit, in favour of multiplayer and
+  Bukkit support: mainly Thaumcraft, Mystcraft, and Mo' Creatures. The new Tekkit SMP expands on that
+  with various carefully selected Thaumcraft and Mystcraft addons, alongside Mo' Creatures Extended,
+  and smaller custom additions such as Re-Crystallized Wing. Electro-Magic Tools is another starring
+  mod, being an addon to both Industrial Craft and Thaumcraft, combining the worlds of tech and magic.
+image: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAABc2lDQ1BpY2MAACiRdZG7SwNBEIe/JIrxRRQtLCyCRqsoMULQxiJBo6AWMYKvJjnzEPI47hIk2Aq2AQXRxlehf4G2grUgKIog1taKNirnnAkkiJlldr797c6wOwvWcEpJ63UeSGdyWijody4sLjkbXrDjoJF2eiOKrs7MTYSpaR/3WMx4O2DWqn3uX2tejekKWOzCY4qq5YQnhafXc6rJO8KdSjKyKnwm7NbkgsJ3ph4t8YvJiRJ/mayFQwGwtgk7E1UcrWIlqaWF5eW40qm8Ur6P+ZKWWGZ+TmKPeDc6IYL4cTLFOAF8DDEqs48BvAzKihr5nt/8WbKSq8isUkBjjQRJcrhFzUv1mMS46DEZKQpm///2VY8Pe0vVW/xQ/2wYb33QsA3fRcP4PDKM72OwPcFlppKfPYSRd9GLFc11AI5NOL+qaNFduNiCrkc1okV+JZu4NR6H11NoXYSOG2haLvWsvM/JA4Q35KuuYW8f+uW8Y+UHUUVn3NkseU4AAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAe9QTFRFAAAA36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36kl36klAAAArtCEeQAAAKN0Uk5TAAJHfKzAv55qEizH50tE+vsyF+jSnx0B6U8p7fhgmAMtXXlklBGzMJvKMd4nQkEYCBtWIAz9OApRQG8FvuSqd6aVcsxoMyEeCa091WuOBN2oRVJefVTIxQ+D5eq5UCS1htOIhbgu1u7mO/MlpHsNXGK6Y5kr9Zr8GdHrSQvPbbyXi5AU3EpTgf5xifmKovTCyUM2KGZbB/DL4yLhJi8fSHjyTZP5gHoAAAABYktHRACIBR1IAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH6AgYDzoJxDcmHgAAAjpJREFUSMft1es/VEEYB/DZtMmqVsgSZdnYErFZ3ZaS0FZySyW6WKWbrqtSVEQXXRAiIeL5R82es+ecmWdmPru96k2/NzPnmfnuuc2ZJeR//k1sGxI22u32TYmbk+IUjmQwsmVrXGKbE6ykbI9DpKYBm/Q4yA7gkxFTuDIRyYpJdmYbydHJrr941LsZkhv78jBx5ykm2fLdCuLZIxcFheBVkL37pKJoP3CkuKTkAE1ppJ/uLJM8XE/kCXmJ7yBKOR30V8AhQRzW36CXHEGvRbuwowDHsAhUAlQdV5ITANWYnKRjNTmInKqtqz/tC9LhMwCVSJylE841oAs732iONzW3tF7gSRudcfESTy43tmsJ0PdVdKUDOnlyFSDNjW7/2nXjXupvVNC2iychgO5uRDJMclNrbwmkpwORMpOU3460dzC5ew+UxHZf6/Qi8uChQAK9Wh4Rt154jMiTpwIxR8N6oS+VJ8+eq8mLaKX/JUccoCavopUE7iwDg2ryuj9a4RZz6M1bJXEMGRVuMYcK25Sk2lx03GIODXcpidfcoZs48m5Er5ZK7qXKPM0oR4a12nsiEp/1AX2QkI8S0mqRT0mYjH0mEvLFIl/HBi3yjZKBFiIjdovAuJ8jyfq2i0nuBEOKDeAKZ05+zw67pKSHEWDuzFP68bSUeFgS3ZmDMz/049mZOZHU/GTJvFbzd1qVX0FEXAuLrADn0gL92d9sqQ6RZRCSFYOsiOQPXdurTOh/xZrRj5CGVSF9ZB0BZWp7V1LXTgAAAC56VFh0ZGF0ZTpjcmVhdGUAAAiZMzIwMtE1sNA1MgkxNLUytbAysNQ2MLAyMAAAQkkFGoEFNEgAAAAuelRYdGRhdGU6bW9kaWZ5AAAImTMyMDLRNbDQNTIJMTS1MrWwMrDUNjCwMjAAAEJJBRqoOpzAAAAAL3pUWHRpY2M6Y29weXJpZ2h0AAAImfPLV0jOL6gsykzPKNFRKC1OVUgrSk3NqQQAbkQI98ZySqYAAAAqelRYdGljYzpkZXNjcmlwdGlvbgAACJkrDnJ3UvB0dTYztDQz0zXSMwQAKGAECnmOyYUAAAAASUVORK5CYII='
+tags: {  }
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  Java8: 'ghcr.io/pelican-eggs/yolks:java_8'
+  Java11: 'ghcr.io/pelican-eggs/yolks:java_11'
+file_denylist: {  }
+startup_commands:
+  Default: 'java -server -Xms128M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true -Dfml.queryResult=confirm -jar forge.jar nogui'
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        server-port: '{{server.allocations.default.port}}'
+        query.port: '{{server.allocations.default.port}}'
+  startup:
+    done: 'Server tick complete! '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/ash
+      # Tekkit SMP Installation Script
+      #
+      # Server Files: /mnt/server
+
+      apk update
+      apk add --no-cache curl zip unzip jq
+
+      mkdir -p /mnt/server
+      cd /mnt/server
+
+      BUILD_TYPE=${BUILD_TYPE:-"recommended"}
+
+      if [ -z "$MODPACK_VERSION" ]; then
+        MODPACK_VERSION=v$(curl -s https://solder.technicpack.net/api/modpack/tekkit-smp | jq -r ".${BUILD_TYPE}")
+      fi
+
+      echo "Downloading Tekkit SMP version ${MODPACK_VERSION} (This may take a while!)"
+      curl -sSL "https://servers.technicpack.net/Technic/servers/tekkit-smp/Tekkit-SMP_Server_${MODPACK_VERSION}.zip" -o "Tekkit-SMP_Server_${MODPACK_VERSION}.zip"
+      unzip -o "Tekkit-SMP_Server_${MODPACK_VERSION}.zip"
+
+      rm -rf "Tekkit-SMP_Server_${MODPACK_VERSION}.zip"
+      rm -f RestoreBackup.bat LaunchServer.bat LaunchServer.sh RestoreBackup.sh
+
+      mv forge-1.12.2-*.jar forge.jar
+
+      if [ ! -f server.properties ]; then
+        curl -o server.properties https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/server.properties
+      fi
+
+      echo "Done"
+    container: 'ghcr.io/pelican-eggs/installers:alpine'
+    entrypoint: ash
+variables:
+  -
+    sort: 2
+    name: 'Build Type'
+    description: 'The type of server jar to download from Technic Solder.'
+    env_variable: BUILD_TYPE
+    default_value: recommended
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'in:recommended,latest'
+  -
+    sort: 1
+    name: 'Modpack Version'
+    description: |-
+      The version of Tekkit SMP to download. 
+
+      Overrides BUILD TYPE, if set.
+    env_variable: MODPACK_VERSION
+    default_value: ''
+    user_viewable: true
+    user_editable: true
+    rules:
+      - nullable
+      - string
+      - 'max:10'

@@ -1,0 +1,66 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/limbo/egg-limbo.yaml'
+exported_at: '2026-01-06T14:10:29+00:00'
+name: Limbo
+author: xEfinax@protonmail.com
+uuid: 44f91767-0288-4352-a62f-945db51ab922
+description: 'Standalone server program Limbo.'
+image: null
+tags: {  }
+features: {  }
+docker_images:
+  Java_17: 'ghcr.io/pelican-eggs/yolks:java_17'
+file_denylist: {  }
+startup_commands:
+  Default: 'java -Xms128M -XX:MaxRAMPercentage=95.0 -jar {{SERVER_JARFILE}}'
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        server-port: '{{server.allocations.default.port}}'
+  startup:
+    done: 'Limbo server listening on '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/ash
+      # Limbo Installation Script
+      #
+      # Server Files: /mnt/server
+      mkdir -p /mnt/server
+
+      LATEST_LIMBO_NAME=$(curl -s https://ci.loohpjames.com/job/Limbo/lastSuccessfulBuild/api/json | jq -r .artifacts[1].displayPath)
+
+      cd /mnt/server || exit
+
+      if [ -f "${SERVER_JARFILE}" ]; then
+      	mv "${SERVER_JARFILE}" "${SERVER_JARFILE}".old
+      fi
+
+      echo "Downloading Limbo server jar..."
+      curl -o "${SERVER_JARFILE}" https://ci.loohpjames.com/job/Limbo/lastSuccessfulBuild/artifact/target/$LATEST_LIMBO_NAME
+
+      if [ ! -f server.properties ]; then
+          echo "Downloading Limbo server.properties"
+          curl -o server.properties https://raw.githubusercontent.com/LOOHP/Limbo/master/src/main/resources/server.properties
+      fi
+    container: 'ghcr.io/pelican-eggs/installers:alpine'
+    entrypoint: ash
+variables:
+  -
+    sort: 1
+    name: 'Server Jar File'
+    description: 'The name of the server jarfile to run the Limbo server with.'
+    env_variable: SERVER_JARFILE
+    default_value: Limbo.jar
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - 'regex:/^([\w\d._-]+)(\.jar)$/'

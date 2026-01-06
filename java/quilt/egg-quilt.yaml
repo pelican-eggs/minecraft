@@ -1,0 +1,92 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/quilt/egg-quilt.yaml'
+exported_at: '2026-01-06T14:11:39+00:00'
+name: Quilt
+author: diedyesterdaywashere@gmail.com
+uuid: dff33655-6e6a-4430-accf-e5aea04c2912
+description: |-
+  The Quilt project is an open-source, community-driven modding toolchain designed primarily for
+  Minecraft. By focusing on speed, ease of use and modularity, Quilt aims to provide a sleek and
+  modern modding toolchain with an open ecosystem.
+image: 'data:image/png;base64,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'
+tags: {  }
+features: {  }
+docker_images:
+  'Java 17': 'ghcr.io/pelican-eggs/yolks:java_17'
+  'Java 8': 'ghcr.io/pelican-eggs/yolks:java_8'
+  'Java 11': 'ghcr.io/pelican-eggs/yolks:java_11'
+  'Java 16': 'ghcr.io/pelican-eggs/yolks:java_16'
+  'Java 18': 'ghcr.io/pelican-eggs/yolks:java_18'
+file_denylist: {  }
+startup_commands:
+  Default: 'java -Xms128M -XX:MaxRAMPercentage=95.0 -jar {{SERVER_JARFILE}} nogui'
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        enable-query: true
+        server-port: '{{server.allocations.default.port}}'
+  startup:
+    done: ')! For help, type '
+    userInteraction:
+      - 'Go to eula.txt for more info.'
+  logs:
+    custom: false
+    location: logs/latest.log
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/bash
+      # Quilt Installation Script
+      #
+      # Server Files: /mnt/server
+
+      mkdir -p /mnt/server
+      cd /mnt/server
+
+      wget -O quilt.jar https://quiltmc.org/api/v1/download-latest-installer/java-universal
+      java -jar quilt.jar \
+        install server $MC_VERSION \
+        --download-server
+      cd /mnt/server/server
+      mv * /mnt/server
+      cd ..
+      rm quilt.jar
+      rmdir /mnt/server/server
+      mv server.jar minecraft.jar
+      mv quilt-server-launch.jar server.jar
+      echo "serverJar=minecraft.jar" > quilt-server-launcher.properties
+      echo -e "Server is Ready!"
+    container: 'ghcr.io/pelican-eggs/installers:java_21'
+    entrypoint: bash
+variables:
+  -
+    sort: 1
+    name: 'Minecraft Version'
+    description: |-
+      Version of Minecraft that will be installed. You can only choose the exact version number, for
+      example "1.20.2", "latest" won't work!
+    env_variable: MC_VERSION
+    default_value: 1.20.2
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'between:3,15'
+  -
+    sort: 2
+    name: 'Server Jar File'
+    description: 'The name of the jarfile that will be ran on server launch.'
+    env_variable: SERVER_JARFILE
+    default_value: server.jar
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - 'regex:/^([\w\d._-]+)(\.jar)$/'

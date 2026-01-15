@@ -1,0 +1,105 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/bedrock/gomint/egg-go-mint.yaml'
+exported_at: '2026-01-06T14:10:14+00:00'
+name: GoMint
+author: parker@parkervcp.com
+uuid: 6ef2bba9-b43b-47a5-9ee6-0a811ce6e3ba
+description: |-
+  A performant and stable Minecraft server software for the Bedrock Edition that comes with a modern
+  API and support for Java 11 LTS.
+image: 'data:image/png;base64,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'
+tags: {  }
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  Java_8: 'ghcr.io/pelican-eggs/yolks:java_8'
+  Java_11: 'ghcr.io/pelican-eggs/yolks:java_11'
+  Java_16: 'ghcr.io/pelican-eggs/yolks:java_16'
+  Java_17: 'ghcr.io/pelican-eggs/yolks:java_17'
+file_denylist: {  }
+startup_commands:
+  Default: 'java --add-opens java.base/java.nio=io.netty.common --add-exports java.base/jdk.internal.misc=io.netty.common -p modules -m gomint.server/io.gomint.server.Bootstrap'
+config:
+  files:
+    server.yml:
+      parser: yml
+      find:
+        listener.port: '{{server.allocations.default.port}}'
+  startup:
+    done: 'Done in '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #! /bin/bash
+
+      GITHUB_PACKAGE=gomint/gomint
+
+      apt update
+      apt install -y file
+
+      if [ ! -d /mnt/server/ ]; then
+          mkdir -p /mnt/server/
+      fi
+
+      cd /mnt/server/
+
+      if [ -z "${GITHUB_USER}" ] && [ -z "${GITHUB_OAUTH_TOKEN}" ] ; then
+          echo -e "using anon api call"
+      else
+          echo -e "user and oauth token set"
+          alias curl='curl -u ${GITHUB_USER}:${GITHUB_OAUTH_TOKEN} '
+      fi
+
+      # retrieve latest tag to be used as version match, because gomint doesn't use normal releases
+      LATEST_VERSION=$(curl -sL https://api.github.com/repos/gomint/gomint/tags | jq -r '.[-1].name')
+
+      DOWNLOAD_URL=https://github.com/gomint/gomint/releases/download/${LATEST_VERSION}/${LATEST_VERSION}.zip
+
+      if [ ! -z "${DOWNLOAD_URL}" ]; then 
+          if curl --output /dev/null --silent --head --fail ${DOWNLOAD_URL}; then
+              echo -e "download link is valid. setting download link to ${DOWNLOAD_URL}"
+              VALIDATED_URL=${DOWNLOAD_URL}
+          else        
+              echo -e "download link is invalid, something went wrong. Closing out"
+              exit 2
+          fi
+      fi
+
+      curl -sSL -o ${VALIDATED_URL##*/} ${VALIDATED_URL}
+
+      FILETYPE=$(file -F ',' ${VALIDATED_URL##*/} | cut -d',' -f2 | cut -d' ' -f2)
+      if [ "$FILETYPE" == "gzip" ]; then
+          tar xzvf ${VALIDATED_URL##*/}
+      elif [ "$FILETYPE" == "Zip" ]; then
+          unzip ${VALIDATED_URL##*/} -d modules/
+      elif [ "$FILETYPE" == "XZ" ]; then
+          tar xvf ${VALIDATED_URL##*/}
+      else
+          echo -e "unknown filetype. Exiting"
+          # exit 2 
+      fi
+
+      # Move files into correct folders and remove unnecessary stuff
+      rm ${VALIDATED_URL##*/}
+      mv modules/modules/* modules
+      rm -rf modules/modules
+      rm modules/start.*
+
+      # Fetch server config
+      if [ ! -f server.yml ]; then
+          curl -sSL -o server.yml https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/bedrock/gomint/server.yml
+      fi
+
+      ## install end
+      echo "-----------------------------------------"
+      echo "Installation completed..."
+      echo "-----------------------------------------"
+    container: 'ghcr.io/pelican-eggs/installers:debian'
+    entrypoint: bash
+variables: {  }

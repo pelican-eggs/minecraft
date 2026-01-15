@@ -1,0 +1,123 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/nanolimbo/egg-nano-limbo.yaml'
+exported_at: '2026-01-06T14:10:57+00:00'
+name: NanoLimbo
+author: mail@wuffy.eu
+uuid: e12bdbe9-1c97-4198-bc6a-e67538ade8ab
+description: "This is lightweight minecraft limbo server, written on Java with Netty. The main goal of the project\nis maximum simplicity with a minimum number of sent and processed packets. This limbo is empty,\nthere are no ability to set schematic building since this is not necessary. You can send useful\ninformation in chat or BossBar.\r\n\r\nNo plugins, no logs. The server is fully clear. It only able keep a lot of players while the main\nserver is down."
+image: null
+tags: {  }
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  Java_8: 'ghcr.io/pelican-eggs/yolks:java_8'
+  Java_11: 'ghcr.io/pelican-eggs/yolks:java_11'
+file_denylist: {  }
+startup_commands:
+  Default: 'java -Xms128M -XX:MaxRAMPercentage=95.0 -jar {{SERVER_JARFILE}}'
+config:
+  files:
+    settings.yml:
+      parser: yaml
+      find:
+        bind.ip: 0.0.0.0
+        bind.port: '{{server.allocations.default.port}}'
+  startup:
+    done: 'Server started on'
+  logs: {  }
+  stop: ^C
+scripts:
+  installation:
+    script: |-
+      #!/bin/bash
+      # NanoLimbo Installation Script
+      #
+      # Server Files: /mnt/server
+
+      apt update
+      apt install -y curl jq git openssl bash bc apt-transport-https gnupg software-properties-common
+
+      if [ -z "${DOWNLOAD_URL}" ]; then
+          GITHUB_PACKAGE="Nan1t/NanoLimbo"
+          MATCH="NanoLimbo-"
+
+          ## get release info and download links
+          LATEST_JSON=$(curl --silent "https://api.github.com/repos/${GITHUB_PACKAGE}/releases/latest")
+          RELEASES=$(curl --silent "https://api.github.com/repos/${GITHUB_PACKAGE}/releases")
+          
+          if [ -z "${VERSION}" ] || [ "${VERSION}" == "latest" ]; then
+              DOWNLOAD_URL=$(echo ${LATEST_JSON} | jq .assets | jq -r .[].browser_download_url | grep -i ${MATCH})
+          else
+              VERSION_CHECK=$(echo ${RELEASES} | jq -r --arg VERSION "${VERSION}" '.[] | select(.tag_name==$VERSION) | .tag_name')
+              if [ "${VERSION}" == "${VERSION_CHECK}" ]; then
+                  DOWNLOAD_URL=$(echo ${RELEASES} | jq -r --arg VERSION "${VERSION}" '.[] | select(.tag_name==$VERSION) | .assets[].browser_download_url' | grep -i ${MATCH})
+              else
+                  echo -e "defaulting to latest release"
+                  DOWNLOAD_URL=$(echo ${LATEST_JSON} | jq .assets | jq -r .[].browser_download_url)
+              fi
+          fi
+      else
+          if curl --output /dev/null --silent --head --fail ${DOWNLOAD_URL}.jar; then
+              echo -e "Provided download link is valid. Proceeding to download"
+          else
+              echo -e "Provided download link is invalid. Exiting now"
+              exit 2
+          fi
+      fi
+
+      cd /mnt/server
+
+      echo "Downloading server file..."
+      echo -e "performing curl -sSL ${DOWNLOAD_URL}"
+      curl -sSL -o ${SERVER_JARFILE} ${DOWNLOAD_URL}
+
+      if [ ! -f "settings.yml" ]; then
+      echo "Creating settings file..."
+      curl -sSL -o settings.yml https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/nanolimbo/settings.yml
+      fi
+
+      ## install end
+      echo "-----------------------------------------"
+      echo "Installation completed..."
+      echo "-----------------------------------------"
+    container: 'ghcr.io/pelican-eggs/installers:debian'
+    entrypoint: bash
+variables:
+  -
+    sort: 2
+    name: 'Download URL'
+    description: "A URL to use to download.\r\nThis is optional! Let this field empty for the latest version."
+    env_variable: DOWNLOAD_URL
+    default_value: ''
+    user_viewable: true
+    user_editable: true
+    rules:
+      - nullable
+      - string
+  -
+    sort: 1
+    name: 'Server jar File'
+    description: 'The name of the server jarfile to run the server with.'
+    env_variable: SERVER_JARFILE
+    default_value: server.jar
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - 'regex:/^([\w\d._-]+)(\.jar)$/'
+  -
+    sort: 3
+    name: Version
+    description: 'The version of NanoLimbo to download. Use "latest" for latest.'
+    env_variable: VERSION
+    default_value: latest
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:20'

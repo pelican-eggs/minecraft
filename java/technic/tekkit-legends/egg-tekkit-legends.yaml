@@ -1,0 +1,67 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/technic/tekkit-legends/egg-tekkit-legends.yaml'
+exported_at: '2026-01-06T14:26:28+00:00'
+name: 'Tekkit Legends'
+author: aevum@decess.us
+uuid: 12643d14-fca6-4f3e-93ed-048d82d711ce
+description: "The ancient power of Tekkits past return in this legendary pack! Wield the philosopher's stone, ride\nthe rails, breed the bees, and much, much more! This pack will remind you of what you've always\nloved about Tekkit, while bringing you new mods to discover and enjoy!\r\n\r\nhttps://www.technicpack.net/modpack/tekkit-legends.735902"
+image: 'data:image/png;base64,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'
+tags: {  }
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  Java_8: 'ghcr.io/pelican-eggs/yolks:java_8'
+file_denylist: {  }
+startup_commands:
+  Default: 'java -Xms128M -XX:MaxRAMPercentage=95.0 -jar TekkitLegends.jar'
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        server-port: '{{server.allocations.default.port}}'
+        query.port: '{{server.allocations.default.port}}'
+  startup:
+    done: ')! For help, type '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/ash
+      # Forge Installation Script
+      #
+      # Server Files: /mnt/server
+
+      cd /mnt/server
+
+      curl -sS https://servers.technicpack.net/Technic/servers/tekkit-legends/Tekkit_Legends_Server_v$MODPACK_VERSION.zip -o TekkitLegends_$MODPACK_VERSION.zip
+
+      unzip TekkitLegends_$MODPACK_VERSION.zip
+
+      rm -rf TekkitLegends_$MODPACK_VERSION.zip
+
+      ## install end
+      echo "-----------------------------------------"
+      echo "Installation completed..."
+      echo "-----------------------------------------"
+    container: 'ghcr.io/pelican-eggs/installers:alpine'
+    entrypoint: ash
+variables:
+  -
+    sort: 1
+    name: 'Modpack Version'
+    description: 'Version of the modpack to use'
+    env_variable: MODPACK_VERSION
+    default_value: 1.1.1
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:20'

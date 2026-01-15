@@ -1,0 +1,155 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/glowstone/egg-glowstone.yaml'
+exported_at: '2026-01-06T14:10:06+00:00'
+name: Glowstone
+author: support@pterodactyl.io
+uuid: 0b0b94ea-aff2-49c0-80a0-736c1717f82e
+description: 'Glowstone is an open-source server implementation for Minecraft: Java Edition 1.12.2 and up.'
+image: 'data:image/png;base64,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'
+tags: {  }
+features: {  }
+docker_images:
+  'Java 8': 'ghcr.io/pelican-eggs/yolks:java_8'
+  'Java 11': 'ghcr.io/pelican-eggs/yolks:java_11'
+  'Java 16': 'ghcr.io/pelican-eggs/yolks:java_16'
+  'Java 17': 'ghcr.io/pelican-eggs/yolks:java_17'
+  'Java 18': 'ghcr.io/pelican-eggs/yolks:java_18'
+file_denylist: {  }
+startup_commands:
+  Default: 'java -Xms768M -XX:MaxRAMPercentage=95.0 -XX:+UseG1GC -jar {{SERVER_JARFILE}}'
+config:
+  files:
+    config/glowstone.yml:
+      parser: yaml
+      find:
+        server.port: '{{server.allocations.default.port}}'
+        console.prompt: ''
+  startup:
+    done: 'Ready for connections.'
+  logs:
+    custom: false
+    location: logs/latest.log
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/bash
+      # Server Files: /mnt/server
+      apt update
+      apt install -y jq curl
+
+      mkdir -p /mnt/server
+      cd /mnt/server
+
+      if [ $VERSION == *SNAPSHOT ]; then
+        echo -e "Using Maven"
+        
+        DOWNLOAD_URL="https://repo.glowstone.net/service/rest/v1/search/assets/download?group=net.glowstone&name=glowstone&sort=version&repository=snapshots&maven.baseVersion=${VERSION}&direction=desc&maven.classifier="
+      else 
+          echo -e "Using GitHub."
+
+          if [ -z "${GITHUB_USER}" ] && [ -z "${GITHUB_OAUTH_TOKEN}" ] ; then
+              echo -e "using anon api call"
+          else
+              echo -e "user and oauth token set"
+              alias curl='curl -u ${GITHUB_USER}:${GITHUB_OAUTH_TOKEN} '
+          fi
+          
+          ## get release info and download links
+          LATEST_JSON=$(curl --silent "https://api.github.com/repos/${GITHUB_PACKAGE}/releases/latest")
+          RELEASES=$(curl --silent "https://api.github.com/repos/${GITHUB_PACKAGE}/releases")
+
+          if [ -z "${VERSION}" ] || [ "${VERSION}" == "latest" ]; then
+              DOWNLOAD_URL=$(echo ${LATEST_JSON} | jq .assets | jq -r .[].browser_download_url | grep -i ${MATCH})
+          else
+              VERSION_CHECK=$(echo ${RELEASES} | jq -r --arg VERSION "${VERSION}" '.[] | select(.tag_name==$VERSION) | .tag_name')
+              if [ "${VERSION}" == "${VERSION_CHECK}" ]; then
+                  DOWNLOAD_URL=$(echo ${RELEASES} | jq -r --arg VERSION "${VERSION}" '.[] | select(.tag_name==$VERSION) | .assets[].browser_download_url' | grep -i ${MATCH})
+              else
+                  echo -e "defaulting to latest release"
+                  DOWNLOAD_URL=$(echo ${LATEST_JSON} | jq .assets | jq -r .[].browser_download_url)
+              fi
+          fi
+      fi
+
+      echo -e "Downloading..."
+      curl --silent -L -o ${SERVER_JARFILE} ${DOWNLOAD_URL}
+
+      echo -e "Generating configuration..."
+      java -jar ${SERVER_JARFILE} --generate-config
+
+      echo -e "Install Complete"
+    container: 'ghcr.io/pelican-eggs/installers:java_8'
+    entrypoint: bash
+variables:
+  -
+    sort: 1
+    name: 'GitHub OAuth Token'
+    description: "This can be either an OAuth or a Personal Access Token.\r\n\r\nThis is required for the install is you set a user."
+    env_variable: GITHUB_OAUTH_TOKEN
+    default_value: ''
+    user_viewable: false
+    user_editable: false
+    rules:
+      - string
+      - nullable
+  -
+    sort: 2
+    name: 'GitHub Package'
+    description: 'The repository to download from.'
+    env_variable: GITHUB_PACKAGE
+    default_value: GlowstoneMC/Glowstone
+    user_viewable: true
+    user_editable: false
+    rules:
+      - required
+      - string
+  -
+    sort: 3
+    name: 'GitHub User'
+    description: "GitHub user to use for api calls.\r\n\r\nThis only needs to be set if you hit the GitHub API too often across multiple servers."
+    env_variable: GITHUB_USER
+    default_value: ''
+    user_viewable: false
+    user_editable: false
+    rules:
+      - string
+      - nullable
+  -
+    sort: 5
+    name: Match
+    description: ''
+    env_variable: MATCH
+    default_value: glowstone.jar
+    user_viewable: false
+    user_editable: false
+    rules:
+      - required
+      - string
+  -
+    sort: 6
+    name: 'Server Jar File'
+    description: 'The name of the server jarfile to run the server with.'
+    env_variable: SERVER_JARFILE
+    default_value: glowstone.jar
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - 'regex:/^([\w\d._-]+)(\.jar)$/'
+  -
+    sort: 4
+    name: 'Glowstone Version'
+    description: |-
+      The version of Glowstone to download. If it ends in SNAPSHOT, it will attempt to download from the
+      maven repository.
+    env_variable: VERSION
+    default_value: latest
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:20'

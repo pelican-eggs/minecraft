@@ -1,0 +1,116 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/feather/egg-feather.yaml'
+exported_at: '2026-01-06T14:09:56+00:00'
+name: Feather
+author: parker@parkervcp.com
+uuid: ca4cc8ae-0404-41d9-99b3-634895e91934
+description: 'An experimental Minecraft server implementation written in Rust.'
+image: null
+tags: {  }
+features: {  }
+docker_images:
+  Debian: 'ghcr.io/pelican-eggs/yolks:debian'
+file_denylist: {  }
+startup_commands:
+  Default: ./feather-server
+config:
+  files:
+    feather.toml:
+      parser: file
+      find:
+        port: 'port = {{server.allocations.default.port}}'
+        address: 'address = "0.0.0.0"'
+  startup:
+    done: 'Server started'
+  logs: {  }
+  stop: ^C
+scripts:
+  installation:
+    script: |-
+      #! /bin/bash
+
+      GITHUB_PACKAGE=feather-rs/feather
+      MATCH=linux
+
+      apt update
+      apt install -y file 
+
+      if [ ! -d /mnt/server/ ]; then
+          mkdir -p /mnt/server/
+      fi
+
+      cd /mnt/server/
+
+      if [ -z "${GITHUB_USER}" ] && [ -z "${GITHUB_OAUTH_TOKEN}" ] ; then
+          echo -e "using anon api call"
+      else
+          echo -e "user and oauth token set"
+          alias curl='curl -u ${GITHUB_USER}:${GITHUB_OAUTH_TOKEN} '
+      fi
+
+      ## get release info and download links
+      LATEST_JSON=$(curl --silent "https://api.github.com/repos/${GITHUB_PACKAGE}/releases/latest")
+      RELEASES=$(curl --silent "https://api.github.com/repos/${GITHUB_PACKAGE}/releases")
+
+      if [ "$(echo ${LATEST_JSON} | jq -r '.message')" != "Not Found" ] && [[ -z "${VERSION}" || "${VERSION}" == "latest" ]]; then
+          echo -e "grabbing latest version"
+          DOWNLOAD_URL=$(echo ${LATEST_JSON} | jq .assets | jq -r .[].browser_download_url | grep -i ${MATCH})
+      elif [ "$(echo ${LATEST_JSON} | jq -r '.message')" == "Not Found" ]; then
+          ## emergency fallback if latest isn't found
+          ## grabs the latest release even it it's a pre-release
+          echo -e "grabbing latest pre-release"
+          DOWNLOAD_URL=$(echo ${RELEASES} | jq -r '.[0].assets[].browser_download_url' | grep -i ${MATCH})
+      else
+          echo -e "grabbing version $VERSION"
+          VERSION_CHECK=$(echo ${RELEASES} | jq -r --arg VERSION "${VERSION}" '.[] | select(.tag_name==$VERSION) | .tag_name')
+          if [ "${VERSION}" == "${VERSION_CHECK}" ]; then
+              DOWNLOAD_URL=$(echo ${RELEASES} | jq -r --arg VERSION "${VERSION}" '.[] | select(.tag_name==$VERSION) | .assets[].browser_download_url' | grep -i ${MATCH})
+          else
+              echo -e "defaulting to latest release"
+              DOWNLOAD_URL=$(echo ${LATEST_JSON} | jq .assets | jq -r .[].browser_download_url)
+          fi
+      fi
+
+      if [ ! -z "${DOWNLOAD_URL}" ]; then 
+          if curl --output /dev/null --silent --head --fail ${DOWNLOAD_URL}; then
+              echo -e "link is valid. setting download link to ${DOWNLOAD_URL}"
+              VALIDATED_URL=${DOWNLOAD_URL}
+          else        
+              echo -e "link is invalid closing out"
+              exit 2
+          fi
+      fi
+
+      curl -sSL -o ${VALIDATED_URL##*/} ${VALIDATED_URL}
+
+      FILETYPE=$(file -F ',' ${VALIDATED_URL##*/} | cut -d',' -f2 | cut -d' ' -f2)
+      if [ "$FILETYPE" == "gzip" ]; then
+          tar xzvf ${VALIDATED_URL##*/}
+      elif [ "$FILETYPE" == "Zip" ]; then
+          unzip ${VALIDATED_URL##*/}
+      elif [ "$FILETYPE" == "XZ" ]; then
+          tar xvf ${VALIDATED_URL##*/}
+      else
+          echo -e "unknown filetype. Exiting"
+          # exit 2 
+      fi
+
+      rm ${VALIDATED_URL##*/}
+
+      chmod +x feather-server
+    container: 'ghcr.io/pelican-eggs/installers:debian'
+    entrypoint: bash
+variables:
+  -
+    sort: 1
+    name: 'Generate World'
+    description: 'Do you want the installer to generate a world for you?'
+    env_variable: GEN_WORLD
+    default_value: 0
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - boolean

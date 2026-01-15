@@ -1,0 +1,104 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/bedrock/nukkit/egg-nukkit.yaml'
+exported_at: '2026-01-06T14:11:15+00:00'
+name: Nukkit
+author: parker@parkervcp.com
+uuid: 5669130a-d4a2-4a80-88b6-9edd2d9484bc
+description: "Nukkit is a Nuclear-Powered Server Software For Minecraft: Pocket Edition\r\n\r\nhttps://cloudburstmc.org"
+image: 'data:image/png;base64,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'
+tags: {  }
+features: {  }
+docker_images:
+  Java_11: 'ghcr.io/pelican-eggs/yolks:java_11'
+  Java_16: 'ghcr.io/pelican-eggs/yolks:java_16'
+  Java_8: 'ghcr.io/pelican-eggs/yolks:java_8'
+  Java_17: 'ghcr.io/pelican-eggs/yolks:java_17'
+file_denylist: {  }
+startup_commands:
+  Default: 'java -Xms128M -XX:MaxRAMPercentage=95.0 -jar {{SERVER_JARFILE}}'
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        enable-query: true
+        server-port: '{{server.allocations.default.port}}'
+        query.port: '{{server.allocations.default.port}}'
+  startup:
+    done: ')! '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/ash
+      # Nukkit Installation Script
+      #
+      # Server Files: /mnt/server
+      apk add --no-cache openssl
+
+      cd /mnt/server
+
+      ## Only download if a path is provided, otherwise continue.
+      if [ ! -z "${DL_PATH}" ]; then
+          MODIFIED_DOWNLOAD=`eval echo $(echo ${DL_PATH} | sed -e 's/{{/${/g' -e 's/}}/}/g')`
+          wget ${MODIFIED_DOWNLOAD} -O ${SERVER_JARFILE}
+      elif [ -z "${NUKKIT_VERSION}" ] || [ "${NUKKIT_VERSION}" == "latest" ]; then
+          wget https://ci.opencollab.dev/job/NukkitX/job/Nukkit/job/master/lastSuccessfulBuild/artifact/target/nukkit-1.0-SNAPSHOT.jar -O ${SERVER_JARFILE}
+      else
+          wget https://ci.opencollab.dev/job/NukkitX/job/Nukkit/job/master/${NUKKIT_VERSION}/artifact/target/nukkit-1.0-SNAPSHOT.jar -O ${SERVER_JARFILE}
+      fi
+
+      if [ ! -f nukkit.yml ]; then
+          wget https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/bedrock/nukkit/nukkit.yml
+      fi
+
+      if [ ! -f server.properties ]; then
+          wget https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/bedrock/nukkit/server.properties
+      fi
+
+      echo -s "Install completed!"
+    container: 'ghcr.io/pelican-eggs/installers:alpine'
+    entrypoint: ash
+variables:
+  -
+    sort: 2
+    name: 'Download Path'
+    description: |-
+      A URL to use to download Nukkit rather than building it on the server. This is not user viewable.
+      Use <code>{{DL_VERSION}}</code> in the URL to automatically insert the assigned version into the
+      URL. If you do not enter a URL Spigot will build directly in the container (this will fail on low
+      memory containers).
+    env_variable: DL_PATH
+    default_value: ''
+    user_viewable: false
+    user_editable: false
+    rules:
+      - nullable
+      - string
+  -
+    sort: 3
+    name: 'nukkit version'
+    description: 'The version of Nukkitt to download (using the --rev tag). Use "latest" for latest.'
+    env_variable: NUKKIT_VERSION
+    default_value: latest
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:20'
+  -
+    sort: 1
+    name: 'Server Jar File'
+    description: 'The name of the server jarfile to run the server with.'
+    env_variable: SERVER_JARFILE
+    default_value: server.jar
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - 'regex:/^([\w\d._-]+)(\.jar)$/'

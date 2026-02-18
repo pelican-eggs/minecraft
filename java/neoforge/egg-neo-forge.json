@@ -65,7 +65,7 @@
             "user_editable": true,
             "rules": [
                 "nullable",
-                "regex:/^[0-9\\.\\-]+$/"
+                "regex:/^[0-9\.\-]+-[a-z]+$/"
             ]
         }
     ]

@@ -21,6 +21,7 @@ It’s set in infinitely-generated worlds of wide open terrain - icy mountains, 
 * [Forge](java/forge)
 * [Feed The Beast](java/ftb)
 * [Glowstone](java/glowstone)
+* [GregTech:New Horizons](java/gtnh)
 * [Limbo](java/limbo)
 * [Krypton](java/krypton)
 * [Magma](java/magma)

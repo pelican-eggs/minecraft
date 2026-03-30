@@ -10,7 +10,7 @@
     "description": "A simple proxy that sits between your server and Mojang's auth services that ensures even when they're offline, you stay online!",
     "features": null,
     "docker_images": {
-        "Java 21": "ghcr.io\/parkervcp\/yolks:java_21"
+        "Java 21": "ghcr.io\/pelican-eggs\/yolks:java_21"
     },
     "file_denylist": [],
     "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true -jar {{JARFILE}}",

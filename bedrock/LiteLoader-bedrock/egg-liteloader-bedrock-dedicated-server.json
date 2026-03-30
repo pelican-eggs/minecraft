@@ -11,7 +11,7 @@
     "description": "LiteLoaderBDS - Epoch-making & Cross-language Bedrock Dedicated Servers Plugin Loader\r\n\r\nLiteLoaderBDS is an unofficial plugin loader that provides basic API support for Bedrock Dedicated Server, with a massive API, lots of packed utility interfaces, a rich event system and powerful basic interface support.",
     "features": null,
     "docker_images": {
-        "ghcr.io\/parkervcp\/yolks:wine_staging": "ghcr.io\/parkervcp\/yolks:wine_staging"
+        "ghcr.io\/pelican-eggs\/yolks:wine_staging": "ghcr.io\/pelican-eggs\/yolks:wine_staging"
     },
     "file_denylist": [],
     "startup": ".\/lae-ll-launcher bedrock_server_mod.exe",

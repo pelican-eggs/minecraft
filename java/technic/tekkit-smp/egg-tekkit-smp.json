@@ -15,8 +15,8 @@
         "pid_limit"
     ],
     "docker_images": {
-        "Java8": "ghcr.io\/parkervcp\/yolks:java_8",
-        "Java11": "ghcr.io\/parkervcp\/yolks:java_11"
+        "Java8": "ghcr.io\/pelican-eggs\/yolks:java_8",
+        "Java11": "ghcr.io\/pelican-eggs\/yolks:java_11"
     },
     "file_denylist": [],
     "startup": "java -server -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true -Dfml.queryResult=confirm -jar forge.jar nogui",

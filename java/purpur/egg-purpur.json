@@ -15,12 +15,12 @@
         "pid_limit"
     ],
     "docker_images": {
-        "Java 8": "ghcr.io\/parkervcp\/yolks:java_8",
-        "Java 11": "ghcr.io\/parkervcp\/yolks:java_11",
-        "Java 16": "ghcr.io\/parkervcp\/yolks:java_16",
-        "Java 17": "ghcr.io\/parkervcp\/yolks:java_17",
-        "Java 21": "ghcr.io\/parkervcp\/yolks:java_21",
-        "Java 25": "ghcr.io\/parkervcp\/yolks:java_25"
+        "Java 8": "ghcr.io\/pelican-eggs\/yolks:java_8",
+        "Java 11": "ghcr.io\/pelican-eggs\/yolks:java_11",
+        "Java 16": "ghcr.io\/pelican-eggs\/yolks:java_16",
+        "Java 17": "ghcr.io\/pelican-eggs\/yolks:java_17",
+        "Java 21": "ghcr.io\/pelican-eggs\/yolks:java_21",
+        "Java 25": "ghcr.io\/pelican-eggs\/yolks:java_25"
     },
     "file_denylist": [],
     "startup": "java --add-modules=jdk.incubator.vector -Xms128M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}}",

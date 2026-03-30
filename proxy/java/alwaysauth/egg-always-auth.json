@@ -14,7 +14,7 @@
     ],
     "features": [],
     "docker_images": {
-        "Java 21": "ghcr.io/parkervcp/yolks:java_21"
+        "Java 21": "ghcr.io/pelican-eggs/yolks:java_21"
     },
     "file_denylist": [],
     "startup_commands": {

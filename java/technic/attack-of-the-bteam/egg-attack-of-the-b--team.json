@@ -15,7 +15,7 @@
         "pid_limit"
     ],
     "docker_images": {
-        "ghcr.io\/parkervcp\/yolks:java_8": "ghcr.io\/parkervcp\/yolks:java_8"
+        "ghcr.io\/pelican-eggs\/yolks:java_8": "ghcr.io\/pelican-eggs\/yolks:java_8"
     },
     "file_denylist": [],
     "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar BTeam.jar",

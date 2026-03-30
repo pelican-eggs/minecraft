@@ -15,6 +15,7 @@ features:
   - java_version
   - pid_limit
 docker_images:
+  'Java 25': 'ghcr.io/pelican-eggs/yolks:java_25'
   'Java 21': 'ghcr.io/pelican-eggs/yolks:java_21'
   'Java 17': 'ghcr.io/pelican-eggs/yolks:java_17'
   'Java 16': 'ghcr.io/pelican-eggs/yolks:java_16'
@@ -53,7 +54,7 @@ scripts:
         fi
         echo -e "Found latest version for ${SPONGE_TYPE}"
       else
-        if [ $SPONGE_TYPE = 'spongevanilla' ]; then 
+        if [ $SPONGE_TYPE = 'spongevanilla' ]; then
           VERSIONS_JSON=$(curl -sSL https://dl-api.spongepowered.org/v2/groups/org.spongepowered/artifacts/${SPONGE_TYPE}/versions?tags=,minecraft:${MINECRAFT_VERSION}&offset=0&limit=1)
         else
           FORGETAG='forge'
@@ -62,15 +63,15 @@ scripts:
           fi
           VERSIONS_JSON=$(curl -sSL https://dl-api.spongepowered.org/v2/groups/org.spongepowered/artifacts/${SPONGE_TYPE}/versions?tags=,minecraft:${MINECRAFT_VERSION},${FORGETAG}:${FORGE_VERSION}&offset=0&limit=1)
         fi
-        
+
         if [ -z "${VERSIONS_JSON}" ]; then
           echo -e "Failed to find recommended ${MINECRAFT_VERSION} version for ${SPONGE_TYPE} ${FORGE_VERSION}!"
           exit 1
         fi
-        
+
         VERSION_KEY=$(echo $VERSIONS_JSON | jq -r '.artifacts | to_entries[0].key')
         TARGET_VERSION_JSON=$(curl -sSL https://dl-api.spongepowered.org/v2/groups/org.spongepowered/artifacts/${SPONGE_TYPE}/versions/${VERSION_KEY})
-        
+
         if [ -z "${TARGET_VERSION_JSON}" ]; then
           echo -e "Failed to find ${VERSION_KEY} for ${SPONGE_TYPE} ${FORGE_VERSION}!"
           exit 1

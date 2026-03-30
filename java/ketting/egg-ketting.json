@@ -2,7 +2,7 @@
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
         "version": "PLCN_v1",
-        "update_url": null
+        "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/ketting/egg-ketting.json"
     },
     "exported_at": "2025-01-10T15:28:19+00:00",
     "name": "Ketting",
@@ -16,7 +16,8 @@
     ],
     "docker_images": {
         "Java 17": "ghcr.io\/parkervcp\/yolks:java_17",
-        "Java 21": "ghcr.io\/parkervcp\/yolks:java_21"
+        "Java 21": "ghcr.io\/parkervcp\/yolks:java_21",
+        "Java 25": "ghcr.io\/parkervcp\/yolks:java_25"
     },
     "file_denylist": [],
     "startup": "java -Xms128M -XX:MaxRAMPercentage=95.0 -jar {{SERVER_JAR_FILE}} -minecraftVersion {{GAME_VERSION}}",

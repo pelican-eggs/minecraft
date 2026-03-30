@@ -2,7 +2,7 @@
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
         "version": "PLCN_v3",
-        "update_url": null
+        "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/glowstone/egg-glowstone.json"
     },
     "exported_at": "2025-12-19T20:56:01+00:00",
     "name": "Glowstone",
@@ -13,11 +13,11 @@
     "tags": [],
     "features": null,
     "docker_images": {
-        "Java 8": "ghcr.io/pterodactyl/yolks:java_8",
-        "Java 11": "ghcr.io/pterodactyl/yolks:java_11",
-        "Java 16": "ghcr.io/pterodactyl/yolks:java_16",
-        "Java 17": "ghcr.io/pterodactyl/yolks:java_17",
-        "Java 18": "ghcr.io/pterodactyl/yolks:java_18"
+        "Java 8": "ghcr.io/parkervcp/yolks:java_8",
+        "Java 11": "ghcr.io/parkervcp/yolks:java_11",
+        "Java 16": "ghcr.io/parkervcp/yolks:java_16",
+        "Java 17": "ghcr.io/parkervcp/yolks:java_17",
+        "Java 18": "ghcr.io/parkervcp/yolks:java_18"
     },
     "file_denylist": [],
     "startup_commands": {

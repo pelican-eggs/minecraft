@@ -2,7 +2,7 @@
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
         "version": "PLCN_v3",
-        "update_url": null
+        "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/ftb/egg-f-t-b-server.json"
     },
     "exported_at": "2025-12-19T20:55:40+00:00",
     "name": "FTB Server",
@@ -17,12 +17,12 @@
         "pid_limit"
     ],
     "docker_images": {
-        "Java 21": "ghcr.io/parkervcp/yolks:java_21",
-        "Java 19": "ghcr.io/parkervcp/yolks:java_19",
-        "Java 17": "ghcr.io/parkervcp/yolks:java_17",
-        "Java 16": "ghcr.io/parkervcp/yolks:java_16",
+        "Java 8": "ghcr.io/parkervcp/yolks:java_8",
         "Java 11": "ghcr.io/parkervcp/yolks:java_11",
-        "Java 8": "ghcr.io/parkervcp/yolks:java_8"
+        "Java 16": "ghcr.io/parkervcp/yolks:java_16",
+        "Java 17": "ghcr.io/parkervcp/yolks:java_17",
+        "Java 21": "ghcr.io/parkervcp/yolks:java_21",
+        "Java 25": "ghcr.io/parkervcp/yolks:java_25"
     },
     "file_denylist": [],
     "startup_commands": {

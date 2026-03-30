@@ -15,6 +15,7 @@ features:
   - java_version
   - pid_limit
 docker_images:
+  'Java 25': 'ghcr.io/pelican-eggs/yolks:java_25'
   'Java 21': 'ghcr.io/pelican-eggs/yolks:java_21'
   'Java 17': 'ghcr.io/pelican-eggs/yolks:java_17'
   'Java 16': 'ghcr.io/pelican-eggs/yolks:java_16'

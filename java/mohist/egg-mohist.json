@@ -2,7 +2,7 @@
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
         "version": "PLCN_v1",
-        "update_url": null
+        "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/mohist/egg-mohist.json"
     },
     "exported_at": "2024-11-02T08:50:15+00:00",
     "name": "MohistMC",
@@ -19,7 +19,8 @@
         "Java 11": "ghcr.io\/parkervcp\/yolks:java_11",
         "Java 16": "ghcr.io\/parkervcp\/yolks:java_16",
         "Java 17": "ghcr.io\/parkervcp\/yolks:java_17",
-        "java 21": "ghcr.io\/parkervcp\/yolks:java_21"
+        "Java 21": "ghcr.io\/parkervcp\/yolks:java_21",
+        "Java 25": "ghcr.io\/parkervcp\/yolks:java_25"
     },
     "file_denylist": [],
     "startup": "java -Xms128M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}}",

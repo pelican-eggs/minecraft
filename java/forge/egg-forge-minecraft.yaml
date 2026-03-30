@@ -17,6 +17,7 @@ features:
   - java_version
   - pid_limit
 docker_images:
+  'Java 25': 'ghcr.io/pelican-eggs/yolks:java_25'
   'Java 21': 'ghcr.io/pelican-eggs/yolks:java_21'
   'Java 17': 'ghcr.io/pelican-eggs/yolks:java_17'
   'Java 16': 'ghcr.io/pelican-eggs/yolks:java_16'
@@ -149,7 +150,7 @@ scripts:
       "
       java -jar installer.jar --installServer || { echo -e "
       Install failed using Forge version ${FORGE_VERSION} and Minecraft version ${MINECRAFT_VERSION}.
-      Should you be using unlimited memory value of 0, make sure to increase the default install resource limits in the Daemon config or specify exact allocated memory in the server Build Configuration instead of 0! 
+      Should you be using unlimited memory value of 0, make sure to increase the default install resource limits in the Daemon config or specify exact allocated memory in the server Build Configuration instead of 0!
       Otherwise, the Forge installer will not have enough memory."; exit 4; }
 
       # Check if we need a symlink for 1.17+ Forge JPMS args

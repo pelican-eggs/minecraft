@@ -1,0 +1,67 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/technic/the-1-12-2-pack/egg-the1122-pack.yaml'
+exported_at: '2026-01-06T14:26:47+00:00'
+name: 'The 1.12.2 Pack'
+author: contact@irequire.dev
+uuid: 2b61c1f4-7b41-486d-8dfa-5365aa38d0a6
+description: 'The 1.12.2 Pack'
+image: 'data:image/png;base64,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'
+tags: {  }
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  Java_8: 'ghcr.io/pelican-eggs/yolks:java_8'
+file_denylist: {  }
+startup_commands:
+  Default: 'java -Xms128M -XX:MaxRAMPercentage=95.0 -jar forge-*.jar'
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        server-port: '{{server.allocations.default.port}}'
+        query.port: '{{server.allocations.default.port}}'
+  startup:
+    done: ')! For help, type '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/ash
+      # Forge Installation Script
+      #
+      # Server Files: /mnt/server
+
+      cd /mnt/server
+
+      curl -sS http://solder.endermedia.com/repository/downloads/the-1122-pack/the-1122-pack_$MODPACK_VERSION.zip -o the-1122-pack_$MODPACK_VERSION.zip
+
+      unzip the-1122-pack_$MODPACK_VERSION.zip
+
+      rm -rf the-1122-pack_$MODPACK_VERSION.zip
+
+      ## install end
+      echo "-----------------------------------------"
+      echo "Installation completed..."
+      echo "-----------------------------------------"
+    container: 'ghcr.io/pelican-eggs/installers:alpine'
+    entrypoint: ash
+variables:
+  -
+    sort: 1
+    name: 'Modpack Version'
+    description: 'Version of the modpack to use'
+    env_variable: MODPACK_VERSION
+    default_value: 1.5.5
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:20'

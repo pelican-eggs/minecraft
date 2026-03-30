@@ -1,0 +1,612 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/curseforge/egg-curse-forge-generic.yaml'
+exported_at: '2026-01-06T14:08:51+00:00'
+name: 'CurseForge Generic'
+author: contact@chromozone.dev
+uuid: 019bbf16-a3f3-470a-9c0b-f3995b5e032a
+description: 'A generic egg for a CurseForge modpack.'
+image: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAIABJREFUeJzs3Xl4VdW9PvB37X2GDCQgImBAEBkVFQiDDApxREGuelv6u7ZOvcVZIImKWtTNbutUZdY6tNpqS++tQ9UCid6iGBVBmUEEmSEnDIoMCTlJzrDX748TBhUFDuectYf38zw8xarJq8LZ795r7fUVEyZMABF5S8n28s6Iy0mAyNKEVTyxzfBVqjMRUWb5VAcgoswZu/mtZroeuF8KFAMIAhKWFEtLQ7P/DM0aP6lgxC7VGYkoM/SioiLVGYgozQxM0ApD4euFpr8NgaH4dvnXAdEbUhs1oGZ9w9DKyKKKli2lqqxElBma6gBElF53V80eUh3qtxjAywBa/chf2hxSTqluumVlSVXZ0AzFIyJFuARA5FKjQ+VtfUI+aklxHQBxHH/rmZB4pyRUNktacuyUdsM3pisjEanDAkDkMrdsm5mTa+njJDAOEtkn8KWuFJq4rCRU/lzE8j34TLtLa1IWkoiU4x4AIpcwJkwQvTqGRwagvQ3gKgH4U/BldQDn6SJ+Y//qDfuH5s9YWoEi7g8gcgHuASBygeJQee/qUed9JAReBdA+9d9BFAjI56tD/T4trZo9MPVfn4gyjUsARA5277aZp8YtbYKEGIXMFPo+UoqPS6vKXo+J+D3TCkZszcD3JKI04BIAkQMZq14LFEa33mVBvAGIgTi+TX4nSgDorknt1gHV6wJDd1ctqGh2eiyD35+IUoBLAEQOU1o5e0R109zVkHIKJPIVRskBYFT7wmtLQmU3KMxBREngEgCRQ5Rum9lNWvpkKcTlqrN8x2kAXi4Nzf5l3BLFU9sNW646EBEdHQsAkc2VVL7bHMIyJPQ7YOPfsxKiSNOwpKSqbIam++6Z2Pqyr1RnIqIfxj0ARDZl4ANfr9DqUUJYbwK4EM5YshMAekjLurl/zToMrVy2sKJl97jqUET0fU74QCHynOLK2RfvC4WXCsjnAbRQnScJzYTE49VNc1eWVJYNVx2GiL7Pto8TibyoZHt5Z2HJR6QQI1VnSZEuEJhVEiqfw7HDRPbCAkBkA7dt+GdudjDrXgD3SyCoOk/qyUssKZaWhMqfjWuxh6cVjNinOhGR13EPAJFCB8b0+n2+WQCGw92lXAdwnia1mzl2mEg97gEgUqSkcla/6lC/eTj6mF63Oblx7PDCuytnD1Ydhsir3Hy3QWRL43a82yYajz8GoR3vmF636WUJUVESKpslgTFT2g7bpDoQkZdwCYAoQ27ZNjPnguoNpZYlXwXQF96++B+uC4BbBu5bl1e4b/OnC5t2jKgOROQFXAIgyoDSytkjcuP6KiHxOIAmqvPYjQCypcB9fi26uiRUdoMxYQLLEVGaiQkTJqjOQORaxdveKRSWNQXABaqzOMxCYWHspHbD5qsOQuRW3ANAlAal22a2kJbvIUDeicTudzo+faWGeSVVZX/To3LcU6cP36E6EJHbcA8AUQoZ22b6C6s3jgbEWwAGg8tsJyJxrLAmbufYYaLU44cTUYoUV82+pNrSl9tgTK/b5CIxdnhlcWWZW05IJFKOSwBEJ6h066yuUtMmAWKY6iwu10kIvFoaKns/BlEyre0VK1QHInIyFgCiJBXvnHOSFoncJzWtBEBAdR6vkMBFOuTi0tDsl0Q89uDE9ld9rToTkRNxDwDRcTo4pteKvwmBy8BNfipogOgtNX0Uxw4TJYd7AIiOQ3Go7KKaUHhx45jeU1TnIZzUOHZ4RUmonEswRMeBSwBEx6Ck8t1OQos/KoGRnF5jS10BObskVD5Hgxgzse3lq1UHIrI7FgCiH3FwTK/AfVIiS3UeOhp5iQW5vCRU/mysDg9N73xFtepERHbFPQBER2BMmCAKO4Vv8Pt8MwFcCZZlJ0mMHfbj5gE16yMcO0x0ZNwDQPQdJVWz+1aPOjimt7XqPJS0Fomxw5s/Kw2V8Shmou/gXQ1Ro4NjeqXw+phelxGFEviwJFQ2y/Jpo6e2vnyz6kREdsAlAPI8Y9+72b2+WXu3Zcl/gGN63ayLsOQtA/ety+/VULVgYe7pHDtMnsYlAPK00srZI6pr4gfG9OapzkNplyMF7gtEwms4dpi8juOAyZPGVs7qJYQ2RSQG9pBnic8AjJ3c9ooFqpMQZRr3AJCnlG4sO1kGxMMQGsf0EgDZD8C8kqqyGboU9z7V9oqdqhMRZQr3AJAnHBzTq+NNAEPA5S86JDF2GEiMHY5+Or8i51weK0yuxw9Bcr3iqtmXVEt9GaScAqCp6jxkW4mxw3XNP+fYYfICLgGQa5VWlXWRwCRIMVx1FnKUTkLg1ZJQ2Xu6ppc8VTB0pepAROnAAkCuM3bzW810PXC/FOCYXjoRF8et+JLS0OyXoFnjJxWM2KU6EFEqcQ8AuYaBCVphKHy90PR/QWAouMmPTpwGiN6Q2qgBNesbhuZXLa7A6ZbqUESpwD0A5Apjt5ZfWFPVbwkSx/e2VJ2HXKc5pJxSHapbWVI5+3LVYYhSgUsA5Gijt8w+zecTj0DD9ZLjXijtZDcIUV4SKpslLTl2SrvhG1UnIkoWCwA50sExvbq4DxzTS5l3pdDEZSWh8uc4dpicinsAyFGMCRNEr47hkX6f720AV4ElltQ5MHb4pv7V62uG5s9YWoEiPocix+AeAHKM4q1lfapH9ftYCLwKoJ3qPESNThWQz1eH+n1Wuq38fNVhiI4V757I9u7d+u+CuBYxpCZGgaWV7Ku3tOSHpVVlr8ct371TT7tsi+pARD+GSwBkW8aq1wKF0a13WSL+T0AMBMf0kv0JAN2FsG4ZUL0uMFRu/LQiq1NMdSiiI+HdFNlSaeXsEdVNc1c3Ht/LMb3kNDkAjJqa+FqOHSa74jhgspW7Q++cacGaDGCo6ixEqSKBCilk8dQ2w5epzkJ0APcAkC2UVL7bHMIyLEiO6SXXEcAQIcVijh0mO+EeAFLK2DbT32vfxlFCWG8CuBBcliL3OjB2eFT/mnUYGv10EccOk0r8sCVliqtmX1Jt6UsF5PMAWqjOQ5QhzYTE49Xh5is5dphU4hIAZVzJ9vLOiMtJgLhSdRYiZQQ6C+DVklD5HE1YxRPbDF+lOhJ5CwsAZcxhY3qLAQRV5yGyB3mJJcXS0tDsP3PsMGUS9wBQ2h02pvftxjG9LJ5E36Z/a+xwZWRRRcuWPFaY0op7ACit7q6aPaQ61G8xEmN6W6nOQ2RzibHDTbesLKkq46uwlFa8E6O0GB0qb+sT8lFLiuvAE/yIjteZkHiHY4cpnVgAKKVu2TYzJ9fSx0lgHCSyVechcriDY4cjlu/BZ9pdWqM6ELkH9wBQShwY0xuA9jaAqwTgV52JyCV0AOfpIn5j/+oN+zl2mFKFewDohBWHyntXjzrvo8Yxve1V5yFyJ1HQOHb409Kq2QNVpyHn4xIAJe3ebTNPjVvaBAmO6SXKoD5Sio9Lq8pej4n4PdMKRmxVHYiciUsAdNwOjumFeINjeomUEAC6a1JLjB3eXbWgotnpHDtMx4V3bXRcvjWmVyJfdR4ij8sFYFT7wmtLQmU3qA5DzsIlADompdtmdpOWPlkKcbnqLET0PacBeLm0quymeBwlU9sNW646ENkfCwD9qANjeiX0O8BfL0S2JiUu1DQsKakqm6Hpvnsmtr7sK9WZyL64B4COyMAHvl6h1RzTS+Q8ibHDlnVz/5p1GFq5bGFFy+4cO0zfww91+p7iytkX7wvVLuGYXiJHS4wdbpq7sqSybLjqMGQ/fKRLB5VUvttJaPFHpRCcUU7kHl0gMKskVD5Hi2PsxPZXfKE6ENkDCwDhtg3/zM0OZt0Lgful5JheIneSl1g6lpWEyp+Na7GHpxWM2Kc6EanFPQAedmBMr9/nmwVgOFgIidxOB3CeJrWbOXaYuAfAo0oqZ/WrDvWbB47pJfKikxvHDi+8u3L2YNVhSA3e8XnMuB3vtonG449BaBzTS0S9LCEqSkJlsyQwZkrbYZtUB6LM4RKAR9yybWbOBdUbSi1LvgqgL3jxJ6JDugC4ZeC+dXmF+zZ/urBpx4jqQJR+XALwgNLK2SNy4/oqIfE4gCaq8xCR/QggWwrc59eiq0tCZTcYEybwJsHlxIQJE1RnoDQp3vZOobCsKQAuUJ2FiBxnobAwdlK7YfNVB6H04B4AFyrdNrOFtHwPAfJOJHb9EhEdr75Sw7ySqrK/6VE57qnTh+9QHYhSi3sAXMTYNtNfWL1xNCDeAjAYXOIhohOTOFZYE7dz7LD78ALhEsVVsy+ptvTlHNNLRGlwYOzwyuLKMp4U6hJcAnC40q2zukpNmwSIYaqzEJHrdRICr5aGyt6PQZRMa3vFCtWBKHksAA5VvHPOSVokcp/UtBIAAdV5iMg7JHCRDrm4NDT7JRGPPTix/VVfq85Ex497ABzm4JheK/4mBC4DN/kRkRoaIHpLTR/FscPOxD0ADlIcKruoJhRe3Dim9xTVeYiIAJzUOHZ4RUmonEuRDsIlAAc4OKYXGMmpHURkU10BObskVD5Hgxgzse3lq1UHoh/HAmBjh43pvU9KZKnOQ0R0dPISC3J5Saj82VgdHpre+Ypq1YnoyLgHwIaMCRNEYafwDX6fbyaAK8GiRkTOkhg77MfNA2rWRzh22J64B8BmSqpm960edXBMb2vVeYiITkCLxNjhzZ+Vhsp4JLnN8M7SJg6O6ZWCY3qJyGVEoQQ+LAmVzbJ82uiprS/frDoRcQlAOWPfu9m9vll7t2XJf4BjeonI3boIS94ycN+6/F4NVQsW5p7OscMKcQlAodLK2SOqa+IHxvTmqc5DRJQBOVLgvkAkvIZjh9XiOGAFxlbO6iWENkUkBvYQEXmY+AzA2Mltr1igOonXcA9ABpVuLDtZBsTDEBrH9BIRAQBkPwDzSqrKZuhS3PtU2yt2qk7kFdwDkAEHx/TqeBPAEHDphYjocImxw0Bi7HD00/kVOefyWOE044UozRrH9C6FlFMANFWdh4jIxhJjh8PNOXY4A7gEkCalVWVdJDAJUgxXnYWIyFEEOgvg1ZJQ2XuatIonnnbl56ojuRELQIqN3fxWM10P3C8FOKaXiOjEXGwJbWlpaPZL0KzxkwpG7FIdyE24ByBFDEzQCkPh64Wm/wsCQ8FNfkREqaABojekNmpAzfqGoflViytwuqU6lBtwD0AKjA29U1RT1W8JEsf3tlSdh4jIhZpDyinVobqVJZWzL1cdxg24BHACRm+ZfZrPJx4BcL3kmAsiogyQ3SBEeUmobJa05Ngp7YZvVJ3IqVgAknDLtpk5uZY+Drq4DxzTS0SkwpVCE5eVhMqf49jh5HAPwHEwJkwQvTqGRwag/QvAVWCBIiJS6cDY4Zv6V6+vGZo/Y2kFivg89hhxD8AxKt5a1qd6VL+PhcCrANqpzkNERAedKiCfrw71+6y0ctYg1WGcgnewR3Hv1n8XxLWIITUxCixMRER21lsK7aPSqrLX45bv3qmnXbZFdSA74xLADzBWvRYojG69yxLxfwJiIDiml4jICQSA7kJYtwyoXhcYKjd+WpHVKaY6lB3xjvYISitnj6humru68fhejuklInKeHABGTU18LccOHxnHAR/m7tA7Z1qwJgMYqjoLERGljgQqpJDFU9sMX6Y6i11wDwCAksp3m0NYhgXJMb1ERC4kgCFCisUcO3yIp/cAGNtm+nvt2zhKCOtNABeCSyJERG52YOzwqP416zA0+ukiL48d9uwF78CYXgH5PIAWqvMQEVHGNBMSj1eHm68srSq7UnUYVTy3BFCyvbyzsOQjUgrOmiYi8jKBzlJiZkmofI4mrOKJbYavUh0pkzxTAA4b01ssgaDqPEREZBfyEkuKpaWh2X/20thh1+8BOGxM79uNY3o9U3qIiOiY6d8aO1wZWVTRsqWrjxV29R6Au6tmD6kO9VuMxJjeVqrzEBGR7SXGDjfdsrKkqszVr4S78m54dKi8rU/IRy0prgNP8CMiouN3JiTeKQmVzZLAmClth21SHSjVXFUADozplcA4SGSrzkNERI53pQAuKwmVPxexfA8+0+7SGtWBUsUVewAOG9P7NoCrBOBXnYmIiFxDB3CeLuI39q/esN8tY4cdvwegOFTeu3rUeR81jultrzoPERG5lShoHDv8aWnV7IGq05woxy4B3Ltt5qlxS5sgwTG9RESUUX2kFB+XVpW9HhPxe6YVjNiqOlAyHFsA4nGfKYW8WXUOIiLyJCElRvos314At6gOkwzeORMREXkQCwAREZEHsQAQERF5EAsAERGRB7EAEBEReRALABERkQexABAREXkQCwAREZEHsQAQERF5EAsAERGRB7EAEBEReRALABERkQexABAREXkQCwAREZEHsQAQERF5EAsAERGRB7EAEBEReRALABERkQexABAREXkQCwAREZEHsQAQERF5EAsAERGRB7EAEBEReRALABERkQexABAREXkQCwAREZEHsQAQERF5EAsAERGRB7EAEBEReRALABERkQf5VAeg1NK79ILvjHNUxyBSIrrsQ1g7NquOQeQILAAuY1Wuhf/n90Jr01F1FKKMs3ZVsQAQHSMuAbiMrKtFePrdkNW7VUchIiIbYwFwIeub7QhPK4FsqFMdhYiIbIoFwKXiW9ag7iUTkJbqKEREZEMsAC4WWzIX9f/8g+oYRERkQywALhd556+IfPC66hhERGQzLAAeUP8/ExFb8bHqGEREZCMsAF5gWaj740OIh9arTkJERDbBAuARsj6M8NRiyL1fq45CREQ2wALgIXLv1wg/fQ9fDyQiIhYAr4lvWYO6Fx4ELL4eSETkZSwAHhRb8THq//m06hhERKQQC4BHRd6dwdcDiYg8jAXAw/h6IBGRd7EAeNmB1wMr16lOQkREGcYC4HGyPozwtBJYe75SHYWIiDKIBYAg936NOr4eSETkKSwABACIb/0SdS+M5+uBREQewQJAB8VWzEP969NVxyAiogxgAaBvifz774jM5euBRERu51MdgOyn/n8nQTulAL6zB6qOQnRc/IOvhn5mP9UxXCm+YQWin8xWHYNSiAWAvs+Ko+758cgZ9wL00zqrTkN0zHxn9gPOVJ3CncJLK1RHoBTjEgAdkawPo+7puyH37lIdhYgUs3ZtQ2zVAtUxKMVYAOgHWbt3Ijy9lK8HEnlcw6wXAck3hNyGBYB+VHzrl6h7/td8PZDIo6wdWxCdX646BqUBCwAdVWzlJ6h/barqGESUaVKi/n+eAqy46iSUBiwAdEwic/4XkfdfUx2DiDIo8uGbiH3xmeoYlCYsAHTMGma9qDoCEWWItWMLGngwmKuxABAR0bfI+jDCz94PWR9WHYXSiAWAiIgOseKo+9PDsLZtVJ2E0owFgIiIEqRE3V8fR2z5R6qTUAbwJEAiIgKkhfoZv0f043+pTkIZwgJAROR1Vhx1Lz+K6CezVCehDGIBICLyMFm3H3XPj+dRvx7EAkBE5FHWVyGEn7kH1rZNqqOQAiwAREQeFF0yF/UvPwIZrlEdhRRhASAi8pJoBPVvPI3Ie/9QnYQUYwEgIvKI2JrFqJ/xBKwdW1RHIRtgASAicjkZrkHDG08j8tHbgJSq45BNsAAQEbmVlIgueAf1r02FrNmjOg3ZDAsAEZELxdcvR/0bzyC+frnqKGRTLABERC5iVW1Aw6wXEV30nuooZHMsAERELmDt2IKGsr8guuAdQFqq45ADsAAQETlYfMsaRP79d0QXzgGsuOo45CAsAERETiMtxNYsQuS9Vzm5j5LGAkBE5BCyrhbRBeWIzPkfWF+FVMchh2MBICKyufiWNYh++Cain74L2VCnOg65BAsAEZENyX3fILpoDiIfvQ2raoPqOORCLABERDYhwzWILf8Y0cXvIfb5fCAeUx2JXIwFgIhIIRmuQWxZBaIL5yC2eiEv+pQxLABERBlm7dqG2BefIbbiY8RWLQBiUdWRyINYAIiI0kxG6hHfsCJx0V/+Eaztm1VHImIBICJKOSuOeOU6xFZ/hvgXCxFbvwyIRlSnIvoWFgAiohNlWYhXrk1c8NevQHztEsi6WtWpiH4UCwAR0XGS+3YhvmVN4se65YhvXMn388lxWADomMm6WoSfvR+oq4WMNgDRhkN/Lhr51h8fTmQ3AYQ49H9oOkRWbuPPNYjsXCCQDeH3Q2TnAYEgRFYORE4+RE4eRG4ecPDn+RDB7HT+YxJ9i/XNDsQ3roQVWof41nWIb/4Ccv9e1bGIThgLAB27WASxJXNVp4AIZEE0awGRfzJEfnNozVpA5J0ErVlLiJNbQ2txKrTmrQGdv7wpOTJSj9ji9xGdNxOxtUsBKVVHIko5fkKS48hIPeRXIeDHzkLXtEQhaFGQKAQt20JrfTr0NmdAa3kaoOmZC0yOEd+wApF5sxBbNIdr+OR6LADkTpYFa/cOYPcOxNd+58/5/NBatYNecAa0gg7Q23aG3qE7RNOTlUQltWS4BtGP3kbk45mwdmxWHYcoY1gAyHtiUVhVG753vrpo1gJ6+zOhdzoXvk49oLfvBviDikJSusnq3YhU/BOROf8LGa5RHYco41gAiBrJvbsQ2/sRYss/QgMA+PzQzzgbvu794eveH3q7LoDQVMekE2Rt24iGd2cg+tm7PIGPPI0FgOiHxKKIr12K+NqlaHjzWYi8kxJl4Oz+8J11HkTeSaoT0nGIh9aj4a3nEFvxMTf1EYEFgOiYyZo9iC4oR3RBOSA0+Lr1gX/AMPgKi/hqoo3J/fvQMOtFROa+BliW6jhEtsECQJQMaSG2+jPEVn8G/DUIf4/zE2Xg7IGAxmUCW4hFEan4JxrefgGybr/qNES2wwJAdKKiDYgueg/RRe9BO/lUBC7+GfznX5U44IiUiK2Yh/q/Pwnrm+2qoxDZFgsAUQpZ32xH/atT0TDzT/AP+U8Eh14H0aSZ6lieISP1aHh1KiIfvsl1fqKjYAEgSgNZV4vIO39F9IM3ELj4vxAYeh2fCKRZfPMXqHtxAqwdW1RHIXIELlYSpZGsD6Nh9kvY/9DPEP30Hd6VpoOUaCh7GbWP38yLP9FxYAEgygC5bxfq/mQgPOmuxAmFlBIyUo+6Fx5Ew5t/AOIx1XGIHIUFgCiDYmsWoda8DtGF/1YdxfFkbTXCT92B6KI5qqMQORILAFGGyXAN6v74ECIfvaU6imPJ6t2offI2xDetUh2FyLFYAIhUkBL1f30icagQHRdZtx/hqcXfm+VARMeHBYBIFWmh7s+/RWz5R6qTOEcsgvC0UsS3fqk6CZHjsQAQqWTFUfenh7l7/RjV/30i4uuXq45B5AosAESKyfow6v74EBCLqI5ia9FP3+W+CaIUYgEgsoH41i9R/+ZzqmPYltz7Ner//qTqGESuwgJAZBOR9/4Ba+dW1TFsqf61aZDhGtUxiFyFBYDILuIx1L/xjOoUthPf/AXPTSBKAxYAIhuJLf0A8S1rVMewlYayv/AIZaI0YAEgspkoN7odZO3ahtiyD1XHIHIlFgAim4l+9m/ISL3qGLYQXVDOu3+iNGEBILIZWbcf8VULVMewhdjSCtURiFyLBYDIhmLrV6iOoJys2YN45TrVMYhciwWAyIbiG1aqjqBcfMsaQFqqYxC5FgsAkQ1ZVetVR1COZyIQpRcLAJENyfowEG1QHUMpWbtPdQQiV2MBILIpq2av6ghKyVqe/EeUTiwARHYVi6pOoJSsr1UdgcjVWACIbEpk56qOoJQIZquOQORqLABENiWyclRHUErkN1cdgcjVWACIbEjk5gP+oOoYSon8k1VHIHI1FgAiG9LadFQdQTntlALVEYhcjQWAyIZ0FgDoZ5wDaLrqGESuxQJAZEN6556qIygngtnQT+usOgaRa7EAENmNpsF31nmqU9gCixBR+rAAENmM3vHcxCZAgr/3RaojELkWCwCRzfj7XaY6gm3oHc+Fdkob1TGIXIkFgMhO/EEWgMMJAf95l6tOQeRKLABENuLvdylETp7qGLbiP/8/AN2nOgaR67AAENmF0BC89OeqU9iOdnJrPgUgSgMWACKb8Pe5mAcA/YDg8F8CGj+uiFKJv6OI7EDTELzyv1WnsC2tZVv4+16qOgaRq7AAENlA4IKroRWcoTqGrQV/chcnBBKlEAsAkWIiJw/Bq29VHcP2tJNaInDFDapjELkGCwCRYsFrbodo0kx1DEcIXnYdtFPaqo5B5AosAEQK+br1QWDIf6qO4Rz+ALL/+2FuCCRKAf4uIlJEZOci66aHACFUR3EUvVMPBC69VnUMIsdjASBSJOu/SqGd3Fp1DEfKuvo2vjJJdIJYAIgU8A8cDv/AK1XHcC5fADk3/5ZvBRCdABYAogzTCs5A1i/GqY7heFqbjsi6cbzqGESOxQJAlEEiJw85dzwBEchSHcUV/H0v5X4AoiSxABBliqYj+7ZHobVqpzqJq2T9dDR8Z/ZTHYPIcVgAiDIk69q7eaFKB01H9u2PcVMg0XFiASDKgOAVNyJQ9BPVMVxLZDdBbvE0aM1bqY5C5BgsAERp5h84HMFrblcdw/VEsxbIvmsiRE6e6ihEjsACQJRGvp6DkX3jeB72kyH6aZ2RM3YKXw8kOgYsAERp4jt3EHJufQTQdNVRPEU/42zkFE9lCSA6ChYAojTwFV6InDt+D/gCqqN4kt6pB7Jvewzw898/0Q9hASBKMX/vi5Bzy+8A3ac6iqf5zh6AXD4JIPpBLABEKeTvfRGyb/4tL/42oXcpTCwHZOeqjkJkOywARCniHzAM2bzztx29Uw/klEyHyDtJdRQiW2EBIEqBwMX/D9m/fJgb/mxK79AduQ+8CK11e9VRiGyDBYDoRGgasn5xL7L+q5Sv+tmcdkob5N7/J+ideqiOQmQLLABEyfIHkH3z7xAo+qnqJHSMRG4+ckufhr/PJaqjECnHxUqiJIgmzZAzeiL0M85WHYWOlz+A7Jt/C5HXDJG5r6tOQ6QMnwAQHSf9tM4YsVvtAAAgAElEQVTIHf9nXvydTNOQ9fN7kTVyDKDxY5C8ib/yiY6Dv88lyLnvj9BaFKiOQikQuOwXyL37GYj85qqjEGUcCwDRsRACwf+4Gdm3/I4Hy7iM3qUQuQ++DL1Dd9VRiDKKBYDoKEROHnLGTEJwxCju9Hcp7aSWyL33WfgHDFMdhShjWACIfoTevhtyH/wLfGcPVB2F0s0fRPZ/G8i6/gHA51edhijtWACIfkBg8NXIvf9P0E5pqzoKZVBg8NXIve8FaC35353cjQWA6DtEdi6yb32Ud4Iepp9+FnIffAX+8y5XHYUobVgAiA6jd+6JXGMG/H0uVh2FFBPZucgeZSL7xge58ZNciQcBEQGAP4Csq29D4NJrAcFeTIf4zx8BvdO5qPvjQ4hv/VJ1HKKU4ScdeZ7ethNyH3gJgct+wYs/HZHWuj1yx/8ZwZ/cyWUhcg1+2pF3aTqCl9+A3PF/gX5aZ9VpyO7464VchgWAPEk79XTkPvAi7+jouB18YjT0Oo5/JkdjASBv0X0IDrsRTR76K/TTz1SdhpzKH0DWT0cnZkK066o6DVFSuAmQPEPveA6yr38AWpuOqqO4nozUA7HooT+uqwWs+A/+9SKY7cjz+PV2XZE7/s+IvPcPNLz9AmRDnepIRMeMBYC8wR9ATsl0vs51PKQFWb0b1t5dkHu/Tvzvvl2QdfsTF7q6/Ymf19dB1tcC9eHGP64FLOvoX98fhP+cgfD1vRS+cwel/58nXTQdgUt/DhmNouHNP6hOQ3TMWADIE3xd+/Di/x0yUg9r51ZYO7bA+qoScu8uWHu+gtz3Day9X0FW7z62C/nx8AXgO7s//H0uga/nYFf9N/H3GsICQI7CAkCe4OtxvuoIakgJa/fOxEV+51ZYOzbD2rE18fM9OwEp059B98F3Vj/4+16auOhnN0n/91RAO/V0aK3bw9qxRXUUomPCAkDuJwR8PS5QnSIj5L5diG9Zc+jHhhWQ+/cpyaK1agf/+SMQGHilI9f3k+HvOQQN77yiOgbRMWEBINfT23aGdlJL1TFSTlbvRnzDCsQ3r0Z8y2rEN6+GrK1WG8ofhL/PRQicfxX0zj09Nz7Z13MwCwA5BgsAuZ6vpzvu/mVDHeIbVyL+xULEVn+WOJY2E4/wj4FW0AH+AcMQOP8qiCZNVcdRRj+jO0TTFpD7dqmOQnRULADker5znbn+LyP1iK9fgfiaRYitWYT4ltWp35R3InwB+M+7DIELR0Jv3011GnsQGvw9L0Ck4k3VSYiOigWAXE00bQG9vXMO/JG11YitmIfYio8QW/mJLd8rF9lN4B84HIGh17lyaeVE+XoOYQEgR2ABIFfzn3u+7dehrd07Eft8PmIrPkbs8/lAPKY60hFpp7RF4OKfwX/+f7jq9b1U853ZFyInDzJcozoK0Y9iASBXs+vrf3LfLkQXvIPoovcSj/ZtspZ/JHqXXghe+vPEv0tOSzw63Qdf9/6ILvy36iREP4oFgNzLH4R+Zl/VKQ6JRRBd9hGin8xCbNUCe63nH4Hv3PMRHPEr6KefpTqK4/h6DWEBINtjASDX8p3ZFyKQpToGrG2bEJ1fhsi8mZA1e1THOSq9Uw9kXXMb9C6FqqM4lu+cQYAvAMQiqqMQ/SAWAHItpbv/ow2ILChH5L1XYVVtUJfjOOgdz0Xw6tvg69ZbdRTHE1k58HXrndjTQWRTLADkTkIoGTAj932DyIdvIvL+a5D792b8+ydDa9MRwSt/BX+fi1VHcRVfz8EsAGRrLADkSvppXTL6ilp84+eIzPlfRJfMte0u/u/SCjogeNWt8Pcqsv2bEk7k7zkY9TOeBKS993qQd7EAkCtl6uz/2KpP0TDrRcTXL8/I90sF0aQZglfdjMDgawBNVx3HtUTTFtA7nIX4xs9VRyE6IhYAciVfz8Fp/frx9cvR8PbziK1ZnNbvk1K6D4FBVyJ4ze0QTZqpTuMJvl5DWADItlgAyHVEsxbQT+uSlq8dW/UpGmb+CfENK9Ly9dPF160Psn4xDlrr9qqjeIq/5xA0vPGM6hhER8QCQK6TjtP/4ptWof7VqY561A8AIr85sn42Fv7zLlcdxZO01u2hnXo6rO2bVUch+h4WAHKdVK7/W7t3oOGNZxKHutj4tL7vERoCg69G8D/vgMjJU53G0/y9hqBh+2bVMYi+hwWA3MUfhN6tzwl/GdlQh8j/zUBD+StAtCEFwTJHa1GArBvHw5eCfw904nw9h6Ch7GXVMYi+hwWAXMV3Vr8TO/1PSkTnl6H+n89A7vsmdcEyQWgIXDQycddvgxMQKUE//SyIZqdA7v1adRSib2EBIFc5kdP/rK9CqP/rY4itWZTCRJmhtShA9q8mQO/UQ3UU+i4h4O85GJEP3lCdhOhbWADIPYSAP5nT/6w4InNfR8Obz0I21KU+V5r5+1yMrOsf4Fq/jfl6DmEBINthASDX0Nt3g2h2ynH9PfFNq1D38iOOOa//cCK7CbJ+MQ7+84aqjkJH4etaCJGTBxmuUR2F6CAWAHKN43r8H4+hYeaLaCj/i+3H8h6J3qE7sm99BNrJp6qOQsfC54fvnIGIfvqu6iREB7EAkGsc6+t/1tdVqHvJdNw7/QcEBl+NrGvvAXx+1VHoOPh6DmYBIFthASBXONbT/6Lzy1E/4wlHrvWLYDaybvg1/P0uUx2FkuA7ZxDgDwDRiOooRABYAMgl/D0u+NHT/2S4BnUvmYgt/yiDqVJHa3kacu58ElpBB9VRKEkimA1ftz6IrfxEdRQiAICmOgBRKvh6/PDwn3jlWtT+7ibHXvz1zj2Re/8fefF3AV+vIaojEB3EAkCOJwJZ0LsWHvHPReeXI/z4zbC+DmU4VWoEBl+N3Lufgcg7SXUUSgF/zyGAxo9dsgcuAZDj6Wf2/f7Jd7EI6v7+FKIfva0m1InSNGT9190IXPhT1UkohUTeSdDPOMexG1DJXVhFyfH8Pb/9+F/WViM8ZaxzL/6+ALJv/h0v/i713V+vRKqwAJCzCS2xu7qR9VUItY+PQuzLJQpDJU/k5CG3dDr8fS5WHYXSxNerSHUEIgAsAORwevtuEE1PBgDEVi9E7SM3wdqxRXGq5GjNWyH3vj9C79xTdRRKI61lW2gFZ6iOQcQCQM7m65k4/Cf62f8hPLXYsUetaie3Rs49f+BOf4/w8ykA2QALADma79wLEPngddT9yQDiMdVxkqK1KEDOPc9CO6Wt6iiUIT7uAyAbYAEgx9Kat0Ls809QP+NJQDrvPH8A0Fq3R+59L0BrUaA6CmWQ3r4btOatVMcgj+NrgORYVs0eNPzzD6pjnBDhD6Lupd+ojkEKSB4JTIqxAJBzueADNF65VnUEIvIoLgEQERF5EAsAERGRB7EAEBEReRALABERkQexABAREXkQCwAREZEHsQAQERF5EAsAERGRB7EAEBEReRALABERkQexABAREXkQCwAREZEHsQAQERF5EAsAERGRB7EAEBEReRALABERkQexABAREXkQCwAREZEHsQAQERF5EAsAERGRB7EAEBEReRALABERkQexABAREXkQCwAREZEHsQAQERF5EAsAERGRB7EAEBEReRALABERkQexABAREXkQCwAREZEHsQAQERF5kGMLQO7v39obKPrJAtU5iIjImwJFP1mQ+/u39qrOkSzHFgCteetmWb8Y1z9v8v8t0884e63qPERE5A1a284b856avSjrF+P6a81bN1OdJ1k+1QFOlGjStGfuAy9a8aoN88KTRneV1d+0UJ2JiIjcR+Q23ZN9x+MrfV0KBwE4Q3WeE+XYJwDfoeltOg7Ke2q2P/vGByvg80dUByIiIpfQ9Fjwmts/ajL5HenrUjgYgK46Uiq4pQAkCNHUf/6IIXnT3t/mH3jlQtVxiIjI2Xy9L1yaN33u5uCwmy4QQmuuOk8qOX4J4EiEP3B69i8fOj3rJ3ctqZ06Nt/a+mUn1ZmIiMg59IIOm3PufGq7aNl2gOos6eLKAnCAyD+psMlDr0Rja5d8WPf0uJ6yriZfdSYiIrKxrJza7BvHL/L3uaQ/gNNVx0kndy0BHJnf16VwcN60f8eC197zITQtrjoQERHZjNCs4LCb5uVPey/s73PJEABB1ZHSzQsFoJFoHrxo5OD86XPX+Xqcv1x1GiIisge9W59VedPmrA5ec/sgCO0U1XkyxdVLAEcUyOqWc9dEyN07F4Yn3dk6vrPyNNWRiIgo87STT92ePXriRr1Nx4EAhOo8meahJwDfJpq36pv7u9dbZI+ZXIGsnP2q8xARUWZogaxw9o0PVjR57M18vU3HQfDgxR/wcAFolO0/Z+CQ/Knv1QaH3TQPQkjVgYiIKH38g0YsbDLt/T3+80cMgRC5qvOo5L0lgCPRtFbBa25vFbjihi/Czz1gxVd9erbqSERElDp6xx5rcsZMjIicvL6qs9gFC8BhRFbuWbnF06T8KjQ/PHl0+/iubQWqMxERUfK0k1ruzLr9ibW+DmcNhEtO8EsVry8BHIkQLdsOyH3szabZtz5SIfyBetWBiIjoOOm+aPDaez5s8sS/cnwdzroAvPh/DwvAD8v197lkSN7TFbuDw26apzoMEREdG/+gEQvzn/lge/CikYMhRJ7qPHbFJYCj0bSC4DW3FwQuvnZZ+OmSnPimL7qojkRERN+nte28MXfs5N2i2Slc5z8GLADHSOQ365n76z8nxg5PvKubrNl9supMREQEiNz8vdl3PLHC16VwIFwwpjdTuARwfBJjhyeW6Rw7TESkWOOY3rzJ78Ybx/TypvY4sAAkQ4hm/vNHDMmf9n6Vf8Awjh0mIsowf+GFS/Onz90UHHbTBRAan8gmgW3pRPgDHbL/2+iQ9dMxS2qnjm1qbf2yo+pIRERupp/aYUvOXU9tc/OY3kxhAUgBjh0mIkovkZVTm5UY03segPaq87gBlwBSh2OHiYhSTQgZHHbTvLxp79U2junNUh3JLfgEIOUSY4cDg65cE37+15H4yk/OVZ2IiMiJfN36rMq+/QkpcpoMUp3FjVgA0kQEs7vljpmcGDv81B2nxr8OtVWdiYjICUTzVjtyxkze4NUxvZnCJYA0E81b9c199I2TG8cO16rOQ0RkVyIQrMu+8cGKvMffzvPymN5MYQHIjANjh2s4dpiI6Pv8g0YszJs+9xuO6c0cLgFkkqa1Dl5ze+vgFTesCv/hfhlb/RnHDhORp/k79liTNfrJiMhtyuN7M8zJBcAAIAH8Ck6b8pSV2z2ndLqMV22YF54yprPcu6ul6khERJkk8prtzr7tsc99XQoHwWmf4QkSwOsAfqc6SLLEhAkTVGc4IYZh9AYwBcD5qrMkqTa6aM6i+hd/01/GGoKqwxARpZXuiwZ/Vjw/eOFPe0IIp56ZshBAsWman6gOciIcvwfANM3FAAYD+BmALYrjJKNx7PB7OwIX/2y+6jBEROni73Pxkvzp729tHNPrxIv/NgC3Aujv9Is/4IInAIczDCMHwLjGH9mK4yRF7t+7tHZqcRNr8+rOqrMQEaWC3rbTppyxU3eJZi2cus4fAfAcgAdN06xRHSZVXFUADjAMoy2ARwFcB2e+RhKLbfpift30u8/i2GEiciqRm78361fmcv85AwcACKjOk6RZAMaYprlJdZBUc2UBOMAwjPMATAVwnuosSZFyb8Pc11c0/GPyQFhxJ2/YJCIvEZoVvOKG+cGrb+0KobVQHSdJy5BY569QHSRd9KKiItUZ0qaioqKqqKjoJQAbAQwE0ERxpOMjRJavQ/f2wWHXb7Z27dhghdYXqI5ERPRjfL2GLGvy4Cs1vrP794IQOarzJGE3gAcAjHLjXf/hXP0E4HCGYTQBcA+A+wE4cre93L1zYe3kMa2sHZvbqc5CRHQ4vUXBtqy7ntrUeIKfE0UBPAvAME1zr+owmeCZAnCAYRidATwCYKTqLEmKxtYumR9+5p5eCNfmqQ5DRN72nTG9Tp3UNweJx/2rVAfJJM8VgAMMw7gEwGQAzjyNT1o7G8pfWdvw9vMDYVlOPESDiJxMCBm4aOSC4Mji9kLXnbo8uRbA3aZpzlIdRAXPFgAAMAzDD+CXSDwRcOZGlYbw6vBzv47GPp/PscNElBF618Ivcu94Mo6cJueozpKkvQAeBzDFNM0G1WFU8XQBOMAwjOZIHC18Jxx6JKX8KrSgdsqYdtbXVW1UhyEidxLNW+7Mvu2Jtb4OZw2CMw+SswDMAHCPaZpfqQ6jGgvAYQzDOBOJZYGhqrMkKRxdNGdh/Z9/009GGhx5EBIR2ZDPHwmOHLsgeOFPCyGEs96mOuQDJNb5l6sOYhcsAEdgGMYIJOYLnKE6S1Isa3vD289vbCh/eSCkdOJBSERkE/5BIxZm3/BAa2j6aaqzJCkEYDyAv5qmyVHsh2EB+AGGYQQA3A7gtwAcudte1teuCj8zDvE1i7qrzkJEzqJ3POfLnLueqhdNmvVQnSVJYQBPAnjcNM161WHsiAXgKAzDKEBif8AoOHTNK161YX54ypgucu+uU1SHISJ7E7lN92Tf8fhKF4zpvdc0TScOiMsYFoBjZBhGHySOFR6oOktSpKyNLn6PY4eJ6MgOjentASGaqo6TpMUAxpqmOU91ECdw4h2tEqZpLgJwPhJjh7cqjnP8hDgwdng7xw4T0eESY3rnbmkc0+vEi/92JMb09uPF/9jxCUASDhs7fB8cevKVrN6zpHZ6cb61eU0n1VmISA1RcMbmnLFTvtabt3L6mN6HTNOsVh3GaVgAToBhGKchcYjQ9aqzJCka2/TFgrrppd1lzZ7mqsMQUWaI3Px9Wb8yl/nPGdgfDp2NgsSY3rGmaW5UHcSpWABSwDCMIiReG3Tmblkp9zTMfX1lwz8mDeKxwkQu5o4xvWsAlJim+Y7qIE7HPQApYJrmBwAKAdwIwHmnSwlxUvCikYPznv5gi7/fZYtVxyGi1PP3HLwsb/rc9cFrbh/k0Iv/bgDFAM7hxT81+AQgxQzDaIbEyOESAAHFcZIid+9cWDtpdGtr5xanHvxBRI20k0/dnj164ka9TceBAJx4MFgMwEsAxpumuUt1GDdhAUgTwzC6AJgEYLjqLEmKxNYuWcCxw0TOpAWywsFfPrTQ4WN630Pi+N7PVQdxIxaANGscOzwFgDNP47OsnQ3vvLK24a3nB0FaXDIisjt3jOldh8Qd/2uqg7iZXlRUpDqDq1VUVGwsKir6I4BvAAyA05q4EE18nXu2D1x67Rpry5od1tdVrVRHIqIj0zv3WN3kob/t8BcW9Raa5sQnd/sBPAbg56ZprlAdxu34BCCDDMM4GcDDcPrY4cmj21u7tjn1zoLIdbSTWu7Mut0VY3rvNU1zp+owXsECoIBhGL2QWBYYrDpLkhJjh18yz5PRiLOeaBC5yaExvb0ghBPv+AHgUyTe5/9UdRCvYQFQqHHs8FQAHVRnSYplbWt4+/lNDWV/GaQ6CpHX+AeNWJh1/X2the536ts6HNOrGAuAYoZhZAMYg8RvBEc2eLl/37Lw9NKc+MbPu6jOQuR2WtvOG3OLp+wWTVv0UZ0lSWEA0wH8zjTN/arDeBkLgE00jh1+HMB1cOa7uomxw5NGd5XV3zjxkBEiWztsTO9AAD7VeZI0C8BdHNNrDywANmMYRl8klgUGqM6SFCn3RefNWlY344kBiEUdeRASka1oeix41S3zA1fc0F0IzakzO5Ygsc7/seogdAhfA7SZioqKbUVFRS8B2IhECWiiONLxESJLb9f19MDQ6yrlnq/WWZXr2qiORORUvt4XLs0d/5c6X7c+vYQQ2arzJGEXgF8DuJl3/fbDJwA2ZhhGLoB74fSxw1PH5ltbv+TYYaJjpBd02Jxz51PbRcu2znwSCEQBPAuO6bU1FgAHMAyjHYDfwcljh9cumV/39Liesq4mX3UYItvKyqnNvnH8In+fS5w+prfYNM0NqoPQj2MBcBDDMC5E4vyAc1VnSY7c3fD+659z7DDRdxwa09sFQjtFdZwkfYnEmN5y1UHo2DjxxCjPMk1zLoBeSIwd/lpxnCSI5sGLRg7Onz53na/H+ctVpyGyA71bn1V50+asbhzT68SL/x4kxvSezYu/s/AJgEMZhnESEnsDHD12ODzpztbxnZVOPciEKGkuGtP7oGmaDrwhIRYAhzMMoysSY4eHqc6SpLroyk8+q3thfG/Uh531xgNRErRAVjh47T0L/YOu7AMhclXnSdL7SKzzr1QdhJLHAuASjWOHpwI4S3WWpFjWzoa3n1/fUP7yQEjpxLshoqPyDxqxMPv6Bwqg6059PXY9gF9zTK878BwAl3DF2OEz+7YLXHrt6vjWNTvl11UtVUciShW9Y481TSbM2Obve2khNM2Jb8LUIjGm9xcc0+sefALgQm4YOxyv2vBJeMqYznLvLhYBciyRd9Lu7Nse/dzXpXAQHPp7EcDfAIwzTXOH6jCUWiwALmYYRiESrw1eoDpLkmqji+Ys4thhchzdFw3+rHi+w8f0LkTi+N75qoNQerAAeEDj2OFpAE5XHCUpMh7fFvnXCxw7TI6QWOe/rxV0fzvVWZJUhcTxvRzT63IsAB5x2NjhB+G0+QKNZPXeZeGnS3Lim77g2GGyHb1tp005Y6d8I5qd4tQxvXVI3ChwTK9HsAB4jGEYbZDYzOPsscMT7+oma3afrDoMkcjN35t9xxMrXDCmd7RpmptVB6HMYQHwKMMw+iHx2mB/1VmSIuXe6LxZyzl2mJRpHNMbvOKGsyA0p5bRpUis83+kOghlHl8D9KiKiooqN4wdDg69bqu1e+d6K8Sxw5Q5/sILlzYZ/5ewr1ufXhAiR3WeJHyDQ2N6NyvOQorwCQAdPnb4fjh0Alnj2OGm1tYvO6rOQu6ln9phS85dT21zwZjeh03T3Kc6DKnFAkAHGYbRCcCjAEaqzpIkjh2mtBBZObVZiTG958Fph2wdMgeJx/1fqA5C9sACQN9jGMbFACYDOEd1luRw7DCliBAyeMWNnwSvvrUzhObUQ6m+BHC3aZqzVQche+EeAPqeioqKTY3HClchsUnQYQNLRLavQ/f2gct+sTZeuXab/KqylepE5Dx618Ivmjz0t6985w5y6tCePQBMADeaprlGdRiyHz4BoB9lGEZzAAaAO+DQV5zk7p0Lw0/dcWr861Bb1VnI/kTzVjtyxkze4OAxvRaAGQDuMU3zK9VhyL5YAOiYGIbRDYmxw1eozpKkA2OH+6A+7MS7OUozEQjWZV1772cOH9M7F4kxvRzYQ0fFAkDHpfFY4ckAnLnb3rJ2NLz9/AaOHabD+QeNWJh9wwOnQtOd+pSoEsCDpmm+ojoIOQcLAB03wzD8SCwJ/AaAM3fb19euCv/hfhlb/dnZqqOQOv6OPdZkjX4yInKbnqs6S5JqATwF4HHTNOtVhyFnYQGgpBmGcSqACQBGAdDUpkkKxw57lMhrtjv7tsecPqb3dSTW+beqDkPOxAJAJ8wwjN5IjB0+X3WWJCXGDr/4m/4y1uDIg5DoGB0a09sTQjjz6VViTG+xaZqfqA5CzubEuzayGdM0FwMYDOBnALYojpOMXH+fS4bkPf3ejsDFP+Psc5fy97l4Sf7097cGLxo52KEX/20AbgXQnxd/SgU+AaCUMgwjB8C4xh/ZiuMkRVbvWVo7vaSJtXl1Z9VZ6MQ1jundJZqd0ld1liRFADyHxCa/GtVhyD1YACgtDMNoi8Sxwk4dOxyLbfpift30u8/i2GFnErn5e7N+ZS73nzNwAACnToycBWCMaZqbVAch92EBoLQyDGMIEvsDeqrOkhQp9zTMfX1lwz8mD4QVd+RBSJ4jNCt4xQ3zg1ff2hVCa6E6TpJWAygxTfNd1UHIvXgUMKVVRUXFlsZjhTcCGAjnjR3O9nXo3j447PrN1q4dG6zQ+gLVkeiH+XoNWdbkwVdqfGf3d+qY3t0AHgDwS9M016kOQ+7GJwCUMYZhNAFwD5w8dnj3zoW1k8e0snZsbqc6Cx2ityjYlnXXU5v0Nh0Hqc6SpANjeg3TNPeqDkPewAJAGWcYRmcAj8DhY4fDz9zTC+HaPNVhvMxFY3qLTdNcpToIeQsLACljGMYlSBwr7MzT+KS1s6H8lbUNbz0/CNLiK7WZJIQMXDRyQXBkcXuh605dllmLxJjeWaqDkDexAJBSjccK/xKJJwLO3LDVEF4dfu7X0djn8516nKyj6F0Lv8i948k4cpqcozpLkvYCeBzAFNM0G1SHIe9iASBbOGzs8J1w6NGs8qvQgtopY9pZX1e1UR3GjUTzljuzb3tira/DWYPgzEPMDozpvdc0zZ2qwxCxAJCtGIZxJhLLAkNVZ0lSOLpozsL6P/+mn4w0OPIgJNvx+SPBkWMXBC/8aSGEcNZbJIdUABhrmuZy1UGIDmABIFtqHDs8BcAZqrMkxbK2N7z9/EaOHT4xjWN6W0PTT1OdJUkhAOMB/NU0Tak6DNHhWADItgzDCAC4HcBvAThyt73cv3d5+Ol7suIbVnZVncVJtLadN+YWT9kjmrborTpLksIAngTH9JKNsQCQ7RmGUYDE/gCnjh224lUb5oenjOki9+46RXUYOxO5Tfdk3/H4SheM6b3XNE0nDsYiD2EBIMcwDKMPgKlInCjoPFLWRhe/x7HDR3JoTG8PCNFUdZwkLUZinX+e6iBEx8KJd1PkUaZpLgJwPhJjh7cqjnP8hDgwdng7xw4fkhjTO3dL45heJ178tyMxprcfL/7kJHwCQI502Njh++DQE+Bk9Z4ltdOL863NazqpzqKCKDhjc87YKV/rzVs5fUzvQ6ZpVqsOQ3S8WADI0QzDOA2JQ4SuV50lSdHYpi8W1E0v7S5r9jRXHSYTRG7+vqxfmcv85wzsD4fOhEBiTO9Y0zQ3qg5ClCwWAHIFwzCKkHhtsIfiKMk5OHZ40iBYlhM3vx3doTG9XSA0p26GXIPEmI3fwEgAAAa2SURBVN53VAchOlHcA0CuYJrmBwAKAdwI4Cu1aZIgxEnBi0YOznv6gy3+fpctVh0n1fRzL1ieN33u+uA1tw9y6MV/N4BiAOfw4k9uwScA5DqGYTRDYuRwCYCA4jhJkbt3LqydNLq1tXOLUw/AAQBoJ5+6PXv0xI16m44DATjxQKQYgJcAjDdNc5fqMESpxAJArmUYRhcAkwAMV50lSZHY2iULwtPvLkR92FFH4GqBrHDwlw8tdPiY3veQGNP7ueogROnAAkCu1zh2eAqA7qqzJMWydja845Cxw41jerNGFreDrjt1KNI6JO74X1MdhCid9KKiItUZiNKqoqJiY1FR0R8BfANgAJx2RypEE1/nnu0Dl167xtqyZof1dVUr1ZGORO/cY3WTh/62w19Y1Bualq86TxL2A3gMwM9N01yhOgxRuvEJAHmKYRgnA3gYTh87PHl0e2vXtgLVYQBAO6nlzqzbOaaXyGlYAMiTDMPohcSywGDVWZKUGDv8knmejEbUPNE4NKa3F4Rw5LAmAJ8h8T7/AtVBiDKNBYA8rXHs8FQAHVRnSYplbWt4+/lNDWV/GZTJb+sfNGJh1vX3tRa636lvKXBML3keCwB5nmEY2QDGIHFBcOSdrNy/b1l4emlOfOPnXdL5fRrH9O4WTVv0Sef3SaMwgOkAfmea5n7VYYhUYgEgamQYRhskNoFdB2e+s54YOzxpdFdZ/U2LVH7hw8b0DgTgS+XXzqBZAEabprlZdRAiO2ABIPoOwzD6IrEsMEB1lqRIuS86b9ayuhlPDEAsemIHIWl6LHjVLfMDV9zQXQjNqbMKliCxzv+x6iBEdsLXAIm+o6KiYltRUdFLADYiUQIcdQgPhMjS23U9PTD0ukq556t1VuW6pN7H9/W+cGnu+L/U+br16SWEyE51zAzYBeDXAG42TXOL6jBEdsMnAEQ/wjCMXAD3wuljh6eOzbe2fnlMY4f1gg6bc+58arto2daZT0CAKIBnwTG9RD+KBYDoGBiG0RGJ/QEjVWdJUjS2dsn8uqfH9ZR1NUc+pCcrpzb7xvGL/H0ucfKY3jkAxpimuVp1ECK7YwEgOg6GYVwEYDKAc1VnSY7c3fD+659/a+ywO8b0fgmg1DTNMtVBiJyCBYDoOBmGoSHxpsBTAJx5wYzUrwm/ML4BDfW+nDt/L5GVe7bqSEnaA8AE8IxpmjHVYYichAWAKEmGYTRH4uJzG5z5atyBA3Cc+MpjDMBzAAzTNHerDkPkRCwARCfIMIyuSIwdHqY6i0e8j8SY3pWqgxA5GQsAUYo0jh2eCuAs1Vlcaj2AX3NML1FqOHFyF5EtmaY5B0BPAMUA9imO4ya1SCy1nMOLP1Hq8AkAURq4YOywHUgAfwMwzjTNHarDELkNCwBRGhmGUYjE2OELVGdxmIVIHN87X3UQIrfiEgBRGpmmucQ0zcEA/gPAZsVxnKAKwI0AzuPFnyi9OAuAKAMqKirWFhUV/RFADYD+AE5sSI/71CHxJsX/M01zYUVFheo8RK7HJQCiDHPB2OFU45heIgVYAIgUMQyjHxKvDfZXnUWRpUi8z/+h6iBEXsQ9AESKmKb5GYBBSKx5e2mX+zdIvCrZlxd/InX4BIDIBg4bO3w/nDuJ72gOjOl92DRNnpNApBgLAJGNGIbRCcCjcO7Y4R8yB4nX+r5QHYSIElgAiGzIMIyLkRg7fI7qLCdoLRJjemerDkJE38Y9AEQ2ZJrmewAKAdwK4GvFcZKxB4nljHN48SeyJz4BILK5xrHDBoA7YP+xwxaAGQDuMU3zK9VhiOiHsQAQOYRhGN2QWBa4XHWWHzAXidf6VqgOQkRHxwJA5DCGYYxAogh0VJ2lUSWAB03TfEV1ECI6dtwDQOQwpmnOBHAmEu/SVyuMcmBMbxde/Imch08AiBzs/7d3vyoRBVEAxr+qySrYTYKwwSDiW/gE5kUNFsPxvIAYbb6A0WK0mNYsJtEgCGKxadAwCzYRd+feZfb7wQ0X5t5z2hzmb0QsA8fALt0V9F/ABWWe/6mjmJKmzAJAakBEDCjHCm9WDjWi7Oe/qRxHUmVOAUgNyMxbYAvYAR4rhHimbEncsPOX2uAIgNSYiFgEDsfPwoS/+wDOKIv83ifNTdLssACQGhURK5Rjhf977fAlMMzMh6kmJmkmWABIjYuIbeAUWP/jJ3fAfmZe1ctKUt9cAyA1LjOvgQHl2uGXX5q+UbYWrtn5S+1zBECaIxGxRDmjf4+fa4c/gXPgKDNf+8pNUrcsAKQ5FBGrwMn49SAz7/vMR1L3vgHzq9yQ+lEtrQAAAABJRU5ErkJggg=='
+tags: {  }
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  'Java 21': 'ghcr.io/pelican-eggs/yolks:java_21'
+  'Java 17': 'ghcr.io/pelican-eggs/yolks:java_17'
+  'Java 16': 'ghcr.io/pelican-eggs/yolks:java_16'
+  'Java 11': 'ghcr.io/pelican-eggs/yolks:java_11'
+  'Java 8': 'ghcr.io/pelican-eggs/yolks:java_8'
+file_denylist: {  }
+startup_commands:
+  Default: 'java $([[ -f user_jvm_args.txt ]] && printf %s "@user_jvm_args.txt") -Xms128M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true $([[ ! -f unix_args.txt ]] && printf %s "-jar `cat .serverjar`" || printf %s "@unix_args.txt")'
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        server-port: '{{server.allocations.default.port}}'
+        query.port: '{{server.allocations.default.port}}'
+  startup:
+    done: ')! For help, type '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/bash
+      # shellcheck disable=SC2155
+      #
+      # CurseForge Installation Script
+      #
+      # Server Files: /mnt/server
+
+      : "${SERVER_DIR:=/mnt/server}"
+      : "${PROJECT_ID:=}"
+      : "${VERSION_ID:=}"
+      : "${API_KEY:=}"
+
+      if [[ ! -d $SERVER_DIR ]]; then
+          mkdir -p "$SERVER_DIR"
+      fi
+
+      if ! cd "$SERVER_DIR"; then
+          echo -e "Failed to change directory to ${SERVER_DIR}"
+          exit 1
+      fi
+
+      function install_required {
+          echo -e "Installing required packages..."
+          echo -e "\tRunning apt update"
+          apt update > /dev/null 2>&1 || { echo "apt update failed!"; exit 1; }
+          echo -e "\tRunning apt install"
+          apt install -y wget jq unzip > /dev/null 2>&1 || { echo "apt install failed!"; exit 1; }
+      }
+
+      CURSEFORGE_API_URL="https://api.curseforge.com/v1/mods/"
+      CURSEFORGE_API_HEADERS=("--header=Accept: application/json" "--header=x-api-key: ${API_KEY}")
+
+      function get_download {
+          echo -e "Retrieving CurseForge project information..."
+          local PROJECT_DATA=$(wget -q "${CURSEFORGE_API_HEADERS[@]}" "${CURSEFORGE_API_URL}${PROJECT_ID}" -O -)
+          local PROJECT_TITLE=$(echo "$PROJECT_DATA" | jq -r '.data.name // empty')
+
+          if [[ -z "${PROJECT_DATA}" ]]; then
+              echo -e "\tERROR: Failed to retrieve project data for project id '${PROJECT_ID}'"
+              exit 1
+          fi
+
+          local IS_SERVER_PACK=false
+
+          if [[ -z "${VERSION_ID}" || "${VERSION_ID}" == "latest" ]]; then
+              echo -e "\tNo file ID specified, using latest file"
+              VERSION_ID=$(echo "$PROJECT_DATA" | jq -r '.data.mainFileId // empty')
+
+              local VERSION_SERVER_PACK="$(echo -e "${PROJECT_DATA}" | jq -r --arg VERSION_ID "$VERSION_ID" '.data.latestFiles[] | select(.id|tostring==$VERSION_ID) | .isServerPack')"
+              local VERSION_SERVER_ID="$(echo -e "${PROJECT_DATA}" | jq -r --arg VERSION_ID "$VERSION_ID" '.data.latestFiles[] | select(.id|tostring==$VERSION_ID) | .serverPackFileId')"
+
+              if [[ "${VERSION_SERVER_PACK}" == "false" && -n "${VERSION_SERVER_ID}" ]]; then
+                  echo -e "\tFound server pack file id '${VERSION_SERVER_ID}'"
+                  VERSION_ID=$VERSION_SERVER_ID
+                  IS_SERVER_PACK=true
+              elif [[ "${VERSION_SERVER_PACK}" == "true" ]]; then
+                  IS_SERVER_PACK=true
+              fi
+          else
+              echo -e "\tChecking if provided file id '${VERSION_ID}' exists"
+
+              local FILE_DATA=$(wget -q "${CURSEFORGE_API_HEADERS[@]}" "${CURSEFORGE_API_URL}${PROJECT_ID}/files/${VERSION_ID}" -O -)
+
+              if [[ -z "${FILE_DATA}" ]]; then
+                  echo -e "\tERROR: File id '${VERSION_ID}' not found for project '${PROJECT_TITLE}'"
+                  exit 1
+              fi
+
+              IS_SERVER_PACK=$(echo -e "${FILE_DATA}" | jq -r '.data.isServerPack // "false"')
+
+              if [[ "${IS_SERVER_PACK}" == "false" ]]; then
+                  local VERSION_SERVER_PACK="$(echo -e "${FILE_DATA}" | jq -r '.data.serverPackFileId // empty')"
+                  if [[ -n "${VERSION_SERVER_PACK}" ]]; then
+                      echo -e "\tFound server pack file id '${VERSION_SERVER_PACK}'"
+                      VERSION_ID=$VERSION_SERVER_PACK
+                      IS_SERVER_PACK=true
+                  fi
+              else
+                  IS_SERVER_PACK=true
+              fi
+          fi
+
+          # Check if version id is unset or empty string
+          if [[ -z "${VERSION_ID}" ]]; then
+              echo -e "\tERROR: No file id found for project '${PROJECT_TITLE}'"
+              exit 1
+          fi
+
+          if [[ "${IS_SERVER_PACK}" == "false" ]]; then
+              echo -e "\tWARNING: File id '${VERSION_ID}' is not a server pack, attempting to use client files"
+          fi
+
+          # get json data to work with
+          echo -e "\tRetrieving version information for '${VERSION_ID}'"
+          local JSON_DATA=$(wget -q "${CURSEFORGE_API_HEADERS[@]}" "${CURSEFORGE_API_URL}${PROJECT_ID}/files/${VERSION_ID}/download-url" -O -)
+
+          if [[ -z "${JSON_DATA}" ]]; then
+              echo -e "\tERROR: Failed to retrieve file data for file id '${VERSION_ID}'"
+              exit 1
+          fi
+
+          echo -e "\tParsing CurseForge pack download url"
+
+          local DOWNLOAD_URL=$(echo -e "$JSON_DATA" | jq -r '.data // empty')
+          if [[ -z "${DOWNLOAD_URL}" ]]; then
+              echo -e "\tERROR: No download url found for file ${VERSION_ID}"
+              exit 1
+          fi
+
+          # download modpack files
+          echo -e "\tDownloading ${DOWNLOAD_URL}"
+          if ! wget -q "${DOWNLOAD_URL}" -O server.zip; then
+              echo -e "Download failed!"
+              exit 1
+          fi
+      }
+
+      function get_loader {
+          echo -e "Retrieving loader information..."
+
+          local PROJECT_DATA=$(wget -q "${CURSEFORGE_API_HEADERS[@]}" "${CURSEFORGE_API_URL}${PROJECT_ID}" -O -)
+          local PROJECT_TITLE=$(echo "$PROJECT_DATA" | jq -r '.data.name // empty')
+          if [[ -z "${PROJECT_DATA}" ]]; then
+              echo -e "\tERROR: Failed to retrieve project data for project id '${PROJECT_ID}'"
+              exit 1
+          fi
+
+          local FILE_DATA=$(wget -q "${CURSEFORGE_API_HEADERS[@]}" "${CURSEFORGE_API_URL}${PROJECT_ID}/files/${VERSION_ID}" -O -)
+
+          if [[ -z "${FILE_DATA}" ]]; then
+              echo -e "\tERROR: File id '${VERSION_ID}' not found for project '${PROJECT_TITLE}'"
+              exit 1
+          fi
+
+          local IS_SERVER_PACK=$(echo -e "${FILE_DATA}" | jq -r '.data.isServerPack // "false"')
+          local CLIENT_VERSION_ID;
+
+          if [[ "${IS_SERVER_PACK}" == "true" ]]; then
+              CLIENT_VERSION_ID="$(echo -e "${FILE_DATA}" | jq -r '.data.parentProjectFileId // empty')"
+          else
+              CLIENT_VERSION_ID=$VERSION_ID
+          fi
+
+          if [[ -z "${CLIENT_VERSION_ID}" ]]; then
+              echo -e "\tERROR: File id '${VERSION_ID}' not found for project '${PROJECT_TITLE}'"
+              exit 1
+          fi
+
+          echo -e "\tRetrieving file information for '${CLIENT_VERSION_ID}'"
+          local JSON_DATA=$(wget -q "${CURSEFORGE_API_HEADERS[@]}" "${CURSEFORGE_API_URL}${PROJECT_ID}/files/${CLIENT_VERSION_ID}/download-url" -O -)
+
+          echo -e "\tParsing CurseForge pack download url"
+
+          local DOWNLOAD_URL=$(echo -e "$JSON_DATA" | jq -r '.data // empty')
+
+          if [[ -z "${DOWNLOAD_URL}" ]]; then
+              echo -e "\tERROR: No download url found for file id ${CLIENT_VERSION_ID}"
+              exit 1
+          fi
+
+          # download modpack files
+          echo -e "\tDownloading ${DOWNLOAD_URL}"
+          wget -q "${DOWNLOAD_URL}" -O client.zip
+
+          echo -e "\tUnpacking client manifest"
+          unzip -jo client.zip manifest.json -d "${SERVER_DIR}"
+          mv "${SERVER_DIR}/manifest.json" "${SERVER_DIR}/client.manifest.json" # rename to avoid conflicts with main manifest
+          rm -rf client.zip
+
+          echo -e "\tParsing client manifest"
+          local MANIFEST="${SERVER_DIR}/client.manifest.json"
+
+          LOADER_ID=$(jq -r '.minecraft.modLoaders[]? | select(.primary == true) | .id' "${MANIFEST}")
+          LOADER_NAME=$(echo "${LOADER_ID}" | cut -d'-' -f1)
+          LOADER_VERSION=$(echo "${LOADER_ID}" | cut -d'-' -f2)
+
+          if [[ -z "${LOADER_NAME}" || -z "${LOADER_VERSION}" ]]; then
+              echo -e "\tERROR: No loader found in client manifest!"
+              exit 1
+          fi
+
+          MINECRAFT_VERSION=$(jq -r '.minecraft.version // empty' "${MANIFEST}")
+
+          if [[ -z "${MINECRAFT_VERSION}" ]]; then
+              echo -e "\tERROR: No minecraft version found in client manifest!"
+              exit 1
+          fi
+
+          echo -e "\tFound loader ${LOADER_NAME} ${LOADER_VERSION} for Minecraft ${MINECRAFT_VERSION}"
+      }
+
+      function unzip-strip() (
+          set -u
+
+          local archive=$1
+          local destdir=${2:-}
+          shift; shift || :
+          echo -e "\tUnpacking ${archive} to ${destdir}"
+
+          echo -e "\tCreating temporary directory"
+          local tmpdir=/mnt/server/tmp
+          if ! mkdir -p "${tmpdir}"; then
+              echo -e "\tERROR: mkdir failed to create temporary directory"
+              return 1
+          fi
+
+          trap 'rm -rf -- "$tmpdir"' EXIT
+
+          echo -e "\tUnpacking archive"
+
+          if ! unzip -q "$archive" -d "$tmpdir"; then
+              echo -e "\tERROR: unzip failed to unpack archive"
+              return 1
+          fi
+
+          echo -e "\tSetting glob settings"
+
+          shopt -s dotglob
+
+          echo -e "\tCleaning up directory structure"
+
+          local files=("$tmpdir"/*) name i=1
+
+          if (( ${#files[@]} == 1 )) && [[ -d "${files[0]}" ]]; then
+              name=$(basename "${files[0]}")
+              files=("$tmpdir"/*/*)
+          else
+              name=$(basename "$archive"); name=${archive%.*}
+              files=("$tmpdir"/*)
+          fi
+
+          if [[ -z "$destdir" ]]; then
+              destdir=./"$name"
+          fi
+
+          while [[ -f "$destdir" ]]; do
+              destdir=${destdir}-$((i++));
+          done
+
+          echo -e "\tCopying files to ${destdir}"
+
+          mkdir -p "$destdir"
+          cp -ar "$@" -t "$destdir" -- "${files[@]}"
+          rm -rf "$tmpdir"
+      )
+
+      function unpack_zip {
+          echo -e "Unpacking server files..."
+          unzip-strip server.zip "${SERVER_DIR}"
+          rm -rf server.zip
+      }
+
+      function json_download_mods {
+          echo "Downloading mods..."
+
+          local MANIFEST="${SERVER_DIR}/manifest.json"
+          jq -c '.files[]? | select(.required == true) | {project: .projectID, file: .fileID}' "${MANIFEST}" | while read -r mod; do
+              local MOD_PROJECT_ID=$(echo "${mod}" | jq -r '.project // empty')
+              local MOD_FILE_ID=$(echo "${mod}" | jq -r '.file // empty')
+
+              if [[ -z "${MOD_PROJECT_ID}" || -z "${MOD_FILE_ID}" ]]; then
+                  echo -e "\tERROR: Failed to parse project id or file id for mod '${mod}'"
+                  exit 1
+              fi
+
+              local FILE_URL=$(wget -q "${CURSEFORGE_API_HEADERS[@]}" "${CURSEFORGE_API_URL}${MOD_PROJECT_ID}/files/${MOD_FILE_ID}/download-url" -O - | jq -r '.data // empty')
+
+              if [[ -z "${FILE_URL}" ]]; then
+                  echo -e "\tERROR: No download url found for mod ${MOD_PROJECT_ID} ${MOD_FILE_ID}"
+                  continue
+              fi
+
+              echo -e "\tDownloading ${FILE_URL}"
+
+              if ! wget -q -nc "${FILE_URL}" -P "${SERVER_DIR}/mods"; then
+                  echo -e "\tERROR: Failed to download mod ${MOD_PROJECT_ID} ${MOD_FILE_ID}"
+                  exit 1
+              fi
+          done
+      }
+
+      function json_download_overrides {
+          echo "Copying overrides..."
+          if [[ -d "${SERVER_DIR}/overrides" ]]; then
+              cp -r "${SERVER_DIR}/overrides/"* "${SERVER_DIR}"
+              rm -r "${SERVER_DIR}/overrides"
+          fi
+      }
+
+      FORGE_INSTALLER_URL="https://maven.minecraftforge.net/net/minecraftforge/forge/"
+
+      function json_download_forge {
+          echo "Downloading Forge..."
+
+          local MC_VERSION=$MINECRAFT_VERSION
+          local FORGE_VERSION=$LOADER_VERSION
+
+          FORGE_VERSION="${MC_VERSION}-${FORGE_VERSION}"
+          if [[ "${MC_VERSION}" == "1.7.10" || "${MC_VERSION}" == "1.8.9" ]]; then
+              FORGE_VERSION="${FORGE_VERSION}-${MC_VERSION}"
+          fi
+
+          local FORGE_JAR="forge-${FORGE_VERSION}.jar"
+          if [[ "${MC_VERSION}" == "1.7.10" ]]; then
+              FORGE_JAR="forge-${FORGE_VERSION}-universal.jar"
+          fi
+
+          local FORGE_URL="${FORGE_INSTALLER_URL}${FORGE_VERSION}/forge-${FORGE_VERSION}"
+
+          echo -e "\tUsing Forge ${FORGE_VERSION} from ${FORGE_URL}"
+
+          local FORGE_INSTALLER="${FORGE_URL}-installer.jar"
+          echo -e "\tDownloading Forge Installer ${FORGE_VERSION} from ${FORGE_INSTALLER}"
+
+          if ! wget -q -O forge-installer.jar "${FORGE_INSTALLER}"; then
+              echo -e "\tERROR: Failed to download Forge Installer ${FORGE_VERSION}"
+              exit 1
+          fi
+
+          # Remove old Forge files so we can safely update
+          rm -rf libraries/net/minecraftforge/forge/
+          rm -f unix_args.txt
+
+          echo -e "\tInstalling Forge Server ${FORGE_VERSION}"
+          if ! java -jar forge-installer.jar --installServer > /dev/null 2>&1; then
+              echo -e "\tERROR: Failed to install Forge Server ${FORGE_VERSION}"
+              exit 1
+          fi
+
+          if [[ $MC_VERSION =~ ^1\.(17|18|19|20|21|22|23) || $FORGE_VERSION =~ ^1\.(17|18|19|20|21|22|23) ]]; then
+              echo -e "\tDetected Forge 1.17 or newer version. Setting up Forge Unix arguments"
+              ln -sf libraries/net/minecraftforge/forge/*/unix_args.txt unix_args.txt
+          else
+              mv "$FORGE_JAR" forge-server-launch.jar
+              echo "forge-server-launch.jar" > ".serverjar"
+          fi
+
+          rm -f forge-installer.jar
+      }
+
+      FABRIC_INSTALLER_URL="https://meta.fabricmc.net/v2/versions/installer"
+
+      function json_download_fabric {
+          echo "Downloading Fabric..."
+
+          local MC_VERSION=$MINECRAFT_VERSION
+          local FABRIC_VERSION=$LOADER_VERSION
+
+          local INSTALLER_JSON=$(wget -q -O - ${FABRIC_INSTALLER_URL} )
+          local INSTALLER_VERSION=$(echo "$INSTALLER_JSON" | jq -r '.[0].version // empty')
+          local INSTALLER_URL=$(echo "$INSTALLER_JSON" | jq -r '.[0].url // empty')
+
+          if [[ -z "${INSTALLER_VERSION}" ]]; then
+              echo -e "\tERROR: No Fabric installer version found"
+              exit 1
+          fi
+
+          if [[ -z "${INSTALLER_URL}" ]]; then
+              echo -e "\tERROR: No Fabric installer url found"
+              exit 1
+          fi
+
+          echo -e "\tDownloading Fabric Installer ${MC_VERSION}-${FABRIC_VERSION} (${INSTALLER_VERSION}) from ${INSTALLER_URL}"
+
+          if ! wget -q -O fabric-installer.jar "${INSTALLER_URL}"; then
+              echo -e "\tERROR: Failed to download Fabric Installer ${MC_VERSION}-${FABRIC_VERSION} (${INSTALLER_VERSION})"
+              exit 1
+          fi
+
+          echo -e "\tInstalling Fabric Server ${MC_VERSION}-${FABRIC_VERSION} (${INSTALLER_VERSION})"
+          if ! java -jar fabric-installer.jar server -mcversion "${MC_VERSION}" -loader "${FABRIC_VERSION}" -downloadMinecraft; then
+              echo -e "\tERROR: Failed to install Fabric Server ${MC_VERSION}-${FABRIC_VERSION} (${INSTALLER_VERSION})"
+              exit 1
+          fi
+
+          echo "fabric-server-launch.jar" > ".serverjar"
+
+          rm -f fabric-installer.jar
+      }
+
+      QUILT_INSTALLER_URL="https://meta.quiltmc.org/v3/versions/installer"
+
+      function json_download_quilt {
+          echo "Downloading Quilt..."
+
+          local MC_VERSION=$MINECRAFT_VERSION
+          local QUILT_VERSION=$LOADER_VERSION
+
+          local INSTALLER_JSON=$(wget -q -O - ${QUILT_INSTALLER_URL} )
+          local INSTALLER_VERSION=$(echo "$INSTALLER_JSON" | jq -r '.[0].version // empty')
+          local INSTALLER_URL=$(echo "$INSTALLER_JSON" | jq -r '.[0].url // empty')
+
+          if [[ -z "${INSTALLER_VERSION}" ]]; then
+              echo -e "\tERROR: No Quilt installer version found"
+              exit 1
+          fi
+
+          if [[ -z "${INSTALLER_URL}" ]]; then
+              echo -e "\tERROR: No Quilt installer URL found"
+              exit 1
+          fi
+
+          echo -e "\tDownloading Quilt Installer ${MC_VERSION}-${QUILT_VERSION} (${INSTALLER_VERSION}) from ${INSTALLER_URL}"
+
+          if ! wget -q -O quilt-installer.jar "${INSTALLER_URL}"; then
+              echo -e "\tERROR: Failed to download Quilt Installer ${MC_VERSION}-${QUILT_VERSION} (${INSTALLER_VERSION})"
+              exit 1
+          fi
+
+          echo -e "\tInstalling Quilt Server ${MC_VERSION}-${QUILT_VERSION} (${INSTALLER_VERSION})"
+          if ! java -jar quilt-installer.jar install server "${MC_VERSION}" "${QUILT_VERSION}" --download-server --install-dir=./; then
+              echo -e "\tERROR: Failed to install Quilt Server ${MC_VERSION}-${QUILT_VERSION} (${INSTALLER_VERSION})"
+              exit 1
+          fi
+
+          echo "quilt-server-launch.jar" > ".serverjar"
+
+          rm quilt-installer.jar
+      }
+
+      NEOFORGE_DOWNLOAD_URL="https://maven.neoforged.net/releases/net/neoforged/"
+
+      function json_download_neoforge {
+          echo "Downloading neoforge"
+          
+          local MC_VERSION=$MINECRAFT_VERSION
+          local NEOFORGE_VERSION=$LOADER_VERSION
+          
+          if [[ ! -z ${NEOFORGE_VERSION} ]]; then
+              # The 1.20.1 release lives in a different repository and is called "forge" instead of "neoforge"
+              if [[ "${NEOFORGE_VERSION}" =~ "1.20.1-" ]]; then
+                  DOWNLOAD_LINK=$NEOFORGE_DOWNLOAD_URL/forge/${NEOFORGE_VERSION}/forge-${NEOFORGE_VERSION}
+                  ARTIFACT_NAME="forge"
+              else
+                  DOWNLOAD_LINK=$NEOFORGE_DOWNLOAD_URL/neoforge/${NEOFORGE_VERSION}/neoforge-${NEOFORGE_VERSION}
+                  ARTIFACT_NAME="neoforge"
+              fi
+          else
+              echo "No Neoforge version specified in manifest"
+              exit 1
+          fi
+          
+          echo "Downloading NeoForge version ${NEOFORGE_VERSION}"
+          echo "Download link is ${DOWNLOAD_LINK}"
+
+          # Check if the download link we generated is valid
+          if [[ ! -z "${DOWNLOAD_LINK}" ]]; then
+              if wget -q --spider ${DOWNLOAD_LINK}-installer.jar; then
+                  echo -e "Installer jar download link is valid."
+              else
+                  echo -e "Link is invalid. Exiting now"
+                  exit 2
+              fi
+          else
+              echo -e "No download link provided. Exiting now"
+              exit 3
+          fi
+          
+          # If so, go ahead and download the installer
+          wget -O installer.jar ${DOWNLOAD_LINK}-installer.jar
+          
+          if [[ ! -f ./installer.jar ]]; then
+              echo "!!! Error downloading NeoForge version ${NEOFORGE_VERSION} !!!"
+              exit 4
+          fi
+          
+          # Delete args to support downgrading/upgrading
+          rm -rf libraries/net/neoforged/${ARTIFACT_NAME}
+          rm unix_args.txt
+
+          # Installing server
+          echo -e "Installing NeoForge server.
+      "
+          java -jar installer.jar --installServer || {
+              echo -e "
+      Install failed using NeoForge version ${NEOFORGE_VERSION} and Minecraft version ${MINECRAFT_VERSION}."
+              echo -n   "Should you be using unlimited memory value of 0, make sure to increase the default install resource limits in the Wings"
+              echo      "config or specify exact allocated memory in the server Build Configuration instead of 0!"
+              echo      "Otherwise, the NeoForge installer will not have enough memory.";
+              exit 5;
+              }
+
+          # Symlink the startup arguments to the server directory
+          ln -sf libraries/net/neoforged/${ARTIFACT_NAME}/*/unix_args.txt unix_args.txt
+
+          # And finally clean up
+          echo -e "Deleting installer.jar file.
+      "
+          rm -rf installer.jar
+      }
+
+      install_required
+
+      if [[ -z "${PROJECT_ID}" ]]; then
+          echo "ERROR: You must specify a PROJECT_ID environment variable!"
+          exit 1
+      fi
+
+      if [[ ! "${PROJECT_ID}" = "zip" ]]; then
+      	get_download
+      fi
+
+      get_loader
+      unpack_zip
+
+      if [[ -f "${SERVER_DIR}/manifest.json" ]]; then
+          echo "Found manifest.json, installing mods"
+          json_download_mods
+          json_download_overrides
+      fi
+
+      if [[ -f "${SERVER_DIR}/client.manifest.json" ]]; then
+          MANIFEST="${SERVER_DIR}/client.manifest.json"
+          echo -e "
+      Loader name: ${LOADER_NAME}"
+
+          if [[ $LOADER_NAME == "forge" ]]; then
+              json_download_forge
+          fi
+
+          if [[ $LOADER_NAME == "fabric" ]]; then
+              json_download_fabric
+          fi
+          
+          if [[ $LOADER_NAME == "neoforge" ]]; then
+              json_download_neoforge
+          fi
+
+          if [[ $LOADER_NAME == "quilt" ]]; then
+              json_download_quilt
+          fi
+      fi
+
+      echo -e "
+      Install completed succesfully, enjoy!"
+    container: 'ghcr.io/pelican-eggs/installers:java_8'
+    entrypoint: bash
+variables:
+  -
+    sort: 3
+    name: 'CurseForge API Key'
+    description: |-
+      A CurseForge API key is required to use this egg. This key is not visible to the server owner. You
+      can get an API key here: https://console.curseforge.com
+    env_variable: API_KEY
+    default_value: ''
+    user_viewable: false
+    user_editable: false
+    rules:
+      - required
+      - string
+      - 'max:60'
+  -
+    sort: 1
+    name: 'Modpack Project ID'
+    description: "The modpack project ID from the CurseForge site on the pack page, or 'zip' if installing from an\nuploaded server.zip file.\r\n\r\nFor example, the project ID of https://www.curseforge.com/minecraft/modpacks/bofa-mods is 375152"
+    env_variable: PROJECT_ID
+    default_value: ''
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+  -
+    sort: 2
+    name: 'Modpack File ID'
+    description: "The file ID belonging to a specific version of a modpack. Can either be the main file or the file ID\nassociated with the server pack.\r\n\r\nIf not provided the script will attempt to retrieve the latest server pack or client pack available."
+    env_variable: VERSION_ID
+    default_value: latest
+    user_viewable: true
+    user_editable: true
+    rules:
+      - string

@@ -1,0 +1,83 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/technic/Tekkit/egg-tekkit.yaml'
+exported_at: '2026-01-06T14:26:09+00:00'
+name: Tekkit
+author: contact@zennodes.dk
+uuid: cbcfe400-b57a-4790-b56f-d3233113208c
+description: |-
+  Tekkit is set to reignite the same sort of wonder and awe that we all received from booting up
+  Minecraft for the first time. With the skies open, the moon ready to be colonized (by force if need
+  be) and dimensional mysteries to be plied, with tesseracts to be networked, “meat” to be
+  processed, items to be digitized, and power suits to be manufactured, there is virtually limitless
+  engineering projects to be assembled.
+image: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEbUlEQVRogdXaX4gVVRwH8M8sIhIiJYvIIhIhISFSUhBWkhQRFJFgDQVBvUT2PypEIiJI0oewoPLBB4ksGova7O+DhcgSESFSIhIiESKymCwiIsuy08M5d707d+567525u/Z9mTtn5vzO+c45v7/nJnme+z8gyczDIFbjLFZhOE+Nwbw5nNtlESe/DEPYicVYgvnxlXP4kiuUSJJZGH8+i4ewps2r1zZ+XFFEkswCLMcmPO3Sly/DRWGL4QohEgmsxnN4kKkVmQlncKxxM+dEkswgXsArWNBF10M43riZMyJRD27Gbk17vQt8rmlrJXNhfpPMUmzGixXEXNMwvczyikRdWItduK6CqFFcaG4YqCCsKySZqwVz+oNqJGAfJpsbZmVFkswibMeTNYg7jY/z1ERzY9+JJJkhvKoeErBfsFjT0FciSWaZYJXurlHsJ3nqfLGxbzoSLdNO9ZKYxOGyB30hkmSW4B3cX7PoA0Kg2ILaiURHtx2P1ix6Em8KMVYLaiUS/cTzeLxOuRFHcShPp5vdBmojkmQGsBGv1SWzgGGmm9xm1LkiawUSV9Uos4F/8E2elm8raiISfcXLWFmHvBK8p421aqAnIjEFbcYm3NuLrA5wDHvz1PiMc+ok+o2ObaGQ8C8ScuhxIYweEhKiwYoTbocNeWr4ci+19exJZjHuFAK824TE/3azGGjibxzs5MVSIklmJV7HAzpLO/uFN2gNR8rQsrXi/v8J6+qfV1c4jPXNydNMKNsmy809idN4WyF5mgnTiESndk/Nk+oFe7DvcpaqGcUVGcD6WqfUPUaweybnV4ayrXVjPfPpCWPYkaeOdtuxaLUmtebTE9iLP3GfYIL7ha34sZeOxRVZaDq5cWzBS3lqm1DC+auXgTrAHnyYp50reDOKRG4o3J/Cu3lqNN4foftl7wDD2NwrCVqJrGDKUkzg50K1YhC39jpYG4xgS546VUVIkchkU9t5oQZVxNmStirYkaeXitG9okjkhEs6chS/FJ6fFCLdP6oO3ISbYt2rEopEGon9OD4qLneeGs9TB/GM+pR+SA1lqSKRRmI0jk/bdcpTI0jxRdUJCOciS6oKKRK5pdFeVgRrRp46LOQhjwmHLr1itRpymSKRf+O1I+XLU6fz1B7cIaS6ZRWOs0yZ7zJMqiHPLxL5Nl6/7kZItDrvC3HaNsHfnMBbuAsb8Fmb7vOxPAasPaOoZKNCNe9At4JipHowyRzCB8JHOtNwcrHmtQbXF7oOYKJdvapTFImMCUrcUTJThqhbZfq1GEvbdOt5vAamEYlfZab93BNiuegRSv3FPvxedYzZKiRs1L6gvTtPnaw6wGwc9KzCE1oP/y8KcVYtjrVvROL5+VY8rHVL7Reqh7+p5oOm0BcisZy0S4iUm8c4IBQVRnCxqqWaNmZd5+wx8HtKCCqXCv9iuCAEn1/he6Hgdq5OAlPj10EkyawTVmCFEBUcx3fClx/DaPEUtm5UJhI98hohiv1VUOpTTJnzWcF/LhEhl8NXPiMAAAAASUVORK5CYII='
+tags: {  }
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  Java_8: 'ghcr.io/pelican-eggs/yolks:java_8'
+  Java_11: 'ghcr.io/pelican-eggs/yolks:java_11'
+  Java_16: 'ghcr.io/pelican-eggs/yolks:java_16'
+  Java_17: 'ghcr.io/pelican-eggs/yolks:java_17'
+file_denylist: {  }
+startup_commands:
+  Default: 'java -Xms128M -XX:MaxRAMPercentage=95.0 -jar Tekkit.jar'
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        server-port: '{{server.allocations.default.port}}'
+  startup:
+    done: ')! For help, type '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/ash
+      # Forge Installation Script
+      #
+      # Server Files: /mnt/server
+
+      cd /mnt/server
+
+      curl -sSL https://servers.technicpack.net/Technic/servers/tekkitmain/Tekkit_Server_$MODPACK_VERSION.zip -o Tekkit_Server_$MODPACK_VERSION.zip
+
+      unzip Tekkit_Server_$MODPACK_VERSION.zip
+
+      rm -rf Tekkit_Server_$MODPACK_VERSION.zip
+
+      rm launch.bat
+
+      rm launch.sh
+
+      if [ ! -f server.properties ]; then
+          echo -e "Downloading MC server.properties"
+          curl -o server.properties https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/server.properties
+      fi
+
+      ## install end
+      echo "-----------------------------------------"
+      echo "Installation completed..."
+      echo "-----------------------------------------"
+    container: 'ghcr.io/pelican-eggs/installers:alpine'
+    entrypoint: ash
+variables:
+  -
+    sort: 1
+    name: 'Modpack Version'
+    description: ''
+    env_variable: MODPACK_VERSION
+    default_value: v1.2.9g-2
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:20'

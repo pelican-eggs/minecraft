@@ -1,0 +1,81 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/technic/Tekkit-2/egg-tekkit2.yaml'
+exported_at: '2026-01-06T14:26:13+00:00'
+name: 'Tekkit 2'
+author: josdekurk@gmail.com
+uuid: 81bf842b-5647-4c83-9254-523b6f8308fb
+description: "Those of you who are nostalgic for the early days of Tekkit (now known as Tekkit Classic), will love\nwhat awaits you in Tekkit 2!\r\n\r\nWith a collection of nostalgic mods and plenty of new improvements, Tekkit 2 is sure to capture the\nfeeling of possibility and consequence that you felt while exploring the world of machines and\ncontraptions that made the original fun. Keep an eye out for classics such as IndustrialCraft,\nProjectE (Equivalent Exchange), Project Red (RedPower) and BuildCraft, alongside additions such as\nGalacticraft and Tekkit Jaffa Cakes! The world is yours to bend and exploit to your will, whether\nthrough alchemy or sprawling factories and mines.\r\n\r\nWhat fresh horrors will you create?"
+image: 'data:image/png;base64,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'
+tags: {  }
+features:
+  - eula
+  - java_version
+docker_images:
+  Java_8: 'ghcr.io/pelican-eggsl/yolks:java_8'
+  Java_11: 'ghcr.io/pelican-eggs/yolks:java_11'
+file_denylist: {  }
+startup_commands:
+  Default: 'java -server  -Xms128M -XX:MaxRAMPercentage=95.0 -Dfml.queryResult=confirm -jar forge.jar nogui'
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        server-port: '{{server.allocations.default.port}}'
+  startup:
+    done: 'Server tick complete! '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/ash
+      # Tekkit Installation Script
+      #
+      # Server Files: /mnt/server
+      apt update
+      apt -y install curl zip unzip
+
+      mkdir -p /mnt/server
+
+      cd /mnt/server
+
+      curl -sSL https://servers.technicpack.net/Technic/servers/tekkit-2/Tekkit-2_Server_$MODPACK_VERSION.zip -o Tekkit-2_Server_$MODPACK_VERSION.zip
+
+      unzip -o Tekkit-2_Server_$MODPACK_VERSION.zip
+
+      rm -rf Tekkit-2_Server_$MODPACK_VERSION.zip
+
+      rm RestoreBackup.bat
+
+      rm LaunchServer.bat
+
+      rm LaunchServer.sh
+
+      rm RestoreBackup.sh
+
+      mv forge-1.12.2-*.jar forge.jar
+
+      if [ ! -f server.properties ]; then
+          echo -e "Downloading MC server.properties"
+          curl -o server.properties https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/server.properties
+
+      echo "done"
+    container: 'ghcr.io/pelican-eggs/installers:debian'
+    entrypoint: bash
+variables:
+  -
+    sort: 1
+    name: 'Modpack Version'
+    description: ''
+    env_variable: MODPACK_VERSION
+    default_value: v1.0.5
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:10'

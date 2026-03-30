@@ -1,0 +1,77 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/technic/tekkit-classic/egg-tekkit-classic.yaml'
+exported_at: '2026-01-06T14:26:19+00:00'
+name: 'Tekkit Classic'
+author: geoffrey@remedygaming.net
+uuid: 80be7c9e-a4a0-4d9c-889c-8702caae6557
+description: "Created by the Technic team, Tekkit Classic is a modpack for the record breaking sandbox\nconstruction game Minecraft. \r\nIt brings together some of the best mods from the Minecraft community for automating,\nindustrializing and powering your worlds and bundles them into one easy download!"
+image: 'data:image/png;base64,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'
+tags: {  }
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  Java_8: 'ghcr.io/pelican-eggs/yolks:java_8'
+  Java_11: 'ghcr.io/pelican-eggs/yolks:java_11'
+  Java_16: 'ghcr.io/pelican-eggs/yolks:java_16'
+  Java_17: 'ghcr.io/pelican-eggs/yolks:java_17'
+file_denylist: {  }
+startup_commands:
+  Default: 'java -Xms128M -XX:MaxRAMPercentage=95.0 -jar Tekkit.jar'
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        server-port: '{{server.allocations.default.port}}'
+  startup:
+    done: ')! For help, type '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/ash
+      # Forge Installation Script
+      #
+      # Server Files: /mnt/server
+      cd /mnt/server
+
+      curl -sS https://servers.technicpack.net/Technic/servers/tekkit/Tekkit_Server_$MODPACK_VERSION.zip -o Tekkit_Server_$MODPACK_VERSION.zip
+
+      unzip Tekkit_Server_$MODPACK_VERSION.zip
+
+      rm -rf Tekkit_Server_$MODPACK_VERSION.zip
+
+      rm launch.bat
+
+      rm launch.sh
+
+      if [ ! -f server.properties ]; then
+          echo -e "Downloading MC server.properties"
+          curl -o server.properties https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/server.properties
+      fi
+
+      ## install end
+      echo "-----------------------------------------"
+      echo "Installation completed..."
+      echo "-----------------------------------------"
+    container: 'ghcr.io/pelican-eggs/installers:alpine'
+    entrypoint: ash
+variables:
+  -
+    sort: 1
+    name: 'Modpack Version'
+    description: ''
+    env_variable: MODPACK_VERSION
+    default_value: 3.1.2
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:20'

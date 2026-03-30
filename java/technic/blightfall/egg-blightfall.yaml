@@ -1,0 +1,68 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/technic/blightfall/egg-blightfall.yaml'
+exported_at: '2026-01-06T14:08:44+00:00'
+name: Blightfall
+author: aevum@decess.us
+uuid: 0474df64-2339-4aef-86ce-2507e91aca78
+description: "Blightfall is a combination modpack and adventure map about surviving on an alien planet. It uses\nmagic mods and tech mods to create a novel gameplay experience. Can you survive on a world\ncompletely covered by Thaumcraft taint?\r\n\r\nhttps://www.technicpack.net/modpack/blightfall.592618"
+image: 'data:image/png;base64,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'
+tags: {  }
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  Java_8: 'ghcr.io/pelican-eggs/yolks:java_8'
+file_denylist: {  }
+startup_commands:
+  Default: 'java -Xms128M -XX:MaxRAMPercentage=95.0 -jar Blightfall.jar'
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        server-port: '{{server.allocations.default.port}}'
+        query.port: '{{server.allocations.default.port}}'
+  startup:
+    done: ')! For help, type '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/ash
+      # Forge Installation Script
+      #
+      # Server Files: /mnt/server
+
+      cd /mnt/server
+
+      curl -sS https://servers.technicpack.net/Technic/servers/blightfall/Blightfall_Server_$MODPACK_VERSION.zip -o Blightfall_$MODPACK_VERSION.zip
+
+      unzip Blightfall_$MODPACK_VERSION.zip
+
+      rm -rf Blightfall_$MODPACK_VERSION.zip
+
+
+      ## install end
+      echo "-----------------------------------------"
+      echo "Installation completed..."
+      echo "-----------------------------------------"
+    container: 'ghcr.io/pelican-eggs/installers:alpine'
+    entrypoint: ash
+variables:
+  -
+    sort: 1
+    name: 'Modpack Version'
+    description: 'Version of the modpack to use'
+    env_variable: MODPACK_VERSION
+    default_value: 3.1.1-CE
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:20'

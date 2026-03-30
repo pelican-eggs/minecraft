@@ -1,0 +1,67 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/technic/the-1-7-10-pack/egg-the1710-pack.yaml'
+exported_at: '2026-01-06T14:37:08+00:00'
+name: 'The 1.7.10 Pack'
+author: contact@sweplox.se
+uuid: 7e410751-0e25-457d-b09f-a19e640f2d69
+description: 'The 1.7.10 Pack'
+image: 'data:image/png;base64,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'
+tags: {  }
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  Java_8: 'ghcr.io/pelican-eggs/yolks:java_8'
+file_denylist: {  }
+startup_commands:
+  Default: 'java -Xms128M -XX:MaxRAMPercentage=95.0 -jar forge-*.jar'
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        server-port: '{{server.allocations.default.port}}'
+        query.port: '{{server.allocations.default.port}}'
+  startup:
+    done: ')! For help, type '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/ash
+      # Forge Installation Script
+      #
+      # Server Files: /mnt/server
+
+      cd /mnt/server
+
+      curl -sS http://solder.endermedia.com/repository/downloads/the-1710-pack/the-1710-pack_$MODPACK_VERSION.zip -o the-1710-pack_$MODPACK_VERSION.zip
+
+      unzip the-1710-pack_$MODPACK_VERSION.zip
+
+      rm -rf the-1710-pack_$MODPACK_VERSION.zip
+
+      ## install end
+      echo "-----------------------------------------"
+      echo "Installation completed..."
+      echo "-----------------------------------------"
+    container: 'ghcr.io/pelican-eggs/installers:alpine'
+    entrypoint: ash
+variables:
+  -
+    sort: 1
+    name: 'Modpack Version'
+    description: 'Version of the modpack to use'
+    env_variable: MODPACK_VERSION
+    default_value: 0.10.12
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:20'

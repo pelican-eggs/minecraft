@@ -1,0 +1,99 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/bedrock/PowerNukkitX/egg-power-nukkit-x.yaml'
+exported_at: '2026-01-06T14:11:29+00:00'
+name: PowerNukkitX
+author: powernukkitx@github.com
+uuid: 27250406-1acf-4dce-b39f-3413cc290b64
+description: 'PowerNukkitX support for Pelican'
+image: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAIAAAAiOjnJAAAQV0lEQVR4nOzdb0wUV78H8Jk5M7M7sCiuVh9brKi9PvRy217Tpy+wT81NW9NYpbkv7mNvU6ClRmis0kaJ1tymf4yx1AZBBKEQoYK1LU1721SbVltaNVHaopZeKsj1DwqtKAgKy8Ky7OwTGJ59NjI75+zunNkd/H3Ci52dM2cO69ed4cycM3zugScZHI7jsGVkWfZ6vdhiAwMDsixji5EQBIHnee0yIyMjDocDW5XFYhFFEVvMbrdjy4yMwRZzOp3Yz4HwI2XHYKsaHh7GVjUwMEBSbM6cOdgy+MQAEAIIFqACggWogGABKiBYgAoIFqACggWogGABKiBYgAoIFqACggWo4LGXmZQLW9gyNkGyW+OxxYZkieT6F8nVyT+++eParze0y6A7eNvKadiqRkZGSH7H/v5+bJkZU+yJdyRgi3kkD7aMw+3sdeH3ePPmTY8HUxvHcbGxsdiqrFYryZVckjLwjQWogGABKiBYgAoIFqACggWogGABKiBYgArMPePaiv+rTr+WUPNZpBtgWtkfPhLytvCNBaiAYAEqwjoUgslNlv958Y0dH2hGui0vcRZsod7/ux5664BpDQ2MjzFkWYZDLMdzHDearJEW/NhDfqqAvzb5/3U39WgnMJmBG4PKC5ZjBSsSrAghjmEZVx3+0jgcCkFAI67xuxg4xCKBY/B3pfwTnLwDKiBYgAoIFqACggWogGABKiBYgAoIFqACggWogGABKiBYgAr+TPkZbKGp//KQ+opjzfq3CEQNd934tUKOZVkRsSJCYwOJZ0+Pw27LO6/gRwBPf2CKHu0EJuO9MX6t0MuyXp71Cqx37Ahn+RP+EjMcCgEVECxABQQLUAHBAlTAjX4Rw/P8jBkz/N/p7u7WflyK3W73fzSLy+Xq7e2l2cbQGRGsvLy87OzsEDaUZdnpdHZ0dHR1dbW0tDQ2NtbX158/fz6oSpKSkk6cOEFSsqysbPPmzcE2Urv+adMCzs4liuKRI0cWLlzoe2fHjh0bNmwIVH7evHlNTU0xMTG+d9LS0j744INgG2wMI4IlSVJ8PH5ONlV2uz0hIYFhmNTUVOWdtra22tra3bt3X7p0iaQGhBDh3rOysrZu3TowMBBUC8nrv4XT6XzuueeOHTvme9RUTk5OdXV1Y2OjavmSkhL/VH300UdRmypTnmMlJiZu3LixtbW1sLAwLg7fU0fObrenpaXpWCFWfX19Xl6eb5Hn+dLSUtXZDFeuXLls2TLf4u+///7SSy8Z1cxQmC9YClEUX3755dOnTy9atEjHatetW6djbSS2bNly+vRp32JKSsrq1atvKTN16tTCwkLfoizLmZmZPT09BjYzaGYNlmLBggVHjx59/PHH9aowOTlZx9pIuN3ujIyMoaEh3zvbtm2bNWuWf5m333579uzZvsWSkpLDhw8b2cgQcDZJxP5wbqfqT6QbP8pms33yyScLFizQq8K1a9fqVRWhpqam1157zbdot9vfffdd32JKSkpWVpZvsbm5edOmTQa3MAT8ooV3YQu1X20xpDEhio+P37t37yOPPEIyHzPWihUr5s2bd/HiRT2aRqqwsPCpp55asmSJspiWllZVVfX9998LglBaWooQUt53u93p6emDg4NGti005j4U+jz88MPPPPOMLlUhhIw/L/Z4PM8//3xfX5+yyLLs7t27RVF85ZVXHnjgAV+xt9566+TJkwa3LTQRDtb58+dnq7n77rvvvffeJ554Yv369V999RXJU5ZfffVVvVqVmZlJMiu6vi5evJibm+tbTEpKKioqeuONN3zvnDhx4p133jG4VSGLcLBkWe5U097e3tLScujQoYKCguXLl99zzz3YPpv77rvvoYcC3DcWJOP7HRQVFRUHDhzwLWZnZ/vy7XA4MjIySP6DRQlzHAovXbqUlpaWkZGh/QiG5cuX67VH4/sdFFlZWd3d3RPfz83NPXfuXCRaFCJzBEtRU1OzdetWjQIpKSnB1nn58mXV943vd1BcuXJlzZo1t7x54MCB9957z/jGhMNMwVIuO169ejXQ2vvvvz/YCsvLywOtMr7fQfHll1/e8jtWVlZGpCXhMFmwhoaGPvss4Gy1M2fODPak+/jx4z///LPqKqXfIfg2hmtiB2lBQUHIF1sjxWTBYhjm2LFjgVZxHHfXXfhuuVvs2rVL9f2I9DssWbIkJyfnljfnzp1bVFRkcEvCZL5gtba2aqyVJCnYCmtrazs7O1VXGdzvEBcXV1VV5d8d6luVnp6+cuVKw1oSPvMFa3hYawJM378KOZfLFejU2OB+hx07dsyfP9+3mJ6e7v+XYGlpaQjfx5FivmDdeeedGmu1YxdIWVlZoA0N63d48sknV61a5Vv8/PPPP/74Y/+/EO12e1VVVRATF0cU39OHv5bcfTO4e9+oSk5O1lir2gmE1dnZWVtbq/rllJyc/Nhjj3333XchVEvObrdXVFT4QuNwOJQzrcOHD+/bt8/XsKVLl65bt86w8614m1V5wbGsVeBFgUeIYxlmYcIM7Lb8wCD+v7iDoIxhHn300UCr+vr6Ap0tYe3cuTPQUW/t2rW0g1VcXOz/Tfzmm2+2t7crrzds2LBs2bLp06cri3l5ed9+++2ZM/jx6+GLtY7fX8+xrCQKFnE8WHfOwA9gNtmhMCEhYenSpYHWnjp1KuSaGxoajh8/rroqNTWVar/D008/7X8FvbGxcefOnb7Fa9eu+d8nI0nSvn37/IdURCeTBWv79u0an+kPP/wQTuUR6XeYPXt2cXGxb1GW5TVr1txyTbCysvLo0aO+xUWLFm3ZsoVSe/RipmDl5uZq3xtz8ODBcOr/9NNPOzo6VFfR63coLy/3HwS2Z8+eiV+cXq83Ozvb5XL53snNzfXdvBWdzBGsmTNnVlZW+t9XOVFzc3NDQ0M4e3G73WVlZaqr7Hb7s88+G07lqlatWrVixQrf4rVr1wLd/NPS0uJ/zwxCaO/evVOmRO9kLVEdrLlz56amplZUVFy4cCEzM1O7sHbsCJWXl/vffu5vYod4mBITE/Pz8/3f2bhxo8YQiW3btp09e9Z/82jujo/wSOj58+f396s/mMVisQiCQFhPU1NTTU1N+O3p6urav3//Cy+8MHGV7v0O169f9x9i5PV629raNMq7XK6UlBT/i4a63IpNSYSDhRCy2WxhVuJ2u1evXq3XTXBFRUWqwdK936F/TFCb9I7RqwFURfWhkNCmTZvq6+v1qq2xsfHIkSOqq2j3O0wmpg/W9u3bCwoK9K0z0LlLRO53MCkTB8vtdq9fv57GILsvvvgi0OlORMZZmBHRgFWRR6o/EWz3qVOnFi9erPt3lcLj8ZSWlqquotTvYC4u9wj2h//LnxOwFUXVtcJffvklPz//ww8/1B5YEaaKiorXX39d9cspJydH44bm20FHdx+2TLRPvCbL8uDg4OXLl5ubm3/66adDhw75T6FBT29vb01NzYsvvjhxlTH3O5hdhIN17ty5Bx98MNDakZERpzNiM0QUFxdnZWWpTipkwP0OZhfhYHm9Xt+48mjz22+/1dXVqQ4CU/odDJ7fwVxM/FehAaDfIWQQLC0HDx4MNP4Y+h20QbC0yLJcUlKiugr6HbRBsDAqKysDXdHT/X6HyQSChdHX1/f++++rrlL6HQxvkTlAsPCKi4tlWVZdFan5HaIfBAuvtbX166+/Vl0F9zsEAsEiElXzO5gCf7a9K9JtMIFvvvmmpaUlKSlp4qqITKNljCmx4wNWEcdKoiBZBGVcIQn+yvXgbmK8PXm93l27dql2PfgeWDL5xPxjwCri2BiLEGMVEIcIh/jDoZBUdXW1WW4LjgYQLFIOh6OqqirSrTANCFYQSkpKqN4ENplAsIJw4cIF/+mygQYIVnCieYxoVIFgBaeurq6pqSnSrTABCFbQ/OcYAoFAsIK2f//+0OYNvK1AsILmdDr37NkT6VZEOyN6jaurq3/88UfVVcFOXhCCjo4OjTvyQptzMT8//9dffw2vXZMcu/lvi0Pe+O1P1OdWBJPD//z3X5UXIVzS4efMwj9Lo/3qjXDbCEzo5Nnx+Q05lhV5JAoIjQ2GS/zTNOy2cI4FqIBgASogWIAKCBagAoIFqIBgASogWIAKCBagAoIFqIBgASogWIAK3uF0YQvFStH+dDxAQ4x1/JEzHMtaeV4Ux68VkuSB7+0fxBYiuVANJp9pNkl5ccsTVu1TYrDbwqEQUAHBAlRAsAAVECxABQQLUAHBAlRAsAAVECxABQQLUAHBAlRAsAAVk3ZiVhA+ad5flBccx0pWSZKsCHEsy3aew4+Ah2CBgJAUp7zgOA5J0ugPQizLukfw82XCoRBQAcECVECwABUQLEAFBAtQAcECVECwABUQLEAFBAtQAcECVPAkgw9JBrWCycfd+4fygmNZ3mpFVotyrbCfIA88yeBDmDX59uS6clZ5wbEsJwrMPwasXu9zYreFQyGgAoIFqIBgASogWIAKCBagAoIFqDAiWFlZWd5JraGhwYCP0VzgGwtQAcECVECwABUQLEAF33kd/1TmP7r7DGkMiC7/mjhLecFzXKxViLWKPEIsy/zbvFnYbXmSwYfDBGXA5BNrHb/zhUeczSrapPFgxTEW7LZwKARUQLAAFUbM3dDV1XXy5EkDdhQpzc3NkW5C1DEiWP87xoAdgegBh0JABQQLUAHBAlRAsAAVECxABQQLUEHU3WCDJ6zelobd45fyZFl2IU7gOY/sZVmibYmCtWjhXeorDjWStxKYztUbDuUF4tgYixBjFRCHCIMFh0JABQQLUAHBAlRAsAAVECxABQQLUAHBAlRAsAAVECxABQQLUAHBAlTw0+IkbKEegslMAfDH22Lwgw9h1mQQLDgUAiogWIAKCBagIqwBq5v/tlh54ZHlnj7nlZ5+j+zV3uQ//n1+vA3z58LA0PCZtqvYvfc6Bp1Dbu0yAs/NjLfpUhXDMP/512RsGUK/tXVi9yhZhKm4z4phmO4bjhGPrEurpsRaY6z63C0M31iACggWoELnuRuw90NzLDv2nB8tiB1FsC98odEyOlWl3PpNUIoIR/A7cixLskOSqohbxajucfTNIPegT7BYhuU4TkBI5jDnWJJFiLEI2mVk2WsV8A2z8MjNI+0yIo/0qophGGzLyVkFwePBfFZWkbcS7NEq8mhEn3Msqyio7pFjWAEhdvTfmbQqnYLFMjzHiTzCfFQMY7OKcQRdslYLQRpE3o07aR0Nlk5VMQxD0nJCkpX3eDF7lCxCrIXgaZIWASF9plwMtEdW+ebngvhi1CtYo3vlOPwZm8AjkeBrhieoCnEcwhVDHKdXVUrDsGUI8QQN48eG8pFU5cUdKAgJmnsM6oCr2zkWyxCdpyjZx5UhOzEiODMi2R1hVcF+stiq9PscdDvH0rEq3YK1cM6MP8+5A1uso/vm+Ss92GJzZsVjy8RK4sDgsHYZLmaqLWkJtirhcqO7+zK2GEnLCbnc+IPXwOAw9hdkGGaW3SYSnEeS6OlzklwXbuvsxZaB7gZABQQLUAHBAlRAsAAVECxABQQLUAHBAlRAsAAVECxABQQLUAHBAlT8PQAA///wD+M7++ijXwAAAABJRU5ErkJggg=='
+tags: {  }
+features: {  }
+docker_images:
+  Debian: 'ghcr.io/pelican-eggs/yolks:debian'
+file_denylist: {  }
+startup_commands:
+  Default: './pnx start {{AUTOREBOOT}}'
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        enable-query: true
+        server-port: '{{server.allocations.default.port}}'
+        query.port: '{{server.allocations.default.port}}'
+  startup:
+    done: ')! For help, type '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/bash
+      apt-get update
+      apt-get install -y git curl wget jq file tar unzip zip openssl
+      mkdir -p /mnt/server/ # Not required. Only here for parkervcp's local test setup
+      cd /mnt/server || exit 1
+      UPGRADE="no"
+      if [ -d "./java" ]; then
+      UPGRADE="yes"
+      fi
+      wget https://github.com/PowerNukkitX/PNX-CLI/releases/download/0.1.6/PNX-CLI-Linux-x86.zip -O pnx.zip
+      wget https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/bedrock/PowerNukkitX/nukkit.yml -O nukkit.yml
+      unzip pnx.zip
+      rm -fr pnx.zip 2>&1 >/dev/null
+      mv ./target/linux-x86/pnx ./ 2>&1 >/dev/null
+      rm -fr target 2>&1 >/dev/null
+      rm -fr java 2>&1 >/dev/null
+      chmod +x pnx
+      ./pnx jvm install=GraalVM
+      if [ "$UPGRADE" == "no" ]; then
+      if [ "$VERSION" == "latest" ]; then
+      ./pnx server install --latest
+      else
+      ./pnx server install --dev
+      fi
+      else
+      rm -fr libs 2>&1 >/dev/null
+      if [ "$VERSION" == "latest" ]; then
+      ./pnx server update --latest
+      else
+      ./pnx server update --dev
+      fi
+      fi
+      rm -fr tmp-GraalVM.tar.gz 2>&1 >/dev/null
+      cat <<EOF
+      ----------------------------------------
+      | |
+      | PowerNukkitX Installation Done |
+      | |
+      ----------------------------------------
+      EOF
+    container: 'ghcr.io/pelican-eggs/installers:debian'
+    entrypoint: bash
+variables:
+  -
+    sort: 2
+    name: 'AutoReboot mode'
+    description: 'to set auto reboot mode please enter -r'
+    env_variable: AUTOREBOOT
+    default_value: ''
+    user_viewable: true
+    user_editable: true
+    rules:
+      - nullable
+      - string
+      - 'max:2'
+  -
+    sort: 1
+    name: 'Version to install'
+    description: 'Choose between latest or dev'
+    env_variable: VERSION
+    default_value: latest
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string

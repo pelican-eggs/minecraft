@@ -40,17 +40,41 @@ scripts:
   installation:
     script: |-
       #!/bin/ash
-      # Paper Installation Script
+      # shellcheck disable=SC2164 # don't error on `cd` command
+      # shellcheck disable=SC2187 # don't error for `ash` vs `dash`
+      # shellcheck disable=SC2223 # don't error for default variable values
+      # shellcheck disable=SC3014 # don't error for `==` 
+      # shellcheck disable=SC3036 # don't error for echo `-e` flag 
+      # Paper Fill API Installation Script
       #
       # Server Files: /mnt/server
-      PROJECT=paper
+
+      : ${PROJECT:='paper'}
+      : ${API_ENDPOINT:='fill.papermc.io'}
+      : ${SERVER_JARFILE:='server.jar'}
+
+      if [ -z "${USER_AGENT}" ]; then
+      	echo -e "A user agent must be set per the paper api docs"
+      	echo -e "See https://docs.papermc.io/misc/downloads-service/"
+      	exit 1
+      fi
+
+      if [ ! -d /mnt/server ]; then
+      	mkdir -p /mnt/server
+      fi
+
+      cd /mnt/server
 
       if [ -n "${DL_PATH}" ]; then
       	echo -e "Using supplied download url: ${DL_PATH}"
-      	DOWNLOAD_URL=`eval echo $(echo ${DL_PATH} | sed -e 's/{{/${/g' -e 's/}}/}/g')`
+      	DOWNLOAD_URL=$(eval echo "$(echo ${DL_PATH} | sed -e 's/{{/${/g' -e 's/}}/}/g')")
       else
-      	VER_EXISTS=`curl -s https://fill.papermc.io/v3/projects/${PROJECT} | jq -r --arg VERSION $MINECRAFT_VERSION '.versions | any(.[]; index($VERSION))' | grep -m1 true`
-      	LATEST_VERSION=`curl -s https://fill.papermc.io/v3/projects/${PROJECT} | jq -r '.versions | to_entries | .[0].value[0]'`
+      	if [ "${MINECRAFT_VERSION}" == "latest" ] || [ -z "${MINECRAFT_VERSION}" ]; then
+      		echo -e "getting latest minecraft version"
+      		MINECRAFT_VERSION=$(curl -H "User-Agent: ${USER_AGENT}" -s https://${API_ENDPOINT}/v3/projects/${PROJECT} | jq -r '.versions | to_entries | .[0].value[0]')
+      	fi
+
+      	VER_EXISTS=$(curl -s https://${API_ENDPOINT}/v3/projects/${PROJECT} | jq -r --arg VERSION $MINECRAFT_VERSION '.versions | any(.[]; index($VERSION))' | grep -m1 true)
 
       	if [ "${VER_EXISTS}" == "true" ]; then
       		echo -e "Version is valid. Using version ${MINECRAFT_VERSION}"
@@ -59,8 +83,12 @@ scripts:
       		MINECRAFT_VERSION=${LATEST_VERSION}
       	fi
 
-      	BUILD_EXISTS=`curl -s https://fill.papermc.io/v3/projects/${PROJECT}/versions/${MINECRAFT_VERSION} | jq -r --arg BUILD ${BUILD_NUMBER} '.builds[] | tostring | contains($BUILD)' | grep -m1 true`
-      	LATEST_BUILD=`curl -s https://fill.papermc.io/v3/projects/${PROJECT}/versions/${MINECRAFT_VERSION} | jq -r '.builds' | jq -r '.[0]'`
+      	if [ "${BUILD_NUMBER}" == "latest" ] || [ -z "${BUILD_NUMBER}" ]; then
+      		echo -e "getting latest ${PROJECT} "
+      		BUILD_NUMBER=$(curl -s https://${API_ENDPOINT}/v3/projects/${PROJECT}/versions/${MINECRAFT_VERSION} | jq -r '.builds' | jq -r '.[0]')
+      	fi
+
+      	BUILD_EXISTS=$(curl -s https://${API_ENDPOINT}/v3/projects/${PROJECT}/versions/${MINECRAFT_VERSION} | jq -r --arg BUILD ${BUILD_NUMBER} '.builds[] | tostring | contains($BUILD)' | grep -m1 true)
 
       	if [ "${BUILD_EXISTS}" == "true" ]; then
       		echo -e "Build is valid for version ${MINECRAFT_VERSION}. Using build ${BUILD_NUMBER}"
@@ -73,18 +101,16 @@ scripts:
       	echo -e "Project: ${PROJECT}"
       	echo -e "MC Version: ${MINECRAFT_VERSION}"
       	echo -e "Build: ${BUILD_NUMBER}"
-      	DOWNLOAD_URL=`curl -s https://fill.papermc.io/v3/projects/${PROJECT}/versions/${MINECRAFT_VERSION}/builds/${BUILD_NUMBER} | jq -r '.downloads."server:default".url'`
+      	DOWNLOAD_URL=$(curl -s https://${API_ENDPOINT}/v3/projects/${PROJECT}/versions/${MINECRAFT_VERSION}/builds/${BUILD_NUMBER} | jq -r '.downloads."server:default".url')
       fi
-
-      cd /mnt/server
 
       echo -e "Running curl -o ${SERVER_JARFILE} ${DOWNLOAD_URL}"
 
-      if [ -f ${SERVER_JARFILE} ]; then
-      	mv ${SERVER_JARFILE} ${SERVER_JARFILE}.old
+      if [ -f "${SERVER_JARFILE}" ]; then
+      	mv "${SERVER_JARFILE}" "${SERVER_JARFILE}.old"
       fi
 
-      curl -o ${SERVER_JARFILE} ${DOWNLOAD_URL}
+      curl -o "${SERVER_JARFILE}" "${DOWNLOAD_URL}"
 
       if [ ! -f server.properties ]; then
           echo -e "Downloading MC server.properties"
@@ -94,6 +120,7 @@ scripts:
     entrypoint: ash
 variables:
   -
+    sort: 4
     name: 'Build Number'
     description: "The build number for the paper release.\r\n\r\nLeave at latest to always get the latest version. Invalid versions will default to latest."
     env_variable: BUILD_NUMBER
@@ -104,8 +131,8 @@ variables:
       - required
       - string
       - 'max:20'
-    sort: 4
   -
+    sort: 3
     name: 'Download Path'
     description: |-
       A URL to use to download a server.jar rather than the ones in the install script. This is not user
@@ -117,8 +144,8 @@ variables:
     rules:
       - nullable
       - string
-    sort: 3
   -
+    sort: 1
     name: 'Minecraft Version'
     description: "The version of minecraft to download. \r\n\r\nLeave at latest to always get the latest version. Invalid versions will default to latest."
     env_variable: MINECRAFT_VERSION
@@ -129,8 +156,17 @@ variables:
       - nullable
       - string
       - 'max:20'
-    sort: 1
   -
+    sort: 6
+    name: Project
+    description: ''
+    env_variable: PROJECT
+    default_value: paper
+    user_viewable: false
+    user_editable: false
+    rules: {  }
+  -
+    sort: 2
     name: 'Server Jar File'
     description: 'The name of the server jarfile to run the server with.'
     env_variable: SERVER_JARFILE
@@ -140,4 +176,15 @@ variables:
     rules:
       - required
       - 'regex:/^([\w\d._-]+)(\.jar)$/'
-    sort: 2
+  -
+    sort: 5
+    name: 'User Agent'
+    description: |-
+      Required to use the paper fill API.
+      See https://docs.papermc.io/misc/downloads-service/
+    env_variable: USER_AGENT
+    default_value: ''
+    user_viewable: false
+    user_editable: false
+    rules:
+      - required

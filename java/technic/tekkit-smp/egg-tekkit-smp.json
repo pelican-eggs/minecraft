@@ -4,11 +4,14 @@
         "version": "PTDL_v2",
         "update_url": "https:\/\/raw.githubusercontent.com\/pelican-eggs\/minecraft\/main\/java\/technic\/tekkit-smp\/egg-tekkit-smp.json"
     },
-    "exported_at": "2024-09-12T19:50:57+00:00",
+    "exported_at": "2026-04-21T19:02:00+00:00",
     "name": "Tekkit SMP",
     "author": "lovinoes@lovinoes.de",
     "uuid": "c22ea4db-1541-490c-8ee6-296e61d97a1e",
     "description": "Tekkit SMP contains the full range of mods from Tekkit 2, plus the extra mods that were originally dropped in the transition from Technic SSP (to Technic SMP) to Tekkit, in favour of multiplayer and Bukkit support: mainly Thaumcraft, Mystcraft, and Mo' Creatures. The new Tekkit SMP expands on that with various carefully selected Thaumcraft and Mystcraft addons, alongside Mo' Creatures Extended, and smaller custom additions such as Re-Crystallized Wing. Electro-Magic Tools is another starring mod, being an addon to both Industrial Craft and Thaumcraft, combining the worlds of tech and magic.",
+    "tags": [
+        "minecraft"
+    ],
     "features": [
         "eula",
         "java_version",

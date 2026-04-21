@@ -4,11 +4,15 @@
         "version": "PTDL_v2",
         "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/proxy/bedrock/waterdog_pe/egg-waterdog-p-e.json"
     },
-    "exported_at": "2024-06-01T19:40:10+00:00",
+    "exported_at": "2026-04-21T19:02:00+00:00",
     "name": "Waterdog PE",
     "author": "parker@pterodactyl.io",
     "uuid": "793c40ea-b8df-4b88-90fe-b2b5a7103e43",
     "description": "Brand new proxy server for Minecraft: Bedrock Edition",
+    "tags": [
+        "minecraft",
+        "proxy"
+    ],
     "features": [
         "eula",
         "java_version",

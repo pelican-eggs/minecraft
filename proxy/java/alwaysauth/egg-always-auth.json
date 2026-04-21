@@ -10,7 +10,8 @@
     "uuid": "3885c37c-f1da-4979-860d-4c200a8ca564",
     "description": "A simple proxy that sits between your server and Mojang's auth services that ensures even when they're offline, you stay online!",
     "tags": [
-        "minecraft"
+        "minecraft",
+        "proxy"
     ],
     "features": [],
     "docker_images": {

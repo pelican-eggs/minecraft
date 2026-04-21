@@ -4,11 +4,14 @@
         "version": "PTDL_v2",
         "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/ftb/outdated/egg-feed-the-beast.json"
     },
-    "exported_at": "2024-06-01T19:39:42+00:00",
+    "exported_at": "2026-04-21T19:02:00+00:00",
     "name": "Feed the Beast",
     "author": "aevum@decess.us",
     "uuid": "389b8f68-2fc4-4e5b-92ea-b8a0eadee0c4",
     "description": "Egg to handle all official FTB Modpacks",
+    "tags": [
+        "minecraft"
+    ],
     "features": [
         "eula",
         "java_version",

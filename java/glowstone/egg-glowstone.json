@@ -4,13 +4,15 @@
         "version": "PLCN_v3",
         "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/glowstone/egg-glowstone.json"
     },
-    "exported_at": "2025-12-19T20:56:01+00:00",
+    "exported_at": "2026-04-21T19:02:00+00:00",
     "name": "Glowstone",
     "author": "support@pterodactyl.io",
     "uuid": "0b0b94ea-aff2-49c0-80a0-736c1717f82e",
     "description": "Glowstone is an open-source server implementation for Minecraft: Java Edition 1.12.2 and up.",
     "image": null,
-    "tags": [],
+    "tags": [
+        "minecraft"
+    ],
     "features": null,
     "docker_images": {
         "Java 8": "ghcr.io/pelican-eggs/yolks:java_8",

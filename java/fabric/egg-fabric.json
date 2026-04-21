@@ -4,13 +4,15 @@
         "version": "PLCN_v3",
         "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/fabric/egg-fabric.json"
     },
-    "exported_at": "2025-12-19T20:55:03+00:00",
+    "exported_at": "2026-04-21T19:02:00+00:00",
     "name": "Fabric",
     "author": "accounts@bofanodes.io",
     "uuid": "78b02ebb-fec8-49c5-943c-ca4aa117b693",
     "description": "Fabric is a modular modding toolchain targeting Minecraft 1.14 and above, including snapshots.",
     "image": null,
-    "tags": [],
+    "tags": [
+        "minecraft"
+    ],
     "features": [
         "eula",
         "java_version",

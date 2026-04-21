@@ -4,12 +4,14 @@
         "version": "PLCN_v1",
         "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/curseforge/egg-curse-forge-generic.json"
     },
-    "exported_at": "2025-05-27T11:05:16-07:00",
+    "exported_at": "2026-04-21T19:02:00+00:00",
     "name": "CurseForge Generic",
     "author": "contact@chromozone.dev",
     "uuid": "019bbf16-a3f3-470a-9c0b-f3995b5e032a",
     "description": "A generic egg for a CurseForge modpack.",
-    "tags": [],
+    "tags": [
+        "minecraft"
+    ],
     "features": [
         "eula",
         "java_version",

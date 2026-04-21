@@ -4,11 +4,14 @@
         "version": "PTDL_v2",
         "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/technic/attack-of-the-bteam/egg-attack-of-the-b--team.json"
     },
-    "exported_at": "2024-06-01T19:39:48+00:00",
+    "exported_at": "2026-04-21T19:02:00+00:00",
     "name": "Attack of the B-Team",
     "author": "support@pterodactyl.io",
     "uuid": "306019ab-6a62-4fa8-953c-c2ac499c6736",
     "description": "This modpack was designed with one thing in mind, crazy mad science! With the help of the B-Team we hand picked the wackiest mods we could find and shoved them all in a modpack for you guys. The result is Attack of the B-Team!",
+    "tags": [
+        "minecraft"
+    ],
     "features": [
         "eula",
         "java_version",

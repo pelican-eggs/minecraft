@@ -4,13 +4,15 @@
         "version": "PLCN_v3",
         "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/quilt/egg-quilt.json"
     },
-    "exported_at": "2025-12-19T20:56:18+00:00",
+    "exported_at": "2026-04-21T19:02:00+00:00",
     "name": "Quilt",
     "author": "diedyesterdaywashere@gmail.com",
     "uuid": "dff33655-6e6a-4430-accf-e5aea04c2912",
     "description": "The Quilt project is an open-source, community-driven modding toolchain designed primarily for Minecraft. By focusing on speed, ease of use and modularity, Quilt aims to provide a sleek and modern modding toolchain with an open ecosystem.",
     "image": null,
-    "tags": [],
+    "tags": [
+        "minecraft"
+    ],
     "features": null,
     "docker_images": {
         "Java 8": "ghcr.io/pelican-eggs/yolks:java_8",

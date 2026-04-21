@@ -4,13 +4,15 @@
         "version": "PLCN_v3",
         "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/neoforge/egg-neo-forge.json"
     },
-    "exported_at": "2025-11-24T08:47:32+00:00",
+    "exported_at": "2026-04-21T19:02:00+00:00",
     "name": "NeoForge",
     "author": "glorantv@icloud.com",
     "uuid": "e23e092f-b803-4f34-82cf-2d6518c6351a",
     "description": "NeoForge Server. NeoForge is a modding API (Application Programming Interface), which makes it easier to create mods, and also make sure mods are compatible with each other. NeoForge is a fork of Minecraft Forge.",
     "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAACXBIWXMAAAsSAAALEgHS3X78AAAAPFBMVEWLjpQAAAD59PTm8vHV4N/n2dPH0dG9x8fHo7mqsLOgpanmjDfXdC+NcWi/YTR1dYCkTjdmU00mKjMTFRpppmRQAAAAAnRSTlP/AOW3MEoAAAE3SURBVHja7dvLboMwAERRcHjEqWtM+P9/7WLIYiyKoFXTVrlniZDnbmDnpv1lTfupFwtono4AAgiohjtzOaD7pkYIIICAh4tEGWVwsxlklNmMm/xwAgggoHE+ObpZ3sUDVv7KbgcBBBCwHdCJd8x+bC+zFDNLL9ZRh0QhgAAC/lrAuKU6/SpFsilylapx3EIAAQScCcgmyZtJks12QBQCCCDgSIBPujrAeQ4BBBBwPqAaDtKLByTTS5AqhAACCNgOmGT3PxDkLmnHXYLk1WCiTEIAAQRUAVGKVF/3IkmySbJIL2lVJAoBBBCwH2CKhZxXfJkAAgj4ekA2QRYTJBsCCCDg/wc8FBOkN0GKiSsCCCDgSIA/jXuKOT9JAAEE7AbcJP6ImxBAAAFVQCvT07VCAAEEcPWbgA9tTDwHvNgQFgAAAABJRU5ErkJggg==",
-    "tags": [],
+    "tags": [
+        "minecraft"
+    ],
     "features": [
         "eula",
         "java_version",

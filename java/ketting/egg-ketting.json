@@ -4,11 +4,14 @@
         "version": "PLCN_v1",
         "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/ketting/egg-ketting.json"
     },
-    "exported_at": "2025-01-10T15:28:19+00:00",
+    "exported_at": "2026-04-21T19:02:00+00:00",
     "name": "Ketting",
     "author": "joanfo360@gmail.com",
     "uuid": "3460601a-bb6e-41b8-8394-77e69c174dd1",
     "description": "Magma successor for 1.20- with plugins and mods.",
+    "tags": [
+        "minecraft"
+    ],
     "features": [
         "eula",
         "java_version",

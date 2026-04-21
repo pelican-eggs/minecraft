@@ -4,11 +4,14 @@
         "version": "PTDL_v2",
         "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/bedrock/nukkit/egg-nukkit.json"
     },
-    "exported_at": "2024-06-01T19:39:55+00:00",
+    "exported_at": "2026-04-21T19:02:00+00:00",
     "name": "Nukkit",
     "author": "parker@parkervcp.com",
     "uuid": "5669130a-d4a2-4a80-88b6-9edd2d9484bc",
     "description": "Nukkit is a Nuclear-Powered Server Software For Minecraft: Pocket Edition\r\n\r\nhttps:\/\/cloudburstmc.org",
+    "tags": [
+        "minecraft"
+    ],
     "features": null,
     "docker_images": {
         "ghcr.io\/pelican-eggs\/yolks:java_11": "ghcr.io\/pelican-eggs\/yolks:java_11",

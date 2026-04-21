@@ -4,12 +4,15 @@
         "version": "PLCN_v1",
         "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/proxy/java/viaproxy/egg-via-proxy.json"
     },
-    "exported_at": "2025-06-01T07:53:01+00:00",
+    "exported_at": "2026-04-21T19:02:00+00:00",
     "name": "ViaProxy",
     "author": "contact@ste4d.net",
     "uuid": "39774149-12b1-4ef9-8945-bdb51bdfe442",
     "description": "ViaProxy is a standalone proxy which allows players to join EVERY Minecraft server version (Classic, Alpha, Beta, Release, Bedrock)",
-    "tags": [],
+    "tags": [
+        "minecraft",
+        "proxy"
+    ],
     "features": [
         "eula",
         "java_version",

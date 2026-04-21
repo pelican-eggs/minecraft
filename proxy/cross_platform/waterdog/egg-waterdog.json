@@ -4,11 +4,15 @@
         "version": "PTDL_v2",
         "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/proxy/cross_platform/waterdog/egg-waterdog.json"
     },
-    "exported_at": "2024-06-01T19:40:10+00:00",
+    "exported_at": "2026-04-21T19:02:00+00:00",
     "name": "Waterdog",
     "author": "parker@pterodactyl.io",
     "uuid": "81c981cb-b851-4085-91a6-abdb2c8c71a7",
     "description": "Waterdog is fork of the well-known Waterfall, which is a fork of the well-known BungeeCord, server teleportation suite.",
+    "tags": [
+        "minecraft",
+        "proxy"
+    ],
     "features": [
         "eula",
         "java_version",

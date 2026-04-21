@@ -4,11 +4,14 @@
         "version": "PLCN_v1",
         "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/purpur/egg-purpur.json"
     },
-    "exported_at": "2024-11-20T09:50:13+00:00",
+    "exported_at": "2026-04-21T19:02:00+00:00",
     "name": "Purpur",
     "author": "purpur@birdflop.com",
     "uuid": "49adec15-ccfe-45c3-ac3f-2fc20582739d",
     "description": "A drop-in replacement for Paper servers designed for configurability, and new fun and exciting gameplay features.",
+    "tags": [
+        "minecraft"
+    ],
     "features": [
         "eula",
         "java_version",

@@ -62,7 +62,7 @@
             "name": "Modpack File ID",
             "description": "The file ID belonging to a specific version of a modpack. Can either be the main file or the file ID associated with the server pack.\r\n\r\nIf not provided the script will attempt to retrieve the latest server pack or client pack available.",
             "env_variable": "VERSION_ID",
-            "default_value": "latest",
+            "default_value": "",
             "user_viewable": true,
             "user_editable": true,
             "rules": [

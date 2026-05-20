@@ -8,6 +8,7 @@
   * [VIAaaS](/java/viaaas)
   * [ViaProxy](/java/viaproxy)
   * [Waterfall](/java/waterfall)
+  * [Zenith](/java/zenith)
 * [Bedrock](/bedrock)
   * [Waterdog PE](/bedrock/waterdogpe)
 * [Cross Platform](/cross_platform)

@@ -1,0 +1,99 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
+    "meta": {
+        "version": "PLCN_v1",
+        "update_url": null
+    },
+    "exported_at": "2025-04-02T15:23:49+00:00",
+    "name": "Zenith",
+    "author": "vesly@vesly.dev",
+    "uuid": "242a9c93-fdb5-4373-b50f-bb806d320d1a",
+    "description": "Minecraft proxy and bot designed for 2b2t but also works on any server.\r\nZenithProxy is a MC bot with an integrated MC server that players can log into and control.\r\nHave your accounts always online in-game and securely shared with your friends.",
+    "tags": [],
+    "features": null,
+    "docker_images": {
+        "Java 21": "ghcr.io\/parkervcp\/yolks:java_21"
+    },
+    "file_denylist": [],
+    "startup": ".\/launch",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": \"[Server] [INFO] Server started.\"\r\n}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "# git user set\r\nif [ -n \"${GITHUB_USER}\" ] && [ -n \"${GITHUB_OAUTH_TOKEN}\" ]; then\r\n    CURL_CMD=\"curl -u ${GITHUB_USER}:${GITHUB_OAUTH_TOKEN}\"\r\nelse\r\n    CURL_CMD=\"curl\"\r\nfi\r\n\r\n#arch selecg\r\nARCH_RAW=$(uname -m)\r\nif [ \"$ARCH_RAW\" = \"x86_64\" ]; then\r\n    FILE_ARCH=\"amd64\"\r\nelse\r\n    FILE_ARCH=\"aarch64\"\r\nfi\r\n\r\n# Set GitHub release variables (defaults can be overridden via the variables tab)\r\n: \"${GITHUB_PACKAGE:=rfresh2\/ZenithProxy}\"\r\n: \"${VERSION:=latest}\"\r\nMATCH=\"ZenithProxy-launcher-linux-${FILE_ARCH}.zip\"\r\n\r\nif [ -z \"${VERSION}\" ] || [ \"${VERSION}\" = \"latest\" ]; then\r\n    RELEASE_JSON=$($CURL_CMD --silent \"https:\/\/api.github.com\/repos\/${GITHUB_PACKAGE}\/releases\/latest\")\r\nelse\r\n    RELEASE_JSON=$($CURL_CMD --silent \"https:\/\/api.github.com\/repos\/${GITHUB_PACKAGE}\/releases\/tags\/${VERSION}\")\r\nfi\r\n\r\nDOWNLOAD_URL=$(echo \"$RELEASE_JSON\" | jq -r '.assets[] | select(.browser_download_url | test(\"'\"${MATCH}\"'\")) | .browser_download_url')\r\n\r\nif [ -z \"$DOWNLOAD_URL\" ]; then\r\n    echo \"Error: Unable to fetch the release URL for ${MATCH}\"\r\n    exit 1\r\nfi\r\n\r\ncd \/mnt\/server\r\n# Download the release zip file\r\nwget \"$DOWNLOAD_URL\" -O \"ZenithProxy-launcher-${FILE_ARCH}.zip\"\r\n\r\n# Unzip the downloaded file\r\nunzip \"ZenithProxy-launcher-${FILE_ARCH}.zip\"\r\n\r\n# Remove the zip file after extraction\r\nrm \"ZenithProxy-launcher-${FILE_ARCH}.zip\"\r\n\r\necho \"-----------------------------------------\"\r\necho \"Installation completed...\"\r\necho \"-----------------------------------------\"\r\nexit 0",
+            "container": "ghcr.io\/parkervcp\/installers:alpine",
+            "entrypoint": "ash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Github Package",
+            "description": "Github Package for Zenith Proxy",
+            "env_variable": "GITHUB_PACKAGE",
+            "default_value": "rfresh2\/ZenithProxy",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": [
+                "required",
+                "string"
+            ],
+            "sort": null
+        },
+        {
+            "name": "Version",
+            "description": "Version of the launcher (Do not use prerelease it updates via launcher)",
+            "env_variable": "VERSION",
+            "default_value": "latest",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": [
+                "required",
+                "string"
+            ],
+            "sort": null
+        },
+        {
+            "name": "Match",
+            "description": "The filename for installing launcher",
+            "env_variable": "MATCH",
+            "default_value": "ZenithProxy-launcher-linux-${FILE_ARCH}.zip",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": [
+                "required",
+                "string"
+            ],
+            "sort": null
+        },
+        {
+            "name": "Github User",
+            "description": "Github username for ratelimit reasons",
+            "env_variable": "GITHUB_USER",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "nullable",
+                "string"
+            ],
+            "sort": null
+        },
+        {
+            "name": "Github Token",
+            "description": "Github Token for ratelimit reasons",
+            "env_variable": "GITHUB_OAUTH_TOKEN",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "nullable",
+                "string"
+            ],
+            "sort": null
+        }
+    ]
+}

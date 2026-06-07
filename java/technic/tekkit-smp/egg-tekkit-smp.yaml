@@ -1,0 +1,103 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/main/java/technic/tekkit-smp/egg-tekkit-smp.yaml'
+exported_at: '2026-06-07T18:08:26+00:00'
+name: 'Tekkit SMP'
+author: lovinoes@lovinoes.de
+uuid: c22ea4db-1541-490c-8ee6-296e61d97a1e
+description: |-
+  Tekkit SMP contains the full range of mods from Tekkit 2, plus the extra mods that were originally
+  dropped in the transition from Technic SSP (to Technic SMP) to Tekkit, in favour of multiplayer and
+  Bukkit support: mainly Thaumcraft, Mystcraft, and Mo' Creatures. The new Tekkit SMP expands on that
+  with various carefully selected Thaumcraft and Mystcraft addons, alongside Mo' Creatures Extended,
+  and smaller custom additions such as Re-Crystallized Wing. Electro-Magic Tools is another starring
+  mod, being an addon to both Industrial Craft and Thaumcraft, combining the worlds of tech and magic.
+tags:
+  - minecraft
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  Java8: 'ghcr.io/pelican-eggs/yolks:java_8'
+  Java11: 'ghcr.io/pelican-eggs/yolks:java_11'
+file_denylist: {  }
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        server-port: '{{server.allocations.default.port}}'
+        query.port: '{{server.allocations.default.port}}'
+  startup:
+    done: 'Server tick complete! '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/ash
+      # Tekkit SMP Installation Script
+      #
+      # Server Files: /mnt/server
+
+      apk update
+      apk add --no-cache curl zip unzip jq
+
+      mkdir -p /mnt/server
+      cd /mnt/server
+
+      BUILD_TYPE=${BUILD_TYPE:-"recommended"}
+
+      if [ -z "$MODPACK_VERSION" ]; then
+        MODPACK_VERSION=v$(curl -s https://solder.technicpack.net/api/modpack/tekkit-smp | jq -r ".${BUILD_TYPE}")
+      fi
+
+      echo "Downloading Tekkit SMP version ${MODPACK_VERSION} (This may take a while!)"
+      curl -sSL "https://servers.technicpack.net/Technic/servers/tekkit-smp/Tekkit-SMP_Server_${MODPACK_VERSION}.zip" -o "Tekkit-SMP_Server_${MODPACK_VERSION}.zip"
+      unzip -o "Tekkit-SMP_Server_${MODPACK_VERSION}.zip"
+
+      rm -rf "Tekkit-SMP_Server_${MODPACK_VERSION}.zip"
+      rm -f RestoreBackup.bat LaunchServer.bat LaunchServer.sh RestoreBackup.sh
+
+      mv forge-1.12.2-*.jar forge.jar
+
+      if [ ! -f server.properties ]; then
+        curl -o server.properties https://raw.githubusercontent.com/pelican-eggs/minecraft/main/java/server.properties
+      fi
+
+      echo "Done"
+    container: 'ghcr.io/pelican-eggs/installers:alpine'
+    entrypoint: ash
+variables:
+  -
+    name: 'Modpack Version'
+    description: |-
+      The version of Tekkit SMP to download. 
+
+      Overrides BUILD TYPE, if set.
+    env_variable: MODPACK_VERSION
+    default_value: ''
+    user_viewable: true
+    user_editable: true
+    rules:
+      - nullable
+      - string
+      - 'max:10'
+    sort: 1
+  -
+    name: 'Build Type'
+    description: 'The type of server jar to download from Technic Solder.'
+    env_variable: BUILD_TYPE
+    default_value: recommended
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'in:recommended,latest'
+    sort: 2
+startup_commands:
+  Default: 'java -server -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true -Dfml.queryResult=confirm -jar forge.jar nogui'

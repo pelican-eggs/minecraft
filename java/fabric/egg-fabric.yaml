@@ -2,7 +2,7 @@ _comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
 meta:
   version: PLCN_v3
   update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/fabric/egg-fabric.yaml'
-exported_at: '2026-05-15T14:38:54+00:00'
+exported_at: '2026-06-07T18:08:30+00:00'
 name: Fabric
 author: accounts@bofanodes.io
 uuid: 78b02ebb-fec8-49c5-943c-ca4aa117b693

@@ -1,0 +1,83 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/technic/Tekkit/egg-tekkit.yaml'
+exported_at: '2026-06-07T18:08:25+00:00'
+name: Tekkit
+author: contact@zennodes.dk
+uuid: cbcfe400-b57a-4790-b56f-d3233113208c
+description: |-
+  Tekkit is set to reignite the same sort of wonder and awe that we all received from booting up
+  Minecraft for the first time. With the skies open, the moon ready to be colonized (by force if need
+  be) and dimensional mysteries to be plied, with tesseracts to be networked, “meat” to be
+  processed, items to be digitized, and power suits to be manufactured, there is virtually limitless
+  engineering projects to be assembled.
+tags:
+  - minecraft
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  'ghcr.io/pelican-eggs/yolks:java_8': 'ghcr.io/pelican-eggs/yolks:java_8'
+  'ghcr.io/pelican-eggs/yolks:java_11': 'ghcr.io/pelican-eggs/yolks:java_11'
+  'ghcr.io/pelican-eggs/yolks:java_16': 'ghcr.io/pelican-eggs/yolks:java_16'
+  'ghcr.io/pelican-eggs/yolks:java_17': 'ghcr.io/pelican-eggs/yolks:java_17'
+file_denylist: {  }
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        server-port: '{{server.allocations.default.port}}'
+  startup:
+    done: ')! For help, type '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/ash
+      # Forge Installation Script
+      #
+      # Server Files: /mnt/server
+
+      cd /mnt/server
+
+      curl -sSL https://servers.technicpack.net/Technic/servers/tekkitmain/Tekkit_Server_$MODPACK_VERSION.zip -o Tekkit_Server_$MODPACK_VERSION.zip
+
+      unzip Tekkit_Server_$MODPACK_VERSION.zip
+
+      rm -rf Tekkit_Server_$MODPACK_VERSION.zip
+
+      rm launch.bat
+
+      rm launch.sh
+
+      if [ ! -f server.properties ]; then
+          echo -e "Downloading MC server.properties"
+          curl -o server.properties https://raw.githubusercontent.com/pelican-eggs/minecraft/main/java/server.properties
+      fi
+
+      ## install end
+      echo "-----------------------------------------"
+      echo "Installation completed..."
+      echo "-----------------------------------------"
+    container: 'ghcr.io/pelican-eggs/installers:alpine'
+    entrypoint: ash
+variables:
+  -
+    name: 'Modpack Version'
+    description: ''
+    env_variable: MODPACK_VERSION
+    default_value: v1.2.9g-2
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:20'
+    sort: null
+startup_commands:
+  Default: 'java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar Tekkit.jar'

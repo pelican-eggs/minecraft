@@ -1,0 +1,94 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/proxy/bedrock/waterdog_pe/egg-waterdog-p-e.yaml'
+exported_at: '2026-06-07T18:08:34+00:00'
+name: 'Waterdog PE'
+author: parker@pterodactyl.io
+uuid: 793c40ea-b8df-4b88-90fe-b2b5a7103e43
+description: 'Brand new proxy server for Minecraft: Bedrock Edition'
+tags:
+  - minecraft
+  - proxy
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  'ghcr.io/pelican-eggs/yolks:java_17': 'ghcr.io/pelican-eggs/yolks:java_17'
+  'ghcr.io/pelican-eggs/yolks:java_16': 'ghcr.io/pelican-eggs/yolks:java_16'
+  'ghcr.io/pelican-eggs/yolks:java_11': 'ghcr.io/pelican-eggs/yolks:java_11'
+  'ghcr.io/pelican-eggs/yolks:java_8': 'ghcr.io/pelican-eggs/yolks:java_8'
+file_denylist: {  }
+config:
+  files: {  }
+  startup:
+    done: 'Started query on '
+  logs: {  }
+  stop: end
+scripts:
+  installation:
+    script: |-
+      #!/bin/bash
+
+
+      if [ ! -d /mnt/server ]; then
+          mkdir /mnt/server
+      fi
+
+      cd /mnt/server
+
+      # Adding '.jar' if it isn't part of the file name
+      if [[ "${SERVER_JARFILE}" == "*\.jar" ]]; then
+          echo -e "adding.jar to server file name"
+          SERVER_JARFILE="${SERVER_JARFILE}.jar"
+      fi
+
+      if [ -z "${WATERDOG_VERSION}" ] || [ "${WATERDOG_VERSION}" == "latest" ]; then
+          echo -e "downloading latest waterdog pe build\n"
+          curl -sSL -o ${SERVER_JARFILE} https://jenkins.waterdog.dev/job/Waterdog/job/WaterdogPE/job/release/lastSuccessfulBuild/artifact/target/Waterdog.jar
+      else 
+          echo -e "downloading waterdog pe build ${WATERDOG_VERSION}\n"
+          curl -sSL -o ${SERVER_JARFILE} https://jenkins.waterdog.dev/job/Waterdog/job/WaterdogPE/job/release/${WATERDOG_VERSION}/artifact/target/Waterdog.jar
+      fi
+
+      if [ ! -f config.yml ]; then
+          echo -e "Downloading waterdog pe config.yml"
+         curl -o config.yml https://raw.githubusercontent.com/pelican-eggs/minecraft/main/proxy/bedrock/waterdog_pe/config.yml
+      else
+          echo -e "Waterfall config.yml exists. Will not pull a new file"
+      fi
+
+      ## install end
+      echo "-----------------------------------------"
+      echo "Installation completed..."
+      echo "-----------------------------------------"
+    container: 'ghcr.io/pelican-eggs/installers:debian'
+    entrypoint: bash
+variables:
+  -
+    name: 'Waterdog PE Version'
+    description: "The build to pull and install. (Ex. 23), or set to latest\r\n\r\nThis is the build number on https://jenkins.waterdog.dev/"
+    env_variable: WATERDOG_VERSION
+    default_value: latest
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:20'
+    sort: null
+  -
+    name: 'Server Jar File'
+    description: 'The jar to run to'
+    env_variable: SERVER_JARFILE
+    default_value: server.jar
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:20'
+    sort: null
+startup_commands:
+  Default: 'java -Dterminal.ansi=true -Xms128M -Xmx{{SERVER_MEMORY}}M -jar {{SERVER_JARFILE}}'

@@ -1,0 +1,67 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/technic/the-1-7-10-pack/egg-the1-7-10-pack.yaml'
+exported_at: '2026-06-07T18:08:25+00:00'
+name: 'The 1.7.10 Pack'
+author: contact@sweplox.se
+uuid: 7e410751-0e25-457d-b09f-a19e640f2d69
+description: 'The 1.7.10 Pack'
+tags:
+  - minecraft
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  'ghcr.io/pelican-eggs/yolks:java_8': 'ghcr.io/pelican-eggs/yolks:java_8'
+file_denylist: {  }
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        server-port: '{{server.allocations.default.port}}'
+        query.port: '{{server.allocations.default.port}}'
+  startup:
+    done: ')! For help, type '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/ash
+      # Forge Installation Script
+      #
+      # Server Files: /mnt/server
+
+      cd /mnt/server
+
+      curl -sS http://solder.endermedia.com/repository/downloads/the-1710-pack/the-1710-pack_$MODPACK_VERSION.zip -o the-1710-pack_$MODPACK_VERSION.zip
+
+      unzip the-1710-pack_$MODPACK_VERSION.zip
+
+      rm -rf the-1710-pack_$MODPACK_VERSION.zip
+
+      ## install end
+      echo "-----------------------------------------"
+      echo "Installation completed..."
+      echo "-----------------------------------------"
+    container: 'ghcr.io/pelican-eggs/installers:alpine'
+    entrypoint: ash
+variables:
+  -
+    name: 'Modpack Version'
+    description: 'Version of the modpack to use'
+    env_variable: MODPACK_VERSION
+    default_value: 0.10.12
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:20'
+    sort: null
+startup_commands:
+  Default: 'java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar forge-*.jar'

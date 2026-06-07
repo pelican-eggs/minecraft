@@ -1,0 +1,105 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/vanillacord/egg-vanilla-cord.yaml'
+exported_at: '2026-06-07T18:08:28+00:00'
+name: VanillaCord
+author: support@pterodactyl.io
+uuid: afa9c224-ffa4-4a12-ac65-028599a78113
+description: "Minecraft is a game about placing blocks and going on adventures. Explore randomly generated worlds\nand build amazing things from the simplest of homes to the grandest of castles. Play in Creative\nMode with unlimited resources or mine deep in Survival Mode, crafting weapons and armor to fend off\ndangerous mobs. Do all this alone or with friends.\r\n\r\nVanillaCord adds support for BungeeCord's ip_forward setting."
+tags:
+  - minecraft
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  'Java 8': 'ghcr.io/pelican-eggs/yolks:java_8'
+  'Java 11': 'ghcr.io/pelican-eggs/yolks:java_11'
+  'Java 16': 'ghcr.io/pelican-eggs/yolks:java_16'
+  'Java 17': 'ghcr.io/pelican-eggs/yolks:java_17'
+  'Java 18': 'ghcr.io/pelican-eggs/yolks:java_18'
+file_denylist: {  }
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        enable-query: true
+        server-port: '{{server.allocations.default.port}}'
+        query.port: '{{server.allocations.default.port}}'
+  startup:
+    done: ')! For help, type '
+    userInteraction:
+      - 'Go to eula.txt for more info.'
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/ash
+
+      apk --no-cache --update add curl jq
+
+      cd /mnt/server
+
+      echo $VANILLA_VERSION
+
+      LATEST_VERSION=`curl https://launchermeta.mojang.com/mc/game/version_manifest.json | jq -r '.latest.release'`
+
+      if { [ -z "$VANILLA_VERSION" ] || [ "$VANILLA_VERSION" == "latest" ]; } then
+        INSTALLING_VERSION=$LATEST_VERSION
+      else
+        INSTALLING_VERSION=$VANILLA_VERSION
+      fi
+
+      MAJOR_VERSION=$(echo $INSTALLING_VERSION | sed -En 's/^([0-9]*)\.[0-9]*\.[0-9]*$/\1/p')
+      MINOR_VERSION=$(echo $INSTALLING_VERSION | sed -En 's/^[0-9]*\.([0-9]*)\.[0-9]*$/\1/p')
+      PATCH_VERSION=$(echo $INSTALLING_VERSION | sed -En 's/^[0-9]*\.[0-9]*\.([0-9]*)$/\1/p')
+
+      VANILLACORD_URL=https://src.me1312.net/jenkins/job/VanillaCord/job/1.12/lastSuccessfulBuild/artifact/artifacts/VanillaCord.jar
+      if [ $MAJOR_VERSION -eq 1 ] && [ $MINOR_VERSION -lt 12 ]; then
+        VANILLACORD_URL=https://src.me1312.net/jenkins/job/VanillaCord/job/1.7.10/lastSuccessfulBuild/artifact/artifacts/VanillaCord.jar
+      fi
+
+      if { [ $MAJOR_VERSION -eq 1 ] && [ $MINOR_VERSION -eq 7 ] && [ $PATCH_VERSION -lt 10 ]; } || { [ $MAJOR_VERSION -eq 1 ] && [ $MINOR_VERSION -lt 7 ]; } then
+        echo "VanillaCord is only supported on Minecraft 1.7.10 or higher! You cannot use it with $INSTALLING_VERSION."
+        exit 1
+      fi
+
+      curl -o vanillacord.jar $VANILLACORD_URL
+      java -jar vanillacord.jar $INSTALLING_VERSION
+
+      rm -f vanillacord.jar
+      rm -rf in
+      mv out/*.jar $SERVER_JARFILE
+      rm -rf out
+    container: 'ghcr.io/pelican-eggs/installers:java_8'
+    entrypoint: ash
+variables:
+  -
+    name: 'Server Jar File'
+    description: 'The name of the server jarfile to run the server with.'
+    env_variable: SERVER_JARFILE
+    default_value: server.jar
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - 'regex:/^([\w\d._-]+)(\.jar)$/'
+    sort: null
+  -
+    name: 'Server Version'
+    description: 'The version of Minecraft Vanilla to install. Use "latest" to install the latest version.'
+    env_variable: VANILLA_VERSION
+    default_value: latest
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'between:3,15'
+    sort: null
+startup_commands:
+  Default: 'java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar {{SERVER_JARFILE}}'

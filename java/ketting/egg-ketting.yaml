@@ -1,0 +1,137 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/ketting/egg-ketting.yaml'
+exported_at: '2026-06-07T18:08:28+00:00'
+name: Ketting
+author: joanfo360@gmail.com
+uuid: 3460601a-bb6e-41b8-8394-77e69c174dd1
+description: 'Magma successor for 1.20- with plugins and mods.'
+tags:
+  - minecraft
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  'Java 17': 'ghcr.io/pelican-eggs/yolks:java_17'
+  'Java 21': 'ghcr.io/pelican-eggs/yolks:java_21'
+  'Java 25': 'ghcr.io/pelican-eggs/yolks:java_25'
+file_denylist: {  }
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        enable-query: true
+        server-port: '{{server.allocations.default.port}}'
+  startup:
+    done: ')! For help, type '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |
+      #!/bin/bash
+
+      # Function to show the download progress bar
+      progress_bar() {
+          # Set the length of the progress bar
+          local bar_length=50
+          local progress=$1
+          local done=$((progress * bar_length / 100))
+          local remaining=$((bar_length - done))
+          local progress_bar="["
+
+          for ((i=0; i<done; i++)); do
+              progress_bar="#"
+          done
+          for ((i=done; i<bar_length; i++)); do
+              progress_bar=" ${progress_bar}."
+          done
+          progress_bar="$progress_bar]"
+
+          printf "\r$progress_bar $progress%%"
+      }
+
+      mkdir -p /mnt/server
+      cd /mnt/server
+
+      # Get release info and download links
+      LATEST_JSON=$(curl --silent "https://api.github.com/repos/kettingpowered/kettinglauncher/releases/latest")
+      RELEASES=$(curl --silent "https://api.github.com/repos/kettingpowered/kettinglauncher/releases")
+
+      # Check if TAG_VERSION is set or if "latest" is specified
+      if [ -z "${TAG_VERSION}" ] || [ "${TAG_VERSION}" == "latest" ]; then
+          # Select the normal .jar file (exclude sources)
+          DOWNLOAD_LINK=$(echo ${LATEST_JSON} | jq -r '.assets[] | select(.name | test(".*\\.jar$") and (test("-sources") | not)) | .browser_download_url')
+      else
+          VERSION_CHECK=$(echo ${RELEASES} | jq -r --arg VERSION "${TAG_VERSION}" '.[] | select(.tag_name==$VERSION) | .tag_name')
+          if [ "${TAG_VERSION}" == "${VERSION_CHECK}" ]; then
+              # Select the normal .jar file (exclude sources)
+              DOWNLOAD_LINK=$(echo ${RELEASES} | jq -r --arg VERSION "${TAG_VERSION}" '.[] | select(.tag_name==$VERSION) | .assets[] | select(.name | test(".*\\.jar$") and (test("-sources") | not)) | .browser_download_url')
+          else
+              # Default to latest release if version check fails
+              DOWNLOAD_LINK=$(echo ${LATEST_JSON} | jq -r '.assets[] | select(.name | test(".*\\.jar$") and (test("-sources") | not)) | .browser_download_url')
+          fi
+      fi
+
+      # Check if the download link is valid
+      if [ -n "${DOWNLOAD_LINK}" ]; then 
+          if curl --output /dev/null --silent --head --fail ${DOWNLOAD_LINK}; then
+
+
+              # Download the .jar file with progress bar
+              echo "Downloading server.jar..."
+              curl -sSL --progress-bar --output ${SERVER_JAR_FILE} ${DOWNLOAD_LINK} |
+              while IFS= read -r line; do
+                  # Extract the download progress percentage
+                  PROGRESS=$(echo "$line" | grep -oP '\d+(?=%)')
+                  if [ -n "$PROGRESS" ]; then
+                      progress_bar "$PROGRESS"
+                  fi
+              done
+              echo -e "\nInstall Complete"
+          else        
+              exit 2
+          fi
+      else
+          exit 1
+      fi
+    container: 'ghcr.io/pelican-eggs/installers:debian'
+    entrypoint: bash
+variables:
+  -
+    sort: 1
+    name: 'Server Jar File'
+    description: 'The jar executable of the server'
+    env_variable: SERVER_JAR_FILE
+    default_value: server.jar
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'regex:/^([\w\d._-]+)(\.jar)$/'
+  -
+    sort: 2
+    name: 'Game Version'
+    description: 'The server version'
+    env_variable: GAME_VERSION
+    default_value: 1.20.1
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+  -
+    sort: 3
+    name: 'Tag Version'
+    description: Optional
+    env_variable: TAG_VERSION
+    default_value: latest
+    user_viewable: true
+    user_editable: true
+    rules: {  }
+startup_commands:
+  Default: 'java -Xms128M -XX:MaxRAMPercentage=95.0 -jar {{SERVER_JAR_FILE}} -minecraftVersion {{GAME_VERSION}}'

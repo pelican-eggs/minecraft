@@ -1,0 +1,87 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/krypton/egg-krypton.yaml'
+exported_at: '2026-06-07T18:08:29+00:00'
+name: Krypton
+author: callum.seabrook@prevarinite.com
+uuid: fa5489c3-4170-449f-a9cb-167530eacb20
+description: 'A fast, lightweight Minecraft server written in Kotlin'
+tags:
+  - minecraft
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  'Java 8': 'ghcr.io/pelican-eggs/yolks:java_8'
+  'Java 11': 'ghcr.io/pelican-eggs/yolks:java_11'
+  'Java 16': 'ghcr.io/pelican-eggs/yolks:java_16'
+  'Java 17': 'ghcr.io/pelican-eggs/yolks:java_17'
+  'Java 18': 'ghcr.io/pelican-eggs/yolks:java_18'
+file_denylist: {  }
+config:
+  files:
+    config.conf:
+      parser: file
+      find:
+        '  port': '  port = {{server.allocations.default.port}}'
+        '  ip': '  ip = "0.0.0.0"'
+  startup:
+    done: ')! Type "help" for help.'
+  logs:
+    custom: false
+    location: logs/latest.log
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/bash
+      #
+      # Krypton installation script for Pelican
+      # Created by BomBardyGamer
+      #
+      # Server Files: /mnt/server
+
+      apt-get update
+      apt-get install -y curl jq unzip
+
+      cd /mnt/server
+      if [ -z "${KRYPTON_VERSION}" ] || [ "${KRYPTON_VERSION}" == "latest" ]; then
+          KRYPTON_VERSION="lastSuccessfulBuild"
+      fi
+
+      BASE_URL="https://ci.kryptonmc.org/job/Krypton/${KRYPTON_VERSION}"
+      ARTIFACT=`curl "${BASE_URL}/api/json?tree=artifacts%5BrelativePath%5D" | jq '.artifacts[0].relativePath' | sed 's/"//g'`
+
+      curl -o ${SERVER_JAR} ${BASE_URL}/artifact/${ARTIFACT}
+      unzip ${SERVER_JAR} "config.conf"
+    container: 'ghcr.io/pelican-eggs/installers:debian'
+    entrypoint: bash
+variables:
+  -
+    name: 'Server JAR File'
+    description: 'The name of the server JAR to run the server with.'
+    env_variable: SERVER_JAR
+    default_value: Krypton.jar
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:20'
+    sort: null
+  -
+    name: 'Krypton Version'
+    description: 'The version of Krypton to download and use.'
+    env_variable: KRYPTON_VERSION
+    default_value: latest
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - alpha_num
+      - 'between:1,6'
+    sort: null
+startup_commands:
+  Default: 'java -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JAR}}'

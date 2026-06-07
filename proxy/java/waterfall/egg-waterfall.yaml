@@ -93,7 +93,7 @@ scripts:
 
       if [ ! -f config.yml ]; then
       	echo -e "Downloading ${PROJECT} config.yml"
-      	curl -o config.yml https://raw.githubusercontent.com/parkervcp/eggs/master/game_eggs/minecraft/proxy/java/waterfall/config.yml
+      	curl -o config.yml https://raw.githubusercontent.com/pelican-eggs/minecraft/main/proxy/java/waterfall/config.yml
       else
       	echo -e "${PROJECT} config.yml exists. Will not pull a new file"
       fi

@@ -105,7 +105,7 @@ scripts:
 
       if [ ! -f server.properties ]; then
           echo "Downloading MC server.properties"
-          curl -A "${USER_AGENT}" -o server.properties https://raw.githubusercontent.com/parkervcp/eggs/master/minecraft/java/server.properties
+          curl -A "${USER_AGENT}" -o server.properties https://raw.githubusercontent.com/pelican-eggs/minecraft/main/java/server.properties
       fi
     container: 'ghcr.io/pelican-eggs/installers:alpine'
     entrypoint: ash

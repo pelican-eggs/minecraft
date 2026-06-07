@@ -1,0 +1,99 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/bedrock/PowerNukkitX/egg-power-nukkit-x.yaml'
+exported_at: '2026-06-07T18:08:23+00:00'
+name: PowerNukkitX
+author: powernukkitx@github.com
+uuid: 27250406-1acf-4dce-b39f-3413cc290b64
+description: 'PowerNukkitX support for Pelican'
+tags:
+  - minecraft
+features: null
+docker_images:
+  'ghcr.io/pelican-eggs/yolks:debian': 'ghcr.io/pelican-eggs/yolks:debian'
+file_denylist: {  }
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        enable-query: true
+        server-port: '{{server.allocations.default.port}}'
+        query.port: '{{server.allocations.default.port}}'
+  startup:
+    done: ')! For help, type '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/bash
+      apt-get update
+      apt-get install -y git curl wget jq file tar unzip zip openssl
+      mkdir -p /mnt/server/ # Not required. Only here for parkervcp's local test setup
+      cd /mnt/server || exit 1
+      UPGRADE="no"
+      if [ -d "./java" ]; then
+      UPGRADE="yes"
+      fi
+      wget https://github.com/PowerNukkitX/PNX-CLI/releases/download/0.1.6/PNX-CLI-Linux-x86.zip -O pnx.zip
+      wget https://raw.githubusercontent.com/PowerNukkitX/PowerNukkitX/master/src/main/resources/default-nukkit.yml -O nukkit.yml
+      unzip pnx.zip
+      rm -fr pnx.zip 2>&1 >/dev/null
+      mv ./target/linux-x86/pnx ./ 2>&1 >/dev/null
+      rm -fr target 2>&1 >/dev/null
+      rm -fr java 2>&1 >/dev/null
+      chmod +x pnx
+      ./pnx jvm install=GraalVM
+      if [ "$UPGRADE" == "no" ]; then
+      if [ "$VERSION" == "latest" ]; then
+      ./pnx server install --latest
+      else
+      ./pnx server install --dev
+      fi
+      else
+      rm -fr libs 2>&1 >/dev/null
+      if [ "$VERSION" == "latest" ]; then
+      ./pnx server update --latest
+      else
+      ./pnx server update --dev
+      fi
+      fi
+      rm -fr tmp-GraalVM.tar.gz 2>&1 >/dev/null
+      cat <<EOF
+      ----------------------------------------
+      | |
+      | PowerNukkitX Installation Done |
+      | |
+      ----------------------------------------
+      EOF
+    container: 'ghcr.io/pelican-eggs/installers:debian'
+    entrypoint: bash
+variables:
+  -
+    name: 'Version to install'
+    description: 'Choose between latest or dev'
+    env_variable: VERSION
+    default_value: latest
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+    sort: null
+  -
+    name: 'AutoReboot mode'
+    description: 'to set auto reboot mode please enter -r'
+    env_variable: AUTOREBOOT
+    default_value: ''
+    user_viewable: true
+    user_editable: true
+    rules:
+      - nullable
+      - string
+      - 'max:2'
+    sort: null
+startup_commands:
+  Default: './pnx start {{AUTOREBOOT}}'

@@ -1,0 +1,68 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/technic/blightfall/egg-blightfall.yaml'
+exported_at: '2026-06-07T18:08:25+00:00'
+name: Blightfall
+author: aevum@decess.us
+uuid: 0474df64-2339-4aef-86ce-2507e91aca78
+description: "Blightfall is a combination modpack and adventure map about surviving on an alien planet. It uses\nmagic mods and tech mods to create a novel gameplay experience. Can you survive on a world\ncompletely covered by Thaumcraft taint?\r\n\r\nhttps://www.technicpack.net/modpack/blightfall.592618"
+tags:
+  - minecraft
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  'ghcr.io/pelican-eggs/yolks:java_8': 'ghcr.io/pelican-eggs/yolks:java_8'
+file_denylist: {  }
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        server-port: '{{server.allocations.default.port}}'
+        query.port: '{{server.allocations.default.port}}'
+  startup:
+    done: ')! For help, type '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/ash
+      # Forge Installation Script
+      #
+      # Server Files: /mnt/server
+
+      cd /mnt/server
+
+      curl -sS https://servers.technicpack.net/Technic/servers/blightfall/Blightfall_Server_$MODPACK_VERSION.zip -o Blightfall_$MODPACK_VERSION.zip
+
+      unzip Blightfall_$MODPACK_VERSION.zip
+
+      rm -rf Blightfall_$MODPACK_VERSION.zip
+
+
+      ## install end
+      echo "-----------------------------------------"
+      echo "Installation completed..."
+      echo "-----------------------------------------"
+    container: 'ghcr.io/pelican-eggs/installers:alpine'
+    entrypoint: ash
+variables:
+  -
+    name: 'Modpack Version'
+    description: 'Version of the modpack to use'
+    env_variable: MODPACK_VERSION
+    default_value: 3.1.1-CE
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:20'
+    sort: null
+startup_commands:
+  Default: 'java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar Blightfall.jar'

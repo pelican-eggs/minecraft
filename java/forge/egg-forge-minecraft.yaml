@@ -2,7 +2,7 @@ _comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
 meta:
   version: PLCN_v3
   update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/forge/egg-forge-minecraft.yaml'
-exported_at: '2025-12-09T21:55:23+00:00'
+exported_at: '2026-06-07T18:08:29+00:00'
 name: 'Forge Minecraft'
 author: panel@example.com
 uuid: ed072427-f209-4603-875c-f540c6dd5a65

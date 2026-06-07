@@ -1,0 +1,119 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/magma/egg-magma.yaml'
+exported_at: '2026-06-07T18:08:30+00:00'
+name: Magma
+author: support@pterodactyl.io
+uuid: 5a2d29b8-666c-4a84-8ef3-44b29ceebf24
+description: |-
+  Magma is most powerful Forge server providing you with Forge mods and Bukkit Plugins using Spigot
+  and Paper for Performance Optimization and Stability. Using: https://github.com/magmamaintained
+tags:
+  - minecraft
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  'Java 8': 'ghcr.io/pelican-eggs/yolks:java_8'
+  'Java 11': 'ghcr.io/pelican-eggs/yolks:java_11'
+  'Java 16': 'ghcr.io/pelican-eggs/yolks:java_16'
+  'Java 17': 'ghcr.io/pelican-eggs/yolks:java_17'
+  'Java 18': 'ghcr.io/pelican-eggs/yolks:java_18'
+file_denylist: {  }
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        enable-query: true
+        server-port: '{{server.allocations.default.port}}'
+  startup:
+    done: ')! For help, type '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/bash
+
+      mkdir -p /mnt/server
+      cd /mnt/server
+
+      ## get release info and download links
+      LATEST_JSON=$(curl --silent "https://api.github.com/repos/magmamaintained/Magma-${MC_VERSION}/releases/latest")
+      RELEASES=$(curl --silent "https://api.github.com/repos/magmamaintained/Magma-${MC_VERSION}/releases")
+
+      if [ -z "${TAG_VERSION}" ] || [ "${TAG_VERSION}" == "latest" ]; then
+          DOWNLOAD_LINK=$(echo ${LATEST_JSON} | jq .assets | jq -r .[].browser_download_url )
+      else
+          VERSION_CHECK=$(echo ${RELEASES} | jq -r --arg VERSION "${TAG_VERSION}" '.[] | select(.tag_name==$VERSION) | .tag_name')
+          if [ "${TAG_VERSION}" == "${VERSION_CHECK}" ]; then
+              DOWNLOAD_LINK=$(echo ${RELEASES} | jq -r --arg VERSION "${TAG_VERSION}" '.[] | select(.tag_name==$VERSION) | .assets[].browser_download_url')
+          else
+              echo -e "defaulting to latest release"
+              DOWNLOAD_LINK=$(echo ${LATEST_JSON} | jq .assets | jq -r .[].browser_download_url)
+          fi
+      fi
+
+      if [ ! -z "${DOWNLOAD_LINK}" ]; then 
+          if curl --output /dev/null --silent --head --fail ${DOWNLOAD_LINK}; then
+              echo -e "link is valid. setting download link to ${DOWNLOAD_LINK}"
+              DOWNLOAD_LINK=${DOWNLOAD_LINK}
+          else        
+              echo -e "link is invalid closing out"
+              exit 2
+          fi
+      fi
+
+
+      echo "Download Link: '${DOWNLOAD_LINK}'"
+
+      # Check we found a download link
+
+      # Download server.jar
+      echo -e "running: curl -sSL -o ${SERVER_JARFILE} ${DOWNLOAD_LINK}"
+      curl -sSL -o ${SERVER_JARFILE} -sSL ${DOWNLOAD_LINK}
+      echo -e "Install Complete"
+    container: 'ghcr.io/pelican-eggs/installers:debian'
+    entrypoint: bash
+variables:
+  -
+    name: 'Server Jar File'
+    description: 'The name of the server jarfile to run the server with.'
+    env_variable: SERVER_JARFILE
+    default_value: server.jar
+    user_viewable: true
+    user_editable: false
+    rules:
+      - required
+      - 'regex:/^([\w\d._-]+)(\.jar)$/'
+    sort: null
+  -
+    name: 'Minecraft Version'
+    description: ''
+    env_variable: MC_VERSION
+    default_value: 1.20.1
+    user_viewable: true
+    user_editable: true
+    rules:
+      - nullable
+      - string
+      - 'in:1.20.1,1.19.3,1.18.2,1.12.2'
+    sort: null
+  -
+    name: 'Tag Version'
+    description: "Optional.\r\n\r\nSpecify the tag version to install. Set latest to install latest"
+    env_variable: TAG_VERSION
+    default_value: latest
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:32'
+    sort: null
+startup_commands:
+  Default: 'java -Xms128M -XX:MaxRAMPercentage=95.0 -jar {{SERVER_JARFILE}}'

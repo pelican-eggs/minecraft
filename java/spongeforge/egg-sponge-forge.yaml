@@ -1,0 +1,208 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/spongeforge/egg-sponge-forge.yaml'
+exported_at: '2026-06-07T18:08:29+00:00'
+name: SpongeForge
+author: parker@parkervcp.com
+uuid: 405f10e2-7950-4a35-9b66-48af0ec3aaa1
+description: 'A community-driven open source Minecraft: Java Edition modding platform.'
+tags:
+  - minecraft
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  'Java 8': 'ghcr.io/pelican-eggs/yolks:java_8'
+  'Java 11': 'ghcr.io/pelican-eggs/yolks:java_11'
+  'Java 16': 'ghcr.io/pelican-eggs/yolks:java_16'
+  'Java 17': 'ghcr.io/pelican-eggs/yolks:java_17'
+  'Java 18': 'ghcr.io/pelican-eggs/yolks:java_18'
+file_denylist: {  }
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        server-port: '{{server.allocations.default.port}}'
+        query.port: '{{server.allocations.default.port}}'
+  startup:
+    done: ')! For help, type '
+    userInteraction:
+      - 'Go to eula.txt for more info.'
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/bash
+      # SpongeForge Installation Script
+      #
+      # Server Files: /mnt/server
+      apt update
+      apt install -y jq curl
+
+      mkdir -p /mnt/server
+      cd /mnt/server
+
+      #Function to Compare Strings in Dot-Separated Version Format (can comapre Versions with unequal lengths)
+      #returns 1 if version 1 is less than version 2, and 0 if version 1 is greater than version 2
+      vercomp() {
+          if [[ $1 == $2 ]]
+          then
+              return 1
+          fi
+          local IFS=.
+          local i ver1=($1) ver2=($2)
+          # fill empty fields in ver1 with zeros
+          for ((i=${#ver1[@]}; i<${#ver2[@]}; i++))
+          do
+              ver1[i]=0
+          done
+          for ((i=0; i<${#ver1[@]}; i++))
+          do
+              if [[ -z ${ver2[i]} ]]
+              then
+                  # fill empty fields in ver2 with zeros
+                  ver2[i]=0
+              fi
+              if ((10#${ver1[i]} > 10#${ver2[i]}))
+              then
+                  return 0
+              fi
+              if ((10#${ver1[i]} < 10#${ver2[i]}))
+              then
+                  return 1
+              fi
+          done
+          return 1
+      }
+
+      # Remove spaces from the version number to avoid issues with curl
+      FORGE_VERSION="$(echo "$FORGE_VERSION" | tr -d ' ')"
+
+      #Adding .jar when not ending by SERVER_JARFILE
+      if [[ ! ${SERVER_JARFILE} = *\.jar ]]; then
+        SERVER_JARFILE="${SERVER_JARFILE}.jar"
+      fi
+
+
+      if [ -z ${SF_VERSION} ] || [ "$(curl -s https://dl-api.spongepowered.org/v1/org.spongepowered/spongeforge/downloads/${SF_VERSION})" == "Unknown version" ]; then
+          echo -e "defaulting to recommended"
+          SF_VERSION="recommended"
+      fi
+
+      if [ "${SF_VERSION}" == "recommended" ]; then
+          echo -e "using recommended SpongeForge version"
+          SF_VERSION=$(curl -s https://dl-api.spongepowered.org/v1/org.spongepowered/spongeforge/downloads/recommended | jq -r '.version')
+          echo -e "found SpongeForge Version ${SF_VERSION}"
+          SF_DL_LINK=$(curl -s https://dl-api.spongepowered.org/v1/org.spongepowered/spongeforge/downloads/recommended | jq -r '.artifacts."".url')
+          FORGE_DOWNLOAD_VERSION=$(curl -s https://dl-api.spongepowered.org/v1/org.spongepowered/spongeforge/downloads/recommended | jq -r '.dependencies.forge')
+          echo -e "found Forge Version ${FORGE_DOWNLOAD_VERSION}"
+          MC_VERSION=$(curl -s https://dl-api.spongepowered.org/v1/org.spongepowered/spongeforge/downloads/${SF_VERSION} | jq -r '.dependencies.minecraft')
+      elif [ "${SF_VERSION}" == "latest" ]; then
+          echo -e "using latest SpongForge version"
+          SF_VERSION=$(curl -s https://dl-api.spongepowered.org/v1/org.spongepowered/spongeforge | jq -r '.buildTypes.stable.latest.version')
+          echo -e "found SpongeForge Version ${SF_VERSION}"
+          SF_DL_LINK=$(curl -s https://dl-api.spongepowered.org/v1/org.spongepowered/spongeforge/downloads/${SF_VERSION} | jq -r '.artifacts."".url')
+          FORGE_DOWNLOAD_VERSION=$(curl -s https://dl-api.spongepowered.org/v1/org.spongepowered/spongeforge/downloads/${SF_VERSION} | jq -r '.dependencies.forge')
+          MC_VERSION=$(curl -s https://dl-api.spongepowered.org/v1/org.spongepowered/spongeforge/downloads/${SF_VERSION} | jq -r '.dependencies.minecraft')
+      else
+          echo -e "found SpongeForge Version ${SF_VERSION}"
+          SF_DL_LINK=$(curl -s https://dl-api.spongepowered.org/v1/org.spongepowered/spongeforge/downloads/${SF_VERSION} | jq -r '.artifacts."".url')
+          FORGE_DOWNLOAD_VERSION=$(curl -s https://dl-api.spongepowered.org/v1/org.spongepowered/spongeforge/downloads/${SF_VERSION} | jq -r '.dependencies.forge')
+          echo -e "found Forge Version ${FORGE_DOWNLOAD_VERSION}"
+          MC_VERSION=$(curl -s https://dl-api.spongepowered.org/v1/org.spongepowered/spongeforge/downloads/${SF_VERSION} | jq -r '.dependencies.minecraft')
+      fi
+
+      if [[ ! -z ${FORGE_VERSION} ]]; then
+          if curl --output /dev/null --silent --head --fail https://maven.minecraftforge.net/net/minecraftforge/forge/${FORGE_VERSION}/forge-${FORGE_VERSION}-installer.jar; then
+              echo -e "Custom Forge Version found."
+              if [ ${MC_VERSION} != ${FORGE_VERSION%%-*} ]; then
+                  echo -e "You need Forge Minecraft Version ${MC_VERSION}. Exiting now!"
+                  exit 1
+              elif vercomp ${FORGE_DOWNLOAD_VERSION} ${FORGE_VERSION##*-}; then
+                  echo -e "Forge Build Version must be greater than ${FORGE_DOWNLOAD_VERSION}. Exiting now!"
+                  exit 1
+              else
+                  FORGE_DOWNLOAD_VERSION=${FORGE_VERSION##*-}
+              fi
+          else
+              echo -e "Forge Version not found. Check if Version is spelled right. Exiting now!"
+              exit 1
+          fi
+      fi
+
+      FORGE_DL_LINK=https://maven.minecraftforge.net/net/minecraftforge/forge/${MC_VERSION}-${FORGE_DOWNLOAD_VERSION}/forge-${MC_VERSION}-${FORGE_DOWNLOAD_VERSION}
+
+      if [ -f server.jar ] && [ $(sha1sum server.jar | awk '{ print $1 }') == $(curl -s ${FORGE_DL_LINK}-universal.jar.sha1) ]; then
+          echo -e "Already have the correct forge version"
+      else
+          echo -e "Downloading forge version ${MC_VERSION} - ${FORGE_DOWNLOAD_VERSION}"
+          echo -e "running: curl -s -o installer.jar -o ${FORGE_DL_LINK}-installer.jar"
+          curl -s -o installer.jar ${FORGE_DL_LINK}-installer.jar
+          echo -e "running: curl -s -o ${SERVER_JARFILE} -o ${FORGE_DL_LINK}-universal.jar"
+          curl -s -o ${SERVER_JARFILE} ${FORGE_DL_LINK}-universal.jar
+          java -jar installer.jar --installServer
+          rm installer.jar forge-${MC_VERSION}-${FORGE_DOWNLOAD_VERSION}-universal.jar forge-${MC_VERSION}-${FORGE_DOWNLOAD_VERSION}.jar
+      fi
+
+      if [ ! -d /mnt/server/mods/ ]; then
+          echo -e "making mods directory"
+          mkdir -p /mnt/server/mods/
+      fi
+
+      if [ -f /mnt/server/mods/spongeforge*.jar ]; then
+          mkdir -p /mnt/server/mods/old/
+          mv -f /mnt/server/mods/spongeforge*.jar /mnt/server/mods/old/spongeforge*.jar
+      fi 
+
+      echo -e "running: curl -s ${SF_DL_LINK} -o /mnt/server/mods/spongeforge-${SF_VERSION}.jar"
+      curl -s ${SF_DL_LINK} -o /mnt/server/mods/spongeforge-${SF_VERSION}.jar
+
+      if [ ! -f server.properties ]; then
+          echo -e "Downloading MC server.properties"
+          curl -o server.properties https://raw.githubusercontent.com/pelican-eggs/minecraft/main/java/server.properties
+      fi
+
+      echo -e "Install for SpongeForge is complete"
+    container: 'ghcr.io/pelican-eggs/installers:java_8'
+    entrypoint: bash
+variables:
+  -
+    name: 'Server Jar File'
+    description: 'The name of the Jarfile to use when running Forge Mod.'
+    env_variable: SERVER_JARFILE
+    default_value: server.jar
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - 'regex:/^([\w\d._-]+)(\.jar)$/'
+    sort: null
+  -
+    name: 'SpongeForge Version'
+    description: "Example 1.12.2-2825-7.1.6\r\n\r\nIf the version fails it defaults to recommended"
+    env_variable: SF_VERSION
+    default_value: recommended
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+    sort: null
+  -
+    name: 'Forge Version'
+    description: "Optional, only needed for custom Forge Version with Sponge.\r\n\r\nThe full exact version.\r\nEx. 1.15.2-31.2.4\r\n\r\nIf it fails to download the server files or to verify compatibility to the Sponge Version it will\nfail to install."
+    env_variable: FORGE_VERSION
+    default_value: ''
+    user_viewable: true
+    user_editable: true
+    rules:
+      - nullable
+      - 'regex:/^[0-9\.\-]+$/'
+    sort: null
+startup_commands:
+  Default: 'java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar {{SERVER_JARFILE}}'

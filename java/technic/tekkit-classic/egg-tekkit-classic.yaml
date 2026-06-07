@@ -1,0 +1,77 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/technic/tekkit-classic/egg-tekkit-classic.yaml'
+exported_at: '2026-06-07T18:08:26+00:00'
+name: 'Tekkit Classic'
+author: geoffrey@remedygaming.net
+uuid: 80be7c9e-a4a0-4d9c-889c-8702caae6557
+description: "Created by the Technic team, Tekkit Classic is a modpack for the record breaking sandbox\nconstruction game Minecraft. \r\nIt brings together some of the best mods from the Minecraft community for automating,\nindustrializing and powering your worlds and bundles them into one easy download!"
+tags:
+  - minecraft
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  'ghcr.io/pelican-eggs/yolks:java_8': 'ghcr.io/pelican-eggs/yolks:java_8'
+  'ghcr.io/pelican-eggs/yolks:java_11': 'ghcr.io/pelican-eggs/yolks:java_11'
+  'ghcr.io/pelican-eggs/yolks:java_16': 'ghcr.io/pelican-eggs/yolks:java_16'
+  'ghcr.io/pelican-eggs/yolks:java_17': 'ghcr.io/pelican-eggs/yolks:java_17'
+file_denylist: {  }
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        server-port: '{{server.allocations.default.port}}'
+  startup:
+    done: ')! For help, type '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/ash
+      # Forge Installation Script
+      #
+      # Server Files: /mnt/server
+      cd /mnt/server
+
+      curl -sS https://servers.technicpack.net/Technic/servers/tekkit/Tekkit_Server_$MODPACK_VERSION.zip -o Tekkit_Server_$MODPACK_VERSION.zip
+
+      unzip Tekkit_Server_$MODPACK_VERSION.zip
+
+      rm -rf Tekkit_Server_$MODPACK_VERSION.zip
+
+      rm launch.bat
+
+      rm launch.sh
+
+      if [ ! -f server.properties ]; then
+          echo -e "Downloading MC server.properties"
+          curl -o server.properties https://raw.githubusercontent.com/pelican-eggs/minecraft/main/java/server.properties
+      fi
+
+      ## install end
+      echo "-----------------------------------------"
+      echo "Installation completed..."
+      echo "-----------------------------------------"
+    container: 'ghcr.io/pelican-eggs/installers:alpine'
+    entrypoint: ash
+variables:
+  -
+    name: 'Modpack Version'
+    description: ''
+    env_variable: MODPACK_VERSION
+    default_value: 3.1.2
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:20'
+    sort: null
+startup_commands:
+  Default: 'java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar Tekkit.jar'

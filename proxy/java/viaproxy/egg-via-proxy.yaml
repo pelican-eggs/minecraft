@@ -1,0 +1,96 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/proxy/java/viaproxy/egg-via-proxy.yaml'
+exported_at: '2026-06-07T18:08:33+00:00'
+name: ViaProxy
+author: contact@ste4d.net
+uuid: 39774149-12b1-4ef9-8945-bdb51bdfe442
+description: |-
+  ViaProxy is a standalone proxy which allows players to join EVERY Minecraft server version (Classic,
+  Alpha, Beta, Release, Bedrock)
+tags:
+  - minecraft
+  - proxy
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  'Java 21': 'ghcr.io/pelican-eggs/yolks:java_21'
+  'Java 22': 'ghcr.io/pelican-eggs/yolks:java_22'
+file_denylist: {  }
+config:
+  files:
+    viaproxy.yml:
+      parser: yaml
+      find:
+        bind-address: '0.0.0.0:{{server.allocations.default.port}}'
+  startup:
+    done: 'Binding proxy server to'
+  logs: {  }
+  stop: exit
+scripts:
+  installation:
+    script: |-
+      #!/bin/ash
+      # ViaProxy Installation Script
+      #
+      # Server Files: /mnt/server
+
+      ## get release info and download links
+      LATEST_JSON=$(curl --silent "https://api.github.com/repos/ViaVersion/ViaProxy/releases/latest")
+      RELEASES=$(curl --silent "https://api.github.com/repos/ViaVersion/ViaProxy/releases")
+      MATCH="ViaProxy-[0-9]\+\.[0-9]\+\.[0-9]\+\.jar"
+
+      if [ -z "${VERSION}" ] || [ "${VERSION}" == "latest" ]; then
+          DOWNLOAD_URL=$(echo ${LATEST_JSON} | jq .assets | jq -r .[].browser_download_url | grep -i ${MATCH})
+      else
+          VERSION_CHECK=$(echo ${RELEASES} | jq -r --arg VERSION "${VERSION}" '.[] | select(.tag_name==$VERSION) | .tag_name')
+          if [ "${VERSION}" == "${VERSION_CHECK}" ]; then
+              DOWNLOAD_URL=$(echo ${RELEASES} | jq -r --arg VERSION "${VERSION}" '.[] | select(.tag_name==$VERSION) | .assets[].browser_download_url' | grep -i ${MATCH})
+          else
+              echo -e "defaulting to latest release"
+              DOWNLOAD_URL=$(echo ${LATEST_JSON} | jq .assets | jq -r .[].browser_download_url)
+          fi
+      fi
+
+      mkdir -p /mnt/server
+      cd /mnt/server
+
+      # Download the .jar file
+      echo "Downloading ViaProxy version $VERSION..."
+      curl -sSL -o ${SERVER_JARFILE} ${DOWNLOAD_URL}
+
+      ## install end
+      echo "-----------------------------------------"
+      echo "Installation completed..."
+      echo "-----------------------------------------"
+    container: 'ghcr.io/pelican-eggs/installers:alpine'
+    entrypoint: ash
+variables:
+  -
+    sort: 1
+    name: 'ViaProxy JAR'
+    description: |-
+      Server Jarfile, by default this is set to 'via-proxy.jar'.
+      Set it to otherwise if you wish to have a different jarfile name.
+    env_variable: SERVER_JARFILE
+    default_value: viaproxy.jar
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - 'regex:/^([\w\d._-]+)(\.jar)$/'
+  -
+    sort: 2
+    name: 'ViaProxy Version'
+    description: 'ViaProxy version to install, can be latest or 3.4.1 for example '
+    env_variable: VERSION
+    default_value: latest
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+startup_commands:
+  Default: 'java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar {{SERVER_JARFILE}} cli'

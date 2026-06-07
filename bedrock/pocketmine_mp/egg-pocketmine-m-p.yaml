@@ -1,0 +1,163 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/bedrock/pocketmine_mp/egg-pocketmine-m-p.yaml'
+exported_at: '2026-06-07T18:08:24+00:00'
+name: PocketmineMP
+author: info@swisscrafting.ch
+uuid: 4c3baab1-67ad-48c7-8acd-eb3deaa0a462
+description: "Pocketmine Egg\r\nby onekintaro from swisscrafting.ch\r\nwith the nice help from #eggs Channel on Pelican Discord :)"
+image: null
+tags:
+  - minecraft
+features: {  }
+docker_images:
+  'ghcr.io/pelican-eggs/yolks:debian': 'ghcr.io/pelican-eggs/yolks:debian'
+file_denylist: {  }
+startup_commands:
+  Default: './bin/php7/bin/php ./PocketMine-MP.phar --no-wizard'
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        enable-query: true
+        server-port: '{{server.allocations.default.port}}'
+        query.port: '{{server.allocations.default.port}}'
+  startup:
+    done: ')! '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/bash
+
+      apt-get update
+      apt-get install -y git curl wget jq file tar unzip zip
+
+      mkdir -p /mnt/server/ # Not required. Only here for parkervcp's local test setup
+
+      cd /mnt/server || exit 1
+
+      ARCH=$([[ "$(uname -m)" == "x86_64" ]] && printf "x86_64" || printf "arm64")
+
+      # Shouldn't be possible to be empty, but default to PM5 if it is and convert to uppercase
+      VERSION="${VERSION:-PM5}"
+      VERSION="${VERSION^^}"
+
+      # Helper functions
+
+      download_php_binary() {
+        local php_binary_url
+        if [[ "$VERSION" == "PM5" ]]; then
+          php_binary_url="https://github.com/pmmp/PHP-Binaries/releases/download/pm5-latest/PHP-8.2-Linux-${ARCH}-PM5.tar.gz"
+        elif [[ "$VERSION" == "PM5PHP83" ]]; then
+          php_binary_url="https://github.com/pmmp/PHP-Binaries/releases/download/pm5-php-8.3-latest/PHP-8.3-Linux-${ARCH}-PM5.tar.gz"
+        elif [[ "$VERSION" == "PM5PHP84" ]]; then
+          php_binary_url="https://github.com/pmmp/PHP-Binaries/releases/download/pm5-php-8.4-latest/PHP-8.4-Linux-${ARCH}-PM5.tar.gz"
+        elif [[ "$VERSION" == "PM4" ]]; then
+          php_binary_url="https://github.com/pmmp/PHP-Binaries/releases/download/pm4-latest/PHP-8.1-Linux-${ARCH}-PM4.tar.gz"
+        else
+          printf "Unsupported version: %s\n" "${VERSION}"
+          exit 1
+        fi
+
+        printf "Downloading PHP binary for %s from %s\n" "$VERSION" "$php_binary_url"
+        curl --location --progress-bar "$php_binary_url" | tar -xzv
+      }
+
+      set_php_extension_dir() {
+        printf "Configuring php.ini\n"
+        EXTENSION_DIR=$(find "bin" -name '*debug-zts*')
+        grep -q '^extension_dir' bin/php7/bin/php.ini && \
+        sed -i'bak' "s{^extension_dir=.*{extension_dir=\"$EXTENSION_DIR\"{" bin/php7/bin/php.ini || \
+        echo "extension_dir=\"$EXTENSION_DIR\"" >>bin/php7/bin/php.ini
+      }
+
+      download_pmmp() {
+        DOWNLOAD_LINK=$(curl -sSL https://update.pmmp.io/api?channel="$API_CHANNEL" | jq -r '.download_url')
+        printf "Downloading %s from %s\n" "$VERSION" "${DOWNLOAD_LINK}"
+        curl --location --progress-bar "${DOWNLOAD_LINK}" --output PocketMine-MP.phar
+      }
+
+      # We have to convert VERSION into an API channel
+      if [[ "${VERSION}" == "PM4" ]]; then
+        API_CHANNEL="4"
+      elif [[ "$VERSION" == "PM5" ]] || [[ "$VERSION" == "PM5PHP83" ]] || [[ "$VERSION" == "PM5PHP84" ]]; then
+        API_CHANNEL="stable"
+      else
+        printf "Unsupported version: %s\n" "${VERSION}"
+        exit 1
+      fi
+
+      REQUIRED_PHP_VERSION=$(curl -sSL https://update.pmmp.io/api?channel="$API_CHANNEL" | jq -r '.php_version')
+
+      if [[ "${ARCH}" == "x86_64" ]]; then
+        download_php_binary
+
+      # There are no ARM64 PHP binaries yet, so we have to compile them
+      else
+        apt-get install -y make autoconf automake m4 bzip2 bison g++ cmake pkg-config re2c libtool-bin
+        
+        mkdir -p /mnt/server/build_cache/archives
+        mkdir -p /mnt/server/build_cache/compilation
+        
+        # Each PHP version has its own compile script, so we have to download the correct one
+        echo "Running curl to download compile.sh for PHP version $REQUIRED_PHP_VERSION"
+        curl --location --progress-bar --remote-name https://raw.githubusercontent.com/pmmp/PHP-Binaries/latest/compile.sh
+        chmod +x compile.sh
+
+        cat <<EOF
+      ----------------------------------------
+      |                                      |
+      |   Compiling PHP Binary for ARM64     |
+      |                                      |
+      |  This is a time consuming process    |
+      ----------------------------------------
+      EOF
+
+        printf "\n\nCompiling PHP binary, this is a slow process and will take time\n"
+        THREADS=$(grep -c ^processor /proc/cpuinfo) || THREADS=1
+        ./compile.sh -j "${THREADS}" -c /mnt/server/build_cache/archives -l /mnt/server/build_cache/compilation -z "${REQUIRED_PHP_VERSION}"
+        rm compile.sh
+        rm -rf install_data/
+
+      fi
+
+      # Steps below are the same for both architectures
+      download_pmmp
+      set_php_extension_dir || exit 1
+
+      if [[ ! -f server.properties ]]; then
+        printf "Downloading default server.properties template\n"
+        curl --location --progress-bar --remote-name https://raw.githubusercontent.com/pelican-eggs/minecraft/main/bedrock/pocketmine_mp/server.properties
+      fi
+
+      printf "Creating default file and folder structure\n"
+      touch banned-ips.txt banned-players.txt ops.txt white-list.txt server.log
+      mkdir -p players worlds plugins resource_packs
+
+      cat <<EOF
+      ----------------------------------------
+      |                                      |
+      |   PocketMine-MP Installation Done    |
+      |                                      |
+      ----------------------------------------
+      EOF
+    container: 'ghcr.io/pelican-eggs/installers:debian'
+    entrypoint: bash
+variables:
+  -
+    sort: 1
+    name: 'Version to install'
+    description: 'PocketMine version and PHP version to install.'
+    env_variable: VERSION
+    default_value: PM5PHP83
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'in:PM5,PM5PHP83,PM5PHP84,PM4'

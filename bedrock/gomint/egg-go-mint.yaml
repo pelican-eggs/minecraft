@@ -1,0 +1,105 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/bedrock/gomint/egg-go-mint.yaml'
+exported_at: '2026-06-07T18:08:24+00:00'
+name: GoMint
+author: parker@parkervcp.com
+uuid: 6ef2bba9-b43b-47a5-9ee6-0a811ce6e3ba
+description: |-
+  A performant and stable Minecraft server software for the Bedrock Edition that comes with a modern
+  API and support for Java 11 LTS.
+tags:
+  - minecraft
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  'ghcr.io/pelican-eggs/yolks:java_8': 'ghcr.io/pelican-eggs/yolks:java_8'
+  'ghcr.io/pelican-eggs/yolks:java_11': 'ghcr.io/pelican-eggs/yolks:java_11'
+  'ghcr.io/pelican-eggs/yolks:java_16': 'ghcr.io/pelican-eggs/yolks:java_16'
+  'ghcr.io/pelican-eggs/yolks:java_17': 'ghcr.io/pelican-eggs/yolks:java_17'
+file_denylist: {  }
+config:
+  files:
+    server.yml:
+      parser: yml
+      find:
+        listener.port: '{{server.allocations.default.port}}'
+  startup:
+    done: 'Done in '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #! /bin/bash
+
+      GITHUB_PACKAGE=gomint/gomint
+
+      apt update
+      apt install -y curl jq file unzip
+
+      if [ ! -d /mnt/server/ ]; then
+          mkdir -p /mnt/server/
+      fi
+
+      cd /mnt/server/
+
+      if [ -z "${GITHUB_USER}" ] && [ -z "${GITHUB_OAUTH_TOKEN}" ] ; then
+          echo -e "using anon api call"
+      else
+          echo -e "user and oauth token set"
+          alias curl='curl -u ${GITHUB_USER}:${GITHUB_OAUTH_TOKEN} '
+      fi
+
+      # retrieve latest tag to be used as version match, because gomint doesn't use normal releases
+      LATEST_VERSION=$(curl -sL https://api.github.com/repos/gomint/gomint/tags | jq -r '.[-1].name')
+
+      DOWNLOAD_URL=https://github.com/gomint/gomint/releases/download/${LATEST_VERSION}/${LATEST_VERSION}.zip
+
+      if [ ! -z "${DOWNLOAD_URL}" ]; then 
+          if curl --output /dev/null --silent --head --fail ${DOWNLOAD_URL}; then
+              echo -e "download link is valid. setting download link to ${DOWNLOAD_URL}"
+              VALIDATED_URL=${DOWNLOAD_URL}
+          else        
+              echo -e "download link is invalid, something went wrong. Closing out"
+              exit 2
+          fi
+      fi
+
+      curl -sSL -o ${VALIDATED_URL##*/} ${VALIDATED_URL}
+
+      FILETYPE=$(file -F ',' ${VALIDATED_URL##*/} | cut -d',' -f2 | cut -d' ' -f2)
+      if [ "$FILETYPE" == "gzip" ]; then
+          tar xzvf ${VALIDATED_URL##*/}
+      elif [ "$FILETYPE" == "Zip" ]; then
+          unzip ${VALIDATED_URL##*/} -d modules/
+      elif [ "$FILETYPE" == "XZ" ]; then
+          tar xvf ${VALIDATED_URL##*/}
+      else
+          echo -e "unknown filetype. Exiting"
+          # exit 2 
+      fi
+
+      # Move files into correct folders and remove unnecessary stuff
+      rm ${VALIDATED_URL##*/}
+      mv modules/modules/* modules
+      rm -rf modules/modules
+      rm modules/start.*
+
+      # Fetch server config
+      if [ ! -f server.yml ]; then
+          curl -sSL -o server.yml https://raw.githubusercontent.com/pelican-eggs/minecraft/main/bedrock/gomint/server.yml
+      fi
+
+      ## install end
+      echo "-----------------------------------------"
+      echo "Installation completed..."
+      echo "-----------------------------------------"
+    container: 'ghcr.io/pelican-eggs/installers:debian'
+    entrypoint: bash
+variables: {  }
+startup_commands:
+  Default: 'java --add-opens java.base/java.nio=io.netty.common --add-exports java.base/jdk.internal.misc=io.netty.common -p modules -m gomint.server/io.gomint.server.Bootstrap'

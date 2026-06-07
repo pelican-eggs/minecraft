@@ -1,0 +1,72 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/technic/attack-of-the-bteam/egg-attack-of-the-b--team.yaml'
+exported_at: '2026-06-07T18:08:26+00:00'
+name: 'Attack of the B-Team'
+author: support@pterodactyl.io
+uuid: 306019ab-6a62-4fa8-953c-c2ac499c6736
+description: |-
+  This modpack was designed with one thing in mind, crazy mad science! With the help of the B-Team we
+  hand picked the wackiest mods we could find and shoved them all in a modpack for you guys. The
+  result is Attack of the B-Team!
+tags:
+  - minecraft
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  'ghcr.io/pelican-eggs/yolks:java_8': 'ghcr.io/pelican-eggs/yolks:java_8'
+file_denylist: {  }
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        server-port: '{{server.allocations.default.port}}'
+        query.port: '{{server.allocations.default.port}}'
+  startup:
+    done: ')! For help, type '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/ash
+      # Forge Installation Script
+      #
+      # Server Files: /mnt/server
+
+
+      cd /mnt/server
+
+      curl -sS https://servers.technicpack.net/Technic/servers/bteam/BTeam_Server_v$MODPACK_VERSION.zip -o BTeam_Server_v$MODPACK_VERSION.zip
+
+      unzip -o BTeam_Server_v$MODPACK_VERSION.zip
+
+      rm -rf BTeam_Server_v$MODPACK_VERSION.zip
+
+
+      ## install end
+      echo "-----------------------------------------"
+      echo "Installation completed..."
+      echo "-----------------------------------------"
+    container: 'ghcr.io/pelican-eggs/installers:alpine'
+    entrypoint: ash
+variables:
+  -
+    name: 'Modpack Version'
+    description: 'Version of the modpack to use'
+    env_variable: MODPACK_VERSION
+    default_value: 1.0.12c
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:20'
+    sort: null
+startup_commands:
+  Default: 'java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar BTeam.jar'

@@ -1,0 +1,67 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/technic/tekkit-legends/egg-tekkit-legends.yaml'
+exported_at: '2026-06-07T18:08:26+00:00'
+name: 'Tekkit Legends'
+author: aevum@decess.us
+uuid: 12643d14-fca6-4f3e-93ed-048d82d711ce
+description: "The ancient power of Tekkits past return in this legendary pack! Wield the philosopher's stone, ride\nthe rails, breed the bees, and much, much more! This pack will remind you of what you've always\nloved about Tekkit, while bringing you new mods to discover and enjoy!\r\n\r\nhttps://www.technicpack.net/modpack/tekkit-legends.735902"
+tags:
+  - minecraft
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  'ghcr.io/pelican-eggs/yolks:java_8': 'ghcr.io/pelican-eggs/yolks:java_8'
+file_denylist: {  }
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        server-port: '{{server.allocations.default.port}}'
+        query.port: '{{server.allocations.default.port}}'
+  startup:
+    done: ')! For help, type '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/ash
+      # Forge Installation Script
+      #
+      # Server Files: /mnt/server
+
+      cd /mnt/server
+
+      curl -sS https://servers.technicpack.net/Technic/servers/tekkit-legends/Tekkit_Legends_Server_v$MODPACK_VERSION.zip -o TekkitLegends_$MODPACK_VERSION.zip
+
+      unzip TekkitLegends_$MODPACK_VERSION.zip
+
+      rm -rf TekkitLegends_$MODPACK_VERSION.zip
+
+      ## install end
+      echo "-----------------------------------------"
+      echo "Installation completed..."
+      echo "-----------------------------------------"
+    container: 'ghcr.io/pelican-eggs/installers:alpine'
+    entrypoint: ash
+variables:
+  -
+    name: 'Modpack Version'
+    description: 'Version of the modpack to use'
+    env_variable: MODPACK_VERSION
+    default_value: 1.1.1
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:20'
+    sort: null
+startup_commands:
+  Default: 'java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar TekkitLegends.jar'

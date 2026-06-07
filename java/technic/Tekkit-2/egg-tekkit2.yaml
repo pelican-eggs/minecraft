@@ -1,0 +1,82 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/technic/Tekkit-2/egg-tekkit2.yaml'
+exported_at: '2026-06-07T18:08:26+00:00'
+name: 'Tekkit 2'
+author: josdekurk@gmail.com
+uuid: 81bf842b-5647-4c83-9254-523b6f8308fb
+description: "Those of you who are nostalgic for the early days of Tekkit (now known as Tekkit Classic), will love\nwhat awaits you in Tekkit 2!\r\n\r\nWith a collection of nostalgic mods and plenty of new improvements, Tekkit 2 is sure to capture the\nfeeling of possibility and consequence that you felt while exploring the world of machines and\ncontraptions that made the original fun. Keep an eye out for classics such as IndustrialCraft,\nProjectE (Equivalent Exchange), Project Red (RedPower) and BuildCraft, alongside additions such as\nGalacticraft and Tekkit Jaffa Cakes! The world is yours to bend and exploit to your will, whether\nthrough alchemy or sprawling factories and mines.\r\n\r\nWhat fresh horrors will you create?"
+tags:
+  - minecraft
+features:
+  - eula
+  - java_version
+docker_images:
+  Java8: 'ghcr.io/pelican-eggs/yolks:java_8'
+  Java11: 'ghcr.io/pelican-eggs/yolks:java_11'
+file_denylist: {  }
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        server-port: '{{server.allocations.default.port}}'
+  startup:
+    done: 'Server tick complete! '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/ash
+      # Tekkit Installation Script
+      #
+      # Server Files: /mnt/server
+      apt update
+      apt -y install curl zip unzip
+
+      mkdir -p /mnt/server
+
+      cd /mnt/server
+
+      curl -sSL https://servers.technicpack.net/Technic/servers/tekkit-2/Tekkit-2_Server_$MODPACK_VERSION.zip -o Tekkit-2_Server_$MODPACK_VERSION.zip
+
+      unzip -o Tekkit-2_Server_$MODPACK_VERSION.zip
+
+      rm -rf Tekkit-2_Server_$MODPACK_VERSION.zip
+
+      rm RestoreBackup.bat
+
+      rm LaunchServer.bat
+
+      rm LaunchServer.sh
+
+      rm RestoreBackup.sh
+
+      mv forge-1.12.2-*.jar forge.jar
+
+      if [ ! -f server.properties ]; then
+          echo -e "Downloading MC server.properties"
+          curl -o server.properties https://raw.githubusercontent.com/pelican-eggs/minecraft/main/java/server.properties
+      fi
+
+      echo "done"
+    container: 'ghcr.io/pelican-eggs/installers:debian'
+    entrypoint: bash
+variables:
+  -
+    name: 'Modpack Version'
+    description: ''
+    env_variable: MODPACK_VERSION
+    default_value: v1.0.5
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:10'
+    sort: null
+startup_commands:
+  Default: 'java -server  -Xms128M -Xmx{{SERVER_MEMORY}}M -Dfml.queryResult=confirm -jar forge.jar nogui'

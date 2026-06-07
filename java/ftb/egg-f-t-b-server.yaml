@@ -1,0 +1,178 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/ftb/egg-f-t-b-server.yaml'
+exported_at: '2026-06-07T18:08:24+00:00'
+name: 'FTB Server'
+author: runemaster580@gmail.com
+uuid: e60a9de8-a0b1-4d97-b4e2-6568f048668d
+description: 'This egg was developed to easily set up a server from FTB.'
+image: null
+tags:
+  - minecraft
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  'Java 8': 'ghcr.io/pelican-eggs/yolks:java_8'
+  'Java 11': 'ghcr.io/pelican-eggs/yolks:java_11'
+  'Java 16': 'ghcr.io/pelican-eggs/yolks:java_16'
+  'Java 17': 'ghcr.io/pelican-eggs/yolks:java_17'
+  'Java 21': 'ghcr.io/pelican-eggs/yolks:java_21'
+  'Java 25': 'ghcr.io/pelican-eggs/yolks:java_25'
+file_denylist: {  }
+startup_commands:
+  Default: 'java -Xms128M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true $( [[  ! -f unix_args.txt ]] && printf %s "-jar start-server.jar" || printf %s "@unix_args.txt" )'
+config:
+  files:
+    server.properties:
+      parser: properties
+      find:
+        server-ip: 0.0.0.0
+        server-port: '{{server.allocations.default.port}}'
+        query.port: '{{server.allocations.default.port}}'
+  startup:
+    done: ')! For help, type '
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/bash
+      # FTB Pack Installation Script
+      #
+      # Server Files: /mnt/server
+      if [ ! -d /mnt/server ]; then
+          mkdir -p /mnt/server
+      fi
+      cd /mnt/server
+
+
+      # Download needed software.
+      function install_required {
+          apt update
+          apt install -y curl jq
+      }
+
+      function get_modpack_id {
+          urlencode() {
+              local string="${1// /%20}"
+              echo "$string"
+          }
+          
+          # if no modpack id is set and modpack search term is set.
+          if [ -z ${FTB_MODPACK_ID} ] && [ ! -z "${FTB_SEARCH_TERM}" ]; then
+              encoded_search_term=$(urlencode "$FTB_SEARCH_TERM")
+              JSON_DATA=$(curl -sSL https://api.feed-the-beast.com/v1/modpacks/public/modpack/search/8?term="${encoded_search_term}")
+          
+              # grabs the first modpack in array.
+              FTB_MODPACK_ID=$(echo -e ${JSON_DATA} | jq -r ".packs[0]")
+          fi
+
+          if [ -z ${FTB_MODPACK_VERSION_ID} ] && [ ! -z ${FTB_VERSION_STRING} ]; then
+              # grabs the correct version id matching the string.
+              FTB_MODPACK_VERSION_ID=$(curl -sSL https://api.feed-the-beast.com/v1/modpacks/public/modpack/${FTB_MODPACK_ID} | jq -r --arg VSTRING ${FTB_VERSION_STRING} '.versions[] | select(.name == $VSTRING) | .id')
+          fi
+      }
+
+      function run_installer {
+          # get architecture for installer
+          INSTALLER_TYPE=$([ "$(uname -m)" == "x86_64" ] && echo "linux" || echo "arm/linux")
+          echo "ModpackID: ${FTB_MODPACK_ID} VersionID: ${FTB_MODPACK_VERSION_ID} InstallerType: ${INSTALLER_TYPE}"
+
+          # download installer
+          curl -L https://api.feed-the-beast.com/v1/modpacks/public/modpack/0/0/server/${INSTALLER_TYPE} --output serversetup
+          chmod +x ./serversetup
+          
+          # remove old forge files (to allow updating)
+          rm -rf libraries/net/minecraftforge/forge
+          rm -rf libraries/net/neoforged/forge
+          rm -f unix_args.txt
+          
+          # run installer
+          ./serversetup --pack ${FTB_MODPACK_ID} --version ${FTB_MODPACK_VERSION_ID} --auto --no-java
+      }
+
+      # allows startup command to work
+      function move_startup_files {
+          # create symlink for forge unix_args.txt if exists
+          if compgen -G "libraries/net/minecraftforge/forge/*/unix_args.txt"; then
+              ln -sf libraries/net/minecraftforge/forge/*/unix_args.txt unix_args.txt
+          fi
+          
+          # create symlink for neoforge unix_args.txt if exists
+          if compgen -G "libraries/net/neoforged/neoforge/*/unix_args.txt"; then
+              ln -sf libraries/net/neoforged/neoforge/*/unix_args.txt unix_args.txt
+          fi
+          
+          # move forge/neoforge/fabric jar file to start-server.jar if exists
+          if compgen -G "forge-*.jar"; then
+              mv -f forge-*.jar start-server.jar
+          elif compgen -G "fabric-*.jar"; then
+              mv -f fabric-*.jar start-server.jar
+          fi
+      }
+
+      # installer cleanup
+      function installer_cleanup {
+          rm serversetup
+          rm -f run.bat
+          rm -f run.sh
+      }
+
+      # run installation steps
+      install_required
+      get_modpack_id
+      run_installer
+      move_startup_files
+      installer_cleanup
+
+      echo "Finished installing FTB modpack"
+    container: 'ghcr.io/pelican-eggs/installers:java_21'
+    entrypoint: bash
+variables:
+  -
+    name: 'FTB Pack Version'
+    description: 'what version of the modpack to install. leave empty if using the modpack version id variable.'
+    env_variable: FTB_VERSION_STRING
+    default_value: ''
+    user_viewable: true
+    user_editable: true
+    rules:
+      - nullable
+      - string
+    sort: 1
+  -
+    name: 'FTB Pack Version ID'
+    description: "The modpack api version ID.\r\nneeded if not using the string for the version.\r\n\r\nExample FTB Revelations version id for version \"2.0.2\" is 86.\r\nwhich would come out as: https://api.feed-the-beast.com/v1/modpacks/public/modpack/5/86"
+    env_variable: FTB_MODPACK_VERSION_ID
+    default_value: ''
+    user_viewable: true
+    user_editable: true
+    rules:
+      - nullable
+      - integer
+    sort: 2
+  -
+    name: 'FTB Pack search term'
+    description: "the search term for finding the modpack. needs to be at least 4 characters long.\r\nFind out what term is needed by using the ftb app and searching with the term. make sure it only\nreturns 1 result.\r\ncan also be searched for via:\nhttps://api.feed-the-beast.com/v1/modpacks/public/modpack/search/8?term={SEARCHTERM}\r\n\r\nonly needed if the modpack id and modpack version id is unknown."
+    env_variable: FTB_SEARCH_TERM
+    default_value: ''
+    user_viewable: true
+    user_editable: true
+    rules:
+      - nullable
+      - string
+    sort: 3
+  -
+    name: 'FTB modpack ID'
+    description: "The FTB Api modpack ID.\r\nNeeded if not using the search variable\r\n\r\nExample: FTB Interactions ID is 5.\r\nhttps://api.feed-the-beast.com/v1/modpacks/public/modpack/5"
+    env_variable: FTB_MODPACK_ID
+    default_value: ''
+    user_viewable: true
+    user_editable: true
+    rules:
+      - nullable
+      - integer
+    sort: 4

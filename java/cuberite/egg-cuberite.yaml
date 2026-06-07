@@ -1,0 +1,93 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/cuberite/egg-cuberite.yaml'
+exported_at: '2026-06-07T18:08:30+00:00'
+name: Cuberite
+author: parker@parkervcp.com
+uuid: fdcfdcb0-10ae-44e3-b027-a3b5562f89a8
+description: 'A lightweight, fast and extensible game server for Minecraft'
+tags:
+  - minecraft
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  'ghcr.io/pelican-eggs/yolks:debian': 'ghcr.io/pelican-eggs/yolks:debian'
+file_denylist: {  }
+config:
+  files:
+    settings.ini:
+      parser: ini
+      find:
+        Server.Ports: '{{server.allocations.default.port}}'
+        Server.Description: '{{server.environment.SERV_DESC}}'
+    webadmin.ini:
+      parser: ini
+      find:
+        'User:admin.Password': '{{server.environment.ADMIN_PASS}}'
+        WebAdmin.Ports: '{{server.environment.WEB_PORT}}'
+  startup:
+    done: 'Startup complete'
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |-
+      #!/bin/ash
+      # Cuberite
+      #
+      # Server Files: /mnt/server
+
+      cd /mnt/server
+
+      ARCH=$([[ "$(uname -m)" == "x86_64" ]] && echo "x86_64" || echo "aarch64")
+
+      wget https://download.cuberite.org/linux-${ARCH}/Cuberite.tar.gz
+
+      tar -xzf Cuberite.tar.gz
+
+      ## install end
+      echo "-----------------------------------------"
+      echo "Installation completed..."
+      echo "-----------------------------------------"
+    container: 'ghcr.io/pelican-eggs/installers:debian'
+    entrypoint: bash
+variables:
+  -
+    name: 'Server Description'
+    description: 'Server Description'
+    env_variable: SERV_DESC
+    default_value: 'Cuberite on Pelican!'
+    user_viewable: true
+    user_editable: true
+    rules:
+      - nullable
+      - string
+    sort: null
+  -
+    name: 'Admin Password'
+    description: "The password for the webadmin panel 'admin' user"
+    env_variable: ADMIN_PASS
+    default_value: ChangeMe
+    user_viewable: true
+    user_editable: true
+    rules:
+      - nullable
+      - string
+    sort: null
+  -
+    name: 'WebAdmin Port'
+    description: 'Port for the cuberite webadmin panel.'
+    env_variable: WEB_PORT
+    default_value: 8080
+    user_viewable: true
+    user_editable: false
+    rules:
+      - required
+      - integer
+      - 'between:1,65535'
+    sort: null
+startup_commands:
+  Default: ./Cuberite

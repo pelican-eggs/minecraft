@@ -1,0 +1,74 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/proxy/java/viaaas/egg-v-i-aaa-s.yaml'
+exported_at: '2026-06-07T18:08:33+00:00'
+name: VIAaaS
+author: regulad@outlook.com
+uuid: 0113f159-afd3-449d-a0cf-36d1ae827a3b
+description: 'VIAaaS - ViaVersion as a Service - Standalone ViaVersion proxy'
+tags:
+  - minecraft
+  - proxy
+features:
+  - eula
+  - java_version
+  - pid_limit
+docker_images:
+  'ghcr.io/pelican-eggs/yolks:java_17': 'ghcr.io/pelican-eggs/yolks:java_17'
+  'ghcr.io/pelican-eggs/yolks:java_16': 'ghcr.io/pelican-eggs/yolks:java_16'
+  'ghcr.io/pelican-eggs/yolks:java_11': 'ghcr.io/pelican-eggs/yolks:java_11'
+  'ghcr.io/pelican-eggs/yolks:java_8': 'ghcr.io/pelican-eggs/yolks:java_8'
+file_denylist: {  }
+config:
+  files:
+    config/viaaas.yml:
+      parser: yaml
+      find:
+        port: '{{server.allocations.default.port}}'
+        bind-address: 0.0.0.0
+  startup:
+    done: 'Application started in '
+  logs: {  }
+  stop: end
+scripts:
+  installation:
+    script: |-
+      #!/bin/ash
+      # VIAaaS Installation Script
+      #
+      # Server Files: /mnt/server
+      cd /mnt/server
+      wget -O ${SERVER_JARFILE} "https://jitpack.io/com/github/ViaVersion/VIAaaS/master-SNAPSHOT/VIAaaS-master-SNAPSHOT-all.jar"
+
+      ## install end
+      echo "-----------------------------------------"
+      echo "Installation completed..."
+      echo "-----------------------------------------"
+    container: 'ghcr.io/pelican-eggs/installers:alpine'
+    entrypoint: ash
+variables:
+  -
+    name: 'VIAaaS JAR File'
+    description: 'The name of the JAR file to be used when downloading & running VIAaaS.'
+    env_variable: SERVER_JARFILE
+    default_value: VIAaaS-all.jar
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+    sort: null
+  -
+    name: 'Web Server Port'
+    description: 'The port to listen to web server connections on.'
+    env_variable: WEBSERVER_PORT
+    default_value: 25543
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+    sort: null
+startup_commands:
+  Default: 'java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar {{SERVER_JARFILE}} -sslPort={{WEBSERVER_PORT}}'

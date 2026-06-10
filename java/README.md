@@ -183,3 +183,11 @@ Vanilla Minecraft server.
 ## VanillaCord
 [VanillaCord](https://github.com/ME1312/VanillaCord)
 VanillaCord adds support for BungeeCord's ip-forwarding option on vanilla Minecraft servers.
+
+
+## Rust based
+No jvm anymore, pure performance.
+
+### [SteelMC](steel)
+[SteelMC](https://steel-foundation.github.io/SteelDocs/)
+SteelMC is a Rust based server which aims a 1:1 parity from vanilla with rust speed.

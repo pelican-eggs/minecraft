@@ -1,7 +1,7 @@
 {
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
-        "update_url": null,
+        "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/technic/blightfall/egg-pterodactyl-blightfall.json",
         "version": "PTDL_v2"
     },
     "exported_at": "2024-06-01T19:39:49+00:00",
@@ -14,7 +14,7 @@
         "pid_limit"
     ],
     "docker_images": {
-        "ghcr.io/parkervcp/yolks:java_8": "ghcr.io/parkervcp/yolks:java_8"
+        "ghcr.io/pelican-eggs/yolks:java_8": "ghcr.io/pelican-eggs/yolks:java_8"
     },
     "file_denylist": [],
     "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar Blightfall.jar",
@@ -26,7 +26,7 @@
     },
     "scripts": {
         "installation": {
-            "container": "ghcr.io/parkervcp/installers:alpine",
+            "container": "ghcr.io\/pelican-eggs\/installers:alpine",
             "entrypoint": "ash",
             "script": "#!/bin/ash\r\n# Forge Installation Script\r\n#\r\n# Server Files: /mnt/server\r\n\r\ncd /mnt/server\r\n\r\ncurl -sS https://servers.technicpack.net/Technic/servers/blightfall/Blightfall_Server_$MODPACK_VERSION.zip -o Blightfall_$MODPACK_VERSION.zip\r\n\r\nunzip Blightfall_$MODPACK_VERSION.zip\r\n\r\nrm -rf Blightfall_$MODPACK_VERSION.zip\r\n\r\n\r\n## install end\r\necho \"-----------------------------------------\"\r\necho \"Installation completed...\"\r\necho \"-----------------------------------------\""
         }

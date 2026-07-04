@@ -12,7 +12,7 @@ The eggs downloads the the version of a steel release. The version is the releas
 
 | Variable  | default |
 |-------|---------|
-| Version  | 25565   |
+| Version  | latest   |
 
 ## Server Ports
 

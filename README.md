@@ -36,6 +36,7 @@ It’s set in infinitely-generated worlds of wide open terrain - icy mountains, 
 * [Spigot](java/spigot)
 * [SpongeForge](java/spongeforge)
 * [SpongeVanilla](java/spongevanilla)
+* [Steel](java/steel/)
 * [Technic](java/technic)
 * [Vanilla](java/vanilla)
 * [VanillaCord](java/vanillacord)

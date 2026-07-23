@@ -2,27 +2,29 @@
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
         "version": "PLCN_v3",
-        "update_url": null
+        "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/modrinth/egg-modrinth-generic.json"
     },
-    "exported_at": "2025-12-19T20:53:27+00:00",
+    "exported_at": "2026-04-21T19:02:00+00:00",
     "name": "Modrinth Generic",
     "author": "contact@chromozone.dev",
     "uuid": "04befa18-37cf-41e9-b04d-89b3578bba6d",
     "description": "A generic egg for a Modrinth modpack.",
     "image": null,
-    "tags": [],
+    "tags": [
+        "minecraft"
+    ],
     "features": [
         "eula",
         "java_version",
         "pid_limit"
     ],
     "docker_images": {
-        "Java 8": "ghcr.io/parkervcp/yolks:java_8",
-        "Java 11": "ghcr.io/parkervcp/yolks:java_11",
-        "Java 16": "ghcr.io/parkervcp/yolks:java_16",
-        "Java 17": "ghcr.io/parkervcp/yolks:java_17",
-        "Java 21": "ghcr.io/parkervcp/yolks:java_21",
-        "Java 22": "ghcr.io/parkervcp/yolks:java_22"
+        "Java 8": "ghcr.io/pelican-eggs/yolks:java_8",
+        "Java 11": "ghcr.io/pelican-eggs/yolks:java_11",
+        "Java 16": "ghcr.io/pelican-eggs/yolks:java_16",
+        "Java 17": "ghcr.io/pelican-eggs/yolks:java_17",
+        "Java 21": "ghcr.io/pelican-eggs/yolks:java_21",
+        "Java 25": "ghcr.io/pelican-eggs/yolks:java_25"
     },
     "file_denylist": [],
     "startup_commands": {

@@ -2,7 +2,7 @@
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
     "meta": {
         "version": "PTDL_v2",
-        "update_url": null
+        "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/technic/tekkit-smp/egg-pterodactyl-tekkit-smp.json"
     },
     "exported_at": "2024-09-12T21:48:20+02:00",
     "name": "Tekkit SMP",
@@ -14,8 +14,8 @@
         "pid_limit"
     ],
     "docker_images": {
-        "Java 8": "ghcr.io\/parkervcp\/yolks:java_8",
-        "Java 11": "ghcr.io\/parkervcp\/yolks:java_11"
+        "Java 8": "ghcr.io\/pelican-eggs\/yolks:java_8",
+        "Java 11": "ghcr.io\/pelican-eggs\/yolks:java_11"
     },
     "file_denylist": [],
     "startup": "java -server -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true -Dfml.queryResult=confirm -jar forge.jar nogui",

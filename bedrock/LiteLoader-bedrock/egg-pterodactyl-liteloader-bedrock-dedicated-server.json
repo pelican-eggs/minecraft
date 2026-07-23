@@ -1,7 +1,7 @@
 {
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
-        "update_url": null,
+        "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/bedrock/LiteLoader-bedrock/egg-pterodactyl-liteloader-bedrock-dedicated-server.json",
         "version": "PTDL_v2"
     },
     "exported_at": "2024-06-01T19:40:00+00:00",
@@ -10,7 +10,7 @@
     "description": "LiteLoaderBDS - Epoch-making \u0026 Cross-language Bedrock Dedicated Servers Plugin Loader\r\n\r\nLiteLoaderBDS is an unofficial plugin loader that provides basic API support for Bedrock Dedicated Server, with a massive API, lots of packed utility interfaces, a rich event system and powerful basic interface support.",
     "features": null,
     "docker_images": {
-        "ghcr.io/parkervcp/yolks:wine_staging": "ghcr.io/parkervcp/yolks:wine_staging"
+        "ghcr.io/pelican-eggs/yolks:wine_staging": "ghcr.io/pelican-eggs/yolks:wine_staging"
     },
     "file_denylist": [],
     "startup": "./lae-ll-launcher bedrock_server_mod.exe",

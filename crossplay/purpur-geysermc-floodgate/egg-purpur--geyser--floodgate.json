@@ -2,24 +2,28 @@
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
         "version": "PTDL_v2",
-        "update_url": null
+        "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/crossplay/purpur-geysermc-floodgate/egg-purpur--geyser--floodgate.json"
     },
-    "exported_at": "2024-08-02T12:03:34+00:00",
+    "exported_at": "2026-04-21T19:02:00+00:00",
     "name": "Purpur-Geyser-Floodgate",
     "author": "purpur@birdflop.com",
     "uuid": "92364e41-07ba-43fd-b33e-2f655cd7ef61",
     "description": "A drop-in replacement for Paper servers designed for configurability, and new fun and exciting gameplay features, with the addition of GeyserMC and Floodgate",
+    "tags": [
+        "minecraft"
+    ],
     "features": [
         "eula",
         "java_version",
         "pid_limit"
     ],
     "docker_images": {
-        "Java 8": "ghcr.io\/parkervcp\/yolks:java_8",
-        "Java 11": "ghcr.io\/parkervcp\/yolks:java_11",
-        "Java 16": "ghcr.io\/parkervcp\/yolks:java_16",
-        "Java 17": "ghcr.io\/parkervcp\/yolks:java_17",
-        "Java 21": "ghcr.io\/parkervcp\/yolks:java_21"
+        "Java 8": "ghcr.io\/pelican-eggs\/yolks:java_8",
+        "Java 11": "ghcr.io\/pelican-eggs\/yolks:java_11",
+        "Java 16": "ghcr.io\/pelican-eggs\/yolks:java_16",
+        "Java 17": "ghcr.io\/pelican-eggs\/yolks:java_17",
+        "Java 21": "ghcr.io\/pelican-eggs\/yolks:java_21",
+        "Java 25": "ghcr.io\/pelican-eggs\/yolks:java_25"
     },
     "file_denylist": [],
     "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true --add-modules=jdk.incubator.vector -jar {{SERVER_JARFILE}}",

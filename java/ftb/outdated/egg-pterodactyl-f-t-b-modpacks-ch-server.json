@@ -1,7 +1,7 @@
 {
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
-        "update_url": null,
+        "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/ftb/outdated/egg-pterodactyl-f-t-b-modpacks-ch-server.json",
         "version": "PTDL_v2"
     },
     "exported_at": "2024-06-01T19:39:44+00:00",
@@ -14,11 +14,11 @@
         "pid_limit"
     ],
     "docker_images": {
-        "Java 11": "ghcr.io/pterodactyl/yolks:java_11",
-        "Java 16": "ghcr.io/pterodactyl/yolks:java_16",
-        "Java 17": "ghcr.io/pterodactyl/yolks:java_17",
-        "Java 18": "ghcr.io/pterodactyl/yolks:java_18",
-        "Java 8": "ghcr.io/pterodactyl/yolks:java_8"
+        "Java 11": "ghcr.io/pelican-eggs/yolks:java_11",
+        "Java 16": "ghcr.io/pelican-eggs/yolks:java_16",
+        "Java 17": "ghcr.io/pelican-eggs/yolks:java_17",
+        "Java 18": "ghcr.io/pelican-eggs/yolks:java_18",
+        "Java 8": "ghcr.io/pelican-eggs/yolks:java_8"
     },
     "file_denylist": [],
     "startup": "java -javaagent:log4jfix/Log4jPatcher-1.0.0.jar -Xms128M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true $( [[  ! -f unix_args.txt ]] \u0026\u0026 printf %s \"-jar start-server.jar\" || printf %s \"@unix_args.txt\" )",

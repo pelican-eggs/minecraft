@@ -2,7 +2,7 @@
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
     "meta": {
         "version": "PTDL_v2",
-        "update_url": null
+        "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/bedrock/bedrock/egg-pterodactyl-vanilla-bedrock.json"
     },
     "exported_at": "2025-06-18T12:40:19+02:00",
     "name": "Vanilla Bedrock",
@@ -12,7 +12,7 @@
         "pid_limit"
     ],
     "docker_images": {
-        "ghcr.io\/parkervcp\/yolks:debian": "ghcr.io\/parkervcp\/yolks:debian"
+        "ghcr.io\/pelican-eggs\/yolks:debian": "ghcr.io\/pelican-eggs\/yolks:debian"
     },
     "file_denylist": [],
     "startup": ".\/bedrock_server",

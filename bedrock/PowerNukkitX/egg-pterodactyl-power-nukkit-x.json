@@ -1,7 +1,7 @@
 {
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
-        "update_url": null,
+        "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/bedrock/PowerNukkitX/egg-pterodactyl-power-nukkit-x.json",
         "version": "PTDL_v2"
     },
     "exported_at": "2024-06-01T19:39:55+00:00",
@@ -10,7 +10,7 @@
     "description": "PowerNukkitX support for Pterodactyl",
     "features": null,
     "docker_images": {
-        "ghcr.io/parkervcp/yolks:debian": "ghcr.io/parkervcp/yolks:debian"
+        "ghcr.io/pelican-eggs/yolks:debian": "ghcr.io/pelican-eggs/yolks:debian"
     },
     "file_denylist": [],
     "startup": "./pnx start {{AUTOREBOOT}}",

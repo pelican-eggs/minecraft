@@ -1,7 +1,7 @@
 {
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
-        "update_url": null,
+        "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/technic/Tekkit-2/egg-pterodactyl-tekkit2.json",
         "version": "PTDL_v2"
     },
     "exported_at": "2024-06-01T19:40:17+00:00",
@@ -13,8 +13,8 @@
         "java_version"
     ],
     "docker_images": {
-        "Java11": "ghcr.io/pterodactyl/yolks:java_11",
-        "Java8": "ghcr.io/pterodactyl/yolks:java_8"
+        "Java11": "ghcr.io/pelican-eggs/yolks:java_11",
+        "Java8": "ghcr.io/pelican-eggs/yolks:java_8"
     },
     "file_denylist": [],
     "startup": "java -server  -Xms128M -Xmx{{SERVER_MEMORY}}M -Dfml.queryResult=confirm -jar forge.jar nogui",

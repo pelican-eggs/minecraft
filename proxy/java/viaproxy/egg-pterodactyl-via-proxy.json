@@ -2,7 +2,7 @@
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
     "meta": {
         "version": "PTDL_v2",
-        "update_url": null
+        "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/proxy/java/viaproxy/egg-pterodactyl-via-proxy.json"
     },
     "exported_at": "2025-06-01T07:53:01+00:00",
     "name": "ViaProxy",
@@ -14,8 +14,9 @@
         "pid_limit"
     ],
     "docker_images": {
-        "Java 21": "ghcr.io\/parkervcp\/yolks:java_21",
-        "Java 22": "ghcr.io\/parkervcp\/yolks:java_22"
+        "Java 21": "ghcr.io\/pelican-eggs\/yolks:java_21",
+        "Java 22": "ghcr.io\/pelican-eggs\/yolks:java_22",
+        "Java 25": "ghcr.io\/pelican-eggs\/yolks:java_25"
     },
     "file_denylist": [],
     "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar {{SERVER_JARFILE}} cli",
@@ -41,7 +42,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|regex:\/^([\\w\\d._-]+)(\\.jar)$\/",
-            "field_type": "text"            
+            "field_type": "text"
         },
         {
             "name": "ViaProxy Version",
@@ -51,7 +52,7 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required",
-            "field_type": "text"            
+            "field_type": "text"
         }
     ]
 }

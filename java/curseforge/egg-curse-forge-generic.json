@@ -2,25 +2,28 @@
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
         "version": "PLCN_v1",
-        "update_url": null
+        "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/curseforge/egg-curse-forge-generic.json"
     },
-    "exported_at": "2025-05-27T11:05:16-07:00",
+    "exported_at": "2026-04-21T19:02:00+00:00",
     "name": "CurseForge Generic",
     "author": "contact@chromozone.dev",
     "uuid": "019bbf16-a3f3-470a-9c0b-f3995b5e032a",
     "description": "A generic egg for a CurseForge modpack.",
-    "tags": [],
+    "tags": [
+        "minecraft"
+    ],
     "features": [
         "eula",
         "java_version",
         "pid_limit"
     ],
     "docker_images": {
-        "Java 21": "ghcr.io\/parkervcp\/yolks:java_21",
-        "Java 17": "ghcr.io\/parkervcp\/yolks:java_17",
-        "Java 16": "ghcr.io\/parkervcp\/yolks:java_16",
-        "Java 11": "ghcr.io\/parkervcp\/yolks:java_11",
-        "Java 8": "ghcr.io\/parkervcp\/yolks:java_8"
+        "Java 8": "ghcr.io\/pelican-eggs\/yolks:java_8",
+        "Java 11": "ghcr.io\/pelican-eggs\/yolks:java_11",
+        "Java 16": "ghcr.io\/pelican-eggs\/yolks:java_16",
+        "Java 17": "ghcr.io\/pelican-eggs\/yolks:java_17",
+        "Java 21": "ghcr.io\/pelican-eggs\/yolks:java_21",
+        "Java 25": "ghcr.io\/pelican-eggs\/yolks:java_25"
     },
     "file_denylist": [],
     "startup": "java $([[ -f user_jvm_args.txt ]] && printf %s \"@user_jvm_args.txt\") -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true $([[ ! -f unix_args.txt ]] && printf %s \"-jar `cat .serverjar`\" || printf %s \"@unix_args.txt\")",

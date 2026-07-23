@@ -2,22 +2,24 @@
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
         "version": "PLCN_v3",
-        "update_url": null
+        "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/glowstone/egg-glowstone.json"
     },
-    "exported_at": "2025-12-19T20:56:01+00:00",
+    "exported_at": "2026-04-21T19:02:00+00:00",
     "name": "Glowstone",
     "author": "support@pterodactyl.io",
     "uuid": "0b0b94ea-aff2-49c0-80a0-736c1717f82e",
     "description": "Glowstone is an open-source server implementation for Minecraft: Java Edition 1.12.2 and up.",
     "image": null,
-    "tags": [],
+    "tags": [
+        "minecraft"
+    ],
     "features": null,
     "docker_images": {
-        "Java 8": "ghcr.io/pterodactyl/yolks:java_8",
-        "Java 11": "ghcr.io/pterodactyl/yolks:java_11",
-        "Java 16": "ghcr.io/pterodactyl/yolks:java_16",
-        "Java 17": "ghcr.io/pterodactyl/yolks:java_17",
-        "Java 18": "ghcr.io/pterodactyl/yolks:java_18"
+        "Java 8": "ghcr.io/pelican-eggs/yolks:java_8",
+        "Java 11": "ghcr.io/pelican-eggs/yolks:java_11",
+        "Java 16": "ghcr.io/pelican-eggs/yolks:java_16",
+        "Java 17": "ghcr.io/pelican-eggs/yolks:java_17",
+        "Java 18": "ghcr.io/pelican-eggs/yolks:java_18"
     },
     "file_denylist": [],
     "startup_commands": {

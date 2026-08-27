@@ -2,7 +2,7 @@
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PELICAN PANEL - PELICAN.DEV",
     "meta": {
         "version": "PTDL_v2",
-        "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/vanilla/pelican-egg-vanilla-minecraft.json"
+        "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/vanilla/pterodactyl-egg-vanilla-minecraft.json"
     },
     "exported_at": "2026-03-27T18:15:55+00:00",
     "name": "Vanilla Minecraft",

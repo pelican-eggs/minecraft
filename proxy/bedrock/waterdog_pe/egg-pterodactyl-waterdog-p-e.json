@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-06-01T19:40:10+00:00",
     "name": "Waterdog PE",
-    "author": "parker@pterodactyl.io",
+    "author": "parker@pelican.dev",
     "description": "Brand new proxy server for Minecraft: Bedrock Edition",
     "features": [
         "eula",

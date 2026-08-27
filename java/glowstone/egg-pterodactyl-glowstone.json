@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-06-01T19:39:45+00:00",
     "name": "Glowstone",
-    "author": "support@pterodactyl.io",
+    "author": "team@pelican.dev",
     "description": "Glowstone is an open-source server implementation for Minecraft: Java Edition 1.12.2 and up.",
     "features": null,
     "docker_images": {

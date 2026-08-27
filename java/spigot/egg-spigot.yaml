@@ -4,7 +4,7 @@ meta:
   update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/spigot/egg-spigot.yaml'
 exported_at: '2026-05-15T14:38:52+00:00'
 name: Spigot
-author: support@pterodactyl.io
+author: team@pelican.dev
 uuid: 48808ad8-616f-4f13-91fb-29bfeca3afc7
 description: |-
   Spigot is the most widely-used modded Minecraft server software in the world. It powers many of the

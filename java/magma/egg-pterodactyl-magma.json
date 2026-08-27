@@ -6,7 +6,7 @@
     },
     "exported_at": "2024-06-01T19:40:01+00:00",
     "name": "Magma",
-    "author": "support@pterodactyl.io",
+    "author": "team@pelican.dev",
     "description": "Magma is most powerful Forge server providing you with Forge mods and Bukkit Plugins using Spigot and Paper for Performance Optimization and Stability. Using: https://github.com/magmamaintained",
     "features": [
         "eula",

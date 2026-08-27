@@ -1,12 +1,12 @@
 {
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
-        "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/glowstone/egg-pterodactyl-glowstone.json",
+        "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/glowstone/egg-pelican-glowstone.json",
         "version": "PTDL_v2"
     },
     "exported_at": "2024-06-01T19:39:45+00:00",
     "name": "Glowstone",
-    "author": "support@pterodactyl.io",
+    "author": "support@pelican.dev",
     "description": "Glowstone is an open-source server implementation for Minecraft: Java Edition 1.12.2 and up.",
     "features": null,
     "docker_images": {

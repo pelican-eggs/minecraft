@@ -1,12 +1,12 @@
 {
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
-        "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/magma/egg-pterodactyl-magma.json",
+        "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/magma/egg-pelican-magma.json",
         "version": "PTDL_v2"
     },
     "exported_at": "2024-06-01T19:40:01+00:00",
     "name": "Magma",
-    "author": "support@pterodactyl.io",
+    "author": "support@pelican.dev",
     "description": "Magma is most powerful Forge server providing you with Forge mods and Bukkit Plugins using Spigot and Paper for Performance Optimization and Stability. Using: https://github.com/magmamaintained",
     "features": [
         "eula",

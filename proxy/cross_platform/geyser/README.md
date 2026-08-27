@@ -4,4 +4,4 @@ A bridge/proxy allowing you to connect to Minecraft: Java Edition servers with M
 
 ## Eggs
 
-GeyserMC maintains their own eggs on their github: [GeyserMC pterodactyl eggs](https://github.com/GeyserMC/pterodactyl-stuff)
+GeyserMC maintains their own eggs on their github: [GeyserMC pelican eggs](https://github.com/GeyserMC/pelican-stuff)

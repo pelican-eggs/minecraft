@@ -1,7 +1,7 @@
 {
     "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
     "meta": {
-        "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/cuberite/egg-pterodactyl-cuberite.json",
+        "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/cuberite/egg-pelican-cuberite.json",
         "version": "PTDL_v2"
     },
     "exported_at": "2024-06-01T19:39:48+00:00",
@@ -36,7 +36,7 @@
             "name": "Server Description",
             "description": "Server Description",
             "env_variable": "SERV_DESC",
-            "default_value": "Cuberite on Pterodactyl!",
+            "default_value": "Cuberite on Pelican!",
             "user_viewable": true,
             "user_editable": true,
             "rules": "nullable|string",

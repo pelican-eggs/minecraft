@@ -1,8 +1,8 @@
 {
-    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY pterodactyl.io",
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY pelican.dev",
     "meta": {
         "version": "PTDL_v2",
-        "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/modrinth/egg-pterodactyl-modrinth-generic.json"
+        "update_url": "https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/modrinth/egg-pelican-modrinth-generic.json"
 
     },
     "exported_at": "2025-01-13T09:44:32+00:00",

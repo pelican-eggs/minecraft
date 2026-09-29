@@ -245,9 +245,13 @@ scripts:
           fi
 
           echo -e "\tUnpacking client manifest"
-          unzip -jo client.zip manifest.json -d "${SERVER_DIR}"
-          mv "${SERVER_DIR}/manifest.json" "${SERVER_DIR}/client.manifest.json" # rename to avoid conflicts with main manifest
-          rm -rf client.zip
+          if ! unzip -p client.zip manifest.json > "${SERVER_DIR}/client.manifest.json" 2>/dev/null || [[ ! -s "${SERVER_DIR}/client.manifest.json" ]]; then
+              echo "ERROR: Could not extract a nonempty manifest.json from the downloaded client archive."
+              echo "This egg requires a CurseForge manifest to determine the mod loader."
+              echo "If the archive only contains an FTB installer, use the FTB egg instead."
+              exit 1
+          fi
+          rm -f client.zip
 
           parse_loader_manifest "${SERVER_DIR}/client.manifest.json"
       }

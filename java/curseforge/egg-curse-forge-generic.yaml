@@ -70,7 +70,33 @@ scripts:
 
       CURSEFORGE_API_URL="https://api.curseforge.com/v1/mods/"
       CURSEFORGE_API_HEADERS=("--header=Accept: application/json" "--header=x-api-key: ${API_KEY}")
+      CURSEFORGE_CDN_HEADERS=("--header=x-api-key: ${API_KEY}")
 
+      function cf_resolve_download_url {
+          local pid=$1 fid=$2 project_data=${3:-} response url="" headers status
+          headers=$(mktemp) || return 1
+          if response=$(wget -q --server-response --timeout=30 --tries=3 "${CURSEFORGE_API_HEADERS[@]}" "${CURSEFORGE_API_URL}${pid}/files/${fid}/download-url" -O - 2>"${headers}"); then
+              url=$(printf '%s' "${response}" | jq -er '.data | select(type == "string" and test("^https?://"))' 2>/dev/null) || url=""
+          fi
+          status=$(awk '/^[[:space:]]*HTTP\// { code = $2 } END { print code }' "${headers}")
+          rm -f "${headers}"
+
+          if [[ -n "${url}" ]]; then
+              printf '%s\n' "${url}"
+              return 0
+          fi
+
+          if [[ -z "${project_data}" ]]; then
+              project_data=$(wget -q --timeout=30 --tries=3 "${CURSEFORGE_API_HEADERS[@]}" "${CURSEFORGE_API_URL}${pid}" -O -)
+          fi
+          if printf '%s' "${project_data}" | jq -e '.data.allowModDistribution == false' >/dev/null 2>&1; then
+              echo "ERROR: Project ${pid} has disabled third-party distribution through the CurseForge API." >&2
+              echo "       Its files must be downloaded manually from CurseForge." >&2
+          else
+              echo "ERROR: Could not retrieve a download URL for project ${pid}, file ${fid} (HTTP ${status:-unavailable})." >&2
+          fi
+          return 1
+      }
       function get_download {
           echo -e "Retrieving CurseForge project information..."
           local PROJECT_DATA=$(wget -q "${CURSEFORGE_API_HEADERS[@]}" "${CURSEFORGE_API_URL}${PROJECT_ID}" -O -)
@@ -88,7 +114,7 @@ scripts:
               VERSION_ID=$(echo "$PROJECT_DATA" | jq -r '.data.mainFileId // empty')
 
               local VERSION_SERVER_PACK="$(echo -e "${PROJECT_DATA}" | jq -r --arg VERSION_ID "$VERSION_ID" '.data.latestFiles[] | select(.id|tostring==$VERSION_ID) | .isServerPack')"
-              local VERSION_SERVER_ID="$(echo -e "${PROJECT_DATA}" | jq -r --arg VERSION_ID "$VERSION_ID" '.data.latestFiles[] | select(.id|tostring==$VERSION_ID) | .serverPackFileId')"
+              local VERSION_SERVER_ID="$(echo -e "${PROJECT_DATA}" | jq -r --arg VERSION_ID "$VERSION_ID" '.data.latestFiles[] | select(.id|tostring==$VERSION_ID) | .serverPackFileId | select(. != null and . != 0)')"
 
               if [[ "${VERSION_SERVER_PACK}" == "false" && -n "${VERSION_SERVER_ID}" ]]; then
                   echo -e "\tFound server pack file id '${VERSION_SERVER_ID}'"
@@ -110,7 +136,7 @@ scripts:
               IS_SERVER_PACK=$(echo -e "${FILE_DATA}" | jq -r '.data.isServerPack // "false"')
 
               if [[ "${IS_SERVER_PACK}" == "false" ]]; then
-                  local VERSION_SERVER_PACK="$(echo -e "${FILE_DATA}" | jq -r '.data.serverPackFileId // empty')"
+                  local VERSION_SERVER_PACK="$(echo -e "${FILE_DATA}" | jq -r '.data.serverPackFileId | select(. != null and . != 0)')"
                   if [[ -n "${VERSION_SERVER_PACK}" ]]; then
                       echo -e "\tFound server pack file id '${VERSION_SERVER_PACK}'"
                       VERSION_ID=$VERSION_SERVER_PACK
@@ -133,29 +159,47 @@ scripts:
 
           # get json data to work with
           echo -e "\tRetrieving version information for '${VERSION_ID}'"
-          local JSON_DATA=$(wget -q "${CURSEFORGE_API_HEADERS[@]}" "${CURSEFORGE_API_URL}${PROJECT_ID}/files/${VERSION_ID}/download-url" -O -)
-
-          if [[ -z "${JSON_DATA}" ]]; then
-              echo -e "\tERROR: Failed to retrieve file data for file id '${VERSION_ID}'"
-              exit 1
-          fi
-
-          echo -e "\tParsing CurseForge pack download url"
-
-          local DOWNLOAD_URL=$(echo -e "$JSON_DATA" | jq -r '.data // empty')
-          if [[ -z "${DOWNLOAD_URL}" ]]; then
-              echo -e "\tERROR: No download url found for file ${VERSION_ID}"
+          local DOWNLOAD_URL
+          if ! DOWNLOAD_URL=$(cf_resolve_download_url "${PROJECT_ID}" "${VERSION_ID}" "${PROJECT_DATA}"); then
               exit 1
           fi
 
           # download modpack files
           echo -e "\tDownloading ${DOWNLOAD_URL}"
-          if ! wget -q "${DOWNLOAD_URL}" -O server.zip; then
+          if ! wget -q "${CURSEFORGE_CDN_HEADERS[@]}" "${DOWNLOAD_URL}" -O server.zip; then
               echo -e "Download failed!"
               exit 1
           fi
       }
 
+      function parse_loader_manifest {
+          local MANIFEST="$1"
+          echo -e "\tParsing loader manifest"
+
+          if ! LOADER_ID=$(jq -er '[.minecraft.modLoaders[]? | select(.primary == true) | .id] | select(length == 1) | .[0] | select(type == "string")' "${MANIFEST}") || [[ ! "${LOADER_ID}" =~ ^[a-z]+-[[:alnum:]][[:alnum:].+_-]*$ ]]; then
+              echo -e "\tERROR: Expected one primary loader with a valid name and version in manifest!"
+              exit 1
+          fi
+          LOADER_NAME=${LOADER_ID%%-*}
+          LOADER_VERSION=${LOADER_ID#*-}
+
+          case "${LOADER_NAME}" in
+              forge|fabric|neoforge|quilt) ;;
+              *)
+                  echo "ERROR: Unsupported loader '${LOADER_NAME}' in manifest"
+                  exit 1
+                  ;;
+          esac
+
+          MINECRAFT_VERSION=$(jq -r '.minecraft.version // empty' "${MANIFEST}")
+
+          if [[ -z "${MINECRAFT_VERSION}" ]]; then
+              echo -e "\tERROR: No minecraft version found in manifest!"
+              exit 1
+          fi
+
+          echo -e "\tFound loader ${LOADER_NAME} ${LOADER_VERSION} for Minecraft ${MINECRAFT_VERSION}"
+      }
       function get_loader {
           echo -e "Retrieving loader information..."
 
@@ -188,46 +232,24 @@ scripts:
           fi
 
           echo -e "\tRetrieving file information for '${CLIENT_VERSION_ID}'"
-          local JSON_DATA=$(wget -q "${CURSEFORGE_API_HEADERS[@]}" "${CURSEFORGE_API_URL}${PROJECT_ID}/files/${CLIENT_VERSION_ID}/download-url" -O -)
-
-          echo -e "\tParsing CurseForge pack download url"
-
-          local DOWNLOAD_URL=$(echo -e "$JSON_DATA" | jq -r '.data // empty')
-
-          if [[ -z "${DOWNLOAD_URL}" ]]; then
-              echo -e "\tERROR: No download url found for file id ${CLIENT_VERSION_ID}"
+          local DOWNLOAD_URL
+          if ! DOWNLOAD_URL=$(cf_resolve_download_url "${PROJECT_ID}" "${CLIENT_VERSION_ID}" "${PROJECT_DATA}"); then
               exit 1
           fi
 
           # download modpack files
           echo -e "\tDownloading ${DOWNLOAD_URL}"
-          wget -q "${DOWNLOAD_URL}" -O client.zip
+          if ! wget -q "${CURSEFORGE_CDN_HEADERS[@]}" "${DOWNLOAD_URL}" -O client.zip; then
+              echo -e "\tERROR: Client manifest download failed!"
+              exit 1
+          fi
 
           echo -e "\tUnpacking client manifest"
           unzip -jo client.zip manifest.json -d "${SERVER_DIR}"
           mv "${SERVER_DIR}/manifest.json" "${SERVER_DIR}/client.manifest.json" # rename to avoid conflicts with main manifest
           rm -rf client.zip
 
-          echo -e "\tParsing client manifest"
-          local MANIFEST="${SERVER_DIR}/client.manifest.json"
-
-          LOADER_ID=$(jq -r '.minecraft.modLoaders[]? | select(.primary == true) | .id' "${MANIFEST}")
-          LOADER_NAME=$(echo "${LOADER_ID}" | cut -d'-' -f1)
-          LOADER_VERSION=$(echo "${LOADER_ID}" | cut -d'-' -f2)
-
-          if [[ -z "${LOADER_NAME}" || -z "${LOADER_VERSION}" ]]; then
-              echo -e "\tERROR: No loader found in client manifest!"
-              exit 1
-          fi
-
-          MINECRAFT_VERSION=$(jq -r '.minecraft.version // empty' "${MANIFEST}")
-
-          if [[ -z "${MINECRAFT_VERSION}" ]]; then
-              echo -e "\tERROR: No minecraft version found in client manifest!"
-              exit 1
-          fi
-
-          echo -e "\tFound loader ${LOADER_NAME} ${LOADER_VERSION} for Minecraft ${MINECRAFT_VERSION}"
+          parse_loader_manifest "${SERVER_DIR}/client.manifest.json"
       }
 
       function unzip-strip() (
@@ -281,17 +303,24 @@ scripts:
           echo -e "\tCopying files to ${destdir}"
 
           mkdir -p "$destdir"
-          cp -ar "$@" -t "$destdir" -- "${files[@]}"
+          if ! cp -ar "$@" -t "$destdir" -- "${files[@]}"; then
+              echo -e "\tERROR: Failed to copy unpacked files"
+              return 1
+          fi
           rm -rf "$tmpdir"
       )
 
       function unpack_zip {
           echo -e "Unpacking server files..."
-          unzip-strip server.zip "${SERVER_DIR}"
+          if ! unzip-strip server.zip "${SERVER_DIR}"; then
+              echo -e "\tERROR: Failed to unpack server.zip"
+              exit 1
+          fi
           rm -rf server.zip
       }
 
-      function json_download_mods {
+      function json_download_mods() (
+          set -o pipefail
           echo "Downloading mods..."
 
           local MANIFEST="${SERVER_DIR}/manifest.json"
@@ -304,28 +333,51 @@ scripts:
                   exit 1
               fi
 
-              local FILE_URL=$(wget -q "${CURSEFORGE_API_HEADERS[@]}" "${CURSEFORGE_API_URL}${MOD_PROJECT_ID}/files/${MOD_FILE_ID}/download-url" -O - | jq -r '.data // empty')
-
-              if [[ -z "${FILE_URL}" ]]; then
-                  echo -e "\tERROR: No download url found for mod ${MOD_PROJECT_ID} ${MOD_FILE_ID}"
-                  continue
+              local FILE_URL
+              if ! FILE_URL=$(cf_resolve_download_url "${MOD_PROJECT_ID}" "${MOD_FILE_ID}"); then
+                  echo
+                  echo "ERROR: Required mod ${MOD_PROJECT_ID} (file ${MOD_FILE_ID}) cannot be downloaded."
+                  echo "       Automatic installation is incomplete."
+                  echo
+                  exit 1
               fi
 
               echo -e "\tDownloading ${FILE_URL}"
 
-              if ! wget -q -nc "${FILE_URL}" -P "${SERVER_DIR}/mods"; then
+              if ! wget -q -nc "${CURSEFORGE_CDN_HEADERS[@]}" "${FILE_URL}" -P "${SERVER_DIR}/mods"; then
                   echo -e "\tERROR: Failed to download mod ${MOD_PROJECT_ID} ${MOD_FILE_ID}"
                   exit 1
               fi
           done
-      }
+      )
 
       function json_download_overrides {
           echo "Copying overrides..."
-          if [[ -d "${SERVER_DIR}/overrides" ]]; then
-              cp -r "${SERVER_DIR}/overrides/"* "${SERVER_DIR}"
-              rm -r "${SERVER_DIR}/overrides"
+          local OVERRIDES SERVER_ROOT SOURCE_DIR
+          if ! OVERRIDES=$(jq -er '.overrides // "overrides" | select(type == "string")' "${SERVER_DIR}/manifest.json"); then
+              echo "ERROR: Invalid overrides directory in manifest"
+              return 1
           fi
+          [[ -z "${OVERRIDES}" ]] && return 0
+
+          SERVER_ROOT=$(realpath -e -- "${SERVER_DIR}") || return 1
+          SOURCE_DIR=$(realpath -m -- "${SERVER_ROOT}/${OVERRIDES}") || return 1
+          if [[ "${OVERRIDES}" == /* || "/${OVERRIDES}/" == */../* || "${SOURCE_DIR}" != "${SERVER_ROOT}/"* ]]; then
+              echo "ERROR: Overrides must be a directory within the server directory"
+              return 1
+          fi
+          if [[ ! -e "${SOURCE_DIR}" ]]; then
+              return 0
+          fi
+          if [[ ! -d "${SOURCE_DIR}" ]]; then
+              echo "ERROR: Overrides path is not a directory"
+              return 1
+          fi
+          if ! cp -a -- "${SOURCE_DIR}/." "${SERVER_ROOT}/"; then
+              echo "ERROR: Failed to copy overrides; the source directory has been kept"
+              return 1
+          fi
+          rm -r -- "${SOURCE_DIR}"
       }
 
       FORGE_INSTALLER_URL="https://maven.minecraftforge.net/net/minecraftforge/forge/"
@@ -467,9 +519,9 @@ scripts:
           local MC_VERSION=$MINECRAFT_VERSION
           local NEOFORGE_VERSION=$LOADER_VERSION
           
-          if [[ ! -z ${NEOFORGE_VERSION} ]]; then
+          if [[ -n ${NEOFORGE_VERSION} ]]; then
               # The 1.20.1 release lives in a different repository and is called "forge" instead of "neoforge"
-              if [[ "${NEOFORGE_VERSION}" =~ "1.20.1-" ]]; then
+              if [[ "${NEOFORGE_VERSION}" == 1.20.1-* ]]; then
                   DOWNLOAD_LINK=$NEOFORGE_DOWNLOAD_URL/forge/${NEOFORGE_VERSION}/forge-${NEOFORGE_VERSION}
                   ARTIFACT_NAME="forge"
               else
@@ -485,8 +537,8 @@ scripts:
           echo "Download link is ${DOWNLOAD_LINK}"
 
           # Check if the download link we generated is valid
-          if [[ ! -z "${DOWNLOAD_LINK}" ]]; then
-              if wget -q --spider ${DOWNLOAD_LINK}-installer.jar; then
+          if [[ -n "${DOWNLOAD_LINK}" ]]; then
+              if wget -q --spider "${DOWNLOAD_LINK}-installer.jar"; then
                   echo -e "Installer jar download link is valid."
               else
                   echo -e "Link is invalid. Exiting now"
@@ -498,7 +550,7 @@ scripts:
           fi
           
           # If so, go ahead and download the installer
-          wget -O installer.jar ${DOWNLOAD_LINK}-installer.jar
+          wget -O installer.jar "${DOWNLOAD_LINK}-installer.jar"
           
           if [[ ! -f ./installer.jar ]]; then
               echo "!!! Error downloading NeoForge version ${NEOFORGE_VERSION} !!!"
@@ -527,6 +579,27 @@ scripts:
           rm -rf installer.jar
       }
 
+      function validate_startup {
+          if [[ -s "${SERVER_DIR}/unix_args.txt" ]]; then
+              return 0
+          fi
+
+          local SERVER_JAR
+          if [[ -f "${SERVER_DIR}/.serverjar" ]]; then
+              SERVER_JAR=$(cat "${SERVER_DIR}/.serverjar")
+              # The startup command expects a relative JAR path without whitespace.
+              if [[ -n "${SERVER_JAR}" && "${SERVER_JAR}" != /* && "${SERVER_JAR}" != *[[:space:]]* && "/${SERVER_JAR}/" != */../* && -s "${SERVER_DIR}/${SERVER_JAR}" ]]; then
+                  return 0
+              fi
+          fi
+
+          echo "ERROR: No usable server startup target was found."
+          echo "The server needs a nonempty unix_args.txt, or a .serverjar file"
+          echo "containing the relative path to its server JAR (without spaces)."
+          echo "For an uploaded ZIP, include these files or a supported manifest.json."
+          exit 1
+      }
+
       install_required
 
       if [[ -z "${PROJECT_ID}" ]]; then
@@ -534,21 +607,33 @@ scripts:
           exit 1
       fi
 
-      if [[ ! "${PROJECT_ID}" = "zip" ]]; then
-      	get_download
-      fi
+      if [[ "${PROJECT_ID}" == "zip" ]]; then
+          if [[ ! -f "${SERVER_DIR}/server.zip" ]]; then
+              echo -e "\tERROR: PROJECT_ID is 'zip', but ${SERVER_DIR}/server.zip was not found"
+              exit 1
+          fi
 
-      get_loader
-      unpack_zip
+          unpack_zip
+
+          if [[ -f "${SERVER_DIR}/manifest.json" ]]; then
+              parse_loader_manifest "${SERVER_DIR}/manifest.json"
+          else
+              echo -e "\tNo manifest.json found; checking prepared server startup files"
+              validate_startup
+          fi
+      else
+          get_download
+          get_loader
+          unpack_zip
+      fi
 
       if [[ -f "${SERVER_DIR}/manifest.json" ]]; then
           echo "Found manifest.json, installing mods"
-          json_download_mods
-          json_download_overrides
+          json_download_mods || exit 1
+          json_download_overrides || exit 1
       fi
 
-      if [[ -f "${SERVER_DIR}/client.manifest.json" ]]; then
-          MANIFEST="${SERVER_DIR}/client.manifest.json"
+      if [[ -n "${LOADER_NAME:-}" ]]; then
           echo -e "\nLoader name: ${LOADER_NAME}"
 
           if [[ $LOADER_NAME == "forge" ]]; then
@@ -568,7 +653,8 @@ scripts:
           fi
       fi
 
-      echo -e "\nInstall completed succesfully, enjoy!"
+      validate_startup
+      echo -e "\nInstall completed successfully, enjoy!"
     container: 'ghcr.io/pelican-eggs/installers:java_8'
     entrypoint: bash
 variables:
@@ -590,7 +676,7 @@ variables:
     name: 'Modpack File ID'
     description: "The file ID belonging to a specific version of a modpack. Can either be the main file or the file ID\nassociated with the server pack.\r\n\r\nIf not provided the script will attempt to retrieve the latest server pack or client pack available."
     env_variable: VERSION_ID
-    default_value: latest
+    default_value: ''
     user_viewable: true
     user_editable: true
     rules:

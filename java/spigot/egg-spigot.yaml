@@ -2,7 +2,7 @@ _comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
 meta:
   version: PLCN_v3
   update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/spigot/egg-spigot.yaml'
-exported_at: '2026-05-15T14:38:52+00:00'
+exported_at: '2026-07-14T12:09:49+00:00'
 name: Spigot
 author: support@pterodactyl.io
 uuid: 48808ad8-616f-4f13-91fb-29bfeca3afc7
@@ -20,12 +20,12 @@ features:
   - java_version
   - pid_limit
 docker_images:
-  'Java 8': 'ghcr.io/pelican-eggs/yolks:java_8'
-  'Java 11': 'ghcr.io/pelican-eggs/yolks:java_11'
-  'Java 16': 'ghcr.io/pelican-eggs/yolks:java_16'
-  'Java 17': 'ghcr.io/pelican-eggs/yolks:java_17'
-  'Java 21': 'ghcr.io/pelican-eggs/yolks:java_21'
   'Java 25': 'ghcr.io/pelican-eggs/yolks:java_25'
+  'Java 21': 'ghcr.io/pelican-eggs/yolks:java_21'
+  'Java 17': 'ghcr.io/pelican-eggs/yolks:java_17'
+  'Java 16': 'ghcr.io/pelican-eggs/yolks:java_16'
+  'Java 11': 'ghcr.io/pelican-eggs/yolks:java_11'
+  'Java 8': 'ghcr.io/pelican-eggs/yolks:java_8'
 file_denylist: {  }
 startup_commands:
   Default: 'java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar {{SERVER_JARFILE}}'
@@ -52,7 +52,7 @@ scripts:
       mkdir -p /usr/share/man/man1
 
       ARCH=$([[ "$(uname -m)" == "x86_64" ]] && echo "x64" || echo "aarch64")
-          
+      
       function install_java() {
         echo "ARCH: ${ARCH}\nDownload URl: $1"
         curl -L $1 -o java.tar.gz
@@ -67,7 +67,9 @@ scripts:
       }
 
       # Detect the required Java version for building Spigot. Currently temurin only provides archives of their releases, and adoptopenjdk is deprecated. Update this when packages are released.
-      if [[ $DL_VERSION =~ ^1\.(20.5|20.6) || $DL_VERSION == "latest" ]]; then
+      if [[ $DL_VERSION =~ ^26 || $DL_VERSION == "latest" ]]; then
+          install_java "https://github.com/adoptium/temurin25-binaries/releases/download/jdk-25.0.3%2B9/OpenJDK25U-jdk_x64_linux_hotspot_25.0.3_9.tar.gz" jdk-25.0.3+9
+      elif [[ $DL_VERSION =~ ^1\.(20.5|20.6|21) ]]; then
           install_java "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.3%2B9/OpenJDK21U-jdk_x64_linux_hotspot_21.0.3_9.tar.gz" jdk-21.0.3+9
       elif [[ $DL_VERSION =~ ^1\.(18|19|20|20.1|20.2|20.3|20.4) ]]; then
           install_java "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.1%2B12/OpenJDK17U-jdk_x64_linux_hotspot_17.0.1_12.tar.gz" jdk-17.0.1+12

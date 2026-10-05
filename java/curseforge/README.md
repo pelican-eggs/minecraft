@@ -14,6 +14,14 @@ The script will automatically setup of Forge, Fabric, or Quilt depending on the 
 You *must* specify a CurseForge API key. 
 You can obtain an API key by creating a developer account [here](https://console.curseforge.com/) and then clicking on the "API keys" tab.
 
+## Installing an uploaded ZIP
+
+Set the project ID to `zip` and upload `server.zip` before reinstalling. The archive can contain a CurseForge `manifest.json`, including one exported by Packwiz, or an already prepared server. Native Packwiz `pack.toml` files are not supported.
+
+A prepared server must include a nonempty `unix_args.txt`, or a `.serverjar` file containing the relative path to its server JAR without spaces. For example, a ZIP with `server.jar` should also contain `.serverjar` with `server.jar` as its contents. A ZIP with neither a supported manifest nor usable startup files fails installation.
+
+Manifest installs support Forge, Fabric, NeoForge, and Quilt. All required mods must download successfully; a missing required mod fails the installation.
+
 ## Server Ports
 
 The minecraft server requires a single port for access (default 25565) but plugins may require extra ports to enabled for the server.

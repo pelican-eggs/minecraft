@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        If you see any of the following, go to [Discord](https://discord.gg/pelican-panel) and report your error in a support channel.
+        If you see any of the following, go to [Discord](https://pelican.dev/discord) and report your error in a support channel.
         * `A fatal error was encountered while starting this server.`
         * `No server egg configuration could be located; aborting startup.`
 
@@ -80,7 +80,7 @@ body:
         Run the command below on the SSH terminal of your Wings machine and provide the link to logs.
         
         ```
-        tail -n 1000 $(ls -Alrt /var/log/pterodactyl/install/*.log | tail -1 | sed 's/  */ /g' | cut -s -d' ' -f9) | nc pteropaste.com 99
+        tail -n 1000 $(ls -Alrt /var/log/pelican/install/*.log | tail -1 | sed 's/  */ /g' | cut -s -d' ' -f9) | nc pteropaste.com 99
         ```
       placeholder: |
         https://pteropaste.com/exampleLogs

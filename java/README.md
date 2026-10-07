@@ -95,6 +95,11 @@ The second method requires you to know the id for both the modpack and version i
 may not get updated with the correct ip address and port at first launch.
 Please restart the server after first launch to fix this.**
 
+## [GregTech: New Horizons](gtnh)
+
+[GT:NH Wiki](https://gtnh.miraheze.org/wiki/Main_Page)
+A Minecraft 1.7.10 modpack maintained and supported by dedicated community members just like you!
+
 ## [NanoLimbo](nanolimbo)
 
 [NanoLimbo GitHub](https://github.com/Nan1t/NanoLimbo)

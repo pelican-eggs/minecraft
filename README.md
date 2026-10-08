@@ -45,6 +45,7 @@ It’s set in infinitely-generated worlds of wide open terrain - icy mountains, 
 * [Bedrock](proxy/bedrock)
   * [Waterdog PE](proxy/bedrock/waterdog_pe)
 * [Cross Platform](proxy/cross_platform)
+  * [Gate](proxy/cross_platform/gate)
   * [GeyserMC](proxy/cross_platform/geyser)
   * [Waterdog](proxy/cross_platform/waterdog)
 * [Java](proxy/java)

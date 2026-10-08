@@ -1,5 +1,11 @@
 # Mineraft Cross Platform Proxies
 
+## [Gate](gate)
+
+[Gate](https://github.com/minekube/gate)
+
+Gate is a Go-based Minecraft proxy inspired by Velocity that matches the core proxy feature set (forwarding, plugin channels, server switching) while running as a ~10MB static binary instead of a JVM. It stands apart with Lite mode (raw hostname-based routing across mixed server versions with no translation layer), built-in Bedrock cross-play, and config hot-reload with no restart.
+
 ## [GeyserMC](geyser)
 
 [GeyserMC](https://github.com/GeyserMC)

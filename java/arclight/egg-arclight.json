@@ -1,0 +1,100 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL",
+    "meta": {
+        "version": "PLCN_v3",
+        "update_url": null
+    },
+    "exported_at": "2026-06-18T00:00:00+00:00",
+    "name": "Arclight",
+    "author": "you@example.com",
+    "uuid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "description": "Arclight is a hybrid Minecraft server that combines Bukkit/Spigot plugin support with Forge, NeoForge, or Fabric mod support in a single server, powered by Mixin. Run plugins and mods side by side.",
+    "tags": [
+        "minecraft"
+    ],
+    "features": [
+        "eula",
+        "java_version",
+        "pid_limit"
+    ],
+    "docker_images": {
+        "Java 17": "ghcr.io/pelican-eggs/yolks:java_17",
+        "Java 21": "ghcr.io/pelican-eggs/yolks:java_21",
+        "Java 25": "ghcr.io/pelican-eggs/yolks:java_25"
+    },
+    "file_denylist": [],
+    "startup_commands": {
+        "Default": "java -Xms128M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}} nogui"
+    },
+    "config": {
+        "files": "{\n    \"server.properties\": {\n        \"parser\": \"properties\",\n        \"find\": {\n            \"server-ip\": \"0.0.0.0\",\n            \"server-port\": \"{{server.allocations.default.port}}\",\n            \"query.port\": \"{{server.allocations.default.port}}\"\n        }\n    }\n}",
+        "startup": "{\n    \"done\": \")! For help, type \"\n}",
+        "logs": "{}",
+        "stop": "stop"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!/bin/bash\n# Arclight Installation Script for Pelican Panel\n#\n# Server Files: /mnt/server\n\napt-get update -y\napt-get install -y curl jq\n\nif [[ ! -d /mnt/server ]]; then\n    mkdir -p /mnt/server\nfi\n\ncd /mnt/server\n\n# Trim whitespace from variables\nARCLIGHT_LOADER=\"$(echo \"${ARCLIGHT_LOADER}\" | tr -d ' ' | tr '[:upper:]' '[:lower:]')\"\nMC_VERSION=\"$(echo \"${MC_VERSION}\" | tr -d ' ')\"\nARCLIGHT_VERSION=\"$(echo \"${ARCLIGHT_VERSION}\" | tr -d ' ')\"\n\n# Validate loader\nif [[ \"${ARCLIGHT_LOADER}\" != \"neoforge\" && \"${ARCLIGHT_LOADER}\" != \"forge\" && \"${ARCLIGHT_LOADER}\" != \"fabric\" ]]; then\n    echo \"ERROR: Invalid loader '${ARCLIGHT_LOADER}'. Must be one of: neoforge, forge, fabric\"\n    exit 1\nfi\n\necho \"=====================================\"\necho \" Arclight Installer\"\necho \" Loader  : ${ARCLIGHT_LOADER}\"\necho \" MC Ver  : ${MC_VERSION}\"\necho \" AL Ver  : ${ARCLIGHT_VERSION:-latest}\"\necho \"=====================================\"\n\nGITHUB_API=\"https://api.github.com/repos/IzzelAliz/Arclight\"\n\n# Fetch releases from GitHub API\necho \"Fetching releases from GitHub...\"\nif [[ -n \"${GITHUB_TOKEN}\" ]]; then\n    RELEASES=$(curl -s -H \"Authorization: token ${GITHUB_TOKEN}\" \"${GITHUB_API}/releases\")\nelse\n    RELEASES=$(curl -s \"${GITHUB_API}/releases\")\nfi\n\nif [[ -z \"${RELEASES}\" || \"${RELEASES}\" == \"null\" ]]; then\n    echo \"ERROR: Could not fetch releases from GitHub API.\"\n    exit 1\nfi\n\n# If a specific Arclight version is set, find that exact release tag\nif [[ -n \"${ARCLIGHT_VERSION}\" && \"${ARCLIGHT_VERSION}\" != \"latest\" ]]; then\n    echo \"Looking for specific Arclight release: ${ARCLIGHT_VERSION}\"\n    # Try exact tag match (e.g. \"FeudalKings/1.0.1\" or just \"1.0.1\")\n    RELEASE=$(echo \"${RELEASES}\" | jq --arg ver \"${ARCLIGHT_VERSION}\" \\\n        '[.[] | select(.tag_name | test($ver; \"i\"))] | first')\nelse\n    echo \"Using the latest stable (non-prerelease) release...\"\n    RELEASE=$(echo \"${RELEASES}\" | jq '[.[] | select(.prerelease == false)] | first')\n    # If no stable found, fall back to the very latest\n    if [[ \"$(echo \"${RELEASE}\" | jq -r '.tag_name')\" == \"null\" ]]; then\n        echo \"No stable release found, falling back to latest release.\"\n        RELEASE=$(echo \"${RELEASES}\" | jq 'first')\n    fi\nfi\n\nRELEASE_TAG=$(echo \"${RELEASE}\" | jq -r '.tag_name')\nif [[ -z \"${RELEASE_TAG}\" || \"${RELEASE_TAG}\" == \"null\" ]]; then\n    echo \"ERROR: No matching release found.\"\n    exit 1\nfi\n\necho \"Using release: ${RELEASE_TAG}\"\n\n# List assets for this release\nASSETS=$(echo \"${RELEASE}\" | jq -r '.assets[] | .name + \"|||\" + .browser_download_url')\n\nif [[ -z \"${ASSETS}\" ]]; then\n    echo \"ERROR: No assets found for release ${RELEASE_TAG}.\"\n    exit 1\nfi\n\necho \"Available assets:\"\necho \"${ASSETS}\" | while IFS='|||' read -r name url; do echo \"  - ${name}\"; done\n\n# Find the asset matching our loader (and optionally MC version)\n# Asset naming pattern: arclight-{loader}-{mc_version}-{arclight_version}-{commit}.jar\nif [[ -n \"${MC_VERSION}\" && \"${MC_VERSION}\" != \"latest\" ]]; then\n    MATCH=$(echo \"${ASSETS}\" | grep -i \"arclight-${ARCLIGHT_LOADER}-${MC_VERSION}-\" | head -n 1)\nelse\n    MATCH=$(echo \"${ASSETS}\" | grep -i \"arclight-${ARCLIGHT_LOADER}-\" | head -n 1)\nfi\n\nif [[ -z \"${MATCH}\" ]]; then\n    echo \"ERROR: No asset found for loader '${ARCLIGHT_LOADER}' and MC version '${MC_VERSION}' in release ${RELEASE_TAG}.\"\n    echo \"Available assets for this release:\"\n    echo \"${ASSETS}\" | cut -d'|' -f1\n    exit 1\nfi\n\nASSET_NAME=$(echo \"${MATCH}\" | cut -d'|' -f1)\nDOWNLOAD_URL=$(echo \"${MATCH}\" | cut -d'|' -f4)\n\necho \"\"\necho \"Downloading: ${ASSET_NAME}\"\necho \"From: ${DOWNLOAD_URL}\"\n\n# Back up existing jar if present\nif [[ -f \"${SERVER_JARFILE}\" ]]; then\n    echo \"Backing up existing ${SERVER_JARFILE}...\"\n    mv \"${SERVER_JARFILE}\" \"${SERVER_JARFILE}.bak\"\nfi\n\n# Download the jar\ncurl -L --fail --silent --show-error -o \"${SERVER_JARFILE}\" \"${DOWNLOAD_URL}\"\n\nif [[ $? -ne 0 || ! -f \"${SERVER_JARFILE}\" ]]; then\n    echo \"ERROR: Download failed. Restoring backup if available.\"\n    [[ -f \"${SERVER_JARFILE}.bak\" ]] && mv \"${SERVER_JARFILE}.bak\" \"${SERVER_JARFILE}\"\n    exit 1\nfi\n\nFILE_SIZE=$(du -sh \"${SERVER_JARFILE}\" | cut -f1)\necho \"\"\necho \"=====================================\"\necho \" Installation complete!\"\necho \" File   : ${SERVER_JARFILE} (${FILE_SIZE})\"\necho \" Release: ${RELEASE_TAG}\"\necho \" Asset  : ${ASSET_NAME}\"\necho \"=====================================\"\necho \"Start the server to finish setup (EULA acceptance will be prompted).\"\n",
+            "container": "ghcr.io/pelican-eggs/installers:debian",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "sort": 1,
+            "name": "Server Jar File",
+            "description": "The filename for the downloaded Arclight jar. Change this only if you know what you are doing.",
+            "env_variable": "SERVER_JARFILE",
+            "default_value": "arclight.jar",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": [
+                "required",
+                "string",
+                "max:30"
+            ]
+        },
+        {
+            "sort": 2,
+            "name": "Mod Loader",
+            "description": "The mod loader to use: neoforge, forge, or fabric.\n\nNote: As of Minecraft 1.21, only NeoForge and Fabric are available. Forge support for 1.21+ is not guaranteed.",
+            "env_variable": "ARCLIGHT_LOADER",
+            "default_value": "neoforge",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "required",
+                "string",
+                "in:neoforge,forge,fabric"
+            ]
+        },
+        {
+            "sort": 3,
+            "name": "Minecraft Version",
+            "description": "The Minecraft version to install (e.g. 1.21.1, 1.20.1).\n\nLeave blank or set to 'latest' to automatically pick the most recent release from GitHub.",
+            "env_variable": "MC_VERSION",
+            "default_value": "latest",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "nullable",
+                "string",
+                "max:10"
+            ]
+        },
+        {
+            "sort": 4,
+            "name": "Arclight Version / Release Tag",
+            "description": "Specific Arclight release tag to install (e.g. 1.0.1 or FeudalKings/1.0.1).\n\nLeave blank or set to 'latest' to automatically use the newest stable GitHub release.",
+            "env_variable": "ARCLIGHT_VERSION",
+            "default_value": "latest",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": [
+                "nullable",
+                "string",
+                "max:30"
+            ]
+        }
+    ]
+}

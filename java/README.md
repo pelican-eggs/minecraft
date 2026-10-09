@@ -42,7 +42,8 @@ A generic service to pull forge mod packs from the curseforge site.
 [NeoForge Website](https://neoforged.net)
 A fork of Minecraft Forge that supports Minecraft versions 1.20.1 and newer.
 
-## Glowstone 
+## Glowstone
+
 [Glowstone](https://glowstone.net/)
 Glowstone is an open-source replacement for CraftBukkit, Spigot, and Paper.
 
@@ -105,7 +106,13 @@ A lightweight minecraft limbo server, written on Java with Netty. The main goal 
 [Limbo GitHub](https://github.com/LOOHP/Limbo)
 Standalone server program Limbo.
 
+## [PicoLimbo](picolimbo)
+
+[PicoLimbo GitHub](https://github.com/Quozul/PicoLimbo)
+PicoLimbo is a lightweight Minecraft server written from scratch in Rust supporting Minecraft versions from 1.7.2 up to 26.1.1.
+
 ## [Quilt](quilt)
+
 [Quilt Website](https://quiltmc.org/)
 The Quilt project is an open-source, community-driven modding toolchain designed primarily for Minecraft. By focusing on speed, ease of use and modularity, Quilt aims to provide a sleek and modern modding toolchain with an open ecosystem.
 
@@ -171,15 +178,16 @@ The ancient power of Tekkits past return in this legendary pack!
 [Tekkit Classic Modpack Page](https://www.technicpack.net/modpack/tekkit.552560)
 The official Tekkit Classic modpack. Build factories, automate crafting!
 
-
 ## [Vanilla](vanilla)
 
 ## Vanilla
+
 [Vanilla](https://www.minecraft.net/en-us/download/server)
 Vanilla Minecraft server.
 
 ## [VanillaCord](vanillacord)
 
 ## VanillaCord
+
 [VanillaCord](https://github.com/ME1312/VanillaCord)
 VanillaCord adds support for BungeeCord's ip-forwarding option on vanilla Minecraft servers.

@@ -1,0 +1,107 @@
+_comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
+meta:
+  version: PLCN_v3
+  update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/crossplay/pumpkin/egg-pumpkin.yaml'
+exported_at: '2026-10-10T17:05:57+00:00'
+name: Pumpkin
+author: kubisgg@users.noreply.github.com
+uuid: c6b865ed-54a5-47b0-b1d9-53b06a54f3ce
+description: |-
+  Minecraft server written in Rust with native Java and experimental Bedrock support. Pumpkin is under
+  heavy development. Expect incomplete features and bugs.
+icon: null
+tags:
+  - minecraft
+  - crossplay
+features: null
+docker_images:
+  Debian: 'ghcr.io/pelican-eggs/yolks:debian'
+file_denylist: {  }
+startup_commands:
+  Default: 'BEDROCK_STATE=false; [ "{{BEDROCK_PORT}}" -gt 0 ] && BEDROCK_STATE=true; sed -i -e "/^\[networking.java\]$/,/^\[/s/^address = .*/address = \"0.0.0.0:{{SERVER_PORT}}\"/" -e "/^\[networking.bedrock\]$/,/^\[/s/^enabled = .*/enabled = ${BEDROCK_STATE}/" -e "/^\[networking.bedrock.nethernet\]$/,/^\[/{s/^enabled = .*/enabled = ${BEDROCK_STATE}/;s/^address = .*/address = \"0.0.0.0:{{BEDROCK_PORT}}\"/;}" pumpkin.toml && exec ./pumpkin'
+config:
+  files: {  }
+  startup:
+    done: 'Server is now running.'
+  logs: {  }
+  stop: stop
+scripts:
+  installation:
+    script: |
+      #!/bin/bash
+      set -euo pipefail
+
+      cd /mnt/server
+
+      case "$(uname -m)" in
+          x86_64) PUMPKIN_ARCH=X64 ;;
+          aarch64|arm64) PUMPKIN_ARCH=ARM64 ;;
+          *) echo "Unsupported architecture: $(uname -m)"; exit 1 ;;
+      esac
+
+      BINARY_NAME="pumpkin-${PUMPKIN_ARCH}-Linux-musl"
+      RELEASE_API="https://api.github.com/repos/Pumpkin-MC/Pumpkin/releases"
+      if [ "${PUMPKIN_VERSION}" = "latest" ]; then
+          RELEASE_API="${RELEASE_API}/latest"
+      else
+          RELEASE_TAG=$(printf '%s' "${PUMPKIN_VERSION}" | jq -sRr @uri)
+          RELEASE_API="${RELEASE_API}/tags/${RELEASE_TAG}"
+      fi
+
+      RELEASE_JSON=$(curl -fsSL "${RELEASE_API}")
+      DOWNLOAD_URL=$(printf '%s' "${RELEASE_JSON}" | jq -er --arg name "${BINARY_NAME}" '.assets[] | select(.name == $name) | .browser_download_url')
+      curl -fSL --retry 3 "${DOWNLOAD_URL}" -o pumpkin.download
+      chmod +x pumpkin.download
+      mv -f pumpkin.download pumpkin
+
+      if [ ! -f pumpkin.toml ]; then
+          cat > pumpkin.toml <<'CONFIG'
+      [commands]
+      use_console = true
+      use_tty = false
+
+      [networking.java]
+      enabled = true
+      address = "0.0.0.0:25565"
+
+      [networking.bedrock]
+      enabled = false
+
+      [networking.bedrock.nethernet]
+      enabled = true
+      address = "0.0.0.0:19132"
+      CONFIG
+      fi
+
+      echo "Pumpkin installation completed."
+    container: 'ghcr.io/pelican-eggs/installers:debian'
+    entrypoint: bash
+variables:
+  -
+    name: 'Bedrock port'
+    description: |-
+      Set to 0 to disable Bedrock. A nonzero port automatically enables it on that port. Assign a separate
+      allocation with both TCP and UDP, then restart to apply changes.
+    env_variable: BEDROCK_PORT
+    default_value: 0
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - integer
+      - 'between:0,65535'
+    sort: null
+  -
+    name: 'Pumpkin version'
+    description: |-
+      Release to download when installing or reinstalling. Use latest for the latest stable release,
+      nightly for development builds, or an exact GitHub release tag. Reinstall to apply a version change.
+    env_variable: PUMPKIN_VERSION
+    default_value: latest
+    user_viewable: true
+    user_editable: true
+    rules:
+      - required
+      - string
+      - 'max:64'
+    sort: null

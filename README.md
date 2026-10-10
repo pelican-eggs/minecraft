@@ -12,6 +12,11 @@ It’s set in infinitely-generated worlds of wide open terrain - icy mountains, 
 * [Nukkit](bedrock/nukkit)
 * [PocketMine MP](bedrock/pocketmine_mp)
 
+## [Crossplay](crossplay) Servers for Java and Bedrock Minecraft
+
+* [Pumpkin](crossplay/pumpkin)
+* [Purpur-GeyserMC-Floodgate](crossplay/purpur-geysermc-floodgate)
+
 ## [Java](java) Servers for Java Minecraft
 
 * [Cuberite](java/cuberite)

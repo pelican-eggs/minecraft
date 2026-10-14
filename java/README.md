@@ -125,6 +125,11 @@ Currently the default for many reasons. First being that you don't need to build
 High performance Fork of Paper which adds regionised multithreading to the dedicated server. designed for many players.
 Spigot Plugins are not compatible with this fork. unless they are optimised for Folia.
 
+### [Leaf](leaf)
+
+[Leaf Website](https://www.leafmc.one/)
+A Paper fork focused on finding the balance between performance, vanilla mechanics, and stability.
+
 ### [Purpur](purpur)
 
 [Purpur Website](https://purpurmc.org/)

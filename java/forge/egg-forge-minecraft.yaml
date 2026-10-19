@@ -2,7 +2,7 @@ _comment: 'DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PANEL'
 meta:
   version: PLCN_v3
   update_url: 'https://raw.githubusercontent.com/pelican-eggs/minecraft/refs/heads/main/java/forge/egg-forge-minecraft.yaml'
-exported_at: '2025-12-09T21:55:23+00:00'
+exported_at: '2026-10-19T18:16:44+00:00'
 name: 'Forge Minecraft'
 author: panel@example.com
 uuid: ed072427-f209-4603-875c-f540c6dd5a65
@@ -79,12 +79,12 @@ scripts:
 
         ## some variables for getting versions and things
         FILE_SITE=https://maven.minecraftforge.net/net/minecraftforge/forge/
-        VERSION_KEY=$(echo -e ${JSON_DATA} | jq -r --arg MC_VERSION "${MC_VERSION}" --arg BUILD_TYPE "${BUILD_TYPE}" '.promos | del(."latest-1.7.10") | del(."1.7.10-latest-1.7.10") | to_entries[] | .key | select(contains($MC_VERSION)) | select(contains($BUILD_TYPE))')
+        VERSION_KEY=$(echo -e ${JSON_DATA} | jq -r --arg MC_VERSION "${MC_VERSION}" --arg BUILD_TYPE "${BUILD_TYPE}" '.promos | del(."latest-1.7.10") | del(."1.7.10-latest-1.7.10") | to_entries[] | .key | select(startswith($MC_VERSION + "-")) | select(contains($BUILD_TYPE))')
 
         ## locating the forge version
         if [[ "${VERSION_KEY}" == "" ]] && [[ "${BUILD_TYPE}" == "recommended" ]]; then
           echo -e "dropping back to latest from recommended due to there not being a recommended version of forge for the mc version requested."
-          VERSION_KEY=$(echo -e ${JSON_DATA} | jq -r --arg MC_VERSION "${MC_VERSION}" '.promos | del(."latest-1.7.10") | del(."1.7.10-latest-1.7.10") | to_entries[] | .key | select(contains($MC_VERSION)) | select(contains("latest"))')
+          VERSION_KEY=$(echo -e ${JSON_DATA} | jq -r --arg MC_VERSION "${MC_VERSION}" '.promos | del(."latest-1.7.10") | del(."1.7.10-latest-1.7.10") | to_entries[] | .key | select(startswith($MC_VERSION + "-")) | select(contains("latest"))')
         fi
 
         ## Error if the mc version set wasn't valid.
@@ -154,7 +154,10 @@ scripts:
       Otherwise, the Forge installer will not have enough memory."; exit 4; }
 
       # Check if we need a symlink for 1.17+ Forge JPMS args
-      if [[ $MC_VERSION =~ ^1\.(17|18|19|20|21|22|23) || $FORGE_VERSION =~ ^1\.(17|18|19|20|21|22|23) ]]; then
+      # Forge 1.17+ (including the 26.x version scheme) generates unix_args.txt: use it instead of guessing from the version number
+      if compgen -G "libraries/net/minecraftforge/forge/*/unix_args.txt" > /dev/null; then
+        unix_args
+      elif [[ $MC_VERSION =~ ^1\.(17|18|19|20|21|22|23) || $FORGE_VERSION =~ ^1\.(17|18|19|20|21|22|23) ]]; then
         unix_args
 
       # Check if someone has set MC to latest but overwrote it with older Forge version, otherwise we would have false positives

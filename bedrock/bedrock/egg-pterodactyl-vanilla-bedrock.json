@@ -17,7 +17,7 @@
     "file_denylist": [],
     "startup": ".\/bedrock_server",
     "config": {
-        "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-port\": \"{{server.build.default.port}}\",\r\n            \"server-name\": \"{{server.build.env.SERVERNAME}}\",\r\n            \"gamemode\": \"{{server.build.env.GAMEMODE}}\",\r\n            \"difficulty\": \"{{server.build.env.DIFFICULTY}}\",\r\n            \"level-name\": \"{{server.build.env.WORLDNAME}}\",\r\n            \"allow-cheats\": \"{{server.build.env.CHEATS}}\"\r\n        }\r\n    }\r\n}",
+        "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-port\": \"{{server.build.default.port}}\",\r\n            \"transport\": \"nethernet\",\r\n            \"server-udp-ports\": \"{{server.build.env.PUBLIC_IP}}:{{server.build.env.UDP_PORTS}}:{{server.build.env.UDP_PORTS}}\",\r\n            \"server-name\": \"{{server.build.env.SERVERNAME}}\",\r\n            \"gamemode\": \"{{server.build.env.GAMEMODE}}\",\r\n            \"difficulty\": \"{{server.build.env.DIFFICULTY}}\",\r\n            \"level-name\": \"{{server.build.env.WORLDNAME}}\",\r\n            \"allow-cheats\": \"{{server.build.env.CHEATS}}\"\r\n        }\r\n    }\r\n}",
         "startup": "{\r\n    \"done\": \"Server started\"\r\n}",
         "logs": "{}",
         "stop": "stop"
@@ -98,6 +98,26 @@
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|string|max:100",
+            "field_type": "text"
+        },
+        {
+            "name": "Public IP",
+            "description": "Public IP players connect to, advertised to clients for NetherNet (WebRTC) gameplay. Must be an IP literal, not a hostname.",
+            "env_variable": "PUBLIC_IP",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": "required|ip",
+            "field_type": "text"
+        },
+        {
+            "name": "NetherNet UDP Ports",
+            "description": "UDP port range for NetherNet gameplay, e.g. 19140-19155. BDS uses one UDP port per connected player, so assign this whole range to the server as additional allocations, at least max-players ports.",
+            "env_variable": "UDP_PORTS",
+            "default_value": "19140-19155",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": "required|string|regex:/^\\d{1,5}-\\d{1,5}$/",
             "field_type": "text"
         }
     ]

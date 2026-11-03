@@ -135,7 +135,7 @@ variables:
     rules:
       - required
       - string
-      - 'in:mohist,banner'
+      - 'in:mohist,banner,youer'
     sort: 4
   -
     name: 'Server Jar File'

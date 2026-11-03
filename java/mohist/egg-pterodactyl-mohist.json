@@ -74,7 +74,7 @@
             "default_value": "mohist",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "required|string|in:mohist,banner",
+            "rules": "required|string|in:mohist,banner,youer",
             "field_type": "text"
         },
         {
